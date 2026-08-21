@@ -79,6 +79,8 @@ import type {
   V3RoleManagerRemovedVault,
   V3SplitterNewSplitter,
   V3StrategyReported,
+  V3StrategyShutdown,
+  V3TokenizedStrategyDeployed,
   V3VaultFactoryNewVault,
   V3YieldSplitterNewYieldSplitter,
   VeyfiGaugeRegistered,
@@ -1959,6 +1961,35 @@ indexer.onEvent({ contract: "YearnV3Strategy", event: "Reported" }, async ({ eve
   };
   context.V3StrategyReported.set(entity);
 });
+
+indexer.onEvent({ contract: "YearnV3Strategy", event: "StrategyShutdown" }, async ({ event, context }) => {
+  const entity: V3StrategyShutdown = {
+    ...eventCore(event),
+    strategyAddress: getAddress(event.srcAddress),
+  };
+  context.V3StrategyShutdown.set(entity);
+});
+
+indexer.contractRegister(
+  { contract: "YearnV3VaultFactory", event: "NewTokenizedStrategy" },
+  async ({ event, context }) => {
+    context.chain.YearnV3Strategy.add(getAddress(event.params.strategy));
+  },
+);
+
+indexer.onEvent(
+  { contract: "YearnV3VaultFactory", event: "NewTokenizedStrategy" },
+  async ({ event, context }) => {
+    const entity: V3TokenizedStrategyDeployed = {
+      ...eventCore(event),
+      factoryAddress: getAddress(event.srcAddress),
+      strategy: getAddress(event.params.strategy),
+      asset: getAddress(event.params.asset),
+      apiVersion: event.params.apiVersion,
+    };
+    context.V3TokenizedStrategyDeployed.set(entity);
+  },
+);
 
 indexer.onEvent({ contract: "YearnV3SplitterFactory", event: "NewSplitter" }, async ({ event, context }) => {
   const entity: V3SplitterNewSplitter = {

@@ -39,6 +39,7 @@ contracts:
     handler: src/EventHandlers.ts
     events:
       - event: "AddedNewVault(address indexed vault, address indexed debtAllocator, uint256 category)"
+      - event: "RemovedVault(address indexed vault)"
   - name: YearnV3Accountant
     handler: src/EventHandlers.ts
     events:
@@ -264,8 +265,10 @@ chains:
         address:
           - "0xca12459a931643BF28388c67639b3F352fe9e5Ce"
       - name: YearnV3RoleManager
-        # No static addresses: discovered from YearnV3RoleManagerFactory.NewProject.
-        address: []
+        # The original Yearn role manager predates the indexed factory.
+        # Newer role managers are discovered from YearnV3RoleManagerFactory.NewProject.
+        address:
+          - "0xb3bd6B2E61753C311EFbCF0111f75D29706D9a41"
       - name: YearnV3Accountant
         address: []
       - name: YearnV3Strategy

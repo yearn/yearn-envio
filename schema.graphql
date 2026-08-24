@@ -970,6 +970,20 @@ type V3RoleManagerAddedNewVault {
   category: BigInt! @index
 }
 
+type V3RoleManagerRemovedVault {
+  id: ID!
+  roleManagerAddress: String! @index
+  chainId: Int! @index
+  blockNumber: Int! @index
+  blockTimestamp: Int! @index
+  blockHash: String!
+  transactionHash: String! @index
+  transactionIndex: Int!
+  transactionFrom: String @index
+  logIndex: Int!
+  vault: String! @index
+}
+
 type V3AccountantVaultChanged {
   id: ID!
   accountantAddress: String! @index

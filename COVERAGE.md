@@ -87,7 +87,7 @@ an evmlog-equivalence backfill that requires every ABI-declared log:
 | `yearn/3/registry2` | `NewRelease`, `UpdatePendingGovernance` |
 | `yearn/3/registry3` | `RemovedVault`, `UpdateEndorser`, `UpdateTagger`, `VaultTagged` |
 | `yearn/3/vaultFactory` | `UpdateProtocolFeeBps`, `UpdateProtocolFeeRecipient`, `UpdateCustomProtocolFee`, `RemovedCustomProtocolFee`, `FactoryShutdown` |
-| `yearn/3/roleManager` | `RemovedVault`, `UpdateDebtAllocator`, `UpdateDefaultProfitMaxUnlock`, `UpdatePendingGovernance`, `UpdatePositionHolder`, `UpdatePositionRoles` |
+| `yearn/3/roleManager` | `UpdateDebtAllocator`, `UpdateDefaultProfitMaxUnlock`, `UpdatePendingGovernance`, `UpdatePositionHolder`, `UpdatePositionRoles` |
 | `yearn/3/roleManagerFactory` | `NewRoleManager` |
 | `yearn/3/accountant` | `DistributeRewards`, `NewFeeManager`, `RemovedCustomFeeConfig`, `SetFutureFeeManager`, `UpdateCustomFeeConfig`, `UpdateDefaultFeeConfig`, `UpdateFeeRecipient`, `UpdateMaxLoss`, `UpdateRefund`, `UpdateVaultManager` |
 

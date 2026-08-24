@@ -74,6 +74,7 @@ import type {
   V3RegistryNewEndorsedVault,
   V3RoleManagerAddedNewVault,
   V3RoleManagerFactoryNewProject,
+  V3RoleManagerRemovedVault,
   V3SplitterNewSplitter,
   V3StrategyReported,
   V3VaultFactoryNewVault,
@@ -1887,6 +1888,23 @@ indexer.onEvent({ contract: "YearnV3RoleManager", event: "AddedNewVault" }, asyn
     category: event.params.category,
   };
   context.V3RoleManagerAddedNewVault.set(entity);
+});
+
+indexer.onEvent({ contract: "YearnV3RoleManager", event: "RemovedVault" }, async ({ event, context }) => {
+  const entity: V3RoleManagerRemovedVault = {
+    id: eventId(event),
+    roleManagerAddress: getAddress(event.srcAddress),
+    chainId: event.chainId,
+    blockNumber: event.block.number,
+    blockTimestamp: event.block.timestamp,
+    blockHash: event.block.hash,
+    transactionHash: event.transaction.hash,
+    transactionIndex: event.transaction.transactionIndex,
+    transactionFrom: addr(event.transaction.from),
+    logIndex: event.logIndex,
+    vault: getAddress(event.params.vault),
+  };
+  context.V3RoleManagerRemovedVault.set(entity);
 });
 
 indexer.onEvent({ contract: "YearnV3Accountant", event: "VaultChanged" }, async ({ event, context }) => {

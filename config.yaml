@@ -1250,7 +1250,9 @@ chains:
         address:
           - "0xca12459a931643BF28388c67639b3F352fe9e5Ce"
       - name: YearnV3RoleManager
-        address: []
+        # Yearn's configured role manager predates the indexed factory.
+        address:
+          - "0xea3481244024E2321cc13AcAa80df1050f1fD456"
       - name: YearnV3Accountant
         address: []
       - name: YearnV3Strategy
@@ -1383,7 +1385,9 @@ chains:
       - name: YearnV3RoleManagerFactory
         address: []
       - name: YearnV3RoleManager
-        address: []
+        # Yearn's configured role manager predates the indexed factory.
+        address:
+          - "0x3BF72024420bdc4D7cA6a8b6211829476D6685b1"
       - name: YearnV3YieldSplitterFactory
         address: []
       - name: YearnStakingRegistry
@@ -1540,7 +1544,9 @@ chains:
         address:
           - "0xca12459a931643BF28388c67639b3F352fe9e5Ce"
       - name: YearnV3RoleManager
-        address: []
+        # Yearn's configured role manager predates the indexed factory.
+        address:
+          - "0x2C4b68B2e3f03B3BD8804EB02fA22CD387E78B83"
       - name: YearnV3Accountant
         address: []
       - name: YearnV3Strategy
@@ -1707,7 +1713,9 @@ chains:
         address:
           - "0xca12459a931643BF28388c67639b3F352fe9e5Ce"
       - name: YearnV3RoleManager
-        address: []
+        # Yearn's configured role manager predates the indexed factory.
+        address:
+          - "0x2297d2486070655c3a162b02c64248A2f9dBC9a4"
       - name: YearnV3Accountant
         address: []
       - name: YearnV3Strategy

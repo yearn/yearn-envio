@@ -3,6 +3,7 @@ name: Validate Envio config
 on:
   pull_request:
     branches:
+      - main
       - dev
     paths:
       - ".github/workflows/validate-envio-config.yml"
@@ -49,7 +50,7 @@ jobs:
         # esbuild and rescript. Keep pnpm's strict dependency-build checks on.
         run: pnpm install --frozen-lockfile
 
-      - name: Validate Envio compatibility with dev
+      - name: Validate Envio compatibility with base branch
         run: >-
           node scripts/check_envio_config_compatibility.mjs
           --base-ref "origin/${{ github.base_ref }}"

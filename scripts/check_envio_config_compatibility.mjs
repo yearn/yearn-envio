@@ -8,7 +8,8 @@ import * as Config from "envio/src/Config.res.mjs";
 import * as Core from "envio/src/Core.res.mjs";
 
 const indexerDir = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const repositoryDir = resolve(indexerDir, "../..");
+const repositoryDir = indexerDir;
+const configPaths = ["config.yaml", "schema.graphql"];
 
 const readArgument = (name) => {
   const index = process.argv.indexOf(name);
@@ -39,7 +40,7 @@ const envioVersionFromPackage = (packageJson) => {
   const rawVersion =
     packageJson.dependencies?.envio ?? packageJson.devDependencies?.envio;
   if (!rawVersion) {
-    throw new Error(`No envio dependency found in ${baseRef}:apps/indexer/package.json`);
+    throw new Error(`No envio dependency found in ${baseRef}:package.json`);
   }
 
   const match = rawVersion.match(/\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?/);
@@ -59,17 +60,14 @@ const parseConfig = (directory) =>
 const baseDirectory = mkdtempSync(join(tmpdir(), "envio-config-base-"));
 
 try {
-  for (const path of [
-    "apps/indexer/config.yaml",
-    "apps/indexer/schema.graphql",
-  ]) {
-    const destination = join(baseDirectory, path.replace("apps/indexer/", ""));
+  for (const path of configPaths) {
+    const destination = join(baseDirectory, path);
     mkdirSync(dirname(destination), { recursive: true });
     writeFileSync(destination, readFromGit(baseRef, path));
   }
 
   const basePackage = JSON.parse(
-    readFromGit(baseRef, "apps/indexer/package.json"),
+    readFromGit(baseRef, "package.json"),
   );
   const baseConfig = parseConfig(baseDirectory);
   // The current Envio parser stamps its own version on every parsed config.

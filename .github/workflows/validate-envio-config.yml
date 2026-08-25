@@ -6,11 +6,14 @@ on:
       - dev
     paths:
       - ".github/workflows/validate-envio-config.yml"
-      - "apps/indexer/**"
+      - "config.yaml"
       - "package.json"
-      - "patches/**"
       - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml"
+      - "schema.graphql"
+      - "scripts/check_envio_config_compatibility.mjs"
+      - "src/**"
+      - "tsconfig.json"
 
 permissions:
   contents: read
@@ -41,18 +44,18 @@ jobs:
           corepack enable
           corepack prepare pnpm@11.1.1 --activate
 
-      - name: Install indexer dependencies
+      - name: Install dependencies
         # pnpm-workspace.yaml explicitly permits lifecycle scripts only for
         # esbuild and rescript. Keep pnpm's strict dependency-build checks on.
-        run: pnpm install --frozen-lockfile --filter envio-indexer...
+        run: pnpm install --frozen-lockfile
 
       - name: Validate Envio compatibility with dev
         run: >-
-          node apps/indexer/scripts/check_envio_config_compatibility.mjs
+          node scripts/check_envio_config_compatibility.mjs
           --base-ref "origin/${{ github.base_ref }}"
 
       - name: Generate Envio code
-        run: pnpm --filter envio-indexer codegen
+        run: pnpm codegen
 
       - name: Type-check indexer
-        run: pnpm --filter envio-indexer build
+        run: pnpm build

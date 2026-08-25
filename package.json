@@ -14,7 +14,7 @@
     "start": "envio start",
     "start:envio": "envio start",
     "sync:vaults": "node scripts/update_kong_vaults.js",
-    "test": "vitest run",
+    "test": "vitest run && node --test monitoring/test/monitoring.test.js",
     "calc-fees": "tsc -p tsconfig.calc.json && node build/calc/calculate-depositor-fees.js",
     "jwt:generate": "node scripts/generate_hasura_jwt.js"
   },

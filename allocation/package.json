@@ -1,0 +1,18 @@
+{
+  "name": "yearn-envio-allocation",
+  "private": true,
+  "scripts": {
+    "build": "tsc --noEmit",
+    "codegen": "envio codegen",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "envio": "3.6.1",
+    "viem": "2.47.11"
+  },
+  "devDependencies": {
+    "@types/node": "20.17.0",
+    "typescript": "5.9.3",
+    "vitest": "3.2.6"
+  }
+}

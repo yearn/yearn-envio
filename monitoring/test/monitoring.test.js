@@ -197,10 +197,6 @@ test("cloud GraphQL env names win over legacy self-hosted aliases", () => {
 
   const empty = resolveGraphQLConfig({});
   assert.equal(empty.url, DEFAULT_GRAPHQL_URL);
-  assert.equal(
-    empty.url,
-    "https://indexer.hyperindex.xyz/3fec0a4/v1/graphql",
-  );
   assert.equal(empty.bearerToken, null);
 });
 

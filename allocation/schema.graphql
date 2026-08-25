@@ -35,3 +35,57 @@ type DebtAllocatorDeployment {
   createdTransactionHash: String!
   createdEventId: String!
 }
+
+type VaultDebtAllocatorAssignment
+  @index(fields: ["chainId", "vaultAddress", "blockNumber", "transactionIndex", "logIndex"]) {
+  id: ID!
+  chainId: Int! @index
+  vaultAddress: String! @index
+  allocatorAddress: String! @index
+  roleManagerAddress: String! @index
+  assignmentType: String!
+  implementationRecognition: String!
+  blockNumber: Int! @index
+  blockTimestamp: BigInt!
+  blockHash: String!
+  transactionHash: String!
+  transactionIndex: Int!
+  logIndex: Int!
+  sourceEventId: String!
+}
+
+type VaultRoleManagerMembership {
+  id: ID!
+  chainId: Int! @index
+  vaultAddress: String! @index
+  roleManagerAddress: String! @index
+  allocatorAddress: String
+  active: Boolean!
+  updatedBlock: Int!
+  updatedTimestamp: BigInt!
+  updatedTransactionHash: String!
+  updatedEventId: String!
+}
+
+type DebtAllocatorAssignmentConflict {
+  id: ID!
+  chainId: Int! @index
+  vaultAddress: String! @index
+  allocatorAddress: String! @index
+  deploymentVaultAddress: String! @index
+  roleManagerAddress: String! @index
+  deploymentId: String!
+  sourceEventId: String!
+  reason: String!
+}
+
+type DebtAllocatorPendingEventBuffer {
+  id: ID!
+  chainId: Int! @index
+  allocatorAddress: String! @index
+  eventsJson: String!
+  eventCount: Int!
+  resolved: Boolean!
+  resolvedDeploymentId: String
+  lastUpdatedBlock: Int!
+}

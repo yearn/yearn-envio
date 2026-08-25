@@ -5,19 +5,23 @@ This directory is a separately deployable Envio project for the producer side of
 
 ## Current implementation status
 
-The initial slice implements the Ethereum Gate 1 foundation:
+The current local implementation includes the Ethereum Gate 1 foundation and the core Gate 2 data model:
 
 - Dynamic discovery from the configured V3 registries, vault factories, RoleManager factory, RoleManager, and debt allocator factory.
 - The 23 required allocation source events with explicit normalization-version-1 serializers.
 - Lowercase machine keys, deterministic event IDs and JSON, top-level transaction envelope fields, and exact input selectors.
 - The no-`originalAllocator` Ethereum debt allocator factory variant and immutable deployment binding needed to associate allocator events with a vault.
 - Golden tests for every serializer.
+- Append-only initial and updated RoleManager assignment history, plus current membership closure on `RemovedVault`.
+- Explicit implementation recognition and queryable deployment/assignment conflicts.
+- Deterministic same-block buffering and reconciliation when an allocator event precedes its factory registration.
 
 The initial pinned source evidence is recorded in [`ABI_AUDIT.md`](ABI_AUDIT.md).
 
 This is not yet a certified allocation-history producer. In particular:
 
-- RoleManager assignment history, conflict/unresolved entities, and the same-block allocator-registration audit remain Gate 2 work.
+- Gate 2 still needs deployed bytecode-family evidence and committed historical Ethereum fixtures before it can be accepted.
+- Envio 3.6's in-process `createTestIndexer` loader currently hits an ESM `require()` cycle on Node 22; deterministic domain fixtures cover the Gate 2 decisions, but full simulated handler fixtures remain outstanding.
 - Archive-RPC accounting checkpoints and the vault mutation audit remain Gate 3 work.
 - Coverage manifests, committed historical fixtures, deployed parity, monitoring, and blue-green certification remain Gate 4 work.
 - `safeForTimeline` coverage does not exist and must not be inferred from these rows.

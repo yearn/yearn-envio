@@ -30,4 +30,4 @@ This event does not emit `originalAllocator`. The normalized row and immutable d
 
 ## Remaining evidence gates
 
-Before Gate 2 can pass, the deployed Ethereum RoleManagers and factory address must be tied to runtime bytecode/code-hash families, and same-block factory/allocator ordering must be proven with a historical fixture or handled through deferred reconciliation. Before Gate 3 can pass, every supported Vault V3 release/code hash needs a mutation-path audit proving the checkpoint trigger invariant.
+Before Gate 2 can pass, the deployed Ethereum RoleManagers and factory address must be tied to runtime bytecode/code-hash families. Allocator logs that precede same-block factory registration are now handled through a deterministic persisted buffer and reconciled when the deployment event arrives; committed historical fixtures are still required to validate that path against Ethereum data. Before Gate 3 can pass, every supported Vault V3 release/code hash needs a mutation-path audit proving the checkpoint trigger invariant.

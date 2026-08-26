@@ -24,7 +24,7 @@ The current local implementation includes the Ethereum Gate 1 foundation and loc
 - An explicit official-factory checkpoint support boundary: custom registry/RoleManager vault implementations retain normalized events but are not given unproven accounting certification.
 - A pinned four-release, 243-vault, 26-runtime-family mutation audit, fixed-block archive evidence, and a representative replay benchmark.
 
-The source audit is recorded in [`ABI_AUDIT.md`](ABI_AUDIT.md), the Gate 2 acceptance evidence is recorded in [`GATE2_EVIDENCE.md`](GATE2_EVIDENCE.md), and Gate 3 acceptance evidence is recorded in [`GATE3_EVIDENCE.md`](GATE3_EVIDENCE.md).
+The source audit is recorded in [`ABI_AUDIT.md`](ABI_AUDIT.md), the Gate 2 acceptance evidence is recorded in [`GATE2_EVIDENCE.md`](GATE2_EVIDENCE.md), Gate 3 acceptance evidence is recorded in [`GATE3_EVIDENCE.md`](GATE3_EVIDENCE.md), and the in-progress Gate 4 consumer contract is recorded in [`GATE4_CONTRACT.md`](GATE4_CONTRACT.md).
 
 This is not yet a certified allocation-history producer. In particular:
 

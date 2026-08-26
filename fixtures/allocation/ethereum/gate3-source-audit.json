@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/yearn/yearn-vaults-v3",
+  "sourcePath": "contracts/VaultV3.vy",
+  "supportedReleases": [
+    {
+      "apiVersion": "3.0.1",
+      "tag": "v3.0.1",
+      "commit": "9a258338c4c8d2cf96dae7755922258812df1923",
+      "sourceBlob": "67b7080b957cdfdebbfe6c809d3abe6ee714e206"
+    },
+    {
+      "apiVersion": "3.0.2",
+      "tag": "v3.0.2",
+      "commit": "cb9be33989dd0f482462c3ee429dff6900e05dfd",
+      "sourceBlob": "8b51b81e0e666ec6d4018d1a3e2d6afbe46b66aa"
+    },
+    {
+      "apiVersion": "3.0.2",
+      "tag": "v3.0.2-1",
+      "commit": "9fbc614bbce9d7cbad42e284a15f0f43cf1a673f",
+      "sourceBlob": "8b51b81e0e666ec6d4018d1a3e2d6afbe46b66aa"
+    },
+    {
+      "apiVersion": "3.0.3",
+      "tag": "v3.0.3",
+      "commit": "e5cf2afc1f43892055cafe350b1f331c7d6d3cc1",
+      "sourceBlob": "d45ae5b7adb9510f032dc9635894a3cb3da38371"
+    },
+    {
+      "apiVersion": "3.0.4",
+      "tag": "v3.0.4",
+      "commit": "104a2b233bc6d43ba40720d68355b04d2dc31795",
+      "sourceBlob": "97f4a60dd2485c6400f994e46b442d0424716eed"
+    }
+  ],
+  "mutationPaths": [
+    {
+      "name": "deposit-or-mint",
+      "functions": ["_deposit", "_mint"],
+      "writes": ["total_idle"],
+      "terminalTriggers": ["Deposit"]
+    },
+    {
+      "name": "withdraw-or-redeem",
+      "functions": ["_redeem"],
+      "writes": ["total_idle", "total_debt"],
+      "terminalTriggers": ["Withdraw"],
+      "additionalTriggers": ["DebtUpdated"]
+    },
+    {
+      "name": "forced-strategy-revocation",
+      "functions": ["_revoke_strategy"],
+      "writes": ["total_debt"],
+      "terminalTriggers": ["StrategyReported"]
+    },
+    {
+      "name": "strategy-debt-update",
+      "functions": ["_update_debt"],
+      "writes": ["total_idle", "total_debt"],
+      "terminalTriggers": ["DebtUpdated"]
+    },
+    {
+      "name": "strategy-report",
+      "functions": ["_process_report"],
+      "writes": ["total_idle", "total_debt"],
+      "terminalTriggers": ["StrategyReported"]
+    },
+    {
+      "name": "debt-purchase",
+      "functions": ["buy_debt"],
+      "writes": ["total_idle", "total_debt"],
+      "terminalTriggers": ["DebtUpdated"]
+    }
+  ],
+  "excludedState": [
+    {
+      "name": "unrealized-asset-transfer",
+      "reason": "Direct ERC20 transfers do not mutate total_idle or total_debt until a covered report path accounts for them."
+    },
+    {
+      "name": "initialization",
+      "reason": "Initialization leaves total_idle and total_debt at zero before the vault can emit accounting activity."
+    }
+  ]
+}

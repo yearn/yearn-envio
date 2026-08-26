@@ -1,0 +1,89 @@
+{
+  "auditBlock": {
+    "number": 25835600,
+    "hash": "0x3f7c6998176cc2af40681d187424a4e0b76dc782df150bd408fa65863c6b3dec"
+  },
+  "officialFactoryVaultCount": 243,
+  "vaultFactories": [
+    {
+      "factoryAddress": "0xe9e8c89c8fc7e8b8f23425688eb68987231178e5",
+      "factoryRuntimeCodeHash": "0x2ca26def9b1dded7829c48d9bd2f44111006b20a19a232b205e6d44f56ec8c24",
+      "apiVersion": "3.0.1",
+      "originalAddress": null,
+      "originalRuntimeCodeHash": null
+    },
+    {
+      "factoryAddress": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+      "factoryRuntimeCodeHash": "0x2be4874861f5a3cf06061fca6e5002eec13f808e812a5b0ea6f792f8de0da18b",
+      "apiVersion": "3.0.2",
+      "originalAddress": "0x1ab62413e0cf2ebeb73da7d40c70e7202ae14467",
+      "originalRuntimeCodeHash": "0x4075239962ac41f7f4876a094deea45dfb667d719de30f4abceaf35348db9858"
+    },
+    {
+      "factoryAddress": "0x5577edcb8a856582297cdbbb07055e6a6e38eb5f",
+      "factoryRuntimeCodeHash": "0xf91a33edc17d253c4ef925ab58a3144715311516ae48afc16681780b9c030f9f",
+      "apiVersion": "3.0.3",
+      "originalAddress": "0xca78af7443f3f8fa0148b746cb18ff67383cdf3f",
+      "originalRuntimeCodeHash": "0x805ae4d3774d61d421ecfbc3fb97213408bc1b3641542bbc5e743c6bda87d402"
+    },
+    {
+      "factoryAddress": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+      "factoryRuntimeCodeHash": "0xbfbd5c0ba1b8f1660d1eaf9d8f4eb2359f48b826b24840dcd09dd8ddb43e301d",
+      "apiVersion": "3.0.4",
+      "originalAddress": "0xd8063123bba3b480569244ae66bfe72b6c84b00d",
+      "originalRuntimeCodeHash": "0xcf95c532cb05bdfdbcfcb5ade8957e84b69091d0260b667ebc5627ca9efbfd65"
+    }
+  ],
+  "versions": [
+    {
+      "apiVersion": "3.0.1",
+      "vaultCount": 44,
+      "runtimeCodeHashes": [
+        "0x1d1fd56101c576e336f856341e144720aefcf7c17cb63835835c86643f6fedf0",
+        "0x1def5822070ad9cb0a17bfcf4e61847ab20c9eeddb0c5415b84beeb9e59b02ed",
+        "0x46e6eaacd34e8339f25d1791ed3af7959a1f75c570f4ae10cafdc96f89d79609",
+        "0x4cda33a6c1c614839101539f52a818b2d44d7f6755517e93f7986c6f08aafcd4",
+        "0x545e467d5c3b2ca553c667e1138b06c4c39b758ce2ed439f16d8e997ca82dd34",
+        "0x68e6d65b424771566340b8a46798ffc16b019f8035b9d7470ae05abe331df9df",
+        "0x7e21c265e16194268de8e087d3aae7f528cad3ec61dfe841226e9091a27dcc3c",
+        "0x91529958fa8de128400b20c3f914765dd85beaa9cf44b49d88cd8cc639dac494",
+        "0x96cb3ff2dd375863df741f08843b52241fb70b55233e7505cb5d3c8c01bdf1e2",
+        "0x97e3946beab2ec02931443e7ce33309dfeb90c0027f9f4ead9ae6d19de56ba5e",
+        "0x99f135f4942c9059d9801a3c77d38f0cae8a5163895b3c27acb46b96739fc4d7",
+        "0x9bfb9fa1300572f61c4477b583602a1862e49e625b6584d1886ce22325dfcec4",
+        "0x9e18b46482a1256aba9d635cc4eae6491516afc29a1d76ee862e53dda9526966",
+        "0xa73f4e28b6ed12a21225ae5eb14f90b68f3304461a1f5aed16b0fa25537cdcfa",
+        "0xb773fd97fe41eec1628265413bac77d6dfa329f8e87b3b4be2044ec278f93930",
+        "0xbdbc5a7a83b98fe0ff646e4ddee8bad6e4aab0eaaa7e935619dd75d77f602f46",
+        "0xc641c0833573c3725341def1a3ed1992c4b18c1cf687468aadd86d7d5fe83e70",
+        "0xe5581348dba1893bb56941d8dbe72fb5c972d1198f9964789a2b8db5955ffe86",
+        "0xe7fb8901e2d9c6e6613cd1fd7b76fbc562e24d9f57142080be411ada161db20e",
+        "0xebcf2d00150981f84eb318a5fae06cb742ccf09df25ed8cd9b38bc77fdf16480",
+        "0xfb3f9816f0f25df0fa3f7fb26fcd6573f00c6e20af95b670921b8e2592914f1e",
+        "0xfc16fb1a365f062041d7d932b35f1b8e70cbd7fc147b6926883a8be8551fdaed",
+        "0xffbf5b6d8a9f0117b8eea125d8e0daef0912760c7abe463ce04ddce5520a2c49"
+      ]
+    },
+    {
+      "apiVersion": "3.0.2",
+      "vaultCount": 72,
+      "runtimeCodeHashes": [
+        "0x8f0740d97d5456d80fa79cc5c64834cb03cb40a46c70eea3e99b7ca030f923a9"
+      ]
+    },
+    {
+      "apiVersion": "3.0.3",
+      "vaultCount": 1,
+      "runtimeCodeHashes": [
+        "0x4a0b459011468b887d4749380998d55046277afa76564edb03d5fd86f6168a5b"
+      ]
+    },
+    {
+      "apiVersion": "3.0.4",
+      "vaultCount": 126,
+      "runtimeCodeHashes": [
+        "0x9cbbbf6a1173fae2d7728e88b6e98819cdb39903e9df82fef7b439675b52d86a"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "chainId": 1,
+  "cases": [
+    {
+      "vaultAddress": "0xbe53a109b494e5c9f97b9cd39fe969be68bf6204",
+      "apiVersion": "3.0.2",
+      "sourceEvent": "Deposit",
+      "sourceEventId": "1:0x9c4ce78c3009edd2472c9881167ede69656669abbfa091e7823e33229c7cb4b8:224",
+      "blockNumber": 19441994,
+      "blockHash": "0x385225b2acf715877233f33b0c1f658564eba051ee8d3be8717ce8837c1b14ec",
+      "blockTimestamp": 1710525659,
+      "expected": {
+        "totalAssets": "3015874599",
+        "totalDebt": "0",
+        "totalIdle": "3015874599",
+        "accountingIdentityHolds": true
+      }
+    }
+  ]
+}

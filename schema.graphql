@@ -1312,3 +1312,178 @@ type SafeProxy @index(fields: ["chainId", "proxy"]) {
 }
 
 # ===== END TEMPORARY / RESEARCH ONLY (SafeProxy) =====
+
+# =============================================================================
+# Vault Allocation History producer entities (issue #52)
+# =============================================================================
+
+type AllocationSourceEvent
+  @index(fields: ["chainId", "vaultAddress", "blockNumber", "transactionIndex", "logIndex", "id"]) {
+  id: ID!
+  chainId: Int! @index
+  vaultAddress: String! @index
+  sourceAddress: String! @index
+  sourceType: String! @index
+  eventName: String! @index
+  signature: String!
+  normalizationVersion: Int!
+  abiVariant: String
+  blockNumber: Int! @index
+  blockTimestamp: BigInt! @index
+  blockHash: String!
+  transactionHash: String! @index
+  transactionIndex: Int!
+  logIndex: Int!
+  topLevelTransactionFrom: String @index
+  topLevelTransactionTo: String @index
+  topLevelInputSelector: String
+  strategyAddress: String @index
+  argsJson: String!
+}
+
+type VaultAccountingCheckpoint
+  @index(fields: ["chainId", "vaultAddress", "blockNumber"]) {
+  id: ID!
+  chainId: Int! @index
+  vaultAddress: String! @index
+  blockNumber: Int! @index
+  blockTimestamp: BigInt! @index
+  blockHash: String!
+  totalAssets: BigInt!
+  totalDebt: BigInt!
+  totalIdle: BigInt!
+  accountingIdentityHolds: Boolean!
+  canonicalBlockVerified: Boolean!
+  source: String!
+  sourceEventIds: [String!]!
+}
+
+type VaultAccountingCheckpointFailure
+  @index(fields: ["chainId", "vaultAddress", "blockNumber", "resolved"]) {
+  id: ID!
+  chainId: Int! @index
+  vaultAddress: String! @index
+  blockNumber: Int! @index
+  blockTimestamp: BigInt!
+  expectedBlockHash: String!
+  reason: String!
+  sourceEventIds: [String!]!
+  resolved: Boolean! @index
+  resolvedCheckpointId: String
+}
+
+type VaultAccountingCheckpointTriggerSet {
+  id: ID!
+  triggersJson: String!
+}
+
+type VaultAccountingSupport {
+  id: ID!
+  chainId: Int! @index
+  vaultAddress: String! @index
+  factoryAddress: String! @index
+  apiVersion: String!
+  sourceEventId: String!
+}
+
+type VaultAllocationCoverage {
+  id: ID!
+  chainId: Int! @index
+  vaultAddress: String! @index
+  coverageStartBlock: Int!
+  coverageStartBlockHash: String!
+  validatedThroughBlock: Int!
+  validatedThroughBlockHash: String!
+  vaultDiscoveryComplete: Boolean!
+  eventHistoryComplete: Boolean!
+  allocatorDeploymentHistoryComplete: Boolean!
+  allocatorAssignmentHistoryComplete: Boolean!
+  checkpointTriggerAuditComplete: Boolean!
+  safeForTimeline: Boolean!
+  knownGapsJson: String!
+  coverageRevision: String! @index
+  producerCommit: String!
+  validatedAt: BigInt!
+}
+
+type DebtAllocatorDeployment {
+  id: ID!
+  chainId: Int! @index
+  allocatorAddress: String! @index
+  vaultAddress: String! @index
+  factoryAddress: String! @index
+  originalAllocatorAddress: String
+  abiVariant: String
+  createdBlock: Int!
+  createdTimestamp: BigInt!
+  createdTransactionHash: String!
+  createdEventId: String!
+}
+
+type DebtAllocatorUnboundDeployment {
+  id: ID!
+  chainId: Int! @index
+  allocatorAddress: String! @index
+  factoryAddress: String! @index
+  governanceAddress: String! @index
+  implementationRecognition: String!
+  abiVariant: String!
+  createdBlock: Int!
+  createdTimestamp: BigInt!
+  createdTransactionHash: String!
+  createdEventId: String!
+}
+
+type VaultDebtAllocatorAssignment
+  @index(fields: ["chainId", "vaultAddress", "blockNumber", "transactionIndex", "logIndex"]) {
+  id: ID!
+  chainId: Int! @index
+  vaultAddress: String! @index
+  allocatorAddress: String! @index
+  roleManagerAddress: String! @index
+  assignmentType: String!
+  implementationRecognition: String!
+  blockNumber: Int! @index
+  blockTimestamp: BigInt!
+  blockHash: String!
+  transactionHash: String!
+  transactionIndex: Int!
+  logIndex: Int!
+  sourceEventId: String!
+}
+
+type VaultRoleManagerMembership {
+  id: ID!
+  chainId: Int! @index
+  vaultAddress: String! @index
+  roleManagerAddress: String! @index
+  allocatorAddress: String
+  active: Boolean!
+  updatedBlock: Int!
+  updatedTimestamp: BigInt!
+  updatedTransactionHash: String!
+  updatedEventId: String!
+}
+
+type DebtAllocatorAssignmentConflict {
+  id: ID!
+  chainId: Int! @index
+  vaultAddress: String! @index
+  allocatorAddress: String! @index
+  deploymentVaultAddress: String! @index
+  roleManagerAddress: String! @index
+  deploymentId: String!
+  sourceEventId: String!
+  reason: String!
+}
+
+type DebtAllocatorPendingEventBuffer {
+  id: ID!
+  chainId: Int! @index
+  allocatorAddress: String! @index
+  eventsJson: String!
+  eventCount: Int!
+  resolved: Boolean!
+  resolvedDeploymentId: String
+  lastUpdatedBlock: Int!
+}

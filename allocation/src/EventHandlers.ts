@@ -9,6 +9,7 @@ import {
 } from "./normalization.js";
 import {
   assertImmutableDeployment,
+  assertImmutableUnboundDeployment,
   deploymentConflictsWithAssignment,
   mergePendingEvent,
   parsePendingEvents,
@@ -39,7 +40,17 @@ type Gate2Context = EntityContext & {
     get: (id: string) => Promise<Entity<"DebtAllocatorDeployment"> | undefined>;
     set: (entity: Entity<"DebtAllocatorDeployment">) => void;
   };
-  VaultDebtAllocatorAssignment: { set: (entity: Entity<"VaultDebtAllocatorAssignment">) => void };
+  DebtAllocatorUnboundDeployment: {
+    get: (id: string) => Promise<Entity<"DebtAllocatorUnboundDeployment"> | undefined>;
+    set: (entity: Entity<"DebtAllocatorUnboundDeployment">) => void;
+  };
+  VaultDebtAllocatorAssignment: {
+    getWhere: (filter: {
+      chainId: { _eq: number };
+      allocatorAddress: { _eq: string };
+    }) => Promise<Entity<"VaultDebtAllocatorAssignment">[]>;
+    set: (entity: Entity<"VaultDebtAllocatorAssignment">) => void;
+  };
   VaultRoleManagerMembership: {
     get: (id: string) => Promise<Entity<"VaultRoleManagerMembership"> | undefined>;
     set: (entity: Entity<"VaultRoleManagerMembership">) => void;
@@ -107,6 +118,7 @@ const writeAssignment = async (
   const roleManagerAddress = lowerAddress(event.srcAddress);
   const deploymentId = `${event.chainId}:${allocatorAddress}`;
   const deployment = await context.DebtAllocatorDeployment.get(deploymentId);
+  const unboundDeployment = await context.DebtAllocatorUnboundDeployment.get(deploymentId);
 
   context.VaultDebtAllocatorAssignment.set({
     id: sourceEventId,
@@ -115,7 +127,7 @@ const writeAssignment = async (
     allocatorAddress,
     roleManagerAddress,
     assignmentType,
-    implementationRecognition: recognizeImplementation(deployment),
+    implementationRecognition: recognizeImplementation(deployment, unboundDeployment),
     blockNumber: event.block.number,
     blockTimestamp: BigInt(event.block.timestamp),
     blockHash: lowerAddress(event.block.hash),
@@ -173,6 +185,39 @@ indexer.contractRegister({ contract: "YearnV3RoleManager", event: "AddedNewVault
 
 indexer.contractRegister({ contract: "DebtAllocatorFactory", event: "NewDebtAllocator" }, async ({ event, context }) => {
   context.chain.DebtAllocator.add(lowerAddress(event.params.allocator));
+});
+
+indexer.onEvent({ contract: "DebtAllocatorFactoryNoVault", event: "NewDebtAllocator" }, async ({ event, context }) => {
+  const eventId = normalizedId(event);
+  const allocatorAddress = lowerAddress(event.params.allocator);
+  const deploymentId = `${event.chainId}:${allocatorAddress}`;
+  const proposedDeployment: Entity<"DebtAllocatorUnboundDeployment"> = {
+    id: deploymentId,
+    chainId: event.chainId,
+    allocatorAddress,
+    factoryAddress: lowerAddress(event.srcAddress),
+    governanceAddress: lowerAddress(event.params.governance),
+    implementationRecognition: "other",
+    abiVariant: serializers.debtAllocatorFactory.NewDebtAllocatorWithoutVault.abiVariant!,
+    createdBlock: event.block.number,
+    createdTimestamp: BigInt(event.block.timestamp),
+    createdTransactionHash: lowerAddress(event.transaction.hash),
+    createdEventId: eventId,
+  };
+  const existingDeployment = await context.DebtAllocatorUnboundDeployment.get(deploymentId);
+  assertImmutableUnboundDeployment(existingDeployment, proposedDeployment);
+  if (!existingDeployment) context.DebtAllocatorUnboundDeployment.set(proposedDeployment);
+
+  const earlierAssignments = await context.VaultDebtAllocatorAssignment.getWhere({
+    chainId: { _eq: event.chainId },
+    allocatorAddress: { _eq: allocatorAddress },
+  });
+  for (const assignment of earlierAssignments) {
+    context.VaultDebtAllocatorAssignment.set({
+      ...assignment,
+      implementationRecognition: "other",
+    });
+  }
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "Deposit" }, async ({ event, context }) => {
@@ -383,6 +428,10 @@ const writeAllocatorEvent = async <T>(
 
 indexer.onEvent({ contract: "DebtAllocator", event: "UpdateStrategyDebtRatios" }, async ({ event, context }) => {
   await writeAllocatorEvent(event, context, serializers.debtAllocator.UpdateStrategyDebtRatios, event.params);
+});
+
+indexer.onEvent({ contract: "DebtAllocator", event: "UpdateStrategyDebtRatio" }, async ({ event, context }) => {
+  await writeAllocatorEvent(event, context, serializers.debtAllocator.UpdateStrategyDebtRatio, event.params);
 });
 
 indexer.onEvent({ contract: "DebtAllocator", event: "UpdateKeeper" }, async ({ event, context }) => {

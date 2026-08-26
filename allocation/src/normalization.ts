@@ -191,6 +191,14 @@ export const serializers = {
       ({ allocator, vault }) => JSON.stringify({ allocator: lowerHex(allocator), vault: lowerHex(vault) }),
       { abiVariant: "generic-v1-no-original-allocator" },
     ),
+    NewDebtAllocatorWithoutVault: serializer<{ allocator: string; governance: string }>(
+      "debtAllocatorFactory",
+      "NewDebtAllocator",
+      "NewDebtAllocator(address,address)",
+      ({ allocator, governance }) =>
+        JSON.stringify({ allocator: lowerHex(allocator), governance: lowerHex(governance) }),
+      { abiVariant: "generic-v2-governance-no-vault" },
+    ),
   },
   debtAllocator: {
     UpdateStrategyDebtRatios: serializer<{
@@ -210,6 +218,27 @@ export const serializers = {
           newTotalDebtRatio: decimal(newTotalDebtRatio),
         }),
       { strategyAddress: ({ strategy }) => lowerHex(strategy) },
+    ),
+    UpdateStrategyDebtRatio: serializer<{
+      strategy: string;
+      newTargetRatio: bigint;
+      newMaxRatio: bigint;
+      newTotalDebtRatio: bigint;
+    }>(
+      "debtAllocator",
+      "UpdateStrategyDebtRatio",
+      "UpdateStrategyDebtRatio(address,uint256,uint256,uint256)",
+      ({ strategy, newTargetRatio, newMaxRatio, newTotalDebtRatio }) =>
+        JSON.stringify({
+          strategy: lowerHex(strategy),
+          newTargetRatio: decimal(newTargetRatio),
+          newMaxRatio: decimal(newMaxRatio),
+          newTotalDebtRatio: decimal(newTotalDebtRatio),
+        }),
+      {
+        abiVariant: "generic-v1-vault-bound-singular",
+        strategyAddress: ({ strategy }) => lowerHex(strategy),
+      },
     ),
     UpdateKeeper: serializer<{ keeper: string; allowed: boolean }>(
       "debtAllocator",

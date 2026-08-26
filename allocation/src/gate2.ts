@@ -15,6 +15,20 @@ type ImmutableDeploymentFact = DeploymentFact &
     readonly createdEventId: string;
   }>;
 
+type ImmutableUnboundDeploymentFact = {
+  readonly id: string;
+  readonly chainId?: number;
+  readonly allocatorAddress?: string;
+  readonly factoryAddress?: string;
+  readonly governanceAddress?: string;
+  readonly implementationRecognition?: string;
+  readonly abiVariant?: string;
+  readonly createdBlock?: number;
+  readonly createdTimestamp?: bigint;
+  readonly createdTransactionHash?: string;
+  readonly createdEventId?: string;
+};
+
 export type ImplementationRecognition = "knownGenericAllocator" | "other" | "unknown";
 
 export type PendingAllocatorEvent = {
@@ -39,7 +53,8 @@ export type PendingAllocatorEvent = {
 
 export const recognizeImplementation = (
   deployment: DeploymentFact | undefined,
-): ImplementationRecognition => (deployment ? "knownGenericAllocator" : "unknown");
+  otherDeployment?: unknown,
+): ImplementationRecognition => (deployment ? "knownGenericAllocator" : otherDeployment ? "other" : "unknown");
 
 export const deploymentConflictsWithAssignment = (
   deployment: DeploymentFact | undefined,
@@ -87,5 +102,28 @@ export const assertImmutableDeployment = (
   ] as const;
   if (fields.some((field) => !Object.is(existing[field], proposed[field]))) {
     throw new Error(`Conflicting immutable debt allocator deployment ${proposed.id}`);
+  }
+};
+
+export const assertImmutableUnboundDeployment = (
+  existing: ImmutableUnboundDeploymentFact | undefined,
+  proposed: ImmutableUnboundDeploymentFact,
+): void => {
+  if (!existing) return;
+  const fields = [
+    "id",
+    "chainId",
+    "allocatorAddress",
+    "factoryAddress",
+    "governanceAddress",
+    "implementationRecognition",
+    "abiVariant",
+    "createdBlock",
+    "createdTimestamp",
+    "createdTransactionHash",
+    "createdEventId",
+  ] as const;
+  if (fields.some((field) => !Object.is(existing[field], proposed[field]))) {
+    throw new Error(`Conflicting immutable unbound debt allocator deployment ${proposed.id}`);
   }
 };

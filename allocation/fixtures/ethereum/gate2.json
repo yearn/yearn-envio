@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "chainId": 1,
+  "auditBlock": {
+    "number": 25835600,
+    "hash": "0x3f7c6998176cc2af40681d187424a4e0b76dc782df150bd408fa65863c6b3dec"
+  },
+  "inventory": {
+    "roleManagerFactory": "0xca12459a931643bf28388c67639b3f352fe9e5ce",
+    "roleManagerCount": 34,
+    "roleManagerEventCounts": {
+      "AddedNewVault": 134,
+      "RemovedVault": 41,
+      "UpdateDebtAllocator": 12
+    },
+    "assignmentAllocatorCount": 40,
+    "roleManagerRuntimeFamilies": [
+      {
+        "kind": "direct",
+        "runtimeCodeHash": "0x227571be0c61a7b6b9923842d5a9ffbf6c33193ff14fc0003fb596a3ad35cf8a",
+        "addresses": [
+          "0xb3bd6b2e61753c311efbcf0111f75d29706d9a41"
+        ]
+      },
+      {
+        "kind": "eip1167",
+        "runtimeCodeHash": "0x05263427c276f139b0dfd715ae0f8e55399b9159c3877636ce8922159c9ffa43",
+        "implementationAddress": "0xe28507bcc505673979ccac9b1024347e03211332",
+        "implementationRuntimeCodeHash": "0xfcd98469a406fb01f4555b11bf80f616662ad02827fd33c3f0802a5a83a83e11",
+        "addresses": [
+          "0x04d7b3aaa2685a0b62f724c648772d3b40b8dac3",
+          "0x1b07266e5752c7fea2727dcd1c79aef04a606598",
+          "0x26319310502efefde5df1d0d8600d847d384d7a0",
+          "0x27abaa2f84a0a9b1e55a1e5d87f683724751cee9",
+          "0x27f88d32c7079479136c381540666362c69ada36",
+          "0x2995401cb465f3fbae64a2d2f78dfa571f570d24",
+          "0x2f6cfc40d18c6747406cc863e9acc340915bec54",
+          "0x346f6694463a6308d843c8f5a27b912bf20d0382",
+          "0x428e048a5ca34a4e54fe1ed97da02af7efc31758",
+          "0x4671394a28ff147cfcbc9c2b1aab9d3883597417",
+          "0x4b0a8e6170151f3797eeedc043ac3dd632c2adef",
+          "0x608afcabb2a244d94184ca574a4f7e161aceaf6b",
+          "0x62fa78d3e38cfd07c93f361291902ed7d3a74ff2",
+          "0x6f1884323c5338fa24e204b14575bf57d33d45d1",
+          "0x7c713dcae9f4f06e1504a04fb2fbefd65726821b",
+          "0x7fa335baa6bb04068b9aa15835b10b1f0bcc74df",
+          "0x88bcd4cb714445f4b904e3fb829ddd66a3796027",
+          "0x91c3b85c1616298493ca3d27a43cce4f19eb5ddb",
+          "0x9bcd66bf09ebe5dd35a868307b7638fd281061e2",
+          "0xa3234989773767a0c898f1613f15a8e80ad5ccd1",
+          "0xa35cc8d14333af55ad2aa395e7c92da27ffe5235",
+          "0xa39fd84837200e6cff31b140df1fd5e3683ccc49",
+          "0xa90c738652dd736b9db97f97ee81a864faf61f88",
+          "0xae31c2098a42aab31b447876e4daa649c16a307b",
+          "0xae69d8c45a0587ff01a3f53f5efad83993cbafba",
+          "0xb0f7973739c00e6e139f9e3636ada441504a8a37",
+          "0xb31b2a7cab38b1947601bbdb94cb4bcbf93fce80",
+          "0xb592adcf77007e5d8e20ac7e0d37c32249606ae5",
+          "0xc0412dbbc809194c1b8cf18e132bef0fd3f6af58",
+          "0xc345567eaa577f0bc622843243576f3c7d963d8d",
+          "0xc5734fa5c9e9d352c7b63fe6c9de5d7b009ce995",
+          "0xc80519046d25cc44e1d40c930adf7c6e9817ae90",
+          "0xe22ffa55cd1c6d4715a904bca4754ee1526bdef2"
+        ]
+      }
+    ],
+    "factories": [
+      {
+        "address": "0xca12459a931643bf28388c67639b3f352fe9e5ce",
+        "contract": "RoleManagerFactory",
+        "runtimeCodeHash": "0x672c7964ba4b80801c161473a70459e5b51e460e6fd7207934b49d5ffffa48ad"
+      },
+      {
+        "address": "0xfcf8c7c43dedd567083b422d6770f23b78d15bde",
+        "contract": "DebtAllocatorFactory",
+        "abiVariant": "generic-v1-no-original-allocator",
+        "runtimeCodeHash": "0x0d7adae83933344712bfe34f9422c6edee405fbcf3167f5f6252bbdfffaa3476"
+      },
+      {
+        "address": "0x03d43df6ff894c848fc6f1a0a7e8a539ef9a4c18",
+        "contract": "DebtAllocatorFactory",
+        "abiVariant": "generic-v2-governance-no-vault",
+        "runtimeCodeHash": "0x9ff9ccb36ff3fe0e00aabc87fddb2e07689673abd587fbf24922d24a9a5cc71e"
+      }
+    ],
+    "allocatorRuntimeFamilies": [
+      {
+        "recognition": "knownGenericAllocator",
+        "kind": "eip1167",
+        "runtimeCodeHash": "0x0f3b67d4aae1b479291c85e2d081b26b8e19188a264f432b33f2666284db7779",
+        "implementationAddress": "0x1aaf7ad9550a8817d4cc4cdb917ff99b044960a0",
+        "implementationRuntimeCodeHash": "0x6dac963e605e9a66bd34cf48bd736ee325e5e2ad129864e7495534c011f97958",
+        "addresses": [
+          "0x1400d5c76d0a630368c8548172e5130983aaa0ef",
+          "0xc46d9286cf830cc2e602e6d5f005455df9961b4a",
+          "0x8a260db56371541fb12f78e8b90b12c04f234366",
+          "0x4e4430f14dfcc28c97917f97003102b64358249d",
+          "0x323031da88854da4e4a1d0ad4a09d10f4e17b007",
+          "0x786aff2309430c6ea145c7f6255435ecb56779db",
+          "0xa5356acdbd1d02fffed8cea6115f32dd2a09d0b9",
+          "0xf26c9cf950e6f60962fa4f410d6a50c8c5d0a6af",
+          "0xd8ddc29bb61685a7904a7d6509f50771563e4f56",
+          "0xf7ffb5c3f2ae456d5dbe0f00e3bd7ed3192e32ed",
+          "0x9612c748c7573fbe37466c7b340a2f6bb887cb48",
+          "0xb581b564f43fe7aa49ff81139f83f8f4a84e7b21"
+        ]
+      },
+      {
+        "recognition": "other",
+        "kind": "eip1167",
+        "runtimeCodeHash": "0x27b141c5bababcee75142d690608774d19618884ed89811d1d93bbd0d2498109",
+        "implementationAddress": "0xa47eb754d44339b5dedcf4d804428708857e7899",
+        "implementationRuntimeCodeHash": "0x633feca48437476cbe24af9ab15fdfcc340d52c48889c21d0ddf2b4f000c13a7",
+        "addresses": [
+          "0x0c5e94d05815771cc0d3a9c69c6289e1105fa92d",
+          "0x0c694a46b3c47b9451372a1b5b41f976a3162711",
+          "0x0ec84d0abf992c306a5afcc2c9015c81589ca6d9",
+          "0x10bc1f4f0ddd8027264e9f10fabe7a751614c207",
+          "0x1569aaccbffe6bb5304bb9309c304d40d4804978",
+          "0x196389c078fe951e41ab48d61ac8b368822f3791",
+          "0x1a591d465a2be061bfd800060e71ca34c4ccfc70",
+          "0x1e9eb053228b1156831759401de0e115356b8671",
+          "0x3661d91f9f7cf28c8bd87d6b2d1ae1c7458d5406",
+          "0x4093b4afb7fff91299bdafac02548b6ada58fdc4",
+          "0x4bf6dce273fae27686b4351c0ffe0168c2359cd5",
+          "0x555d337932622cc00ea0960255918a1fb1d16a5d",
+          "0x5d6442d6bfb085748553a2ce5068a0c78c8640ce",
+          "0x6067cfbaae05ca637d9042c48d03217876da9b38",
+          "0x65a3fd11be48ad991686f42c38dfdd67a0454892",
+          "0x687c4c48867af1f36eacd977f311b47b1a25a45b",
+          "0x6ef32fe76021204164a03492dff69481ce438a5d",
+          "0x6fe22aa0b8269020ccc53c76f554487bfccd90c4",
+          "0x8872287e38cb49eaf791bba834aa8dd7623962f7",
+          "0x8a0a86d144eb49b80010b94b3734ed2db22e1447",
+          "0x8b1a141a3147c9dce90e286f940cbd5bd5929677",
+          "0x9190c8a30897a5fc833b5442e8d89b2b7fd31fe2",
+          "0x9d628ff3cdff753b56253980f8c8f131157116b0",
+          "0x9e8ccf952000cecfb1535cd05096eb401fd7062c",
+          "0x9f899c56caf3101e501c25b58ae205ed9cdbcf13",
+          "0xa8f4a9d714c8d11cfd294594a5708bd0b91652b0",
+          "0xabfdb216018fe217f42991b9bf11cd9c2254424b",
+          "0xc07722c327e107630ded719b0c8949b7214a3668",
+          "0xcb0f4c89071300396dfa49cd2985a4672c36b88f",
+          "0xcdc3b4c9aaca974f5d665526f682f377f41b61bb",
+          "0xd00b8a99ada6939a555db08728c32b207ae5f2bd",
+          "0xd1803eccb53645d5bde0ae2fb1b55a2254fe358e",
+          "0xd1df93b269853ba62c43e674906f0495c6e074cd",
+          "0xdf5e48a47ae2055dddd362c4fedb4d15444239f2",
+          "0xe856d3a52a9739af47a83e8783856cc59067afcd"
+        ]
+      }
+    ]
+  },
+  "vaultBoundDeployments": [
+    [19419991, "0x124ca771f8157865c473ee4b16e0d71d58fa09a89c7dc5df530f248c4e46449e", "0xfc6be986a2e60849a91c397c5c4bd10d9b247f0e1fb30cdaf0ed1f7687ea648e", 583, "0x1400d5c76d0a630368c8548172e5130983aaa0ef", "0xbe53a109b494e5c9f97b9cd39fe969be68bf6204"],
+    [19419991, "0x124ca771f8157865c473ee4b16e0d71d58fa09a89c7dc5df530f248c4e46449e", "0xfc6be986a2e60849a91c397c5c4bd10d9b247f0e1fb30cdaf0ed1f7687ea648e", 598, "0xc46d9286cf830cc2e602e6d5f005455df9961b4a", "0x028ec7330ff87667b6dfb0d94b954c820195336c"],
+    [19419991, "0x124ca771f8157865c473ee4b16e0d71d58fa09a89c7dc5df530f248c4e46449e", "0xfc6be986a2e60849a91c397c5c4bd10d9b247f0e1fb30cdaf0ed1f7687ea648e", 613, "0x8a260db56371541fb12f78e8b90b12c04f234366", "0xc56413869c6cdf96496f2b1ef801fedbdfa7ddb0"],
+    [19439897, "0x7fcf7319f96deab3b895fd24df6138fc71a7787071e84070534b71dae7c7e872", "0xf5935a78f04593a2b40bbd59b2bea829c5f7c1745edff78be1acf6377e09c56e", 352, "0x4e4430f14dfcc28c97917f97003102b64358249d", "0x92545bce636e6ee91d88d2d017182cd0bd2fc22e"],
+    [19439897, "0x7fcf7319f96deab3b895fd24df6138fc71a7787071e84070534b71dae7c7e872", "0xf5935a78f04593a2b40bbd59b2bea829c5f7c1745edff78be1acf6377e09c56e", 367, "0x323031da88854da4e4a1d0ad4a09d10f4e17b007", "0xac37729b76db6438ce62042ae1270ee574ca7571"],
+    [19654313, "0x15b80edb6f55b20bf8919f44100f22fc5a81dc9307d54b4bbc62a4891c14dc73", "0xa113223ee1cb2165b4cc01ff0cea0b98b94e3f93eec57b117ecfbac5eea47916", 358, "0x786aff2309430c6ea145c7f6255435ecb56779db", "0xbf319ddc2edc1eb6fdf9910e39b37be221c8805f"],
+    [19677237, "0xfc7d6d5867fffb939d6456539ee6f4d76fd58276e4fe7dbebefc93b5c9486678", "0x1ecd1235d9258033bf4785462781826311354ca427d1b8145a2c7f1f5a0f40e2", 342, "0xa5356acdbd1d02fffed8cea6115f32dd2a09d0b9", "0xae7d8db82480e6d8e3873ecbf22cf17b3d8a7308"],
+    [19768154, "0xba78b2ff1a69704dc17c4dde0b41e132c6e45ed1a4c94bf740815b469a8b388f", "0x5d27e2a47e34ab460fcb7e8b608f2063025c4cc93db9309c1cfed919ffcc4e30", 460, "0xf26c9cf950e6f60962fa4f410d6a50c8c5d0a6af", "0x11aae8bee9b1da827c641540d20e4e664677e06f"],
+    [20369520, "0x5e9c9824fa833b6a3ca0e10a5111e3b4e3056511ba161410e2457162daf8f390", "0x05681fd5be0e925bb720450418d20eda99bb22adc72be3d702de70368d7cd3ea", 205, "0xd8ddc29bb61685a7904a7d6509f50771563e4f56", "0x310b7ea7475a0b449cfd73be81522f1b88efafaa"],
+    [20642946, "0x4fd01893f1b05625a647af6b05ead3587da296953e09a54787f6b10eff62e655", "0x0a946078bc9cabb5bc8dfe74e80a9bca61d2bee2783ec99ae3d4da4abbda0b07", 304, "0xf7ffb5c3f2ae456d5dbe0f00e3bd7ed3192e32ed", "0x4dd0fe8549641a04d7ab4f37dbb541ae7dbb2838"],
+    [20684367, "0xb61185928d7e6a7a5524bad20288e15472a4ac3fbaa44820040c98888a41753f", "0x6671510a2633ecc6d25f9f92581976b8b96c1449e570f334332f27781b047df3", 273, "0x9612c748c7573fbe37466c7b340a2f6bb887cb48", "0x3f540647b08e3e9bcd297e065e42e6cdaf37eba0"],
+    [20917639, "0x07d5583e2092e77732a21e89b351c87d4fa5f750c26f08dbfbe23f1e82d24823", "0x6a1996554455945f9ba5f58b831c86f9afaeb1a5c36b9166099a7d3ac0106803", 362, "0xb581b564f43fe7aa49ff81139f83f8f4a84e7b21", "0x182863131f9a4630ff9e27830d945b1413e347e8"]
+  ],
+  "historicalReplay": [
+    {
+      "contract": "DebtAllocatorFactory",
+      "event": "NewDebtAllocator",
+      "srcAddress": "0xfcf8c7c43dedd567083b422d6770f23b78d15bde",
+      "logIndex": 583,
+      "block": { "number": 19419991, "timestamp": 1710258455, "hash": "0x124ca771f8157865c473ee4b16e0d71d58fa09a89c7dc5df530f248c4e46449e" },
+      "transaction": { "hash": "0xfc6be986a2e60849a91c397c5c4bd10d9b247f0e1fb30cdaf0ed1f7687ea648e", "transactionIndex": 207, "from": "0xb865aaf1f9f60630934739595f183c4900f65ed9", "to": "0x40a2accbd92bca938b02010e17a5b8929b49130d", "input": "0x8d80ff0a" },
+      "params": { "allocator": "0x1400d5c76d0a630368c8548172e5130983aaa0ef", "vault": "0xbe53a109b494e5c9f97b9cd39fe969be68bf6204" },
+      "raw": { "topics": ["0xb87aa110ff22ca00092bbab091c1b6464f413dcfe6391c7fcfc0454f8e1989cb", "0x0000000000000000000000001400d5c76d0a630368c8548172e5130983aaa0ef", "0x000000000000000000000000be53a109b494e5c9f97b9cd39fe969be68bf6204"], "data": "0x" }
+    },
+    {
+      "contract": "YearnV3RoleManager",
+      "event": "AddedNewVault",
+      "srcAddress": "0xb3bd6b2e61753c311efbcf0111f75d29706d9a41",
+      "logIndex": 595,
+      "block": { "number": 19419991, "timestamp": 1710258455, "hash": "0x124ca771f8157865c473ee4b16e0d71d58fa09a89c7dc5df530f248c4e46449e" },
+      "transaction": { "hash": "0xfc6be986a2e60849a91c397c5c4bd10d9b247f0e1fb30cdaf0ed1f7687ea648e", "transactionIndex": 207, "from": "0xb865aaf1f9f60630934739595f183c4900f65ed9", "to": "0x40a2accbd92bca938b02010e17a5b8929b49130d", "input": "0x8d80ff0a" },
+      "params": { "vault": "0xbe53a109b494e5c9f97b9cd39fe969be68bf6204", "debtAllocator": "0x1400d5c76d0a630368c8548172e5130983aaa0ef", "category": "1" },
+      "raw": { "topics": ["0x65fe7f527479e9a13137b5a7af43efff08bb8e165ff5897ad493bb0362a690c1", "0x000000000000000000000000be53a109b494e5c9f97b9cd39fe969be68bf6204", "0x0000000000000000000000001400d5c76d0a630368c8548172e5130983aaa0ef"], "data": "0x0000000000000000000000000000000000000000000000000000000000000001" }
+    },
+    {
+      "contract": "DebtAllocator",
+      "event": "UpdateStrategyDebtRatio",
+      "srcAddress": "0x1400d5c76d0a630368c8548172e5130983aaa0ef",
+      "logIndex": 84,
+      "block": { "number": 19436567, "timestamp": 1710459875, "hash": "0xc2ce5cd7315992506fa517ee6dcfd8f3879464bf679cc3d37c370c49fc3bf3a6" },
+      "transaction": { "hash": "0x8461def6387629f6a43c5bced3b3895f3f07e2e8c3825fe2ffb258e2be795976", "transactionIndex": 73, "from": "0xd0002c648cca8dee2f2b8d70d542ccde8ad6ec03", "to": "0x40a2accbd92bca938b02010e17a5b8929b49130d", "input": "0x8d80ff0a" },
+      "params": { "strategy": "0xbdb97ec319c41c6fa383e94ece6bdf383dfc7be4", "newTargetRatio": "2000", "newMaxRatio": "2400", "newTotalDebtRatio": "2000" },
+      "raw": { "topics": ["0x28d465e4d5dcdcee5fb93eccf31e0bcf5d3f6fea174eb791749dc2b51a76f881", "0x000000000000000000000000bdb97ec319c41c6fa383e94ece6bdf383dfc7be4"], "data": "0x00000000000000000000000000000000000000000000000000000000000007d0000000000000000000000000000000000000000000000000000000000000096000000000000000000000000000000000000000000000000000000000000007d0" }
+    },
+    {
+      "contract": "DebtAllocator",
+      "event": "UpdateStrategyDebtRatio",
+      "srcAddress": "0x1400d5c76d0a630368c8548172e5130983aaa0ef",
+      "logIndex": 86,
+      "block": { "number": 19436567, "timestamp": 1710459875, "hash": "0xc2ce5cd7315992506fa517ee6dcfd8f3879464bf679cc3d37c370c49fc3bf3a6" },
+      "transaction": { "hash": "0x8461def6387629f6a43c5bced3b3895f3f07e2e8c3825fe2ffb258e2be795976", "transactionIndex": 73, "from": "0xd0002c648cca8dee2f2b8d70d542ccde8ad6ec03", "to": "0x40a2accbd92bca938b02010e17a5b8929b49130d", "input": "0x8d80ff0a" },
+      "params": { "strategy": "0x7ee351aa702c8fc735d77fb229b7676ac15d7c79", "newTargetRatio": "8000", "newMaxRatio": "9600", "newTotalDebtRatio": "10000" },
+      "raw": { "topics": ["0x28d465e4d5dcdcee5fb93eccf31e0bcf5d3f6fea174eb791749dc2b51a76f881", "0x0000000000000000000000007ee351aa702c8fc735d77fb229b7676ac15d7c79"], "data": "0x0000000000000000000000000000000000000000000000000000000000001f4000000000000000000000000000000000000000000000000000000000000025800000000000000000000000000000000000000000000000000000000000002710" }
+    },
+    {
+      "contract": "DebtAllocatorFactoryNoVault",
+      "event": "NewDebtAllocator",
+      "srcAddress": "0x03d43df6ff894c848fc6f1a0a7e8a539ef9a4c18",
+      "logIndex": 345,
+      "block": { "number": 20986032, "timestamp": 1729177115, "hash": "0xf17ec9c23b8e7d66ebec189e8a07d7bc3e8da5de5209785755a02c858cd5ab56" },
+      "transaction": { "hash": "0x0224754db7f407f031b1df3ca312e14da5a967e565da4c63ba1daa0ba6ebb85e", "transactionIndex": 164, "from": "0x1b5f15dcb82d25f91c65b53cee151e8b9fbdd271", "to": "0x03d43df6ff894c848fc6f1a0a7e8a539ef9a4c18", "input": "0x28d34c90" },
+      "params": { "allocator": "0x1e9eb053228b1156831759401de0e115356b8671", "governance": "0x16388463d60ffe0661cf7f1f31a7d658ac790ff7" },
+      "raw": { "topics": ["0xb87aa110ff22ca00092bbab091c1b6464f413dcfe6391c7fcfc0454f8e1989cb", "0x0000000000000000000000001e9eb053228b1156831759401de0e115356b8671", "0x00000000000000000000000016388463d60ffe0661cf7f1f31a7d658ac790ff7"], "data": "0x" }
+    },
+    {
+      "contract": "YearnV3RoleManager",
+      "event": "UpdateDebtAllocator",
+      "srcAddress": "0xb3bd6b2e61753c311efbcf0111f75d29706d9a41",
+      "logIndex": 422,
+      "block": { "number": 20987762, "timestamp": 1729197971, "hash": "0xfd1d7c1bb8ebb7e6c370831640155cb98471814fd84100c4ee8eeecf11268ae3" },
+      "transaction": { "hash": "0x3aa99e65b765359bb210eddaf0e9262ac3829e0a730c6f173d5073021d230b2d", "transactionIndex": 163, "from": "0x1b5f15dcb82d25f91c65b53cee151e8b9fbdd271", "to": "0x16388463d60ffe0661cf7f1f31a7d658ac790ff7", "input": "0x6a761202" },
+      "params": { "vault": "0xbe53a109b494e5c9f97b9cd39fe969be68bf6204", "debtAllocator": "0x1e9eb053228b1156831759401de0e115356b8671" },
+      "raw": { "topics": ["0x46b03560e5440592db04cf536396abd2d0e1da05cd4bab259a01af406a8686ed", "0x000000000000000000000000be53a109b494e5c9f97b9cd39fe969be68bf6204", "0x0000000000000000000000001e9eb053228b1156831759401de0e115356b8671"], "data": "0x" }
+    }
+  ],
+  "expected": {
+    "deploymentCount": 1,
+    "unboundDeploymentCount": 1,
+    "assignmentCount": 2,
+    "knownAllocatorEventCount": 2,
+    "assignmentRecognitions": ["knownGenericAllocator", "other"],
+    "unresolvedAssociationCount": 0,
+    "conflictCount": 0
+  }
+}

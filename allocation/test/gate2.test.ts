@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   assertImmutableDeployment,
+  assertImmutableUnboundDeployment,
   deploymentConflictsWithAssignment,
   mergePendingEvent,
   parsePendingEvents,
@@ -34,6 +35,7 @@ const pendingEvent = (
 describe("allocator implementation recognition", () => {
   it("distinguishes a factory-recognized deployment from an unknown assignee", () => {
     expect(recognizeImplementation({ id: "1:allocator", vaultAddress: VAULT_A })).toBe("knownGenericAllocator");
+    expect(recognizeImplementation(undefined, { id: "1:other" })).toBe("other");
     expect(recognizeImplementation(undefined)).toBe("unknown");
   });
 
@@ -59,6 +61,16 @@ describe("allocator implementation recognition", () => {
     expect(() => assertImmutableDeployment(deployment, { ...deployment, createdBlock: 101 })).toThrow(
       "Conflicting immutable debt allocator deployment 1:allocator",
     );
+
+    const unboundDeployment = {
+      id: "1:other",
+      governanceAddress: "0xdddddddddddddddddddddddddddddddddddddddd",
+    };
+    expect(() => assertImmutableUnboundDeployment(unboundDeployment, unboundDeployment)).not.toThrow();
+    expect(() => assertImmutableUnboundDeployment(unboundDeployment, {
+      ...unboundDeployment,
+      governanceAddress: "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    })).toThrow("Conflicting immutable unbound debt allocator deployment 1:other");
   });
 });
 

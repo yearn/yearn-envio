@@ -53,10 +53,15 @@ contracts:
     handler: src/EventHandlers.ts
     events:
       - event: "NewDebtAllocator(address indexed allocator, address indexed vault)"
+  - name: DebtAllocatorFactoryNoVault
+    handler: src/EventHandlers.ts
+    events:
+      - event: "NewDebtAllocator(address indexed allocator, address indexed governance)"
   - name: DebtAllocator
     handler: src/EventHandlers.ts
     events:
       - event: "UpdateStrategyDebtRatios(address indexed strategy, uint256 newTargetRatio, uint256 newMaxRatio, uint256 newTotalDebtRatio)"
+      - event: "UpdateStrategyDebtRatio(address indexed strategy, uint256 newTargetRatio, uint256 newMaxRatio, uint256 newTotalDebtRatio)"
       - event: "UpdateKeeper(address indexed keeper, bool allowed)"
       - event: "GovernanceTransferred(address indexed previousGovernance, address indexed newGovernance)"
 chains:
@@ -85,5 +90,8 @@ chains:
       - name: DebtAllocatorFactory
         address:
           - "0xfCF8c7C43dedd567083B422d6770F23B78D15BDe"
+      - name: DebtAllocatorFactoryNoVault
+        address:
+          - "0x03D43dF6FF894C848fC6F1A0a7E8a539Ef9A4C18"
       - name: DebtAllocator
         address: []

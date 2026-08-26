@@ -5,7 +5,7 @@ This directory is a separately deployable Envio project for the producer side of
 
 ## Current implementation status
 
-The current local implementation includes the Ethereum Gate 1 foundation and the core Gate 2 data model:
+The current local implementation includes the Ethereum Gate 1 foundation and an accepted local Gate 2 implementation:
 
 - Dynamic discovery from the configured V3 registries, vault factories, RoleManager factory, RoleManager, and debt allocator factory.
 - The 23 required allocation source events with explicit normalization-version-1 serializers.
@@ -15,13 +15,14 @@ The current local implementation includes the Ethereum Gate 1 foundation and the
 - Append-only initial and updated RoleManager assignment history, plus current membership closure on `RemovedVault`.
 - Explicit implementation recognition and queryable deployment/assignment conflicts.
 - Deterministic same-block buffering and reconciliation when an allocator event precedes its factory registration.
+- Exact Ethereum handler fixtures, full-versus-incremental replay equivalence, and fixed-block runtime-family verification.
+- Separate recognition for the deployed non-vault-bound allocator factory family; its RoleManager assignees are `other`, not known vault-bound Generic allocators.
+- The deployed vault-bound `UpdateStrategyDebtRatio` ABI in addition to the plural issue-contract variant.
 
-The initial pinned source evidence is recorded in [`ABI_AUDIT.md`](ABI_AUDIT.md).
+The source audit is recorded in [`ABI_AUDIT.md`](ABI_AUDIT.md), and the Gate 2 acceptance evidence is recorded in [`GATE2_EVIDENCE.md`](GATE2_EVIDENCE.md).
 
 This is not yet a certified allocation-history producer. In particular:
 
-- Gate 2 still needs deployed bytecode-family evidence and committed historical Ethereum fixtures before it can be accepted.
-- Envio 3.6's in-process `createTestIndexer` loader currently hits an ESM `require()` cycle on Node 22; deterministic domain fixtures cover the Gate 2 decisions, but full simulated handler fixtures remain outstanding.
 - Archive-RPC accounting checkpoints and the vault mutation audit remain Gate 3 work.
 - Coverage manifests, committed historical fixtures, deployed parity, monitoring, and blue-green certification remain Gate 4 work.
 - `safeForTimeline` coverage does not exist and must not be inferred from these rows.
@@ -35,7 +36,10 @@ corepack pnpm install
 corepack pnpm codegen
 corepack pnpm build
 corepack pnpm test
+ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm verify:gate2:rpc
 ```
+
+The RPC verifier exits successfully with an explicit `NOT RUN` status when the variable is unset. It never prints the configured URL.
 
 The allocation project generates its type metadata under `allocation/.envio/`; it does not use or modify the primary project's generated types or schema.
 

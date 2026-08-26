@@ -36,6 +36,20 @@ type DebtAllocatorDeployment {
   createdEventId: String!
 }
 
+type DebtAllocatorUnboundDeployment {
+  id: ID!
+  chainId: Int! @index
+  allocatorAddress: String! @index
+  factoryAddress: String! @index
+  governanceAddress: String! @index
+  implementationRecognition: String!
+  abiVariant: String!
+  createdBlock: Int!
+  createdTimestamp: BigInt!
+  createdTransactionHash: String!
+  createdEventId: String!
+}
+
 type VaultDebtAllocatorAssignment
   @index(fields: ["chainId", "vaultAddress", "blockNumber", "transactionIndex", "logIndex"]) {
   id: ID!

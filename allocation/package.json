@@ -1,10 +1,12 @@
 {
   "name": "yearn-envio-allocation",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "tsc --noEmit",
     "codegen": "envio codegen",
-    "test": "vitest run"
+    "test": "vitest run",
+    "verify:gate2:rpc": "node scripts/verify-gate2-fixture.mjs"
   },
   "dependencies": {
     "envio": "3.6.1",

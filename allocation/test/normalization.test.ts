@@ -28,7 +28,9 @@ const goldenCases: readonly GoldenCase[] = [
   ["role manager RemovedVault", serializers.roleManager.RemovedVault, { vault: A }, '{"vault":"0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}'],
   ["role manager UpdateDebtAllocator", serializers.roleManager.UpdateDebtAllocator, { vault: A, debtAllocator: B }, '{"vault":"0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","debtAllocator":"0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"}'],
   ["factory NewDebtAllocator", serializers.debtAllocatorFactory.NewDebtAllocator, { allocator: A, vault: B }, '{"allocator":"0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","vault":"0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"}'],
+  ["factory NewDebtAllocator without vault", serializers.debtAllocatorFactory.NewDebtAllocatorWithoutVault, { allocator: A, governance: B }, '{"allocator":"0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","governance":"0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"}'],
   ["allocator UpdateStrategyDebtRatios", serializers.debtAllocator.UpdateStrategyDebtRatios, { strategy: A, newTargetRatio: 1n, newMaxRatio: 2n, newTotalDebtRatio: 3n }, '{"strategy":"0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","newTargetRatio":"1","newMaxRatio":"2","newTotalDebtRatio":"3"}'],
+  ["allocator UpdateStrategyDebtRatio", serializers.debtAllocator.UpdateStrategyDebtRatio, { strategy: A, newTargetRatio: 1n, newMaxRatio: 2n, newTotalDebtRatio: 3n }, '{"strategy":"0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","newTargetRatio":"1","newMaxRatio":"2","newTotalDebtRatio":"3"}'],
   ["allocator UpdateKeeper", serializers.debtAllocator.UpdateKeeper, { keeper: A, allowed: true }, '{"keeper":"0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","allowed":true}'],
   ["allocator GovernanceTransferred", serializers.debtAllocator.GovernanceTransferred, { previousGovernance: A, newGovernance: B }, '{"previousGovernance":"0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","newGovernance":"0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"}'],
 ];
@@ -41,7 +43,7 @@ describe("normalization version 1 serializers", () => {
   });
 
   it("keeps every configured source event under an explicit serializer", () => {
-    expect(goldenCases).toHaveLength(23);
+    expect(goldenCases).toHaveLength(25);
   });
 });
 

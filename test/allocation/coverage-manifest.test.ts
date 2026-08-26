@@ -6,8 +6,9 @@ import {
   validateCoverageManifest,
   type CoverageManifest,
 } from "../../src/allocation/gate4.js";
+import { assertProducerCommitReachable } from "../../scripts/allocation/coverage-provenance.js";
 
-const coverageUrl = new URL("../coverage/", import.meta.url);
+const coverageUrl = new URL("../../coverage/allocation/", import.meta.url);
 const manifest = validateCoverageManifest(
   JSON.parse(readFileSync(new URL("ethereum.json", coverageUrl), "utf8")) as CoverageManifest,
 );
@@ -40,6 +41,13 @@ const inventory = JSON.parse(readFileSync(new URL("ethereum.inventory.json", cov
 };
 
 describe("Gate 4 checked-in Ethereum coverage authority", () => {
+  it("pins producer provenance to the current branch history", () => {
+    expect(() => assertProducerCommitReachable(manifest.producerCommit)).not.toThrow();
+    expect(() => assertProducerCommitReachable(manifest.producerCommit, () => false)).toThrow(
+      "is not an ancestor of HEAD",
+    );
+  });
+
   it("accounts for every discovered vault as included or explicitly excluded", () => {
     expect(inventory.discoveredVaultCount).toBe(321);
     expect(inventory.officialFactoryVaultCount).toBe(243);

@@ -2,7 +2,7 @@
 
 Gate 3 is accepted locally as of 2026-08-26. Gate 4 coverage certification and candidate deployment remain separate work.
 
-The allocation suite passes 84/84 tests; root Envio code generation and the shared-project TypeScript build pass.
+The allocation suite passes 85/85 tests; root Envio code generation and the shared-project TypeScript build pass.
 
 ## Checkpoint mechanics
 
@@ -34,7 +34,7 @@ The pinned runtime fixture covers all 243 supported vaults:
 
 ## Mutation-path audit
 
-Official source commits and Vault source blob IDs are pinned in `fixtures/ethereum/gate3-source-audit.json`. Every assignment to `total_idle` or `total_debt` in those blobs belongs to one of six paths:
+Official source commits and Vault source blob IDs are pinned in `fixtures/allocation/ethereum/gate3-source-audit.json`. Every assignment to `total_idle` or `total_debt` in those blobs belongs to one of six paths:
 
 | Mutation path | Terminal checkpoint trigger |
 | --- | --- |
@@ -49,7 +49,7 @@ Initialization leaves both totals at zero. Direct asset transfers do not mutate 
 
 ## Fixed-block archive evidence
 
-`fixtures/ethereum/gate3-checkpoints.json` pins an official v3.0.2 vault Deposit at block 19,441,994 and its canonical hash. The production reader returned:
+`fixtures/allocation/ethereum/gate3-checkpoints.json` pins an official v3.0.2 vault Deposit at block 19,441,994 and its canonical hash. The production reader returned:
 
 - `totalAssets`: `3015874599`
 - `totalDebt`: `0`
@@ -61,7 +61,7 @@ Initialization leaves both totals at zero. Direct asset transfers do not mutate 
 
 ## Replay benchmark
 
-`fixtures/ethereum/gate3-benchmark.json` pins 12 unique historical Deposit blocks and four duplicate logical requests. At the configured five-calls-per-second ceiling:
+`fixtures/allocation/ethereum/gate3-benchmark.json` pins 12 unique historical Deposit blocks and four duplicate logical requests. At the configured five-calls-per-second ceiling:
 
 - logical requests: 16
 - unique archive reads: 12

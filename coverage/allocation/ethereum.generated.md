@@ -2,7 +2,7 @@
 
 Coverage revision: `ethereum-draft-2026-08-26-1`
 
-Producer commit: `c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7`
+Producer commit: `0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2`
 
 Validated at: `1787759912`
 

@@ -6,8 +6,9 @@ import {
   validateCoverageManifest,
   type CoverageManifest,
 } from "../../src/allocation/gate4.js";
+import { assertProducerCommitReachable } from "./coverage-provenance.js";
 
-const coverageDirectory = new URL("../coverage/", import.meta.url);
+const coverageDirectory = new URL("../../coverage/allocation/", import.meta.url);
 const manifestUrl = new URL("ethereum.json", coverageDirectory);
 const entitiesUrl = new URL("ethereum.entities.json", coverageDirectory);
 const markdownUrl = new URL("ethereum.generated.md", coverageDirectory);
@@ -16,6 +17,7 @@ const check = process.argv.includes("--check");
 const manifest = validateCoverageManifest(
   JSON.parse(readFileSync(manifestUrl, "utf8")) as CoverageManifest,
 );
+assertProducerCommitReachable(manifest.producerCommit);
 const entities = `${JSON.stringify({
   manifestVersion: manifest.manifestVersion,
   coverageRevision: manifest.coverageRevision,

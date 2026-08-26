@@ -17,7 +17,7 @@ if (!rpcUrl) {
 }
 
 const fixture = JSON.parse(
-  readFileSync(new URL("../fixtures/ethereum/gate3-checkpoints.json", import.meta.url), "utf8"),
+  readFileSync(new URL("../../fixtures/allocation/ethereum/gate3-checkpoints.json", import.meta.url), "utf8"),
 ) as {
   chainId: number;
   cases: Array<{

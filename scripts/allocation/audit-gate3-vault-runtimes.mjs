@@ -412,7 +412,7 @@ const output = {
 
 if (process.argv.includes("--verify-fixture")) {
   const fixture = JSON.parse(
-    readFileSync(new URL("../fixtures/ethereum/gate3-runtimes.json", import.meta.url), "utf8"),
+    readFileSync(new URL("../../fixtures/allocation/ethereum/gate3-runtimes.json", import.meta.url), "utf8"),
   );
   const versions = [...new Set(output.runtimeFamilies.map(({ apiVersion }) => apiVersion))].sort().map(
     (apiVersion) => {

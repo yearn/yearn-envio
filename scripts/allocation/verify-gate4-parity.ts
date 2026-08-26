@@ -71,10 +71,10 @@ if (!endpoint || !archiveRpc) {
 }
 
 const fixture = JSON.parse(
-  readFileSync(new URL("../fixtures/ethereum/gate4-parity.json", import.meta.url), "utf8"),
+  readFileSync(new URL("../../fixtures/allocation/ethereum/gate4-parity.json", import.meta.url), "utf8"),
 ) as Fixture;
 const manifest = JSON.parse(
-  readFileSync(new URL("../coverage/ethereum.json", import.meta.url), "utf8"),
+  readFileSync(new URL("../../coverage/allocation/ethereum.json", import.meta.url), "utf8"),
 ) as { coverageRevision: string };
 
 const eventFields = `

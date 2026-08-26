@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { allocationEventId } from "../../src/allocation/normalization.js";
 
 const fixture = JSON.parse(
-  readFileSync(new URL("../fixtures/ethereum/gate4-parity.json", import.meta.url), "utf8"),
+  readFileSync(new URL("../../fixtures/allocation/ethereum/gate4-parity.json", import.meta.url), "utf8"),
 ) as {
   schemaVersion: number;
   cases: Array<{
@@ -71,7 +71,7 @@ const fixture = JSON.parse(
   };
 };
 const gate2 = JSON.parse(
-  readFileSync(new URL("../fixtures/ethereum/gate2.json", import.meta.url), "utf8"),
+  readFileSync(new URL("../../fixtures/allocation/ethereum/gate2.json", import.meta.url), "utf8"),
 ) as { historicalReplay: Array<{ event: string; block: { number: number; hash: string }; params: Record<string, string>; logIndex: number; transaction: { hash: string } }> };
 
 describe("Gate 4 exact Ethereum parity fixtures", () => {

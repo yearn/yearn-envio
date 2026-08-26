@@ -2,7 +2,7 @@
 
 Gate 2 is accepted locally at Ethereum block `25835600`, hash `0x3f7c6998176cc2af40681d187424a4e0b76dc782df150bd408fa65863c6b3dec`. This does not claim Gate 3 accounting checkpoints, Gate 4 coverage certification, a deployed candidate, or `safeForTimeline` coverage.
 
-The authoritative machine-readable evidence is [`fixtures/ethereum/gate2.json`](fixtures/ethereum/gate2.json). The read-only verifier is [`scripts/verify-gate2-fixture.mjs`](scripts/verify-gate2-fixture.mjs).
+The authoritative machine-readable evidence is [`fixtures/allocation/ethereum/gate2.json`](../../fixtures/allocation/ethereum/gate2.json). The read-only verifier is [`scripts/allocation/verify-gate2-fixture.mjs`](../../scripts/allocation/verify-gate2-fixture.mjs).
 
 ## Discovery inventory
 
@@ -56,7 +56,7 @@ Focused simulated-handler tests separately prove:
 
 ## Replay and verification result
 
-`createTestIndexer` loads successfully under Node 22 after marking the allocation package as ESM. The exact Ethereum fixture produces identical entity snapshots for a fresh full replay, a second fresh full replay, and an incremental continuation split after initial assignment.
+`createTestIndexer` loads successfully under Node 22 from the root ESM package. The exact Ethereum fixture produces identical entity snapshots for a fresh full replay, a second fresh full replay, and an incremental continuation split after initial assignment.
 
 Run locally:
 

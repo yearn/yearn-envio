@@ -9,7 +9,7 @@ if (!rpcUrl) {
 }
 
 const fixture = JSON.parse(
-  readFileSync(new URL("../fixtures/ethereum/gate2.json", import.meta.url), "utf8"),
+  readFileSync(new URL("../../fixtures/allocation/ethereum/gate2.json", import.meta.url), "utf8"),
 );
 const client = createPublicClient({ chain: mainnet, transport: http(rpcUrl) });
 const requiredAllocatorTopics = new Set([

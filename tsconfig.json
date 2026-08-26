@@ -25,5 +25,5 @@
     "lib": ["es2022"],
     "types": ["node", "envio"]
   },
-  "exclude": ["allocation/scripts/**", "allocation/test/**"]
+  "exclude": ["scripts/allocation/**", "test/allocation/**"]
 }

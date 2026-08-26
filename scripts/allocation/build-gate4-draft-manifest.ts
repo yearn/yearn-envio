@@ -35,7 +35,7 @@ if (!rpcUrl) {
   process.exit(0);
 }
 
-const coverageDirectory = new URL("../coverage/", import.meta.url);
+const coverageDirectory = new URL("../../coverage/allocation/", import.meta.url);
 const inventory = JSON.parse(
   readFileSync(new URL("ethereum.inventory.json", coverageDirectory), "utf8"),
 ) as RuntimeInventory;

@@ -18,7 +18,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -37,7 +37,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -56,7 +56,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -75,7 +75,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -94,7 +94,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -113,7 +113,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -132,7 +132,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -151,7 +151,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -170,7 +170,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -189,7 +189,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -208,7 +208,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -227,7 +227,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -246,7 +246,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -265,7 +265,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -284,7 +284,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -303,7 +303,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -322,7 +322,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -341,7 +341,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -360,7 +360,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -379,7 +379,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -398,7 +398,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -417,7 +417,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -436,7 +436,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -455,7 +455,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -474,7 +474,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -493,7 +493,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -512,7 +512,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -531,7 +531,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -550,7 +550,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -569,7 +569,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -588,7 +588,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -607,7 +607,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -626,7 +626,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -645,7 +645,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -664,7 +664,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -683,7 +683,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -702,7 +702,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -721,7 +721,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -740,7 +740,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -759,7 +759,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -778,7 +778,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -797,7 +797,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -816,7 +816,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -835,7 +835,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -854,7 +854,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -873,7 +873,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -892,7 +892,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -911,7 +911,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -930,7 +930,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -949,7 +949,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -968,7 +968,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -987,7 +987,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1006,7 +1006,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1025,7 +1025,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1044,7 +1044,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1063,7 +1063,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1082,7 +1082,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1101,7 +1101,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1120,7 +1120,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1139,7 +1139,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1158,7 +1158,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1177,7 +1177,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1196,7 +1196,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1215,7 +1215,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1234,7 +1234,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1253,7 +1253,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1272,7 +1272,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1291,7 +1291,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1310,7 +1310,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1329,7 +1329,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1348,7 +1348,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1367,7 +1367,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1386,7 +1386,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1405,7 +1405,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1424,7 +1424,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1443,7 +1443,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1462,7 +1462,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1481,7 +1481,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1500,7 +1500,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1519,7 +1519,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1538,7 +1538,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1557,7 +1557,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1576,7 +1576,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1595,7 +1595,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1614,7 +1614,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1633,7 +1633,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1652,7 +1652,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1671,7 +1671,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1690,7 +1690,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1709,7 +1709,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1728,7 +1728,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1747,7 +1747,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1766,7 +1766,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1785,7 +1785,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1804,7 +1804,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1823,7 +1823,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1842,7 +1842,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1861,7 +1861,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1880,7 +1880,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1899,7 +1899,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1918,7 +1918,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1937,7 +1937,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1956,7 +1956,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1975,7 +1975,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -1994,7 +1994,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2013,7 +2013,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2032,7 +2032,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2051,7 +2051,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2070,7 +2070,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2089,7 +2089,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2108,7 +2108,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2127,7 +2127,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2146,7 +2146,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2165,7 +2165,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2184,7 +2184,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2203,7 +2203,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2222,7 +2222,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2241,7 +2241,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2260,7 +2260,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2279,7 +2279,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2298,7 +2298,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2317,7 +2317,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2336,7 +2336,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2355,7 +2355,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2374,7 +2374,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2393,7 +2393,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2412,7 +2412,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2431,7 +2431,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2450,7 +2450,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2469,7 +2469,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2488,7 +2488,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2507,7 +2507,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2526,7 +2526,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2545,7 +2545,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2564,7 +2564,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2583,7 +2583,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2602,7 +2602,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2621,7 +2621,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2640,7 +2640,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2659,7 +2659,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2678,7 +2678,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2697,7 +2697,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2716,7 +2716,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2735,7 +2735,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2754,7 +2754,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2773,7 +2773,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2792,7 +2792,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2811,7 +2811,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2830,7 +2830,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2849,7 +2849,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2868,7 +2868,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2887,7 +2887,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2906,7 +2906,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2925,7 +2925,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2944,7 +2944,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2963,7 +2963,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -2982,7 +2982,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3001,7 +3001,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3020,7 +3020,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3039,7 +3039,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3058,7 +3058,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3077,7 +3077,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3096,7 +3096,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3115,7 +3115,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3134,7 +3134,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3153,7 +3153,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3172,7 +3172,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3191,7 +3191,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3210,7 +3210,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3229,7 +3229,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3248,7 +3248,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3267,7 +3267,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3286,7 +3286,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3305,7 +3305,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3324,7 +3324,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3343,7 +3343,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3362,7 +3362,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3381,7 +3381,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3400,7 +3400,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3419,7 +3419,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3438,7 +3438,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3457,7 +3457,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3476,7 +3476,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3495,7 +3495,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3514,7 +3514,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3533,7 +3533,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3552,7 +3552,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3571,7 +3571,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3590,7 +3590,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3609,7 +3609,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3628,7 +3628,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3647,7 +3647,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3666,7 +3666,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3685,7 +3685,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3704,7 +3704,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3723,7 +3723,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3742,7 +3742,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3761,7 +3761,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3780,7 +3780,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3799,7 +3799,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3818,7 +3818,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3837,7 +3837,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3856,7 +3856,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3875,7 +3875,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3894,7 +3894,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3913,7 +3913,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3932,7 +3932,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3951,7 +3951,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3970,7 +3970,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -3989,7 +3989,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4008,7 +4008,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4027,7 +4027,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4046,7 +4046,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4065,7 +4065,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4084,7 +4084,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4103,7 +4103,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4122,7 +4122,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4141,7 +4141,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4160,7 +4160,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4179,7 +4179,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4198,7 +4198,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4217,7 +4217,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4236,7 +4236,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4255,7 +4255,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4274,7 +4274,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4293,7 +4293,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4312,7 +4312,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4331,7 +4331,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4350,7 +4350,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4369,7 +4369,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4388,7 +4388,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4407,7 +4407,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4426,7 +4426,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4445,7 +4445,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4464,7 +4464,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4483,7 +4483,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4502,7 +4502,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4521,7 +4521,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4540,7 +4540,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4559,7 +4559,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4578,7 +4578,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4597,7 +4597,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     },
     {
@@ -4616,7 +4616,7 @@
       "safeForTimeline": false,
       "knownGapsJson": "[{\"code\":\"allocator-history-not-certified\",\"detail\":\"Full allocator deployment and assignment history parity has not run\"},{\"code\":\"candidate-parity-not-run\",\"detail\":\"Credentialed parity against a deployed allocation candidate has not run\"},{\"code\":\"event-history-not-certified\",\"detail\":\"First required event and full event replay equivalence are not yet certified\"}]",
       "coverageRevision": "ethereum-draft-2026-08-26-1",
-      "producerCommit": "c98fd4d3dbbbebfdb3272a2ed8867f59fff66cf7",
+      "producerCommit": "0e2c1a3a4fca23a6fe33be19df3786ea73ae0ba2",
       "validatedAt": "1787759912"
     }
   ]

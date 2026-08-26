@@ -302,7 +302,7 @@ try {
   }
 
   const gate2 = JSON.parse(
-    readFileSync(new URL("../fixtures/ethereum/gate2.json", import.meta.url), "utf8"),
+    readFileSync(new URL("../../fixtures/allocation/ethereum/gate2.json", import.meta.url), "utf8"),
   ) as {
     historicalReplay: Array<{
       event: string;
@@ -409,7 +409,7 @@ try {
     },
   };
   writeFileSync(
-    new URL("../fixtures/ethereum/gate4-parity.json", import.meta.url),
+    new URL("../../fixtures/allocation/ethereum/gate4-parity.json", import.meta.url),
     `${JSON.stringify(fixture, null, 2)}\n`,
   );
   console.log(`Gate 4 fixture capture: PASS (${cases.length} blocks, ${cases.flatMap(({ events }) => events).length} events)`);

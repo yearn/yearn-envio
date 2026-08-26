@@ -225,7 +225,7 @@ The result must be empty for a safe range. Failure reasons are stable categories
 
 ## Exact Ethereum parity fixtures
 
-`fixtures/ethereum/gate4-parity.json` pins three canonical blocks and their exact normalized events, transaction envelopes, block-end vault accounting, and full lifecycle-seen strategy debt state:
+`fixtures/allocation/ethereum/gate4-parity.json` pins three canonical blocks and their exact normalized events, transaction envelopes, block-end vault accounting, and full lifecycle-seen strategy debt state:
 
 - yvWETH-1 multi-strategy debt updates plus a same-transaction Withdraw;
 - yvUSDC-1 loss-sensitive report for a positive-debt strategy with no allocator target event in the audited range;

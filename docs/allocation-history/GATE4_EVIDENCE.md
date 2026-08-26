@@ -13,7 +13,7 @@ Gate 4 is **not accepted** as of 2026-08-26. The local coverage, query, fixture,
 
 ## Exact Ethereum fixtures
 
-`fixtures/ethereum/gate4-parity.json` was captured from canonical archive state and raw Blockscout logs:
+`fixtures/allocation/ethereum/gate4-parity.json` was captured from canonical archive state and raw Blockscout logs:
 
 | Case | Block | Evidence |
 | --- | ---: | --- |
@@ -28,12 +28,12 @@ The capture command re-reads canonical block hashes, transaction envelopes, bloc
 ## Validation
 
 - Allocation codegen and TypeScript build: pass.
-- Allocation suite: 84/84 tests pass across 11 files.
-- Coverage output drift check: pass for 243 rows.
+- Allocation suite: 85/85 tests pass across 11 files.
+- Coverage output drift and producer-ancestry check: pass for 243 rows.
 - Coverage publisher: `DRY RUN` with zero writes.
 - Gate 3 official runtime regression: pass for 243 vaults, 26 runtime families, and four releases.
 - Root TypeScript build: pass.
-- Root Vitest: 84/84 pass across 11 files.
+- Root Vitest: 85/85 pass across 11 files.
 - Persisted event-configuration changes require fresh candidate storage; in-place resume of the initialized production database remains incompatible.
 - `git diff --check`: pass.
 

@@ -11,10 +11,10 @@ if (!endpoint || !rpcUrl) {
 }
 
 const manifest = JSON.parse(
-  readFileSync(new URL("../coverage/ethereum.json", import.meta.url), "utf8"),
+  readFileSync(new URL("../../coverage/allocation/ethereum.json", import.meta.url), "utf8"),
 ) as { coverageRevision: string; entries: Array<{ safeForTimeline: boolean }> };
 const fixture = JSON.parse(
-  readFileSync(new URL("../fixtures/ethereum/gate4-parity.json", import.meta.url), "utf8"),
+  readFileSync(new URL("../../fixtures/allocation/ethereum/gate4-parity.json", import.meta.url), "utf8"),
 ) as {
   cases: Array<{
     id: string;

@@ -32,7 +32,7 @@ type Gate2Fixture = {
 };
 
 const fixture = JSON.parse(
-  readFileSync(new URL("../fixtures/ethereum/gate2.json", import.meta.url), "utf8"),
+  readFileSync(new URL("../../fixtures/allocation/ethereum/gate2.json", import.meta.url), "utf8"),
 ) as Gate2Fixture;
 
 const simulationEvent = (event: FixtureEvent) => {

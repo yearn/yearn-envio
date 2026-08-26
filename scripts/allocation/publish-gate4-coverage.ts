@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { coverageEntityRows, validateCoverageManifest, type CoverageManifest } from "../../src/allocation/gate4.js";
+import { assertProducerCommitReachable } from "./coverage-provenance.js";
 
 type CoverageRow = {
   id: string;
@@ -31,11 +32,12 @@ const publish = process.argv.includes("--publish");
 const endpoint = process.env.ENVIO_ALLOCATION_GRAPHQL_URL;
 const token = process.env.ENVIO_ALLOCATION_GRAPHQL_TOKEN;
 const input = JSON.parse(
-  readFileSync(new URL("../coverage/ethereum.entities.json", import.meta.url), "utf8"),
+  readFileSync(new URL("../../coverage/allocation/ethereum.entities.json", import.meta.url), "utf8"),
 ) as CoverageRowsFile;
 const manifest = validateCoverageManifest(
-  JSON.parse(readFileSync(new URL("../coverage/ethereum.json", import.meta.url), "utf8")) as CoverageManifest,
+  JSON.parse(readFileSync(new URL("../../coverage/allocation/ethereum.json", import.meta.url), "utf8")) as CoverageManifest,
 );
+assertProducerCommitReachable(manifest.producerCommit);
 if (
   input.coverageRevision !== manifest.coverageRevision ||
   JSON.stringify(input.rows) !== JSON.stringify(coverageEntityRows(manifest))

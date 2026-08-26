@@ -136,11 +136,14 @@ existing entities   Allocation History entities
 
 The important files are:
 
-- [`config.yaml`](../config.yaml): existing and allocation events are configured together.
-- [`schema.graphql`](../schema.graphql): allocation entities are added to the existing schema.
-- [`src/EventHandlers.ts`](../src/EventHandlers.ts): the existing handler entrypoint loads the allocation handlers.
-- [`src/allocation/`](../src/allocation/): normalization, allocator logic, checkpoints, archive Effects, and coverage validation.
-- [`allocation/`](./): evidence, fixtures, tests, coverage files, and operational tools.
+- [`config.yaml`](../../config.yaml): existing and allocation events are configured together.
+- [`schema.graphql`](../../schema.graphql): allocation entities are added to the existing schema.
+- [`src/EventHandlers.ts`](../../src/EventHandlers.ts): the existing handler entrypoint loads the allocation handlers.
+- [`src/allocation/`](../../src/allocation/): normalization, allocator logic, checkpoints, archive Effects, and coverage validation.
+- [`test/allocation/`](../../test/allocation/): focused regression tests.
+- [`scripts/allocation/`](../../scripts/allocation/): evidence capture and operational tools.
+- [`fixtures/allocation/`](../../fixtures/allocation/) and [`coverage/allocation/`](../../coverage/allocation/): exact replay evidence and coverage authority.
+- [`docs/allocation-history/`](./): design notes, gate evidence, and rollout instructions.
 
 There is no nested package, second generated-code project, or second permanent server.
 

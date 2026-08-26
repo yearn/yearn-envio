@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
 const audit = JSON.parse(
-  readFileSync(new URL("../fixtures/ethereum/gate3-source-audit.json", import.meta.url), "utf8"),
+  readFileSync(new URL("../../fixtures/allocation/ethereum/gate3-source-audit.json", import.meta.url), "utf8"),
 ) as {
   supportedReleases: Array<{ apiVersion: string; sourceBlob: string }>;
   mutationPaths: Array<{
@@ -13,7 +13,7 @@ const audit = JSON.parse(
   }>;
 };
 const runtimes = JSON.parse(
-  readFileSync(new URL("../fixtures/ethereum/gate3-runtimes.json", import.meta.url), "utf8"),
+  readFileSync(new URL("../../fixtures/allocation/ethereum/gate3-runtimes.json", import.meta.url), "utf8"),
 ) as {
   officialFactoryVaultCount: number;
   versions: Array<{ apiVersion: string; vaultCount: number; runtimeCodeHashes: string[] }>;

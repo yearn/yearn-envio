@@ -1,6 +1,6 @@
 # Yearn Vault Allocation History
 
-This directory contains the evidence, fixtures, tests, coverage files, and operational tools for [yearn-envio issue #52](https://github.com/yearn/yearn-envio/issues/52).
+This directory contains the documentation and acceptance evidence for [yearn-envio issue #52](https://github.com/yearn/yearn-envio/issues/52). The implementation and its support files use the repository's shared root-level structure.
 
 Allocation History is part of the existing Envio project. It does not have a separate package, configuration, schema, database, or permanent server.
 
@@ -10,10 +10,13 @@ For a non-technical overview in simple English, see [`ISSUE_52_EXPLAINER.md`](IS
 
 The shared project uses:
 
-- root [`config.yaml`](../config.yaml);
-- root [`schema.graphql`](../schema.graphql);
-- root [`src/EventHandlers.ts`](../src/EventHandlers.ts) as the handler entrypoint;
-- allocation helpers under [`src/allocation/`](../src/allocation/);
+- root [`config.yaml`](../../config.yaml);
+- root [`schema.graphql`](../../schema.graphql);
+- root [`src/EventHandlers.ts`](../../src/EventHandlers.ts) as the handler entrypoint;
+- allocation helpers under [`src/allocation/`](../../src/allocation/);
+- focused tests under [`test/allocation/`](../../test/allocation/);
+- operational tools under [`scripts/allocation/`](../../scripts/allocation/);
+- exact evidence under [`fixtures/allocation/`](../../fixtures/allocation/) and [`coverage/allocation/`](../../coverage/allocation/);
 - one generated-code pass and one database/Hasura deployment.
 
 The existing indexer processes several chains. Allocation History is enabled only for Ethereum. Every allocation handler and archive read has an explicit Ethereum guard.
@@ -84,7 +87,7 @@ ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation
 
 The RPC and candidate tools report `NOT RUN` when their required variables are missing. A skipped command is not a pass.
 
-Coverage publication is a dry run unless `-- --publish` is explicit. Publication validates generated-file freshness and refuses safe coverage for a range with unresolved checkpoint failures.
+Coverage publication is a dry run unless `-- --publish` is explicit. Coverage validation and publication require the recorded producer commit to be an ancestor of the checked-out branch, validate generated-file freshness, and refuse safe coverage for a range with unresolved checkpoint failures.
 
 ## Deployment boundary
 

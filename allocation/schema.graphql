@@ -22,6 +22,37 @@ type AllocationSourceEvent
   argsJson: String!
 }
 
+type VaultAccountingCheckpoint
+  @index(fields: ["chainId", "vaultAddress", "blockNumber"]) {
+  id: ID!
+  chainId: Int! @index
+  vaultAddress: String! @index
+  blockNumber: Int! @index
+  blockTimestamp: BigInt! @index
+  blockHash: String!
+  totalAssets: BigInt!
+  totalDebt: BigInt!
+  totalIdle: BigInt!
+  accountingIdentityHolds: Boolean!
+  canonicalBlockVerified: Boolean!
+  source: String!
+  sourceEventIds: [String!]!
+}
+
+type VaultAccountingCheckpointTriggerSet {
+  id: ID!
+  triggersJson: String!
+}
+
+type VaultAccountingSupport {
+  id: ID!
+  chainId: Int! @index
+  vaultAddress: String! @index
+  factoryAddress: String! @index
+  apiVersion: String!
+  sourceEventId: String!
+}
+
 type DebtAllocatorDeployment {
   id: ID!
   chainId: Int! @index

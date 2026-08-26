@@ -1,6 +1,6 @@
 # Initial Ethereum ABI audit
 
-This note records the source evidence used by the allocation indexer. The complete Gate 2 runtime and fixture audit is in [`GATE2_EVIDENCE.md`](GATE2_EVIDENCE.md). The Gate 3 vault-mutation audit remains outstanding.
+This note records the source evidence used by the allocation indexer. The complete Gate 2 runtime and fixture audit is in [`GATE2_EVIDENCE.md`](GATE2_EVIDENCE.md). The accepted Gate 3 vault-mutation audit is in [`GATE3_EVIDENCE.md`](GATE3_EVIDENCE.md).
 
 ## RoleManager
 
@@ -40,6 +40,6 @@ The second address is governance, not a vault. Those deployments are persisted s
 
 The configured vault-bound implementation at `0x1aaf7ad9550a8817d4cc4cdb917ff99b044960a0` emits singular `UpdateStrategyDebtRatio(address,uint256,uint256,uint256)`. The issue contract names a plural `UpdateStrategyDebtRatios` event. The indexer retains the plural decoder for the stated contract and adds the singular deployed decoder as `generic-v1-vault-bound-singular`; 826 singular Ethereum logs and zero plural logs were observed across the 12 vault-bound deployments through the audit block.
 
-## Remaining evidence gates
+## Evidence gates
 
-Gate 2 runtime families, exact historical logs, same-block registration receipts, handler replay, and fixed-block RPC parity are now committed and passing. Before Gate 3 can pass, every supported Vault V3 release/code hash needs a mutation-path audit proving the checkpoint trigger invariant.
+Gate 2 runtime families, exact historical logs, same-block registration receipts, handler replay, and fixed-block RPC parity are committed and passing. Gate 3 pins the official Vault V3 source blobs and all 26 supported runtime families, proves the checkpoint trigger invariant, and excludes custom implementations from accounting certification unless separately audited.

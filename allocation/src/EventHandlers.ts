@@ -1,4 +1,4 @@
-import { indexer, type Entity } from "envio";
+import { indexer, type EffectCaller, type Entity } from "envio";
 import {
   NORMALIZATION_VERSION,
   allocationEventId,
@@ -16,6 +16,14 @@ import {
   recognizeImplementation,
   type PendingAllocatorEvent,
 } from "./gate2.js";
+import {
+  accountingIdentityHolds,
+  checkpointId,
+  checkpointSourceEventIds,
+  mergeCheckpointTriggers,
+  parseCheckpointTriggers,
+} from "./checkpoints.js";
+import { vaultAccountingAtBlock } from "./Effects.js";
 
 type EventEnvelope = {
   chainId: number;
@@ -33,6 +41,20 @@ type EventEnvelope = {
 
 type EntityContext = {
   AllocationSourceEvent: { set: (entity: Entity<"AllocationSourceEvent">) => void };
+};
+
+type CheckpointContext = {
+  effect: EffectCaller;
+  VaultAccountingCheckpoint: {
+    set: (entity: Entity<"VaultAccountingCheckpoint">) => void;
+  };
+  VaultAccountingCheckpointTriggerSet: {
+    get: (id: string) => Promise<Entity<"VaultAccountingCheckpointTriggerSet"> | undefined>;
+    set: (entity: Entity<"VaultAccountingCheckpointTriggerSet">) => void;
+  };
+  VaultAccountingSupport: {
+    get: (id: string) => Promise<Entity<"VaultAccountingSupport"> | undefined>;
+  };
 };
 
 type Gate2Context = EntityContext & {
@@ -101,6 +123,44 @@ const writeNormalizedEvent = <T>(
   context.AllocationSourceEvent.set({
     ...normalizedEventWithoutVault(event, eventSerializer, params),
     vaultAddress: lowerAddress(vaultAddress),
+  });
+};
+
+export const writeAccountingCheckpoint = async (
+  event: EventEnvelope,
+  context: CheckpointContext,
+): Promise<void> => {
+  const vaultAddress = lowerAddress(event.srcAddress);
+  const support = await context.VaultAccountingSupport.get(`${event.chainId}:${vaultAddress}`);
+  if (!support) return;
+  const id = checkpointId(event.chainId, vaultAddress, event.block.number);
+  const existing = await context.VaultAccountingCheckpointTriggerSet.get(id);
+  const triggers = mergeCheckpointTriggers(parseCheckpointTriggers(existing?.triggersJson), {
+    id: normalizedId(event),
+    transactionIndex: event.transaction.transactionIndex,
+    logIndex: event.logIndex,
+  });
+  const totals = await context.effect(vaultAccountingAtBlock, {
+    vaultAddress,
+    blockNumber: event.block.number,
+    expectedBlockHash: lowerAddress(event.block.hash),
+  });
+
+  context.VaultAccountingCheckpointTriggerSet.set({ id, triggersJson: JSON.stringify(triggers) });
+  context.VaultAccountingCheckpoint.set({
+    id,
+    chainId: event.chainId,
+    vaultAddress,
+    blockNumber: event.block.number,
+    blockTimestamp: BigInt(event.block.timestamp),
+    blockHash: lowerAddress(event.block.hash),
+    totalAssets: totals.totalAssets,
+    totalDebt: totals.totalDebt,
+    totalIdle: totals.totalIdle,
+    accountingIdentityHolds: accountingIdentityHolds(totals),
+    canonicalBlockVerified: totals.canonicalBlockVerified,
+    source: "archive-rpc-effect",
+    sourceEventIds: checkpointSourceEventIds(triggers),
   });
 };
 
@@ -175,6 +235,28 @@ indexer.contractRegister({ contract: "YearnV3VaultFactory", event: "NewVault" },
   context.chain.YearnV3Vault.add(lowerAddress(event.params.vault_address));
 });
 
+const vaultFactoryVersions: Record<string, string> = {
+  "0xe9e8c89c8fc7e8b8f23425688eb68987231178e5": "3.0.1",
+  "0x444045c5c13c246e117ed36437303cac8e250ab0": "3.0.2",
+  "0x5577edcb8a856582297cdbbb07055e6a6e38eb5f": "3.0.3",
+  "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f": "3.0.4",
+};
+
+indexer.onEvent({ contract: "YearnV3VaultFactory", event: "NewVault" }, async ({ event, context }) => {
+  const factoryAddress = lowerAddress(event.srcAddress);
+  const vaultAddress = lowerAddress(event.params.vault_address);
+  const apiVersion = vaultFactoryVersions[factoryAddress];
+  if (!apiVersion) throw new Error(`Unrecognized configured vault factory ${factoryAddress}`);
+  context.VaultAccountingSupport.set({
+    id: `${event.chainId}:${vaultAddress}`,
+    chainId: event.chainId,
+    vaultAddress,
+    factoryAddress,
+    apiVersion,
+    sourceEventId: normalizedId(event),
+  });
+});
+
 indexer.contractRegister({ contract: "YearnV3RoleManagerFactory", event: "NewProject" }, async ({ event, context }) => {
   context.chain.YearnV3RoleManager.add(lowerAddress(event.params.roleManager));
 });
@@ -222,18 +304,22 @@ indexer.onEvent({ contract: "DebtAllocatorFactoryNoVault", event: "NewDebtAlloca
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "Deposit" }, async ({ event, context }) => {
   writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.Deposit, event.params);
+  await writeAccountingCheckpoint(event, context);
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "Withdraw" }, async ({ event, context }) => {
   writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.Withdraw, event.params);
+  await writeAccountingCheckpoint(event, context);
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "DebtUpdated" }, async ({ event, context }) => {
   writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.DebtUpdated, event.params);
+  await writeAccountingCheckpoint(event, context);
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "StrategyReported" }, async ({ event, context }) => {
   writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.StrategyReported, event.params);
+  await writeAccountingCheckpoint(event, context);
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "StrategyChanged" }, async ({ event, context }) => {

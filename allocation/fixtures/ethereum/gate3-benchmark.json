@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "chainId": 1,
+  "vaultAddress": "0xbe53a109b494e5c9f97b9cd39fe969be68bf6204",
+  "apiVersion": "3.0.2",
+  "sourceEvent": "Deposit",
+  "duplicateLogicalRequests": 4,
+  "blocks": [
+    { "numberHex": "0x128a94a", "transactionHash": "0x9c4ce78c3009edd2472c9881167ede69656669abbfa091e7823e33229c7cb4b8" },
+    { "numberHex": "0x128fd84", "transactionHash": "0x0532f4fbc9b8b105b240f7a37084af6749d30ae03c540191bfb69019c036290c" },
+    { "numberHex": "0x1291b60", "transactionHash": "0x26ac9aa3a71f54d70f5b1db9ab8536adda8f2aea06b5a9da2859d4c0384f9959" },
+    { "numberHex": "0x12943b0", "transactionHash": "0x541d52397614db3ecbdbb7e1eaf59489099bc757fb3b090022cb4cb3ecdd00cb" },
+    { "numberHex": "0x1299d4d", "transactionHash": "0x7ffa105c81ec9dc4f89b48fab378bab6be30b4aee14a9d733838de170719f48e" },
+    { "numberHex": "0x129c495", "transactionHash": "0xdb8dfee03991f5c38f883b3e001a9974f766aef3ba416ffc480cfa6fc51c08dc" },
+    { "numberHex": "0x129e751", "transactionHash": "0x86c1b72af54d85a7694d58e09b9f214eb0ef3ea125bf46604b7ffc66cb3c4f50" },
+    { "numberHex": "0x12a2f89", "transactionHash": "0x03e1352438e06c227e2658fd5f3d69de473677ea908e3db8e016cf0a1aabc1cc" },
+    { "numberHex": "0x12aca12", "transactionHash": "0xf2dd5d8d2690ca0a5cca8da5979e3b488e6d94be3de92422ba10954613f09530" },
+    { "numberHex": "0x12ad27c", "transactionHash": "0xd9814b01d735d9425e71fb7a2d9e4e91631297f0624ea764f29e960f61ea0639" },
+    { "numberHex": "0x12adb00", "transactionHash": "0x404809000234fd251f8b633c7093c471190bd5e7151e499e5038028a5b7b660b" },
+    { "numberHex": "0x12b0991", "transactionHash": "0x2dbf8914ef7f73639547076259dc41b76e0051d93b78977c1197ad5c537018b0" }
+  ],
+  "projectionScenarios": [100000, 500000, 1000000]
+}

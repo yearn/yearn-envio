@@ -5,7 +5,7 @@ This directory is a separately deployable Envio project for the producer side of
 
 ## Current implementation status
 
-The current local implementation includes the Ethereum Gate 1 foundation and an accepted local Gate 2 implementation:
+The current local implementation includes the Ethereum Gate 1 foundation and locally accepted Gate 2 and Gate 3 implementations:
 
 - Dynamic discovery from the configured V3 registries, vault factories, RoleManager factory, RoleManager, and debt allocator factory.
 - The 23 required allocation source events with explicit normalization-version-1 serializers.
@@ -18,12 +18,16 @@ The current local implementation includes the Ethereum Gate 1 foundation and an 
 - Exact Ethereum handler fixtures, full-versus-incremental replay equivalence, and fixed-block runtime-family verification.
 - Separate recognition for the deployed non-vault-bound allocator factory family; its RoleManager assignees are `other`, not known vault-bound Generic allocators.
 - The deployed vault-bound `UpdateStrategyDebtRatio` ABI in addition to the plural issue-contract variant.
+- One accounting checkpoint per vault/block after `Deposit`, `Withdraw`, `DebtUpdated`, or `StrategyReported`, with deterministic same-block trigger merging.
+- A chain-scoped, cached Envio Effect for canonical archive reads of `totalAssets`, `totalDebt`, and `totalIdle`, rate limited to five calls per second.
+- EIP-1898 hash-pinned reads when supported, block-number reads with a second canonical-hash check otherwise, and fail-closed transient-only retries.
+- An explicit official-factory checkpoint support boundary: custom registry/RoleManager vault implementations retain normalized events but are not given unproven accounting certification.
+- A pinned four-release, 243-vault, 26-runtime-family mutation audit, fixed-block archive evidence, and a representative replay benchmark.
 
-The source audit is recorded in [`ABI_AUDIT.md`](ABI_AUDIT.md), and the Gate 2 acceptance evidence is recorded in [`GATE2_EVIDENCE.md`](GATE2_EVIDENCE.md).
+The source audit is recorded in [`ABI_AUDIT.md`](ABI_AUDIT.md), the Gate 2 acceptance evidence is recorded in [`GATE2_EVIDENCE.md`](GATE2_EVIDENCE.md), and Gate 3 acceptance evidence is recorded in [`GATE3_EVIDENCE.md`](GATE3_EVIDENCE.md).
 
 This is not yet a certified allocation-history producer. In particular:
 
-- Archive-RPC accounting checkpoints and the vault mutation audit remain Gate 3 work.
 - Coverage manifests, committed historical fixtures, deployed parity, monitoring, and blue-green certification remain Gate 4 work.
 - `safeForTimeline` coverage does not exist and must not be inferred from these rows.
 
@@ -37,14 +41,17 @@ corepack pnpm codegen
 corepack pnpm build
 corepack pnpm test
 ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm verify:gate2:rpc
+ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm audit:gate3:runtimes -- --blockscout --supported-only --verify-fixture
+ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm verify:gate3:rpc
+ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm benchmark:gate3:rpc
 ```
 
-The RPC verifier exits successfully with an explicit `NOT RUN` status when the variable is unset. It never prints the configured URL.
+The RPC tools exit successfully with an explicit `NOT RUN` status when the variable is unset. They never print the configured URL. Gate 3 checkpoint processing fails closed when the variable is unset; use a dedicated archive-capable endpoint.
 
 The allocation project generates its type metadata under `allocation/.envio/`; it does not use or modify the primary project's generated types or schema.
 
 ## Deployment boundary
 
-Deploy this directory as its own Envio project and database. Do not point it at the primary indexer's database. Gate 3 will require a dedicated `ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM` secret; the variable is documented in `.env.example`, but it is not consumed until checkpoint Effects are implemented.
+Deploy this directory as its own Envio project and database. Do not point it at the primary indexer's database. Gate 3 consumes the dedicated `ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM` secret documented in `.env.example`; the URL is never included in application error messages.
 
 The current Ethereum start block is deliberately broad. It is not a historical-completeness claim. Gate 4 must replace that operational starting point with evidence-backed coverage ranges and an immutable coverage revision before Kong consumes the data.

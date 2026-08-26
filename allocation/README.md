@@ -24,7 +24,7 @@ The current local implementation includes the Ethereum Gate 1 foundation and loc
 - An explicit official-factory checkpoint support boundary: custom registry/RoleManager vault implementations retain normalized events but are not given unproven accounting certification.
 - A pinned four-release, 243-vault, 26-runtime-family mutation audit, fixed-block archive evidence, and a representative replay benchmark.
 
-The source audit is recorded in [`ABI_AUDIT.md`](ABI_AUDIT.md), the Gate 2 acceptance evidence is recorded in [`GATE2_EVIDENCE.md`](GATE2_EVIDENCE.md), Gate 3 acceptance evidence is recorded in [`GATE3_EVIDENCE.md`](GATE3_EVIDENCE.md), and the in-progress Gate 4 consumer contract is recorded in [`GATE4_CONTRACT.md`](GATE4_CONTRACT.md).
+The source audit is recorded in [`ABI_AUDIT.md`](ABI_AUDIT.md), Gate 2 evidence is in [`GATE2_EVIDENCE.md`](GATE2_EVIDENCE.md), Gate 3 evidence is in [`GATE3_EVIDENCE.md`](GATE3_EVIDENCE.md), the Gate 4 consumer contract is in [`GATE4_CONTRACT.md`](GATE4_CONTRACT.md), current Gate 4 acceptance status is in [`GATE4_EVIDENCE.md`](GATE4_EVIDENCE.md), and replay/rollout operations are in [`RUNBOOK.md`](RUNBOOK.md).
 
 This is not yet a certified allocation-history producer. In particular:
 
@@ -40,6 +40,10 @@ corepack pnpm install
 corepack pnpm codegen
 corepack pnpm build
 corepack pnpm test
+corepack pnpm coverage:check
+corepack pnpm coverage:publish # dry run; add -- --publish only for an approved candidate
+corepack pnpm parity:gate4 # reports NOT RUN without candidate GraphQL and archive configuration
+corepack pnpm monitor:gate4 # reports NOT RUN without candidate GraphQL and archive configuration
 ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm verify:gate2:rpc
 ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm audit:gate3:runtimes -- --blockscout --supported-only --verify-fixture
 ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm verify:gate3:rpc
@@ -47,6 +51,8 @@ ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm benchmark:
 ```
 
 The RPC tools exit successfully with an explicit `NOT RUN` status when the variable is unset. They never print the configured URL. Gate 3 checkpoint processing fails closed when the variable is unset; use a dedicated archive-capable endpoint.
+
+Gate 4 coverage is generated from `coverage/ethereum.json`. The checked-in revision is a complete draft inventory with 243 official-factory entries, 78 explicit custom-runtime exclusions, and zero `safeForTimeline` rows. `coverage:publish` validates generated-row freshness and performs no write unless `--publish` is explicit.
 
 The allocation project generates its type metadata under `allocation/.envio/`; it does not use or modify the primary project's generated types or schema.
 

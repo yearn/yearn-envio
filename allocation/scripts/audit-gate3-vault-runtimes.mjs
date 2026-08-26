@@ -7,7 +7,7 @@ import {
   parseAbiItem,
 } from "viem";
 import { mainnet } from "viem/chains";
-import { readFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { isDeepStrictEqual } from "node:util";
 
 const failSanitized = (error) => {
@@ -45,6 +45,9 @@ const maxLogRange = 10_000n;
 const useBlockscoutDiscovery = process.argv.includes("--blockscout");
 const supportedOnly = process.argv.includes("--supported-only");
 const useLatestBytecode = process.argv.includes("--latest-bytecode");
+const outputArgumentIndex = process.argv.indexOf("--output");
+const outputPath = outputArgumentIndex === -1 ? undefined : process.argv[outputArgumentIndex + 1];
+if (outputArgumentIndex !== -1 && !outputPath) throw new Error("--output requires a file path");
 const blockscoutApiUrl = "https://eth.blockscout.com/api";
 const registries = [
   "0x0377b4daDDA86C89A0091772B79ba67d0E5F7198",
@@ -91,14 +94,22 @@ const rpcCall = async (operation) => {
   for (let attempt = 1; ; attempt += 1) {
     const delay = Math.max(0, nextRpcCallAt - Date.now());
     if (delay) await sleep(delay);
-    nextRpcCallAt = Date.now() + 250;
+    nextRpcCallAt = Date.now() + 500;
     try {
       return await operation();
     } catch (error) {
-      const code = typeof error === "object" && error && "code" in error ? error.code : undefined;
-      const status = typeof error === "object" && error && "status" in error ? error.status : undefined;
+      const chain = [];
+      let current = error;
+      while (current && !chain.includes(current)) {
+        chain.push(current);
+        current = typeof current === "object" && "cause" in current ? current.cause : undefined;
+      }
+      const withCode = chain.find((item) => typeof item === "object" && item && "code" in item);
+      const withStatus = chain.find((item) => typeof item === "object" && item && "status" in item);
+      const code = withCode?.code;
+      const status = withStatus?.status;
       if (attempt >= 5 || (code !== -32029 && status !== 429)) throw error;
-      await sleep(attempt * 1_000);
+      await sleep(attempt * 2_000);
     }
   }
 };
@@ -232,7 +243,25 @@ const roleManagers = new Set();
 const vaults = new Set();
 const officialFactoryVaults = new Set();
 const vaultApiVersions = new Map();
+const vaultDiscovery = new Map();
 const discoveryCounts = { NewEndorsedVault: 0, NewVault: 0, AddedNewVault: 0 };
+
+const recordVaultDiscovery = (vaultAddress, log, source, factoryAddress) => {
+  const address = lower(vaultAddress);
+  const blockNumber = Number(BigInt(log.blockNumber));
+  const existing = vaultDiscovery.get(address);
+  const sources = new Set(existing?.sources ?? []);
+  sources.add(source);
+  const isEarlierDiscovery = existing === undefined || blockNumber < existing.discoveryBlock;
+  vaultDiscovery.set(address, {
+    discoveryBlock: Math.min(existing?.discoveryBlock ?? blockNumber, blockNumber),
+    discoveryBlockHash: isEarlierDiscovery && log.blockHash ? lower(log.blockHash) : existing?.discoveryBlockHash ?? null,
+    deploymentBlock: source === "officialFactory" ? blockNumber : existing?.deploymentBlock ?? null,
+    deploymentBlockHash: source === "officialFactory" && log.blockHash ? lower(log.blockHash) : existing?.deploymentBlockHash ?? null,
+    factoryAddress: factoryAddress ? lower(factoryAddress) : existing?.factoryAddress ?? null,
+    sources: [...sources].sort(),
+  });
+};
 
 for (const log of staticLogs) {
   const definition = staticEventDefinitions.find((event) => topic(event) === log.topics[0]);
@@ -245,11 +274,14 @@ for (const log of staticLogs) {
     const vaultAddress = lower(decoded.args.vault_address);
     vaults.add(vaultAddress);
     officialFactoryVaults.add(vaultAddress);
+    recordVaultDiscovery(vaultAddress, log, "officialFactory", log.address);
     const version = configuredFactoryVersions.get(lower(log.address));
     if (version) vaultApiVersions.set(vaultAddress, version);
   } else {
     discoveryCounts.NewEndorsedVault += 1;
-    vaults.add(lower(decoded.args.vault));
+    const vaultAddress = lower(decoded.args.vault);
+    vaults.add(vaultAddress);
+    recordVaultDiscovery(vaultAddress, log, "registry", null);
   }
 }
 
@@ -257,10 +289,13 @@ const roleManagerLogs = supportedOnly ? [] : await getLogs([...roleManagers], [e
 for (const log of roleManagerLogs) {
   const decoded = decodeEventLog({ abi: [events.AddedNewVault], data: log.data, topics: log.topics });
   discoveryCounts.AddedNewVault += 1;
-  vaults.add(lower(decoded.args.vault));
+  const vaultAddress = lower(decoded.args.vault);
+  vaults.add(vaultAddress);
+  recordVaultDiscovery(vaultAddress, log, "roleManager", null);
 }
 
 const runtimeFamilies = new Map();
+const vaultInventory = [];
 for (const vaultAddress of [...vaults].sort()) {
   const block = useLatestBytecode ? {} : { blockNumber: auditBlock };
   const bytecode = await rpcCall(() => client.getCode({ address: vaultAddress, ...block }));
@@ -282,6 +317,15 @@ for (const vaultAddress of [...vaults].sort()) {
   family.vaultCount += 1;
   if (officialFactoryVaults.has(vaultAddress)) family.officialFactoryVaultCount += 1;
   runtimeFamilies.set(familyKey, family);
+  vaultInventory.push({
+    vaultAddress,
+    ...vaultDiscovery.get(vaultAddress),
+    officialFactory: officialFactoryVaults.has(vaultAddress),
+    apiVersion: vaultApiVersions.get(vaultAddress) ?? null,
+    runtimeCodeHash,
+    implementationAddress: implementationAddress ?? null,
+    familyKey,
+  });
 }
 
 const versionAbis = [
@@ -318,6 +362,10 @@ for (const family of runtimeFamilies.values()) {
   if (!family.apiVersion) throw new Error(`Cannot resolve API version for ${family.representativeVault}`);
 }
 
+for (const vault of vaultInventory) {
+  vault.apiVersion ??= runtimeFamilies.get(vault.familyKey)?.apiVersion ?? null;
+}
+
 const output = {
   schemaVersion: 1,
   chainId: 1,
@@ -328,6 +376,7 @@ const output = {
   discoveredVaultCount: vaults.size,
   officialFactoryVaultCount: officialFactoryVaults.size,
   vaultFactories: await inspectVaultFactories(useLatestBytecode ? null : auditBlock),
+  vaults: vaultInventory.map(({ familyKey: _, ...vault }) => vault),
   runtimeFamilies: [...runtimeFamilies.values()]
     .filter((family) => !supportedOnly || family.officialFactoryVaultCount > 0)
     .sort((left, right) =>
@@ -360,5 +409,11 @@ if (process.argv.includes("--verify-fixture")) {
     `Gate 3 official runtime audit: PASS (${output.officialFactoryVaultCount} vaults, ${output.runtimeFamilies.length} runtime families, ${versions.length} releases)`,
   );
 } else {
-  console.log(JSON.stringify(output, null, 2));
+  const serialized = `${JSON.stringify(output, null, 2)}\n`;
+  if (outputPath) {
+    writeFileSync(outputPath, serialized);
+    console.log(`Gate 3 vault runtime inventory: PASS (${output.vaults.length} vaults written)`);
+  } else {
+    console.log(serialized);
+  }
 }

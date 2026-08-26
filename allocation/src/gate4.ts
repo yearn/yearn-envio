@@ -35,12 +35,22 @@ export type CoverageEntry = {
   earliestSafeTimelineBlock: number | null;
 };
 
+export type CoverageExclusion = {
+  chainId: number;
+  vaultAddress: string;
+  discoveryBlock: number;
+  apiVersion: string;
+  runtimeCodeHash: string;
+  reason: string;
+};
+
 export type CoverageManifest = {
   manifestVersion: typeof COVERAGE_MANIFEST_VERSION;
   coverageRevision: string;
   producerCommit: string;
   validatedAt: number;
   entries: CoverageEntry[];
+  exclusions: CoverageExclusion[];
 };
 
 export type AllocationCursor = {
@@ -109,6 +119,16 @@ export const validateCoverageManifest = (manifest: CoverageManifest): CoverageMa
       throw new Error(`Safe coverage requires earliestSafeTimelineBlock for ${id}`);
     }
   }
+  for (const exclusion of manifest.exclusions) {
+    assertNonNegativeInteger(exclusion.chainId, "exclusion.chainId");
+    assertLowercaseAddress(exclusion.vaultAddress, "exclusion.vaultAddress");
+    assertNonNegativeInteger(exclusion.discoveryBlock, "exclusion.discoveryBlock");
+    assertHash(exclusion.runtimeCodeHash, "exclusion.runtimeCodeHash");
+    if (!exclusion.apiVersion || !exclusion.reason) throw new Error("Coverage exclusions require API version and reason");
+    const id = coverageId(manifest.coverageRevision, exclusion.chainId, exclusion.vaultAddress);
+    if (ids.has(id)) throw new Error(`Duplicate included or excluded vault ${id}`);
+    ids.add(id);
+  }
   return manifest;
 };
 
@@ -131,6 +151,73 @@ export const coverageEntity = (manifest: CoverageManifest, entry: CoverageEntry)
   producerCommit: manifest.producerCommit,
   validatedAt: BigInt(manifest.validatedAt),
 });
+
+export const orderedCoverageEntries = (manifest: CoverageManifest): CoverageEntry[] =>
+  [...validateCoverageManifest(manifest).entries].sort(
+    (left, right) => left.chainId - right.chainId || left.vaultAddress.localeCompare(right.vaultAddress),
+  );
+
+export const coverageEntityRows = (manifest: CoverageManifest) =>
+  orderedCoverageEntries(manifest).map((entry) => {
+    const entity = coverageEntity(manifest, entry);
+    return { ...entity, validatedAt: entity.validatedAt.toString() };
+  });
+
+const markdownValue = (value: number | string | null): string => value === null ? "unavailable" : String(value);
+
+export const coverageMarkdown = (manifest: CoverageManifest): string => {
+  const entries = orderedCoverageEntries(manifest);
+  const exclusions = [...manifest.exclusions].sort(
+    (left, right) => left.chainId - right.chainId || left.vaultAddress.localeCompare(right.vaultAddress),
+  );
+  const safeCount = entries.filter(({ safeForTimeline }) => safeForTimeline).length;
+  const lines = [
+    "# Ethereum allocation coverage",
+    "",
+    `Coverage revision: \`${manifest.coverageRevision}\``,
+    "",
+    `Producer commit: \`${manifest.producerCommit}\``,
+    "",
+    `Validated at: \`${manifest.validatedAt}\``,
+    "",
+    `Entries: ${entries.length}; safe for timeline: ${safeCount}; explicit exclusions: ${exclusions.length}`,
+    "",
+    "> This file is generated from `ethereum.json`. Do not edit it directly.",
+    "",
+    "| Chain | Vault | API | Deployment | Discovery | First event | Allocator start | Coverage range | Runtime hash | Safe | Known gaps |",
+    "| ---: | --- | --- | ---: | ---: | ---: | ---: | --- | --- | :---: | --- |",
+  ];
+  for (const entry of entries) {
+    const gaps = [...entry.knownGaps]
+      .sort((left, right) => left.code.localeCompare(right.code) || left.detail.localeCompare(right.detail))
+      .map(({ code, detail }) => `${code}: ${detail}`)
+      .join("; ") || "none";
+    lines.push([
+      `| ${entry.chainId}`,
+      `\`${entry.vaultAddress}\``,
+      entry.apiVersion,
+      markdownValue(entry.vaultDeploymentBlock),
+      markdownValue(entry.discoveryBlock),
+      markdownValue(entry.firstRequiredEventBlock),
+      markdownValue(entry.allocatorHistoryStartBlock),
+      `${entry.coverageStartBlock}–${entry.validatedThroughBlock}`,
+      `\`${entry.runtimeCodeHash}\``,
+      entry.safeForTimeline ? "yes" : "no",
+      `${gaps} |`,
+    ].join(" | "));
+  }
+  lines.push(
+    "",
+    "## Explicit exclusions",
+    "",
+    "| Chain | Vault | API | Discovery | Runtime hash | Reason |",
+    "| ---: | --- | --- | ---: | --- | --- |",
+  );
+  for (const exclusion of exclusions) {
+    lines.push(`| ${exclusion.chainId} | \`${exclusion.vaultAddress}\` | ${exclusion.apiVersion} | ${exclusion.discoveryBlock} | \`${exclusion.runtimeCodeHash}\` | ${exclusion.reason} |`);
+  }
+  return `${lines.join("\n")}\n`;
+};
 
 export const validateAllocationCursor = (
   value: unknown,
@@ -173,3 +260,14 @@ export const allocationContinuationWhere = (cursor: AllocationCursor) => ({
     },
   ],
 });
+
+export type AllocationOrderKey = Pick<AllocationCursor, "blockNumber" | "transactionIndex" | "logIndex" | "id">;
+
+export const compareAllocationOrder = (left: AllocationOrderKey, right: AllocationOrderKey): number =>
+  left.blockNumber - right.blockNumber ||
+  left.transactionIndex - right.transactionIndex ||
+  left.logIndex - right.logIndex ||
+  left.id.localeCompare(right.id);
+
+export const isAfterAllocationCursor = (row: AllocationOrderKey, cursor: AllocationCursor): boolean =>
+  compareAllocationOrder(row, cursor) > 0;

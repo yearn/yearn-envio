@@ -2,6 +2,8 @@
 
 Gate 4 is in progress. This document defines the consumer contract before any coverage revision can be certified. No `safeForTimeline = true` row exists, and deployed-candidate parity has not run.
 
+The current checked-in draft revision accounts for all 321 vaults discovered through Ethereum block 25,835,600: 243 official-factory vaults produce candidate coverage rows and 78 custom registry/RoleManager implementations are explicit exclusions. All 243 rows remain unsafe, with event-history, allocator-history, and deployed-candidate parity gaps recorded.
+
 ## Coverage authority
 
 `VaultAllocationCoverage` is revision scoped. Its ID is `${coverageRevision}:${chainId}:${vaultLower}`. A checked-in manifest will be authoritative; the database entity and human-readable coverage matrix must be deterministic projections of that same file.
@@ -183,15 +185,24 @@ query LatestVaultAccountingCheckpoint(
 
 ## Endpoint, authentication, and errors
 
-The candidate endpoint and its authentication mode belong to the Gate 4 deployment record; they are not known locally yet. The parity harness must accept them only through dedicated environment variables and must never print their values.
+The candidate endpoint and its authentication mode belong to the Gate 4 deployment record; they are not known locally yet. Coverage publication reads `ENVIO_ALLOCATION_GRAPHQL_URL` and an optional bearer `ENVIO_ALLOCATION_GRAPHQL_TOKEN`. The command dry-runs unless `--publish` is explicit, verifies an already-published revision byte-for-byte, and refuses partial or conflicting immutable revisions. The parity harness must use dedicated environment variables and must never print their values.
 
 Hasura/transport errors abort the page. Malformed cursors, unsupported cursor versions, scope/revision mismatches, and page sizes outside 1–2,000 are caller errors. No error path returns an empty page as a successful restart.
 
+## Exact Ethereum parity fixtures
+
+`fixtures/ethereum/gate4-parity.json` pins three canonical blocks and their exact normalized events, transaction envelopes, block-end vault accounting, and full lifecycle-seen strategy debt state:
+
+- yvWETH-1 multi-strategy debt updates plus a same-transaction Withdraw;
+- yvUSDC-1 loss-sensitive report for a positive-debt strategy with no allocator target event in the audited range;
+- yvUSDC-1 Deposit whose block-end assets are entirely idle.
+
+The fixture also references the exact committed yvUSDC-1 `UpdateDebtAllocator` assignment-change case in `gate2.json`. `parity:gate4` compares every fixture event and checkpoint with the candidate GraphQL deployment, then independently repeats the accounting read through the archive RPC. It reports `NOT RUN` when either credential set is absent and never prints their values.
+
 ## Remaining acceptance work
 
-- Build the complete versioned Ethereum manifest and deterministic entity/matrix publication.
-- Commit all required exact yvWETH/yvUSDC and loss-sensitive fixtures.
-- Run credentialed parity against a deployed candidate.
+- Replace the complete draft Ethereum manifest with a certified immutable revision after parity; deterministic entity/matrix generation and guarded publication are implemented.
+- Run the implemented credentialed parity harness against a deployed candidate; local runs remain `NOT RUN` without candidate configuration.
 - Prove full replay equals incremental continuation at the same cutoff.
 - Record replay/database/cache/GraphQL metrics and monitoring.
 - Complete the blue-green deployment and backout runbook.

@@ -5,6 +5,13 @@
   "scripts": {
     "build": "tsc --noEmit",
     "codegen": "envio codegen",
+    "coverage:build-draft": "tsx scripts/build-gate4-draft-manifest.ts",
+    "coverage:generate": "tsx scripts/generate-gate4-coverage.ts",
+    "coverage:check": "tsx scripts/generate-gate4-coverage.ts --check",
+    "coverage:publish": "tsx scripts/publish-gate4-coverage.ts",
+    "fixtures:capture:gate4": "tsx scripts/capture-gate4-fixtures.ts",
+    "parity:gate4": "tsx scripts/verify-gate4-parity.ts",
+    "monitor:gate4": "tsx scripts/monitor-gate4-candidate.ts",
     "test": "vitest run",
     "audit:gate3:runtimes": "node scripts/audit-gate3-vault-runtimes.mjs",
     "benchmark:gate3:rpc": "tsx scripts/benchmark-gate3-checkpoints.ts",

@@ -4,7 +4,11 @@ import {
   DEFAULT_PAGE_SIZE,
   MAX_PAGE_SIZE,
   allocationContinuationWhere,
+  coverageEntityRows,
   coverageEntity,
+  coverageMarkdown,
+  compareAllocationOrder,
+  isAfterAllocationCursor,
   normalizePageSize,
   validateAllocationCursor,
   validateCoverageManifest,
@@ -21,6 +25,7 @@ const manifest = (safeForTimeline = false): CoverageManifest => ({
   coverageRevision: REVISION,
   producerCommit: "c".repeat(40),
   validatedAt: 1_777_000_000,
+  exclusions: [],
   entries: [{
     chainId: 1,
     vaultAddress: VAULT,
@@ -92,6 +97,19 @@ describe("Gate 4 coverage contract", () => {
     invalid.entries.push({ ...invalid.entries[0]! });
     expect(() => validateCoverageManifest(invalid)).toThrow("Duplicate coverage entry");
   });
+
+  it("generates entity rows and the human matrix in deterministic vault order", () => {
+    const value = manifest();
+    value.entries.push({ ...value.entries[0]!, vaultAddress: `0x${"a".repeat(40)}` });
+    expect(coverageEntityRows(value).map(({ vaultAddress }) => vaultAddress)).toEqual([
+      `0x${"a".repeat(40)}`,
+      VAULT,
+    ]);
+    const markdown = coverageMarkdown(value);
+    expect(markdown).toContain("Entries: 2; safe for timeline: 0; explicit exclusions: 0");
+    expect(markdown.indexOf(`0x${"a".repeat(40)}`)).toBeLessThan(markdown.indexOf(VAULT));
+    expect(markdown).toContain("parity-not-run: Candidate deployment parity has not run");
+  });
 });
 
 describe("Gate 4 allocation cursor contract", () => {
@@ -119,5 +137,24 @@ describe("Gate 4 allocation cursor contract", () => {
     expect(normalizePageSize(MAX_PAGE_SIZE)).toBe(MAX_PAGE_SIZE);
     expect(() => normalizePageSize(0)).toThrow("between 1");
     expect(() => normalizePageSize(MAX_PAGE_SIZE + 1)).toThrow("between 1");
+  });
+
+  it("reconstructs a same-transaction page boundary without gaps or duplicates", () => {
+    const rows = [151, 160, 170, 173].map((logIndex) => ({
+      blockNumber: 21_589_454,
+      transactionIndex: 44,
+      logIndex,
+      id: `1:0x${"e".repeat(64)}:${logIndex}`,
+    }));
+    const firstPage = rows.slice(0, 2);
+    const last = firstPage.at(-1)!;
+    const pageCursor: AllocationCursor = {
+      ...cursor,
+      ...last,
+    };
+    const continuation = rows.filter((row) => isAfterAllocationCursor(row, pageCursor));
+    expect([...firstPage, ...continuation]).toEqual(rows);
+    expect(continuation).toEqual(rows.slice(2));
+    expect([...rows].reverse().sort(compareAllocationOrder)).toEqual(rows);
   });
 });

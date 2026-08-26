@@ -35,7 +35,7 @@ The final three commands must respectively report `DRY RUN`, `NOT RUN`, and `NOT
 4. Replay from the configured start and record Effect calls, Effect errors/retries, elapsed time, database growth, Effect-cache growth, and process restarts.
 5. Run `monitor:gate4` repeatedly. Sync readiness, exact coverage-row publication, the semantic canary, latest event, and latest checkpoint are separate signals.
 6. Run `coverage:publish -- --publish` only after the candidate schema exists and the checked-in generated rows pass `coverage:check`. Publication is atomic for one immutable revision and refuses conflicting existing rows.
-7. Run `parity:gate4` against the candidate. It must pass all exact yvWETH/yvUSDC event/checkpoint blocks and direct archive reads.
+7. Run `parity:gate4` against the candidate. It must pass all exact yvWETH/yvUSDC event/checkpoint blocks, assignment/provenance rows, initial/continuation cursor pages, and direct archive reads.
 8. Replay a fresh database to the same cutoff and compare its ordered events, checkpoints, assignments, and coverage rows with an incremental continuation at that cutoff.
 9. Measure the documented initial and continuation GraphQL queries at page sizes 500 and 2,000, plus latest-checkpoint lookup latency.
 

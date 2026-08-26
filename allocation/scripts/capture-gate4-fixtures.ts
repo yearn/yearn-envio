@@ -1,4 +1,4 @@
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import {
   createPublicClient,
   decodeEventLog,
@@ -9,6 +9,7 @@ import {
 import { mainnet } from "viem/chains";
 import { readVaultAccountingFromArchive } from "../src/Effects.js";
 import {
+  NORMALIZATION_VERSION,
   allocationEventId,
   serializers,
   topLevelInputSelector,
@@ -189,8 +190,17 @@ try {
       const serializer = eventSerializer(eventName);
       events.push({
         id: allocationEventId(1, transactionHash, log.logIndex),
+        chainId: 1,
+        vaultAddress: candidate.vaultAddress,
+        sourceAddress: candidate.vaultAddress,
+        sourceType: serializer.sourceType,
         eventName,
         signature: log.topics[0]!.toLowerCase(),
+        normalizationVersion: NORMALIZATION_VERSION,
+        abiVariant: serializer.abiVariant,
+        blockNumber: candidate.blockNumber,
+        blockTimestamp: Number(block.timestamp),
+        blockHash: block.hash.toLowerCase(),
         transactionHash: transactionHash.toLowerCase(),
         transactionIndex: log.transactionIndex,
         logIndex: log.logIndex,
@@ -291,6 +301,42 @@ try {
     });
   }
 
+  const gate2 = JSON.parse(
+    readFileSync(new URL("../fixtures/ethereum/gate2.json", import.meta.url), "utf8"),
+  ) as {
+    historicalReplay: Array<{
+      event: string;
+      srcAddress: string;
+      logIndex: number;
+      block: { number: number; timestamp: number; hash: string };
+      transaction: {
+        hash: string;
+        transactionIndex: number;
+        from: string;
+        to: string | null;
+        input: string | null;
+      };
+      params: Record<string, string>;
+    }>;
+  };
+  const assignmentEvent = gate2.historicalReplay.find(({ event }) => event === "UpdateDebtAllocator");
+  if (!assignmentEvent) throw new FixtureCaptureError("Gate 2 fixture lacks UpdateDebtAllocator");
+  const allocatorAddress = assignmentEvent.params.debtAllocator;
+  const vaultAddress = assignmentEvent.params.vault;
+  if (!allocatorAddress || !vaultAddress) throw new FixtureCaptureError("Gate 2 assignment fixture is incomplete");
+  const unboundEvent = gate2.historicalReplay.find((event) =>
+    event.event === "NewDebtAllocator" &&
+    event.params.allocator === allocatorAddress &&
+    event.params.governance !== undefined
+  );
+  if (!unboundEvent) throw new FixtureCaptureError("Gate 2 fixture lacks assignment allocator provenance");
+  const governanceAddress = unboundEvent.params.governance;
+  if (!governanceAddress) throw new FixtureCaptureError("Gate 2 unbound deployment fixture is incomplete");
+  const assignmentSourceEventId = allocationEventId(1, assignmentEvent.transaction.hash, assignmentEvent.logIndex);
+  const unboundDeploymentId = `1:${allocatorAddress}`;
+  const assignmentSerializer = serializers.roleManager.UpdateDebtAllocator;
+  const unboundSerializer = serializers.debtAllocatorFactory.NewDebtAllocatorWithoutVault;
+
   const fixture = {
     schemaVersion: 1,
     chainId: 1,
@@ -300,7 +346,66 @@ try {
       vaultAddress: "0xbe53a109b494e5c9f97b9cd39fe969be68bf6204",
       blockNumber: 20_987_762,
       blockHash: "0xfd1d7c1bb8ebb7e6c370831640155cb98471814fd84100c4ee8eeecf11268ae3",
-      sourceEventId: "1:0x3aa99e65b765359bb210eddaf0e9262ac3829e0a730c6f173d5073021d230b2d:422",
+      sourceEventId: assignmentSourceEventId,
+      allocatorAddress,
+      expected: {
+        sourceEvent: {
+          id: assignmentSourceEventId,
+          chainId: 1,
+          vaultAddress,
+          sourceAddress: assignmentEvent.srcAddress,
+          sourceType: assignmentSerializer.sourceType,
+          eventName: assignmentSerializer.eventName,
+          signature: assignmentSerializer.signature,
+          normalizationVersion: NORMALIZATION_VERSION,
+          abiVariant: assignmentSerializer.abiVariant,
+          blockNumber: assignmentEvent.block.number,
+          blockTimestamp: assignmentEvent.block.timestamp,
+          blockHash: assignmentEvent.block.hash,
+          transactionHash: assignmentEvent.transaction.hash,
+          transactionIndex: assignmentEvent.transaction.transactionIndex,
+          logIndex: assignmentEvent.logIndex,
+          topLevelTransactionFrom: assignmentEvent.transaction.from,
+          topLevelTransactionTo: assignmentEvent.transaction.to,
+          topLevelInputSelector: topLevelInputSelector(assignmentEvent.transaction.input),
+          strategyAddress: null,
+          argsJson: assignmentSerializer.serialize({
+            vault: vaultAddress,
+            debtAllocator: allocatorAddress,
+          }),
+        },
+        assignment: {
+          id: assignmentSourceEventId,
+          chainId: 1,
+          vaultAddress,
+          allocatorAddress,
+          roleManagerAddress: assignmentEvent.srcAddress,
+          assignmentType: "updated",
+          implementationRecognition: "other",
+          blockNumber: assignmentEvent.block.number,
+          blockTimestamp: String(assignmentEvent.block.timestamp),
+          blockHash: assignmentEvent.block.hash,
+          transactionHash: assignmentEvent.transaction.hash,
+          transactionIndex: assignmentEvent.transaction.transactionIndex,
+          logIndex: assignmentEvent.logIndex,
+          sourceEventId: assignmentSourceEventId,
+        },
+        unboundDeployment: {
+          id: unboundDeploymentId,
+          chainId: 1,
+          allocatorAddress,
+          factoryAddress: unboundEvent.srcAddress,
+          governanceAddress,
+          implementationRecognition: "other",
+          abiVariant: unboundSerializer.abiVariant,
+          createdBlock: unboundEvent.block.number,
+          createdTimestamp: String(unboundEvent.block.timestamp),
+          createdTransactionHash: unboundEvent.transaction.hash,
+          createdEventId: allocationEventId(1, unboundEvent.transaction.hash, unboundEvent.logIndex),
+        },
+        boundDeploymentIds: [],
+        conflictIds: [],
+      },
     },
   };
   writeFileSync(

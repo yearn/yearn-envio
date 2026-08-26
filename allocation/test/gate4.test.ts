@@ -40,6 +40,12 @@ const manifest = (safeForTimeline = false): CoverageManifest => ({
     checkpointTriggerAuditComplete: true,
     safeForTimeline,
     knownGaps: safeForTimeline ? [] : [{ code: "parity-not-run", detail: "Candidate deployment parity has not run" }],
+    discoverySources: [{
+      sourceType: "officialFactory",
+      sourceAddress: `0x${"d".repeat(40)}`,
+      blockNumber: 18_000_000,
+      blockHash: HASH,
+    }],
     vaultDeploymentBlock: 18_000_000,
     discoveryBlock: 18_000_000,
     firstRequiredEventBlock: 18_000_001,
@@ -90,6 +96,29 @@ describe("Gate 4 coverage contract", () => {
     invalid.entries[0]!.eventHistoryComplete = false;
     expect(() => validateCoverageManifest(invalid)).toThrow("Unsafe timeline certification");
     expect(validateCoverageManifest(manifest(true)).entries[0]!.safeForTimeline).toBe(true);
+  });
+
+  it("rejects truthy non-boolean completeness values from parsed JSON", () => {
+    const invalid = manifest(true) as unknown as Record<string, unknown>;
+    const [entry] = invalid.entries as Array<Record<string, unknown>>;
+    entry!.eventHistoryComplete = "false";
+    expect(() => validateCoverageManifest(invalid)).toThrow("eventHistoryComplete must be a boolean");
+  });
+
+  it("rejects safe coverage whose published start differs from the earliest safe block", () => {
+    const invalid = manifest(true);
+    invalid.entries[0]!.earliestSafeTimelineBlock = invalid.entries[0]!.coverageStartBlock + 1;
+    expect(() => validateCoverageManifest(invalid)).toThrow("must start at earliestSafeTimelineBlock");
+
+    invalid.entries[0]!.earliestSafeTimelineBlock = invalid.entries[0]!.validatedThroughBlock + 1;
+    expect(() => validateCoverageManifest(invalid)).toThrow("must be within the covered vault range");
+  });
+
+  it("rejects malformed gap records instead of trusting the TypeScript cast", () => {
+    const invalid = manifest() as unknown as Record<string, unknown>;
+    const [entry] = invalid.entries as Array<Record<string, unknown>>;
+    entry!.knownGaps = [{ code: "candidate-parity-not-run", detail: "" }];
+    expect(() => validateCoverageManifest(invalid)).toThrow("knownGaps[0].detail must be a non-empty string");
   });
 
   it("rejects duplicate revision-scoped vault rows", () => {

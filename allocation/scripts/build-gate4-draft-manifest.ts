@@ -2,7 +2,14 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { createPublicClient, http } from "viem";
 import { mainnet } from "viem/chains";
 import { withTransientRpcRetry, sanitizeArchiveRpcError } from "../src/checkpoints.js";
-import type { CoverageEntry, CoverageExclusion, CoverageManifest } from "../src/gate4.js";
+import type {
+  CoverageDiscoverySource,
+  CoverageEntry,
+  CoverageExclusion,
+  CoverageManifest,
+} from "../src/gate4.js";
+
+type InventoryDiscoverySource = Omit<CoverageDiscoverySource, "blockHash"> & { blockHash: string | null };
 
 type InventoryVault = {
   vaultAddress: string;
@@ -11,6 +18,7 @@ type InventoryVault = {
   officialFactory: boolean;
   apiVersion: string | null;
   runtimeCodeHash: string;
+  discoverySources: InventoryDiscoverySource[];
 };
 
 type RuntimeInventory = {
@@ -63,6 +71,20 @@ const readBlockHash = async (blockNumber: number): Promise<string> => {
   return block.hash.toLowerCase();
 };
 
+const resolveDiscoverySources = async (vault: InventoryVault): Promise<CoverageDiscoverySource[]> => {
+  if (!Array.isArray(vault.discoverySources) || vault.discoverySources.length === 0) {
+    fail(`Inventory lacks discovery sources for ${vault.vaultAddress}`);
+  }
+  const sources: CoverageDiscoverySource[] = [];
+  for (const source of vault.discoverySources) {
+    sources.push({
+      ...source,
+      blockHash: source.blockHash ?? await readBlockHash(source.blockNumber),
+    });
+  }
+  return sources;
+};
+
 try {
   const auditHash = await readBlockHash(inventory.auditBlock.number);
   if (auditHash !== inventory.auditBlock.hash.toLowerCase()) fail("Pinned inventory audit hash is no longer canonical");
@@ -91,6 +113,7 @@ try {
         { code: "candidate-parity-not-run", detail: "Credentialed parity against a deployed allocation candidate has not run" },
         { code: "event-history-not-certified", detail: "First required event and full event replay equivalence are not yet certified" },
       ],
+      discoverySources: await resolveDiscoverySources(vault),
       vaultDeploymentBlock: vault.deploymentBlock,
       discoveryBlock: vault.discoveryBlock,
       firstRequiredEventBlock: null,
@@ -101,20 +124,21 @@ try {
     });
   }
 
-  const exclusions: CoverageExclusion[] = inventory.vaults
+  const exclusions: CoverageExclusion[] = [];
+  for (const vault of inventory.vaults
     .filter(({ officialFactory }) => !officialFactory)
-    .sort((left, right) => left.vaultAddress.localeCompare(right.vaultAddress))
-    .map((vault) => {
-      if (vault.apiVersion === null) fail(`Custom inventory lacks API version for ${vault.vaultAddress}`);
-      return {
+    .sort((left, right) => left.vaultAddress.localeCompare(right.vaultAddress))) {
+    if (vault.apiVersion === null) fail(`Custom inventory lacks API version for ${vault.vaultAddress}`);
+    exclusions.push({
         chainId: 1,
         vaultAddress: vault.vaultAddress,
         discoveryBlock: vault.discoveryBlock,
         apiVersion: vault.apiVersion,
         runtimeCodeHash: vault.runtimeCodeHash,
         reason: "Custom registry or RoleManager implementation lacks official-factory provenance and release-specific mutation certification",
-      };
-    });
+        discoverySources: await resolveDiscoverySources(vault),
+      });
+  }
 
   const manifest: CoverageManifest = { ...current, entries, exclusions };
   writeFileSync(new URL("ethereum.json", coverageDirectory), `${JSON.stringify(manifest, null, 2)}\n`);

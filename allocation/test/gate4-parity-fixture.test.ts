@@ -14,7 +14,17 @@ const fixture = JSON.parse(
     requirements: string[];
     events: Array<{
       id: string;
+      chainId: number;
+      vaultAddress: string;
+      sourceAddress: string;
+      sourceType: string;
       eventName: string;
+      signature: string;
+      normalizationVersion: number;
+      abiVariant: string | null;
+      blockNumber: number;
+      blockTimestamp: number;
+      blockHash: string;
       transactionHash: string;
       transactionIndex: number;
       logIndex: number;
@@ -41,6 +51,23 @@ const fixture = JSON.parse(
     blockNumber: number;
     blockHash: string;
     sourceEventId: string;
+    allocatorAddress: string;
+    expected: {
+      sourceEvent: { id: string; eventName: string; vaultAddress: string };
+      assignment: {
+        id: string;
+        allocatorAddress: string;
+        implementationRecognition: string;
+        assignmentType: string;
+      };
+      unboundDeployment: {
+        id: string;
+        allocatorAddress: string;
+        implementationRecognition: string;
+      };
+      boundDeploymentIds: string[];
+      conflictIds: string[];
+    };
   };
 };
 const gate2 = JSON.parse(
@@ -65,6 +92,14 @@ describe("Gate 4 exact Ethereum parity fixtures", () => {
       ));
       for (const event of parityCase.events) {
         expect(event.id).toBe(allocationEventId(1, event.transactionHash, event.logIndex));
+        expect(event.chainId).toBe(1);
+        expect(event.vaultAddress).toBe(parityCase.vaultAddress);
+        expect(event.sourceAddress).toBe(parityCase.vaultAddress);
+        expect(event.sourceType).toBe("vault");
+        expect(event.normalizationVersion).toBe(1);
+        expect(event.blockNumber).toBe(parityCase.blockNumber);
+        expect(event.blockHash).toBe(parityCase.blockHash);
+        expect(event.signature).toMatch(/^0x[0-9a-f]{64}$/);
         expect(JSON.parse(event.argsJson)).toBeTypeOf("object");
       }
     }
@@ -118,5 +153,23 @@ describe("Gate 4 exact Ethereum parity fixtures", () => {
     expect(reference.fixture).toBe("gate2.json");
     expect(event.block.hash).toBe(reference.blockHash);
     expect(allocationEventId(1, event.transaction.hash, event.logIndex)).toBe(reference.sourceEventId);
+    expect(reference.expected.sourceEvent).toEqual(expect.objectContaining({
+      id: reference.sourceEventId,
+      eventName: "UpdateDebtAllocator",
+      vaultAddress: reference.vaultAddress,
+    }));
+    expect(reference.expected.assignment).toEqual(expect.objectContaining({
+      id: reference.sourceEventId,
+      allocatorAddress: reference.allocatorAddress,
+      implementationRecognition: "other",
+      assignmentType: "updated",
+    }));
+    expect(reference.expected.unboundDeployment).toEqual(expect.objectContaining({
+      id: `1:${reference.allocatorAddress}`,
+      allocatorAddress: reference.allocatorAddress,
+      implementationRecognition: "other",
+    }));
+    expect(reference.expected.boundDeploymentIds).toEqual([]);
+    expect(reference.expected.conflictIds).toEqual([]);
   });
 });

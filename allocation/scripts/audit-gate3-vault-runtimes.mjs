@@ -67,6 +67,7 @@ const configuredFactoryVersions = new Map([
   [lowercase("0x770D0d1Fb036483Ed4AbB6d53c1C88fb277D812F"), "3.0.4"],
 ]);
 const roleManagerFactory = "0xca12459a931643BF28388c67639b3F352fe9e5Ce";
+const directRoleManagers = ["0xb3bd6B2E61753C311EFbCF0111f75D29706D9a41"];
 
 function lowercase(value) {
   return value.toLowerCase();
@@ -239,7 +240,7 @@ const staticAddresses = supportedOnly
   ? vaultFactories
   : [...registries, ...vaultFactories, roleManagerFactory];
 const staticLogs = await getLogs(staticAddresses, staticEventDefinitions);
-const roleManagers = new Set();
+const roleManagers = new Set(directRoleManagers.map(lower));
 const vaults = new Set();
 const officialFactoryVaults = new Set();
 const vaultApiVersions = new Map();
@@ -252,6 +253,19 @@ const recordVaultDiscovery = (vaultAddress, log, source, factoryAddress) => {
   const existing = vaultDiscovery.get(address);
   const sources = new Set(existing?.sources ?? []);
   sources.add(source);
+  const discoverySources = new Map(
+    (existing?.discoverySources ?? []).map((record) => [
+      `${record.sourceType}:${record.sourceAddress}:${record.blockNumber}`,
+      record,
+    ]),
+  );
+  const sourceRecord = {
+    sourceType: source,
+    sourceAddress: lower(log.address),
+    blockNumber,
+    blockHash: log.blockHash ? lower(log.blockHash) : null,
+  };
+  discoverySources.set(`${sourceRecord.sourceType}:${sourceRecord.sourceAddress}:${sourceRecord.blockNumber}`, sourceRecord);
   const isEarlierDiscovery = existing === undefined || blockNumber < existing.discoveryBlock;
   vaultDiscovery.set(address, {
     discoveryBlock: Math.min(existing?.discoveryBlock ?? blockNumber, blockNumber),
@@ -260,6 +274,11 @@ const recordVaultDiscovery = (vaultAddress, log, source, factoryAddress) => {
     deploymentBlockHash: source === "officialFactory" && log.blockHash ? lower(log.blockHash) : existing?.deploymentBlockHash ?? null,
     factoryAddress: factoryAddress ? lower(factoryAddress) : existing?.factoryAddress ?? null,
     sources: [...sources].sort(),
+    discoverySources: [...discoverySources.values()].sort((left, right) =>
+      left.blockNumber - right.blockNumber ||
+      left.sourceType.localeCompare(right.sourceType) ||
+      left.sourceAddress.localeCompare(right.sourceAddress)
+    ),
   });
 };
 
@@ -375,6 +394,13 @@ const output = {
   roleManagerCount: roleManagers.size,
   discoveredVaultCount: vaults.size,
   officialFactoryVaultCount: officialFactoryVaults.size,
+  discoveryAuthorities: {
+    registries: registries.map(lower).sort(),
+    vaultFactories: vaultFactories.map(lower).sort(),
+    roleManagerFactory: lower(roleManagerFactory),
+    directRoleManagers: directRoleManagers.map(lower).sort(),
+    roleManagers: [...roleManagers].sort(),
+  },
   vaultFactories: await inspectVaultFactories(useLatestBytecode ? null : auditBlock),
   vaults: vaultInventory.map(({ familyKey: _, ...vault }) => vault),
   runtimeFamilies: [...runtimeFamilies.values()]

@@ -6,7 +6,7 @@ Gate 4 is **not accepted** as of 2026-08-26. The local coverage, query, fixture,
 
 - `VaultAllocationCoverage` and fail-closed immutable manifest validation.
 - Exact initial/continuation event queries, latest-checkpoint query, strict revision-scoped cursor validation, and same-transaction page-boundary reconstruction.
-- Complete draft Ethereum discovery authority through block 25,835,600 (`0x3f7c…3dec`): 243 official-factory candidate rows, 78 explicit custom-runtime exclusions, and zero `safeForTimeline` rows.
+- Complete draft Ethereum discovery authority through block 25,835,600 (`0x3f7c…3dec`): 243 official-factory candidate rows, 78 explicit custom-runtime exclusions, 34 RoleManagers, 134 `AddedNewVault` events, and zero `safeForTimeline` rows.
 - Deterministic entity JSON and Markdown matrix generated from the same manifest, with drift checking.
 - Guarded GraphQL publication: dry-run by default, stale-output rejection, exact existing-revision verification, and one atomic insert for a new immutable revision.
 - Read-only candidate parity harness, readiness monitor, and blue-green/recovery/backout runbook.
@@ -28,7 +28,7 @@ The capture command re-reads canonical block hashes, transaction envelopes, bloc
 ## Validation
 
 - Allocation codegen and TypeScript build: pass.
-- Allocation suite: 77/77 tests pass across 11 files.
+- Allocation suite: 80/80 tests pass across 11 files.
 - Coverage output drift check: pass for 243 rows.
 - Coverage publisher: `DRY RUN` with zero writes.
 - Gate 3 official runtime regression: pass for 243 vaults, 26 runtime families, and four releases.

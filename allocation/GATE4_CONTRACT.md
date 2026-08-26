@@ -14,9 +14,11 @@ Manifest validation is fail closed:
 - the producer commit must be a full lowercase Git SHA;
 - ranges cannot be inverted or duplicated within a revision;
 - `safeForTimeline` requires every completeness flag, no known gaps, and a non-null earliest safe block;
+- parsed JSON requires exact boolean, array, string, address, hash, and block-range types; truthy string flags are rejected;
+- a safe row's earliest safe block must equal its published coverage start and remain within the validated vault range;
 - a new certification must use a new immutable `coverageRevision` rather than changing an accepted revision in place.
 
-The manifest additionally carries the evidence needed to generate the human matrix: deployment and discovery blocks, first required event, allocator-history start, API version, runtime hash, earliest safe block, and explicit gaps.
+The manifest additionally carries the evidence needed to generate the human matrix: exact registry/factory/RoleManager discovery records and block hashes, deployment and discovery blocks, first required event, allocator-history start, API version, runtime hash, earliest safe block, and explicit gaps. The draft inventory covers the directly configured legacy RoleManager plus all 33 factory-created RoleManagers.
 
 ## Event pagination
 
@@ -197,7 +199,7 @@ Hasura/transport errors abort the page. Malformed cursors, unsupported cursor ve
 - yvUSDC-1 loss-sensitive report for a positive-debt strategy with no allocator target event in the audited range;
 - yvUSDC-1 Deposit whose block-end assets are entirely idle.
 
-The fixture also references the exact committed yvUSDC-1 `UpdateDebtAllocator` assignment-change case in `gate2.json`. `parity:gate4` compares every fixture event and checkpoint with the candidate GraphQL deployment, then independently repeats the accounting read through the archive RPC. It reports `NOT RUN` when either credential set is absent and never prints their values.
+The fixture also embeds the exact expected source event, assignment, and unbound-deployment provenance for the committed yvUSDC-1 `UpdateDebtAllocator` change in `gate2.json`. `parity:gate4` compares the full normalized event envelope, checkpoint, assignment, and provenance rows with the candidate GraphQL deployment; exercises the documented initial and continuation queries, including a same-transaction yvWETH page boundary; then independently repeats the accounting read through the archive RPC. It reports `NOT RUN` when either credential set is absent and never prints their values.
 
 ## Remaining acceptance work
 

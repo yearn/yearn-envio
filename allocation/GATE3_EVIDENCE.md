@@ -2,7 +2,7 @@
 
 Gate 3 is accepted locally as of 2026-08-26. Gate 4 coverage certification and deployment remain separate.
 
-The allocation suite passes 61/61 tests; Envio code generation and the allocation TypeScript build pass.
+The allocation suite passes 80/80 tests; Envio code generation and the allocation TypeScript build pass.
 
 ## Checkpoint mechanics
 

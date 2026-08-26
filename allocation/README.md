@@ -1,63 +1,93 @@
-# Yearn vault allocation indexer
+# Yearn Vault Allocation History
 
-This directory is a separately deployable Envio project for the producer side of
-[yearn-envio issue #52](https://github.com/yearn/yearn-envio/issues/52). Its database and failure domain are intentionally independent from the primary multichain indexer in the repository root.
+This directory contains the evidence, fixtures, tests, coverage files, and operational tools for [yearn-envio issue #52](https://github.com/yearn/yearn-envio/issues/52).
+
+Allocation History is part of the existing Envio project. It does not have a separate package, configuration, schema, database, or permanent server.
+
+For a non-technical overview in simple English, see [`ISSUE_52_EXPLAINER.md`](ISSUE_52_EXPLAINER.md).
+
+## Architecture
+
+The shared project uses:
+
+- root [`config.yaml`](../config.yaml);
+- root [`schema.graphql`](../schema.graphql);
+- root [`src/EventHandlers.ts`](../src/EventHandlers.ts) as the handler entrypoint;
+- allocation helpers under [`src/allocation/`](../src/allocation/);
+- one generated-code pass and one database/Hasura deployment.
+
+The existing indexer processes several chains. Allocation History is enabled only for Ethereum. Every allocation handler and archive read has an explicit Ethereum guard.
+
+Historical vault totals come from the dedicated `ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM` variable. The URL is never written to logs or entities.
+
+If an archive read fails after its retry budget:
+
+1. No checkpoint is written.
+2. A sanitized `VaultAccountingCheckpointFailure` row records the gap.
+3. `safeForTimeline` stays false for the affected range.
+4. The shared indexer continues processing unrelated events.
+5. A later successful replay marks the failure row as resolved.
 
 ## Current implementation status
 
-The current local implementation includes the Ethereum Gate 1 foundation and locally accepted Gate 2 and Gate 3 implementations:
+The local implementation includes:
 
-- Dynamic discovery from the configured V3 registries, vault factories, RoleManager factory, RoleManager, and debt allocator factory.
 - The 23 required allocation source events with explicit normalization-version-1 serializers.
-- Lowercase machine keys, deterministic event IDs and JSON, top-level transaction envelope fields, and exact input selectors.
-- The no-`originalAllocator` Ethereum debt allocator factory variant and immutable deployment binding needed to associate allocator events with a vault.
-- Golden tests for every serializer.
-- Append-only initial and updated RoleManager assignment history, plus current membership closure on `RemovedVault`.
-- Explicit implementation recognition and queryable deployment/assignment conflicts.
-- Deterministic same-block buffering and reconciliation when an allocator event precedes its factory registration.
-- Exact Ethereum handler fixtures, full-versus-incremental replay equivalence, and fixed-block runtime-family verification.
-- Separate recognition for the deployed non-vault-bound allocator factory family; its RoleManager assignees are `other`, not known vault-bound Generic allocators.
-- The deployed vault-bound `UpdateStrategyDebtRatio` ABI in addition to the plural issue-contract variant.
-- One accounting checkpoint per vault/block after `Deposit`, `Withdraw`, `DebtUpdated`, or `StrategyReported`, with deterministic same-block trigger merging.
-- A chain-scoped, cached Envio Effect for canonical archive reads of `totalAssets`, `totalDebt`, and `totalIdle`, rate limited to five calls per second.
-- EIP-1898 hash-pinned reads when supported, block-number reads with a second canonical-hash check otherwise, and fail-closed transient-only retries.
-- An explicit official-factory checkpoint support boundary: custom registry/RoleManager vault implementations retain normalized events but are not given unproven accounting certification.
-- A pinned four-release, 243-vault, 26-runtime-family mutation audit, fixed-block archive evidence, and a representative replay benchmark.
+- Lowercase machine keys, deterministic IDs and JSON, transaction envelope fields, and exact input selectors.
+- Immutable debt-allocator deployment provenance.
+- Initial and updated RoleManager assignment history.
+- Explicit unknown, unbound, and conflict states.
+- Deterministic same-block allocator-event reconciliation.
+- Exact Ethereum handler fixtures and full-versus-incremental replay equivalence.
+- One accounting checkpoint per supported vault and block after `Deposit`, `Withdraw`, `DebtUpdated`, or `StrategyReported`.
+- Canonical EIP-1898 archive reads, a verified block-number fallback, rate limiting, timeouts, and transient-only retry.
+- Non-fatal, queryable archive failure records.
+- An official-factory accounting support boundary for four audited Vault V3 releases.
+- A 243-vault draft coverage inventory and 78 explicit custom-runtime exclusions.
+- Candidate parity, monitoring, coverage publication, and rollout tools.
 
-The source audit is recorded in [`ABI_AUDIT.md`](ABI_AUDIT.md), Gate 2 evidence is in [`GATE2_EVIDENCE.md`](GATE2_EVIDENCE.md), Gate 3 evidence is in [`GATE3_EVIDENCE.md`](GATE3_EVIDENCE.md), the Gate 4 consumer contract is in [`GATE4_CONTRACT.md`](GATE4_CONTRACT.md), current Gate 4 acceptance status is in [`GATE4_EVIDENCE.md`](GATE4_EVIDENCE.md), and replay/rollout operations are in [`RUNBOOK.md`](RUNBOOK.md).
+Evidence and contracts:
 
-This is not yet a certified allocation-history producer. In particular:
+- [`ABI_AUDIT.md`](ABI_AUDIT.md)
+- [`GATE2_EVIDENCE.md`](GATE2_EVIDENCE.md)
+- [`GATE3_EVIDENCE.md`](GATE3_EVIDENCE.md)
+- [`GATE4_CONTRACT.md`](GATE4_CONTRACT.md)
+- [`GATE4_EVIDENCE.md`](GATE4_EVIDENCE.md)
+- [`RUNBOOK.md`](RUNBOOK.md)
 
-- Coverage manifests, committed historical fixtures, deployed parity, monitoring, and blue-green certification remain Gate 4 work.
-- `safeForTimeline` coverage does not exist and must not be inferred from these rows.
+This is not yet a certified allocation-history producer. Deployed-candidate replay, credentialed parity, monitoring, full-versus-incremental comparison, and certification have not run. The draft has zero `safeForTimeline` rows.
 
 ## Local commands
 
-Run from this directory:
+Run every command from the repository root:
 
 ```bash
-corepack pnpm install
+corepack pnpm install --frozen-lockfile
 corepack pnpm codegen
 corepack pnpm build
 corepack pnpm test
-corepack pnpm coverage:check
-corepack pnpm coverage:publish # dry run; add -- --publish only for an approved candidate
-corepack pnpm parity:gate4 # reports NOT RUN without candidate GraphQL and archive configuration
-corepack pnpm monitor:gate4 # reports NOT RUN without candidate GraphQL and archive configuration
-ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm verify:gate2:rpc
-ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm audit:gate3:runtimes -- --blockscout --supported-only --verify-fixture
-ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm verify:gate3:rpc
-ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm benchmark:gate3:rpc
+corepack pnpm allocation:test
+corepack pnpm allocation:coverage:check
+corepack pnpm allocation:coverage:publish
+corepack pnpm allocation:parity:gate4
+corepack pnpm allocation:monitor:gate4
 ```
 
-The RPC tools exit successfully with an explicit `NOT RUN` status when the variable is unset. They never print the configured URL. Gate 3 checkpoint processing fails closed when the variable is unset; use a dedicated archive-capable endpoint.
+RPC validation commands:
 
-Gate 4 coverage is generated from `coverage/ethereum.json`. The checked-in revision is a complete draft inventory with 243 official-factory entries, 78 explicit custom-runtime exclusions, and zero `safeForTimeline` rows. `coverage:publish` validates generated-row freshness and performs no write unless `--publish` is explicit.
+```bash
+ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:verify:gate2:rpc
+ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:audit:gate3:runtimes -- --blockscout --supported-only --verify-fixture
+ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:verify:gate3:rpc
+ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:benchmark:gate3:rpc
+```
 
-The allocation project generates its type metadata under `allocation/.envio/`; it does not use or modify the primary project's generated types or schema.
+The RPC and candidate tools report `NOT RUN` when their required variables are missing. A skipped command is not a pass.
+
+Coverage publication is a dry run unless `-- --publish` is explicit. Publication validates generated-file freshness and refuses safe coverage for a range with unresolved checkpoint failures.
 
 ## Deployment boundary
 
-Deploy this directory as its own Envio project and database. Do not point it at the primary indexer's database. Gate 3 consumes the dedicated `ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM` secret documented in `.env.example`; the URL is never included in application error messages.
+Deploy a candidate revision of the existing Envio project with fresh candidate storage. Envio cannot resume an initialized database after persisted event configuration changes. A temporary candidate may run beside the current production revision during replay and validation, but the final architecture has one Envio project, replayed database, and active server.
 
-The current Ethereum start block is deliberately broad. It is not a historical-completeness claim. Gate 4 must replace that operational starting point with evidence-backed coverage ranges and an immutable coverage revision before Kong consumes the data.
+The broad configured start block is not a completeness claim. Kong must consume only an immutable coverage revision whose rows are explicitly certified with `safeForTimeline = true`.

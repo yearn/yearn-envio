@@ -3,12 +3,12 @@ import assert from "node:assert/strict";
 import {
   createArchiveReadDependencies,
   readVaultAccountingFromArchive,
-} from "../src/Effects.js";
+} from "../../src/allocation/Effects.js";
 import {
   CanonicalBlockMismatchError,
   accountingIdentityHolds,
   readCanonicalVaultAccounting,
-} from "../src/checkpoints.js";
+} from "../../src/allocation/checkpoints.js";
 
 const rpcUrl = process.env.ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM;
 if (!rpcUrl) {

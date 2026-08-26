@@ -1,69 +1,79 @@
-# Allocation indexer replay and rollout runbook
+# Allocation History replay and rollout runbook
 
-This runbook applies only to the separate Ethereum allocation project and database. It never replaces, resets, or shares a failure domain with the primary Yearn Envio deployment.
+This runbook adds Allocation History to the existing Yearn Envio deployment. It does not create a second permanent Envio project or database.
 
 ## Preconditions
 
-- The candidate commit is pinned and its lockfile installation, codegen, build, tests, coverage drift check, and root compatibility checks pass.
-- `ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM` points to a dedicated archive-capable endpoint.
-- Candidate GraphQL URL/token are supplied only through `ENVIO_ALLOCATION_GRAPHQL_URL` and `ENVIO_ALLOCATION_GRAPHQL_TOKEN`.
-- The checked-in coverage revision has zero `safeForTimeline` rows during replay.
-- The previous allocation deployment/database and coverage revision remain available as the backout target.
+- Pin the candidate commit.
+- Install the root lockfile and pass root codegen, build, tests, and coverage drift.
+- Review the shared `config.yaml` change and use fresh candidate storage. Do not try to resume the initialized production database with the changed event configuration.
+- Configure `ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM` with a dedicated archive-capable endpoint.
+- Supply candidate GraphQL access only through `ENVIO_ALLOCATION_GRAPHQL_URL` and `ENVIO_ALLOCATION_GRAPHQL_TOKEN`.
+- Keep every draft coverage row at `safeForTimeline = false` during replay.
+- Keep the current production deployment revision available as the rollback target.
 
 ## Build and preflight
 
-From `allocation/`:
+Run from the repository root:
 
 ```bash
 corepack pnpm install --frozen-lockfile
 corepack pnpm codegen
 corepack pnpm build
 corepack pnpm test
-corepack pnpm coverage:check
-corepack pnpm coverage:publish
-corepack pnpm parity:gate4
-corepack pnpm monitor:gate4
+corepack pnpm allocation:coverage:check
+corepack pnpm allocation:coverage:publish
+corepack pnpm allocation:parity:gate4
+corepack pnpm allocation:monitor:gate4
 ```
 
-The final three commands must respectively report `DRY RUN`, `NOT RUN`, and `NOT RUN` before candidate credentials are configured. A skip is not a pass.
+Without candidate credentials, the final three allocation commands must report `DRY RUN`, `NOT RUN`, and `NOT RUN`. These statuses confirm safe local behavior; they do not accept Gate 4.
 
-## Blue-green replay
+## Candidate replay
 
-1. Create a new allocation-only Envio project and empty database. Do not point it at the primary database or the previous allocation database.
-2. Configure Ethereum and the dedicated archive RPC secret. Keep the draft coverage revision unsafe.
-3. Deploy the candidate alongside the previous allocation deployment.
-4. Replay from the configured start and record Effect calls, Effect errors/retries, elapsed time, database growth, Effect-cache growth, and process restarts.
-5. Run `monitor:gate4` repeatedly. Sync readiness, exact coverage-row publication, the semantic canary, latest event, and latest checkpoint are separate signals.
-6. Run `coverage:publish -- --publish` only after the candidate schema exists and the checked-in generated rows pass `coverage:check`. Publication is atomic for one immutable revision and refuses conflicting existing rows.
-7. Run `parity:gate4` against the candidate. It must pass all exact yvWETH/yvUSDC event/checkpoint blocks, assignment/provenance rows, initial/continuation cursor pages, and direct archive reads.
-8. Replay a fresh database to the same cutoff and compare its ordered events, checkpoints, assignments, and coverage rows with an incremental continuation at that cutoff.
-9. Measure the documented initial and continuation GraphQL queries at page sizes 500 and 2,000, plus latest-checkpoint lookup latency.
+1. Deploy a candidate revision of the existing Envio project with fresh candidate storage while the current production revision and database remain available. Envio cannot resume an initialized database when its persisted event configuration changes.
+2. Configure the dedicated Ethereum archive RPC. Do not enable allocation archive reads for other chains.
+3. Replay the candidate from the configured historical start.
+4. Keep all draft coverage rows unsafe.
+5. Record Effect calls, retries, unresolved failures, elapsed time, database growth, cache growth, and process restarts.
+6. Confirm that forced archive failures write `VaultAccountingCheckpointFailure` rows and do not stop unrelated indexing.
+7. Run `allocation:monitor:gate4` repeatedly. It checks sync readiness, coverage rows, the semantic canary, and the absence of unresolved failures separately.
+8. Run `allocation:coverage:publish -- --publish` only after the candidate schema exists and the generated rows pass the drift check. The publisher refuses any safe range containing an unresolved failure.
+9. Run `allocation:parity:gate4`. It must pass the exact yvWETH/yvUSDC blocks, assignment/provenance rows, cursor pages, direct archive reads, and checkpoint-failure checks.
+10. Replay a fresh candidate to the same cutoff and compare its ordered allocation entities with a fresh incremental continuation.
+11. Measure the documented initial and continuation GraphQL queries at page sizes 500 and 2,000, plus latest-checkpoint lookup latency.
 
 ## Certification
 
-1. Generate a new immutable coverage revision; never edit a deployed revision in place.
-2. Fill first required event, allocator-history start, earliest safe block, and every validated cutoff hash from replay evidence.
-3. Remove a known gap only when its named evidence passes for that vault/range.
-4. Set `safeForTimeline = true` only where every completeness flag is true and no gaps remain.
-5. Regenerate the entity JSON and Markdown matrix, run `coverage:check`, publish the new revision, then rerun parity and monitoring.
-6. Give Kong only the certified revision and exact GraphQL/authentication contract. Kong must reject cursors from any other revision.
+1. Generate a new immutable coverage revision. Never edit a deployed revision in place.
+2. Fill every start block, cutoff hash, first required event, allocator-history start, and earliest safe block from replay evidence.
+3. Query unresolved `VaultAccountingCheckpointFailure` rows for every proposed safe range. The result must be empty.
+4. Remove a known gap only when its named evidence passes for that vault and range.
+5. Set `safeForTimeline = true` only when every completeness flag is true and no gaps remain.
+6. Regenerate the entity JSON and Markdown matrix, run the drift check, publish, and rerun parity and monitoring.
+7. Give Kong only the certified revision and exact GraphQL/authentication contract.
 
 ## Failure and recovery
 
-- Archive timeout/rate limit: the handler fails closed and the deployment may halt. Preserve the database, correct provider capacity/configuration, and resume/replay; never insert zero or partial accounting rows.
-- Canonical mismatch: stop and investigate provider/HyperSync fork association. Do not retry as transport noise or certify the affected range.
-- Coverage conflict/partial rows: do not mutate the immutable revision. Remove the failed green candidate database and replay a clean candidate with a new revision if necessary.
-- Parity mismatch: keep all rows unsafe, retain the raw candidate database for diagnosis, and compare normalized rows, block hashes, checkpoint totals, and source event IDs before retrying.
-- Process crash: verify the supervised process, GraphQL reachability, chain metadata progress, Effect errors, and the fixed semantic canary independently.
+- Archive timeout or rate limit: the Effect exhausts its bounded retries, disables caching for the failed result, and throws to the allocation handler. The handler writes a sanitized unresolved failure and continues the shared indexer. Never insert zero or partial accounting rows.
+- Missing archive configuration: affected checkpoint attempts produce a sanitized gap. Other chains and non-allocation handlers continue.
+- Canonical mismatch: write no checkpoint, keep the gap unresolved, and investigate the provider/HyperSync fork association. Do not classify this as transport noise.
+- Later successful replay: persist the checkpoint and mark the matching failure row resolved.
+- Coverage conflict: do not change an immutable revision. Fix forward with a new candidate and revision.
+- Parity mismatch: keep every row unsafe and compare normalized rows, hashes, checkpoint totals, and source event IDs.
+- Process crash unrelated to caught archive failures: verify supervision, GraphQL reachability, chain metadata, and semantic canaries independently.
 
-## Backout
+## Cutover and backout
 
-1. Stop Kong from consuming the candidate revision, or keep it pinned to the previous certified revision.
-2. Route consumers back to the previous allocation GraphQL deployment without changing the primary Envio deployment.
-3. Preserve the failed candidate database and logs for diagnosis; do not reuse it as a clean replay target.
-4. Confirm previous-revision parity, readiness, and semantic canary before declaring backout complete.
-5. Fix forward in a new green deployment and immutable coverage revision.
+1. Cut over to the accepted candidate so that one shared Envio server and its replayed database remain active.
+2. If needed, stop Kong from consuming the new revision and return it to the previous certified revision.
+3. Restore the previous shared Envio deployment revision.
+4. Preserve failed candidate logs and data for diagnosis.
+5. Confirm previous-revision readiness and semantic canaries before declaring backout complete.
+6. Fix forward in a new candidate revision.
 
 ## Acceptance record
 
-Record candidate commit/revision, deployment identifiers, cutoff block/hash, replay duration, request/error/cache rates, database/cache size, GraphQL latency, parity output, monitor output, certification timestamp, and backout target. Private endpoints and credentials must never appear in the record, GitHub issue, or pull request.
+Record the candidate commit and deployment revision, cutoff block/hash, replay duration, request/error/cache rates, resolved and unresolved gap counts, database/cache size, GraphQL latency, parity output, monitor output, certification timestamp, and rollback target.
+
+Never include private endpoints, credentials, or Tailscale URLs in the record, issue, or pull request.

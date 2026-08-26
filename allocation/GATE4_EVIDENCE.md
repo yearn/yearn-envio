@@ -9,7 +9,7 @@ Gate 4 is **not accepted** as of 2026-08-26. The local coverage, query, fixture,
 - Complete draft Ethereum discovery authority through block 25,835,600 (`0x3f7c…3dec`): 243 official-factory candidate rows, 78 explicit custom-runtime exclusions, 34 RoleManagers, 134 `AddedNewVault` events, and zero `safeForTimeline` rows.
 - Deterministic entity JSON and Markdown matrix generated from the same manifest, with drift checking.
 - Guarded GraphQL publication: dry-run by default, stale-output rejection, exact existing-revision verification, and one atomic insert for a new immutable revision.
-- Read-only candidate parity harness, readiness monitor, and blue-green/recovery/backout runbook.
+- Read-only candidate parity harness, readiness monitor, unresolved-failure certification guards, and shared-deployment recovery/backout runbook.
 
 ## Exact Ethereum fixtures
 
@@ -28,24 +28,23 @@ The capture command re-reads canonical block hashes, transaction envelopes, bloc
 ## Validation
 
 - Allocation codegen and TypeScript build: pass.
-- Allocation suite: 80/80 tests pass across 11 files.
+- Allocation suite: 84/84 tests pass across 11 files.
 - Coverage output drift check: pass for 243 rows.
 - Coverage publisher: `DRY RUN` with zero writes.
 - Gate 3 official runtime regression: pass for 243 vaults, 26 runtime families, and four releases.
 - Root TypeScript build: pass.
-- Root Vitest: 18/18 pass.
-- Root configuration compatibility against `origin/main`: pass.
-- Monitoring tests: 8/8 pass with loopback access.
+- Root Vitest: 84/84 pass across 11 files.
+- Persisted event-configuration changes require fresh candidate storage; in-place resume of the initialized production database remains incompatible.
 - `git diff --check`: pass.
 
 ## Not run and remaining blockers
 
-- `parity:gate4`: **NOT RUN** because no allocation candidate GraphQL endpoint/token is configured.
-- `monitor:gate4`: **NOT RUN** for the same deployment/configuration reason.
-- No allocation database/indexer candidate has been deployed or replayed.
+- `allocation:parity:gate4`: **NOT RUN** because no allocation candidate GraphQL endpoint/token is configured.
+- `allocation:monitor:gate4`: **NOT RUN** for the same deployment/configuration reason.
+- No candidate revision of the shared Envio deployment has been deployed or replayed.
 - Full replay versus fresh incremental continuation at the same cutoff has not been compared.
 - Effect/cache/database growth, replay duration, GraphQL latency, and failure/recovery observations have not been recorded from a candidate.
 - The draft coverage revision has not been published and must remain unsafe.
 - No certified immutable revision exists, and Kong must not consume the draft as complete history.
 
-Gate 4 can be accepted only after the blue-green candidate completes the runbook, credentialed parity and monitoring pass, operational evidence is recorded, and eligible coverage is published in a new immutable revision.
+Gate 4 can be accepted only after a candidate shared-deployment revision completes the runbook, credentialed parity and monitoring pass, unresolved failure checks are empty, operational evidence is recorded, and eligible coverage is published in a new immutable revision.

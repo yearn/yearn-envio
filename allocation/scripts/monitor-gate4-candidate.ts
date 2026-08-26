@@ -47,6 +47,10 @@ const query = `
       order_by: [{ blockNumber: desc }]
       limit: 1
     ) { id blockNumber blockTimestamp canonicalBlockVerified }
+    unresolvedCheckpointFailures: VaultAccountingCheckpointFailure(
+      where: { chainId: { _eq: 1 }, resolved: { _eq: false } }
+      limit: 1
+    ) { id blockNumber vaultAddress reason }
     canaryCheckpoint: VaultAccountingCheckpoint(where: { id: { _eq: $canaryId } }, limit: 1) {
       id blockNumber blockHash totalAssets totalDebt totalIdle canonicalBlockVerified
     }
@@ -75,6 +79,7 @@ try {
       VaultAllocationCoverage: Array<{ id: string; safeForTimeline: boolean }>;
       latestEvent: Array<{ id: string; blockNumber: number; blockTimestamp: string }>;
       latestCheckpoint: Array<{ id: string; blockNumber: number; blockTimestamp: string; canonicalBlockVerified: boolean }>;
+      unresolvedCheckpointFailures: Array<{ id: string; blockNumber: number; vaultAddress: string; reason: string }>;
       canaryCheckpoint: Array<Record<string, unknown>>;
     };
     errors?: unknown[];
@@ -104,6 +109,7 @@ try {
     syncReady: blocksBehind <= tolerance,
     coverageRevisionComplete: coverageRows.length === manifest.entries.length,
     safeRowCountMatchesManifest: observedSafeRows === expectedSafeRows,
+    noUnresolvedCheckpointFailures: body.data.unresolvedCheckpointFailures.length === 0,
     semanticCanaryMatches: JSON.stringify(observedCanary) === JSON.stringify(expectedCanary),
   };
   const ready = Object.values(checks).every(Boolean);
@@ -116,6 +122,7 @@ try {
     coverage: { expectedRows: manifest.entries.length, observedRows: coverageRows.length, expectedSafeRows, observedSafeRows },
     latestEvent: body.data.latestEvent[0] ?? null,
     latestCheckpoint: body.data.latestCheckpoint[0] ?? null,
+    unresolvedCheckpointFailure: body.data.unresolvedCheckpointFailures[0] ?? null,
   }, null, 2));
   if (!ready) process.exit(1);
 } catch {

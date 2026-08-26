@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs";
-import { coverageEntityRows, validateCoverageManifest, type CoverageManifest } from "../src/gate4.js";
+import { coverageEntityRows, validateCoverageManifest, type CoverageManifest } from "../../src/allocation/gate4.js";
 
 type CoverageRow = {
   id: string;
@@ -71,6 +71,35 @@ const fields = `
   allocatorAssignmentHistoryComplete checkpointTriggerAuditComplete
   safeForTimeline knownGapsJson coverageRevision producerCommit validatedAt
 `;
+for (const entry of manifest.entries.filter(({ safeForTimeline }) => safeForTimeline)) {
+  const failures = await request<{ VaultAccountingCheckpointFailure: Array<{ id: string }> }>(`
+    query UnresolvedCheckpointFailures(
+      $chainId: Int!
+      $vaultAddress: String!
+      $coverageStartBlock: Int!
+      $validatedThroughBlock: Int!
+    ) {
+      VaultAccountingCheckpointFailure(
+        where: {
+          chainId: { _eq: $chainId }
+          vaultAddress: { _eq: $vaultAddress }
+          blockNumber: { _gte: $coverageStartBlock, _lte: $validatedThroughBlock }
+          resolved: { _eq: false }
+        }
+        limit: 1
+      ) { id }
+    }
+  `, {
+    chainId: entry.chainId,
+    vaultAddress: entry.vaultAddress,
+    coverageStartBlock: entry.coverageStartBlock,
+    validatedThroughBlock: entry.validatedThroughBlock,
+  });
+  if (failures.VaultAccountingCheckpointFailure.length > 0) {
+    throw new Error(`Unresolved checkpoint failure prevents coverage publication for ${entry.vaultAddress}`);
+  }
+}
+
 const existing = await request<{ VaultAllocationCoverage: CoverageRow[] }>(`
   query ExistingCoverageRevision($revision: String!) {
     VaultAllocationCoverage(

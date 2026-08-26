@@ -7,7 +7,7 @@ import {
   parsePendingEvents,
   recognizeImplementation,
   type PendingAllocatorEvent,
-} from "../src/gate2.js";
+} from "../../src/allocation/gate2.js";
 
 const VAULT_A = "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 const VAULT_B = "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";

@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { allocationEventId, serializers, topLevelInputSelector, type Serializer } from "../src/normalization.js";
+import {
+  allocationEventId,
+  serializers,
+  topLevelInputSelector,
+  type Serializer,
+} from "../../src/allocation/normalization.js";
 
 const A = "0xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
 const B = "0xBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";

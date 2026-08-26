@@ -3,13 +3,14 @@ import {
   CanonicalBlockMismatchError,
   UnsupportedHistoricalStateError,
   accountingIdentityHolds,
+  archiveRpcFailureReason,
   checkpointId,
   checkpointSourceEventIds,
   mergeCheckpointTriggers,
   readCanonicalVaultAccounting,
   sanitizeArchiveRpcError,
   withTransientRpcRetry,
-} from "../src/checkpoints.js";
+} from "../../src/allocation/checkpoints.js";
 import { HttpRequestError } from "viem";
 
 const HASH = `0x${"a".repeat(64)}`;
@@ -100,6 +101,17 @@ describe("Gate 3 checkpoint core", () => {
     expect(sanitized.message).toBe("Transient archive RPC request failed");
     expect(String(sanitized)).not.toContain("secret-rpc");
     expect(sanitized).not.toHaveProperty("cause");
+  });
+
+  it("reduces archive errors to stable categories", () => {
+    expect(archiveRpcFailureReason(new CanonicalBlockMismatchError(HASH, OTHER_HASH))).toBe(
+      "canonicalBlockMismatch",
+    );
+    expect(archiveRpcFailureReason(new Error("missing trie node at https://secret-rpc.example"))).toBe(
+      "historicalStateUnavailable",
+    );
+    expect(archiveRpcFailureReason(new Error("HTTP 503 network error"))).toBe("transientRetryExhausted");
+    expect(archiveRpcFailureReason(new Error("unexpected provider detail"))).toBe("archiveRpcRequestFailed");
   });
 
   it("persists the accounting identity result without changing totals", () => {

@@ -18,6 +18,7 @@ import {
 } from "./gate2.js";
 import {
   accountingIdentityHolds,
+  archiveRpcFailureReason,
   checkpointId,
   checkpointSourceEventIds,
   mergeCheckpointTriggers,
@@ -52,10 +53,16 @@ type CheckpointContext = {
     get: (id: string) => Promise<Entity<"VaultAccountingCheckpointTriggerSet"> | undefined>;
     set: (entity: Entity<"VaultAccountingCheckpointTriggerSet">) => void;
   };
+  VaultAccountingCheckpointFailure: {
+    get: (id: string) => Promise<Entity<"VaultAccountingCheckpointFailure"> | undefined>;
+    set: (entity: Entity<"VaultAccountingCheckpointFailure">) => void;
+  };
   VaultAccountingSupport: {
     get: (id: string) => Promise<Entity<"VaultAccountingSupport"> | undefined>;
   };
 };
+
+const ALLOCATION_CHAIN_ID = 1;
 
 type Gate2Context = EntityContext & {
   DebtAllocatorDeployment: {
@@ -130,6 +137,7 @@ export const writeAccountingCheckpoint = async (
   event: EventEnvelope,
   context: CheckpointContext,
 ): Promise<void> => {
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
   const vaultAddress = lowerAddress(event.srcAddress);
   const support = await context.VaultAccountingSupport.get(`${event.chainId}:${vaultAddress}`);
   if (!support) return;
@@ -140,13 +148,31 @@ export const writeAccountingCheckpoint = async (
     transactionIndex: event.transaction.transactionIndex,
     logIndex: event.logIndex,
   });
-  const totals = await context.effect(vaultAccountingAtBlock, {
-    vaultAddress,
-    blockNumber: event.block.number,
-    expectedBlockHash: lowerAddress(event.block.hash),
-  });
-
   context.VaultAccountingCheckpointTriggerSet.set({ id, triggersJson: JSON.stringify(triggers) });
+  const sourceEventIds = checkpointSourceEventIds(triggers);
+  let totals;
+  try {
+    totals = await context.effect(vaultAccountingAtBlock, {
+      vaultAddress,
+      blockNumber: event.block.number,
+      expectedBlockHash: lowerAddress(event.block.hash),
+    });
+  } catch (error) {
+    context.VaultAccountingCheckpointFailure.set({
+      id,
+      chainId: event.chainId,
+      vaultAddress,
+      blockNumber: event.block.number,
+      blockTimestamp: BigInt(event.block.timestamp),
+      expectedBlockHash: lowerAddress(event.block.hash),
+      reason: archiveRpcFailureReason(error),
+      sourceEventIds,
+      resolved: false,
+      resolvedCheckpointId: undefined,
+    });
+    return;
+  }
+
   context.VaultAccountingCheckpoint.set({
     id,
     chainId: event.chainId,
@@ -160,8 +186,18 @@ export const writeAccountingCheckpoint = async (
     accountingIdentityHolds: accountingIdentityHolds(totals),
     canonicalBlockVerified: totals.canonicalBlockVerified,
     source: "archive-rpc-effect",
-    sourceEventIds: checkpointSourceEventIds(triggers),
+    sourceEventIds,
   });
+
+  const previousFailure = await context.VaultAccountingCheckpointFailure.get(id);
+  if (previousFailure && !previousFailure.resolved) {
+    context.VaultAccountingCheckpointFailure.set({
+      ...previousFailure,
+      sourceEventIds,
+      resolved: true,
+      resolvedCheckpointId: id,
+    });
+  }
 };
 
 const membershipId = (chainId: number, roleManagerAddress: string, vaultAddress: string): string =>
@@ -227,14 +263,6 @@ const writeAssignment = async (
   }
 };
 
-indexer.contractRegister({ contract: "YearnV3Registry", event: "NewEndorsedVault" }, async ({ event, context }) => {
-  context.chain.YearnV3Vault.add(lowerAddress(event.params.vault));
-});
-
-indexer.contractRegister({ contract: "YearnV3VaultFactory", event: "NewVault" }, async ({ event, context }) => {
-  context.chain.YearnV3Vault.add(lowerAddress(event.params.vault_address));
-});
-
 const vaultFactoryVersions: Record<string, string> = {
   "0xe9e8c89c8fc7e8b8f23425688eb68987231178e5": "3.0.1",
   "0x444045c5c13c246e117ed36437303cac8e250ab0": "3.0.2",
@@ -243,6 +271,7 @@ const vaultFactoryVersions: Record<string, string> = {
 };
 
 indexer.onEvent({ contract: "YearnV3VaultFactory", event: "NewVault" }, async ({ event, context }) => {
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
   const factoryAddress = lowerAddress(event.srcAddress);
   const vaultAddress = lowerAddress(event.params.vault_address);
   const apiVersion = vaultFactoryVersions[factoryAddress];
@@ -257,19 +286,8 @@ indexer.onEvent({ contract: "YearnV3VaultFactory", event: "NewVault" }, async ({
   });
 });
 
-indexer.contractRegister({ contract: "YearnV3RoleManagerFactory", event: "NewProject" }, async ({ event, context }) => {
-  context.chain.YearnV3RoleManager.add(lowerAddress(event.params.roleManager));
-});
-
-indexer.contractRegister({ contract: "YearnV3RoleManager", event: "AddedNewVault" }, async ({ event, context }) => {
-  context.chain.YearnV3Vault.add(lowerAddress(event.params.vault));
-});
-
-indexer.contractRegister({ contract: "DebtAllocatorFactory", event: "NewDebtAllocator" }, async ({ event, context }) => {
-  context.chain.DebtAllocator.add(lowerAddress(event.params.allocator));
-});
-
 indexer.onEvent({ contract: "DebtAllocatorFactoryNoVault", event: "NewDebtAllocator" }, async ({ event, context }) => {
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
   const eventId = normalizedId(event);
   const allocatorAddress = lowerAddress(event.params.allocator);
   const deploymentId = `${event.chainId}:${allocatorAddress}`;
@@ -303,79 +321,126 @@ indexer.onEvent({ contract: "DebtAllocatorFactoryNoVault", event: "NewDebtAlloca
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "Deposit" }, async ({ event, context }) => {
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
   writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.Deposit, event.params);
   await writeAccountingCheckpoint(event, context);
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "Withdraw" }, async ({ event, context }) => {
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
   writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.Withdraw, event.params);
   await writeAccountingCheckpoint(event, context);
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "DebtUpdated" }, async ({ event, context }) => {
-  writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.DebtUpdated, event.params);
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
+  writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.DebtUpdated, {
+    strategy: event.params.strategy,
+    currentDebt: event.params.current_debt,
+    newDebt: event.params.new_debt,
+  });
   await writeAccountingCheckpoint(event, context);
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "StrategyReported" }, async ({ event, context }) => {
-  writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.StrategyReported, event.params);
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
+  writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.StrategyReported, {
+    strategy: event.params.strategy,
+    gain: event.params.gain,
+    loss: event.params.loss,
+    currentDebt: event.params.current_debt,
+    protocolFees: event.params.protocol_fees,
+    totalFees: event.params.total_fees,
+    totalRefunds: event.params.total_refunds,
+  });
   await writeAccountingCheckpoint(event, context);
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "StrategyChanged" }, async ({ event, context }) => {
-  writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.StrategyChanged, event.params);
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
+  writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.StrategyChanged, {
+    strategy: event.params.strategy,
+    changeType: event.params.change_type,
+  });
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "UpdatedMaxDebtForStrategy" }, async ({ event, context }) => {
-  writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.UpdatedMaxDebtForStrategy, event.params);
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
+  writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.UpdatedMaxDebtForStrategy, {
+    sender: event.params.sender,
+    strategy: event.params.strategy,
+    newDebt: event.params.new_debt,
+  });
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "DebtPurchased" }, async ({ event, context }) => {
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
   writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.DebtPurchased, event.params);
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "UpdateDefaultQueue" }, async ({ event, context }) => {
-  writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.UpdateDefaultQueue, event.params);
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
+  writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.UpdateDefaultQueue, {
+    newDefaultQueue: event.params.new_default_queue,
+  });
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "UpdateUseDefaultQueue" }, async ({ event, context }) => {
-  writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.UpdateUseDefaultQueue, event.params);
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
+  writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.UpdateUseDefaultQueue, {
+    useDefaultQueue: event.params.use_default_queue,
+  });
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "UpdateMinimumTotalIdle" }, async ({ event, context }) => {
-  writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.UpdateMinimumTotalIdle, event.params);
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
+  writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.UpdateMinimumTotalIdle, {
+    minimumTotalIdle: event.params.minimum_total_idle,
+  });
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "UpdateAutoAllocate" }, async ({ event, context }) => {
-  writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.UpdateAutoAllocate, event.params);
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
+  writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.UpdateAutoAllocate, {
+    autoAllocate: event.params.auto_allocate,
+  });
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "Shutdown" }, async ({ event, context }) => {
-  writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.Shutdown, event.params);
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
+  writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.Shutdown, undefined);
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "RoleSet" }, async ({ event, context }) => {
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
   writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.RoleSet, event.params);
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "RoleStatusChanged" }, async ({ event, context }) => {
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
   writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.RoleStatusChanged, event.params);
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "UpdateRoleManager" }, async ({ event, context }) => {
-  writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.UpdateRoleManager, event.params);
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
+  writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.UpdateRoleManager, {
+    roleManager: event.params.role_manager,
+  });
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "UpdateAccountant" }, async ({ event, context }) => {
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
   writeNormalizedEvent(event, context, event.srcAddress, serializers.vault.UpdateAccountant, event.params);
 });
 
 indexer.onEvent({ contract: "YearnV3RoleManager", event: "AddedNewVault" }, async ({ event, context }) => {
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
   writeNormalizedEvent(event, context, event.params.vault, serializers.roleManager.AddedNewVault, event.params);
   await writeAssignment(event, context, "initial");
 });
 
 indexer.onEvent({ contract: "YearnV3RoleManager", event: "RemovedVault" }, async ({ event, context }) => {
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
   writeNormalizedEvent(event, context, event.params.vault, serializers.roleManager.RemovedVault, event.params);
   const vaultAddress = lowerAddress(event.params.vault);
   const roleManagerAddress = lowerAddress(event.srcAddress);
@@ -396,11 +461,13 @@ indexer.onEvent({ contract: "YearnV3RoleManager", event: "RemovedVault" }, async
 });
 
 indexer.onEvent({ contract: "YearnV3RoleManager", event: "UpdateDebtAllocator" }, async ({ event, context }) => {
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
   writeNormalizedEvent(event, context, event.params.vault, serializers.roleManager.UpdateDebtAllocator, event.params);
   await writeAssignment(event, context, "updated");
 });
 
 indexer.onEvent({ contract: "DebtAllocatorFactory", event: "NewDebtAllocator" }, async ({ event, context }) => {
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
   const eventId = normalizedId(event);
   const allocatorAddress = lowerAddress(event.params.allocator);
   const vaultAddress = lowerAddress(event.params.vault);
@@ -513,17 +580,21 @@ const writeAllocatorEvent = async <T>(
 };
 
 indexer.onEvent({ contract: "DebtAllocator", event: "UpdateStrategyDebtRatios" }, async ({ event, context }) => {
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
   await writeAllocatorEvent(event, context, serializers.debtAllocator.UpdateStrategyDebtRatios, event.params);
 });
 
 indexer.onEvent({ contract: "DebtAllocator", event: "UpdateStrategyDebtRatio" }, async ({ event, context }) => {
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
   await writeAllocatorEvent(event, context, serializers.debtAllocator.UpdateStrategyDebtRatio, event.params);
 });
 
 indexer.onEvent({ contract: "DebtAllocator", event: "UpdateKeeper" }, async ({ event, context }) => {
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
   await writeAllocatorEvent(event, context, serializers.debtAllocator.UpdateKeeper, event.params);
 });
 
 indexer.onEvent({ contract: "DebtAllocator", event: "GovernanceTransferred" }, async ({ event, context }) => {
+  if (event.chainId !== ALLOCATION_CHAIN_ID) return;
   await writeAllocatorEvent(event, context, serializers.debtAllocator.GovernanceTransferred, event.params);
 });

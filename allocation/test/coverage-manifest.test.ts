@@ -5,7 +5,7 @@ import {
   coverageMarkdown,
   validateCoverageManifest,
   type CoverageManifest,
-} from "../src/gate4.js";
+} from "../../src/allocation/gate4.js";
 
 const coverageUrl = new URL("../coverage/", import.meta.url);
 const manifest = validateCoverageManifest(

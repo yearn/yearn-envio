@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { performance } from "node:perf_hooks";
-import { createArchiveReadDependencies, readVaultAccountingFromArchive } from "../src/Effects.js";
+import { createArchiveReadDependencies, readVaultAccountingFromArchive } from "../../src/allocation/Effects.js";
 
 const rpcUrl = process.env.ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM;
 if (!rpcUrl) {

@@ -7,14 +7,14 @@ import {
   type Hex,
 } from "viem";
 import { mainnet } from "viem/chains";
-import { readVaultAccountingFromArchive } from "../src/Effects.js";
+import { readVaultAccountingFromArchive } from "../../src/allocation/Effects.js";
 import {
   NORMALIZATION_VERSION,
   allocationEventId,
   serializers,
   topLevelInputSelector,
   type Serializer,
-} from "../src/normalization.js";
+} from "../../src/allocation/normalization.js";
 
 const rpcUrl = process.env.ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM;
 if (!rpcUrl) {

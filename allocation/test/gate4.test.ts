@@ -14,7 +14,7 @@ import {
   validateCoverageManifest,
   type AllocationCursor,
   type CoverageManifest,
-} from "../src/gate4.js";
+} from "../../src/allocation/gate4.js";
 
 const HASH = `0x${"a".repeat(64)}`;
 const VAULT = `0x${"b".repeat(40)}`;

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { readVaultAccountingFromArchive } from "../src/Effects.js";
-import { validateAllocationCursor, type AllocationCursor } from "../src/gate4.js";
+import { readVaultAccountingFromArchive } from "../../src/allocation/Effects.js";
+import { validateAllocationCursor, type AllocationCursor } from "../../src/allocation/gate4.js";
 
 type FixtureEvent = {
   id: string;
@@ -110,6 +110,14 @@ const parityQuery = `
       id blockNumber blockTimestamp blockHash totalAssets totalDebt totalIdle
       accountingIdentityHolds canonicalBlockVerified source sourceEventIds
     }
+    VaultAccountingCheckpointFailure(
+      where: {
+        chainId: { _eq: $chainId }
+        vaultAddress: { _eq: $vaultAddress }
+        blockNumber: { _eq: $blockNumber }
+        resolved: { _eq: false }
+      }
+    ) { id reason }
   }
 `;
 
@@ -268,6 +276,7 @@ try {
     const candidate = await graphql<{
       AllocationSourceEvent: EventRecord[];
       VaultAccountingCheckpoint: Array<Record<string, unknown>>;
+      VaultAccountingCheckpointFailure: Array<{ id: string; reason: string }>;
     }>(parityQuery, {
       chainId: parityCase.chainId,
       vaultAddress: parityCase.vaultAddress,
@@ -276,6 +285,7 @@ try {
     assert.deepEqual(candidate.AllocationSourceEvent.map(candidateEvent), parityCase.events);
 
     assert.equal(candidate.VaultAccountingCheckpoint.length, 1);
+    assert.deepEqual(candidate.VaultAccountingCheckpointFailure, []);
     assert.deepEqual(candidate.VaultAccountingCheckpoint[0], {
       id: `${parityCase.chainId}:${parityCase.vaultAddress}:${parityCase.blockNumber}`,
       blockNumber: parityCase.blockNumber,

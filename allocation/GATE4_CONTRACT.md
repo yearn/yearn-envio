@@ -16,6 +16,7 @@ Manifest validation is fail closed:
 - `safeForTimeline` requires every completeness flag, no known gaps, and a non-null earliest safe block;
 - parsed JSON requires exact boolean, array, string, address, hash, and block-range types; truthy string flags are rejected;
 - a safe row's earliest safe block must equal its published coverage start and remain within the validated vault range;
+- a safe row is rejected when an unresolved `VaultAccountingCheckpointFailure` exists inside its published range;
 - a new certification must use a new immutable `coverageRevision` rather than changing an accepted revision in place.
 
 The manifest additionally carries the evidence needed to generate the human matrix: exact registry/factory/RoleManager discovery records and block hashes, deployment and discovery blocks, first required event, allocator-history start, API version, runtime hash, earliest safe block, and explicit gaps. The draft inventory covers the directly configured legacy RoleManager plus all 33 factory-created RoleManagers.
@@ -191,6 +192,37 @@ The candidate endpoint and its authentication mode belong to the Gate 4 deployme
 
 Hasura/transport errors abort the page. Malformed cursors, unsupported cursor versions, scope/revision mismatches, and page sizes outside 1–2,000 are caller errors. No error path returns an empty page as a successful restart.
 
+## Unresolved checkpoint failures
+
+Before a range is certified or consumed, query for unresolved archive-read failures:
+
+```graphql
+query UnresolvedCheckpointFailures(
+  $chainId: Int!
+  $vaultAddress: String!
+  $coverageStartBlock: Int!
+  $validatedThroughBlock: Int!
+) {
+  VaultAccountingCheckpointFailure(
+    where: {
+      chainId: { _eq: $chainId }
+      vaultAddress: { _eq: $vaultAddress }
+      blockNumber: { _gte: $coverageStartBlock, _lte: $validatedThroughBlock }
+      resolved: { _eq: false }
+    }
+    order_by: [{ blockNumber: asc }]
+  ) {
+    id
+    blockNumber
+    expectedBlockHash
+    reason
+    sourceEventIds
+  }
+}
+```
+
+The result must be empty for a safe range. Failure reasons are stable categories and never contain an RPC URL or provider response. A later successful replay preserves the failure record with `resolved = true` and links it to the checkpoint.
+
 ## Exact Ethereum parity fixtures
 
 `fixtures/ethereum/gate4-parity.json` pins three canonical blocks and their exact normalized events, transaction envelopes, block-end vault accounting, and full lifecycle-seen strategy debt state:
@@ -199,7 +231,7 @@ Hasura/transport errors abort the page. Malformed cursors, unsupported cursor ve
 - yvUSDC-1 loss-sensitive report for a positive-debt strategy with no allocator target event in the audited range;
 - yvUSDC-1 Deposit whose block-end assets are entirely idle.
 
-The fixture also embeds the exact expected source event, assignment, and unbound-deployment provenance for the committed yvUSDC-1 `UpdateDebtAllocator` change in `gate2.json`. `parity:gate4` compares the full normalized event envelope, checkpoint, assignment, and provenance rows with the candidate GraphQL deployment; exercises the documented initial and continuation queries, including a same-transaction yvWETH page boundary; then independently repeats the accounting read through the archive RPC. It reports `NOT RUN` when either credential set is absent and never prints their values.
+The fixture also embeds the exact expected source event, assignment, and unbound-deployment provenance for the committed yvUSDC-1 `UpdateDebtAllocator` change in `gate2.json`. `allocation:parity:gate4` compares the full normalized event envelope, checkpoint, assignment, provenance, and unresolved-failure rows with the candidate shared deployment; exercises the documented initial and continuation queries, including a same-transaction yvWETH page boundary; then independently repeats the accounting read through the archive RPC. It reports `NOT RUN` when either credential set is absent and never prints their values.
 
 ## Remaining acceptance work
 
@@ -207,4 +239,4 @@ The fixture also embeds the exact expected source event, assignment, and unbound
 - Run the implemented credentialed parity harness against a deployed candidate; local runs remain `NOT RUN` without candidate configuration.
 - Prove full replay equals incremental continuation at the same cutoff.
 - Record replay/database/cache/GraphQL metrics and monitoring.
-- Complete the blue-green deployment and backout runbook.
+- Complete the shared-deployment candidate replay, cutover, and backout runbook.

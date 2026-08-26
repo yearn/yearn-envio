@@ -1,13 +1,13 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { createPublicClient, http } from "viem";
 import { mainnet } from "viem/chains";
-import { withTransientRpcRetry, sanitizeArchiveRpcError } from "../src/checkpoints.js";
+import { withTransientRpcRetry, sanitizeArchiveRpcError } from "../../src/allocation/checkpoints.js";
 import type {
   CoverageDiscoverySource,
   CoverageEntry,
   CoverageExclusion,
   CoverageManifest,
-} from "../src/gate4.js";
+} from "../../src/allocation/gate4.js";
 
 type InventoryDiscoverySource = Omit<CoverageDiscoverySource, "blockHash"> & { blockHash: string | null };
 

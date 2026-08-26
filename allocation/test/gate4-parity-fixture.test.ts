@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { allocationEventId } from "../src/normalization.js";
+import { allocationEventId } from "../../src/allocation/normalization.js";
 
 const fixture = JSON.parse(
   readFileSync(new URL("../fixtures/ethereum/gate4-parity.json", import.meta.url), "utf8"),

@@ -1,8 +1,8 @@
 # Gate 3 accounting checkpoint evidence
 
-Gate 3 is accepted locally as of 2026-08-26. Gate 4 coverage certification and deployment remain separate.
+Gate 3 is accepted locally as of 2026-08-26. Gate 4 coverage certification and candidate deployment remain separate work.
 
-The allocation suite passes 80/80 tests; Envio code generation and the allocation TypeScript build pass.
+The allocation suite passes 84/84 tests; root Envio code generation and the shared-project TypeScript build pass.
 
 ## Checkpoint mechanics
 
@@ -10,7 +10,8 @@ The allocation suite passes 80/80 tests; Envio code generation and the allocatio
 - `Deposit`, `Withdraw`, `DebtUpdated`, and `StrategyReported` trigger accounting reads. Same-vault, same-block triggers merge into one checkpoint, deduplicated and sorted by `(transactionIndex, logIndex, id)`.
 - The Effect cache identity includes lowercase vault, block number, and expected block hash. It is chain scoped, cache enabled, and limited to five calls per second.
 - Each request has a 20-second timeout. At most three total attempts are made for transient failures with full-jitter exponential delay capped at two seconds.
-- Contract reverts, unavailable historical state, and canonical hash mismatches are not retried. Final failures disable Effect caching and abort the handler, so no checkpoint persists.
+- Contract reverts, unavailable historical state, and canonical hash mismatches are not retried. Final failures disable Effect caching and throw to the allocation handler. The handler writes no checkpoint, persists a sanitized unresolved `VaultAccountingCheckpointFailure`, and continues the shared indexer.
+- A later successful replay writes the checkpoint and marks its matching failure row resolved. Any unresolved failure blocks coverage certification for its range.
 - Reads prefer EIP-1898 hash-pinned `eth_call`. Providers rejecting the block-hash object fall back to block-number reads followed by a second canonical-hash verification.
 - Transport errors are sanitized before leaving the reader. Tests prove RPC URLs, request bodies, and causes are not retained.
 
@@ -29,7 +30,7 @@ The pinned runtime fixture covers all 243 supported vaults:
 | 3.0.3 | 1 | 1 | `v3.0.3` |
 | 3.0.4 | 126 | 1 | `v3.0.4` |
 
-`audit:gate3:runtimes -- --blockscout --supported-only --verify-fixture` re-discovered all official deployments and verified their bytecode at the pinned audit block. Result: `PASS (243 vaults, 26 runtime families, 4 releases)`.
+`allocation:audit:gate3:runtimes -- --blockscout --supported-only --verify-fixture` re-discovered all official deployments and verified their bytecode at the pinned audit block. Result: `PASS (243 vaults, 26 runtime families, 4 releases)`.
 
 ## Mutation-path audit
 
@@ -56,7 +57,7 @@ Initialization leaves both totals at zero. Direct asset transfers do not mutate 
 - canonical block verified: `true`
 - accounting identity: `true`
 
-`verify:gate3:rpc` passed the real EIP-1898 read, the forced production block-number fallback with the second hash lookup, and a deliberate canonical mismatch. The endpoint value was neither printed nor committed.
+`allocation:verify:gate3:rpc` passed the real EIP-1898 read, the forced production block-number fallback with the second hash lookup, and a deliberate canonical mismatch. The endpoint value was neither printed nor committed.
 
 ## Replay benchmark
 
@@ -74,4 +75,4 @@ Capacity projections at the hard five-calls-per-second ceiling are 5.56 hours pe
 
 ## Gate boundary
 
-Gate 3 proves canonical accounting checkpoint mechanics for the explicit official-factory support set. It does not establish historical coverage ranges, an immutable coverage revision, deployed parity, monitoring, blue-green readiness, or `safeForTimeline`; those remain Gate 4.
+Gate 3 proves canonical accounting checkpoint mechanics and non-fatal failure isolation for the explicit official-factory support set. It does not establish historical coverage ranges, an immutable coverage revision, deployed parity, monitoring, shared-revision rollout readiness, or `safeForTimeline`; those remain Gate 4.

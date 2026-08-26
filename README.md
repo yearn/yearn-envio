@@ -2,7 +2,7 @@
 
 This repository contains an Envio indexer for Yearn V3 vaults and a fee calculator script to analyze depositor positions. Timelock contracts have also been added to reduce dependency on Tenderly alert monitoring (and reduce Tenderly RPC consumption/costs).
 
-The separately deployable Vault Allocation History producer is under [`allocation/`](allocation/README.md). It has its own schema, handlers, database boundary, and delivery gates; it does not change the primary indexer's entity contract.
+The [Vault Allocation History producer](allocation/README.md) is part of this Envio project. Its entities are additive to the root schema, its handlers run only for Ethereum, and archive-RPC failures are recorded without stopping unrelated indexing.
 
 *Please refer to the [documentation website](https://docs.envio.dev) for a thorough guide on all [Envio](https://envio.dev) indexer features*
 

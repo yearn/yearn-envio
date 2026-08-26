@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { executeVaultAccountingRead } from "../src/Effects.js";
+import { executeVaultAccountingRead } from "../../src/allocation/Effects.js";
 
 const input = {
   vaultAddress: "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",

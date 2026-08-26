@@ -112,6 +112,22 @@ export const sanitizeArchiveRpcError = (error: unknown): Error => {
   return new Error("Archive RPC request failed");
 };
 
+export type ArchiveRpcFailureReason =
+  | "archiveRpcRequestFailed"
+  | "canonicalBlockMismatch"
+  | "contractReadReverted"
+  | "historicalStateUnavailable"
+  | "transientRetryExhausted";
+
+export const archiveRpcFailureReason = (error: unknown): ArchiveRpcFailureReason => {
+  const sanitized = sanitizeArchiveRpcError(error);
+  if (sanitized instanceof CanonicalBlockMismatchError) return "canonicalBlockMismatch";
+  if (sanitized instanceof UnsupportedHistoricalStateError) return "historicalStateUnavailable";
+  if (sanitized instanceof TransientArchiveRpcError) return "transientRetryExhausted";
+  if (sanitized.message === "Archive RPC contract read reverted") return "contractReadReverted";
+  return "archiveRpcRequestFailed";
+};
+
 export type RetryOptions = {
   attempts?: number;
   baseDelayMs?: number;

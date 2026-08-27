@@ -21,7 +21,7 @@ The shared project uses:
 
 The existing indexer processes several chains. Allocation History is enabled only for Ethereum. Every allocation handler and archive read has an explicit Ethereum guard.
 
-Historical vault totals come from the dedicated `ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM` variable. The URL is never written to logs or entities.
+Historical vault totals use the shared `ENVIO_RPC_URL_ETHEREUM` endpoint. It must provide archive-capable historical state; the URL is never written to logs or entities.
 
 If an archive read fails after its retry budget:
 
@@ -58,7 +58,7 @@ Evidence and contracts:
 - [`GATE4_EVIDENCE.md`](GATE4_EVIDENCE.md)
 - [`RUNBOOK.md`](RUNBOOK.md)
 
-This is not yet a certified allocation-history producer. Deployed-candidate replay, credentialed parity, monitoring, full-versus-incremental comparison, and certification have not run. The draft has zero `safeForTimeline` rows.
+This is not yet a certified allocation-history producer. The first shared-deployment replay proved that archive failures do not stop the indexer, but its unusable Ethereum RPC produced no accounting checkpoints. A corrected fresh replay, credentialed parity, combined allocation/whole-indexer monitoring, full-versus-incremental comparison, and certification remain. The draft has zero `safeForTimeline` rows.
 
 ## Local commands
 
@@ -79,10 +79,10 @@ corepack pnpm allocation:monitor:gate4
 RPC validation commands:
 
 ```bash
-ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:verify:gate2:rpc
-ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:audit:gate3:runtimes -- --blockscout --supported-only --verify-fixture
-ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:verify:gate3:rpc
-ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:benchmark:gate3:rpc
+ENVIO_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:verify:gate2:rpc
+ENVIO_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:audit:gate3:runtimes -- --blockscout --supported-only --verify-fixture
+ENVIO_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:verify:gate3:rpc
+ENVIO_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:benchmark:gate3:rpc
 ```
 
 The RPC and candidate tools report `NOT RUN` when their required variables are missing. A skipped command is not a pass.

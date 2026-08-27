@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { createPublicClient, http } from "viem";
 import { mainnet } from "viem/chains";
 import { withTransientRpcRetry, sanitizeArchiveRpcError } from "../../src/allocation/checkpoints.js";
+import { resolveAllocationEnvironment } from "../../src/allocation/environment.js";
 import type {
   CoverageDiscoverySource,
   CoverageEntry,
@@ -29,9 +30,9 @@ type RuntimeInventory = {
   vaults: InventoryVault[];
 };
 
-const rpcUrl = process.env.ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM;
+const { ethereumRpcUrl: rpcUrl } = resolveAllocationEnvironment();
 if (!rpcUrl) {
-  console.log("Gate 4 draft manifest build: NOT RUN (ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM is unset)");
+  console.log("Gate 4 draft manifest build: NOT RUN (ENVIO_RPC_URL_ETHEREUM is unset)");
   process.exit(0);
 }
 

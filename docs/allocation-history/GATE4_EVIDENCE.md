@@ -1,6 +1,6 @@
 # Gate 4 evidence and acceptance status
 
-Gate 4 is **not accepted** as of 2026-08-26. The local coverage, query, fixture, parity-tooling, monitoring, and runbook prerequisites are complete; deployed-candidate replay and certification have not run.
+Gate 4 is **not accepted** as of 2026-08-27. The shared deployment is running and allocation events continue indexing. Its first replay used an unusable Ethereum RPC, so it produced sanitized unresolved failure rows and no accounting checkpoints. That run proves failure isolation for the shared indexer, but not checkpoint correctness, recovery, parity, or coverage certification.
 
 ## Implemented locally
 
@@ -28,23 +28,23 @@ The capture command re-reads canonical block hashes, transaction envelopes, bloc
 ## Validation
 
 - Allocation codegen and TypeScript build: pass.
-- Allocation suite: 85/85 tests pass across 11 files.
+- Allocation suite: 86/86 tests pass across 11 files.
 - Coverage output drift and producer-ancestry check: pass for 243 rows.
 - Coverage publisher: `DRY RUN` with zero writes.
 - Gate 3 official runtime regression: pass for 243 vaults, 26 runtime families, and four releases.
 - Root TypeScript build: pass.
-- Root Vitest: 85/85 pass across 11 files.
+- Root Vitest: 86/86 pass across 11 files.
 - Persisted event-configuration changes require fresh candidate storage; in-place resume of the initialized production database remains incompatible.
 - `git diff --check`: pass.
 
 ## Not run and remaining blockers
 
-- `allocation:parity:gate4`: **NOT RUN** because no allocation candidate GraphQL endpoint/token is configured.
-- `allocation:monitor:gate4`: **NOT RUN** for the same deployment/configuration reason.
-- No candidate revision of the shared Envio deployment has been deployed or replayed.
+- `allocation:parity:gate4`: **NOT RUN** with the corrected shared RPC and GraphQL configuration.
+- `allocation:monitor:gate4`: **NOT RUN** with the corrected shared RPC and GraphQL configuration.
+- A healthy fresh replay with the archive-capable shared Ethereum RPC has not run.
 - Full replay versus fresh incremental continuation at the same cutoff has not been compared.
 - Effect/cache/database growth, replay duration, GraphQL latency, and failure/recovery observations have not been recorded from a candidate.
 - The draft coverage revision has not been published and must remain unsafe.
 - No certified immutable revision exists, and Kong must not consume the draft as complete history.
 
-Gate 4 can be accepted only after a candidate shared-deployment revision completes the runbook, credentialed parity and monitoring pass, unresolved failure checks are empty, operational evidence is recorded, and eligible coverage is published in a new immutable revision.
+Gate 4 can be accepted only after the corrected shared deployment completes a fresh replay, credentialed parity and allocation monitoring pass alongside whole-indexer health checks, unresolved failure checks are empty, operational evidence is recorded, and eligible coverage is published in a new immutable revision.

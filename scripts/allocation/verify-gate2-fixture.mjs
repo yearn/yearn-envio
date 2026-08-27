@@ -2,9 +2,9 @@ import { readFileSync } from "node:fs";
 import { createPublicClient, http, keccak256, padHex } from "viem";
 import { mainnet } from "viem/chains";
 
-const rpcUrl = process.env.ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM;
+const rpcUrl = process.env.ENVIO_RPC_URL_ETHEREUM;
 if (!rpcUrl) {
-  console.log("Gate 2 Ethereum RPC fixture verification: NOT RUN (ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM is unset)");
+  console.log("Gate 2 Ethereum RPC fixture verification: NOT RUN (ENVIO_RPC_URL_ETHEREUM is unset)");
   process.exit(0);
 }
 

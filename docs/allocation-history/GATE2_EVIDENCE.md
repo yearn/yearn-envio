@@ -64,7 +64,7 @@ Run locally:
 corepack pnpm codegen
 corepack pnpm build
 corepack pnpm test
-ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:verify:gate2:rpc
+ENVIO_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:verify:gate2:rpc
 ```
 
 The verifier checks the pinned block hash, every listed runtime hash, every raw replay log, all 12 deployment receipts, and the same-block ordering invariant. When the RPC variable is absent it reports `NOT RUN`; it does not convert missing credentials into a pass.

@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { readVaultAccountingFromArchive } from "../../src/allocation/Effects.js";
+import { resolveAllocationEnvironment } from "../../src/allocation/environment.js";
 import { validateAllocationCursor, type AllocationCursor } from "../../src/allocation/gate4.js";
 
 type FixtureEvent = {
@@ -62,9 +63,11 @@ type Fixture = {
 
 type EventRecord = Record<string, unknown>;
 
-const endpoint = process.env.ENVIO_ALLOCATION_GRAPHQL_URL;
-const token = process.env.ENVIO_ALLOCATION_GRAPHQL_TOKEN;
-const archiveRpc = process.env.ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM;
+const {
+  graphqlUrl: endpoint,
+  graphqlToken: token,
+  ethereumRpcUrl: archiveRpc,
+} = resolveAllocationEnvironment();
 if (!endpoint || !archiveRpc) {
   console.log("Gate 4 deployed-candidate parity: NOT RUN (allocation GraphQL and archive RPC configuration are required)");
   process.exit(0);

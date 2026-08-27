@@ -188,7 +188,7 @@ query LatestVaultAccountingCheckpoint(
 
 ## Endpoint, authentication, and errors
 
-The candidate endpoint and its authentication mode belong to the Gate 4 deployment record. Coverage publication and parity reuse the shared `ENVIO_GRAPHQL_URL` endpoint and optional `ENVIO_PASSWORD` bearer token. Historical reads reuse `ENVIO_RPC_URL_ETHEREUM`, which must be archive-capable. Publication dry-runs unless `--publish` is explicit, verifies an already-published revision byte-for-byte, and refuses partial or conflicting immutable revisions. The validation harnesses never print credential values.
+The candidate endpoint and its authentication mode belong to the Gate 4 deployment record. Coverage publication and parity reuse the shared `ENVIO_GRAPHQL_URL` endpoint and optional `ENVIO_PASSWORD` bearer token. Historical reads require the dedicated `ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM` endpoint; they never fall back to the shared head/watchdog RPC. Publication dry-runs unless `--publish` is explicit, verifies an already-published revision byte-for-byte, and refuses partial or conflicting immutable revisions. The validation harnesses never print credential values.
 
 Hasura/transport errors abort the page. Malformed cursors, unsupported cursor versions, scope/revision mismatches, and page sizes outside 1–2,000 are caller errors. No error path returns an empty page as a successful restart.
 

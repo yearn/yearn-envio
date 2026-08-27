@@ -21,7 +21,7 @@ The shared project uses:
 
 The existing indexer processes several chains. Allocation History is enabled only for Ethereum. Every allocation handler and archive read has an explicit Ethereum guard.
 
-Historical vault totals use the shared `ENVIO_RPC_URL_ETHEREUM` endpoint. It must provide archive-capable historical state; the URL is never written to logs or entities.
+Historical vault totals use the dedicated `ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM` endpoint. The shared `ENVIO_RPC_URL_ETHEREUM` can remain a head provider for other indexer tasks. The archive URL is never written to logs or entities.
 
 If an archive read fails after its retry budget:
 
@@ -79,10 +79,10 @@ corepack pnpm allocation:monitor:gate4
 RPC validation commands:
 
 ```bash
-ENVIO_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:verify:gate2:rpc
-ENVIO_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:audit:gate3:runtimes -- --blockscout --supported-only --verify-fixture
-ENVIO_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:verify:gate3:rpc
-ENVIO_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:benchmark:gate3:rpc
+ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:verify:gate2:rpc
+ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:audit:gate3:runtimes -- --blockscout --supported-only --verify-fixture
+ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:verify:gate3:rpc
+ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM=<archive-rpc> corepack pnpm allocation:benchmark:gate3:rpc
 ```
 
 The RPC and candidate tools report `NOT RUN` when their required variables are missing. A skipped command is not a pass.

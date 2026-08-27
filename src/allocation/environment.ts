@@ -9,5 +9,5 @@ export const resolveAllocationEnvironment = (
 ): AllocationEnvironment => ({
   graphqlUrl: environment.ENVIO_GRAPHQL_URL,
   graphqlToken: environment.ENVIO_PASSWORD,
-  ethereumRpcUrl: environment.ENVIO_RPC_URL_ETHEREUM,
+  ethereumRpcUrl: environment.ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM,
 });

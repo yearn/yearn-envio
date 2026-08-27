@@ -32,9 +32,9 @@ const failSanitized = (error) => {
 process.on("uncaughtException", failSanitized);
 process.on("unhandledRejection", failSanitized);
 
-const rpcUrl = process.env.ENVIO_RPC_URL_ETHEREUM;
+const rpcUrl = process.env.ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM;
 if (!rpcUrl) {
-  console.log("Gate 3 vault runtime audit: NOT RUN (ENVIO_RPC_URL_ETHEREUM is unset)");
+  console.log("Gate 3 vault runtime audit: NOT RUN (ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM is unset)");
   process.exit(0);
 }
 

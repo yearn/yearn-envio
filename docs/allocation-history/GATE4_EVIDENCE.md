@@ -39,9 +39,9 @@ The capture command re-reads canonical block hashes, transaction envelopes, bloc
 
 ## Not run and remaining blockers
 
-- `allocation:parity:gate4`: **NOT RUN** with the corrected shared RPC and GraphQL configuration.
-- `allocation:monitor:gate4`: **NOT RUN** with the corrected shared RPC and GraphQL configuration.
-- A healthy fresh replay with the archive-capable shared Ethereum RPC has not run.
+- `allocation:parity:gate4`: **NOT RUN** with the dedicated archive RPC and shared GraphQL configuration.
+- `allocation:monitor:gate4`: **NOT RUN** with the dedicated archive RPC and shared GraphQL configuration.
+- A healthy fresh replay with the dedicated archive-capable Ethereum RPC has not run.
 - Full replay versus fresh incremental continuation at the same cutoff has not been compared.
 - Effect/cache/database growth, replay duration, GraphQL latency, and failure/recovery observations have not been recorded from a candidate.
 - The draft coverage revision has not been published and must remain unsafe.

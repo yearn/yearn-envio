@@ -7,7 +7,7 @@ This runbook adds Allocation History to the existing Yearn Envio deployment. It 
 - Pin the candidate commit.
 - Install the root lockfile and pass root codegen, build, tests, and coverage drift.
 - Review the shared `config.yaml` change and use fresh candidate storage. Do not try to resume the initialized production database with the changed event configuration.
-- Configure the shared `ENVIO_RPC_URL_ETHEREUM` endpoint with archive-capable historical state.
+- Configure `ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM` with a dedicated archive-capable endpoint. Keep it isolated from the shared head/watchdog RPC.
 - Supply candidate GraphQL access through the existing `ENVIO_GRAPHQL_URL` and optional `ENVIO_PASSWORD` bearer token.
 - Keep every draft coverage row at `safeForTimeline = false` during replay.
 - Keep the current production deployment revision available as the rollback target.
@@ -34,7 +34,7 @@ Without candidate credentials, the final three allocation commands must report `
 No separate Ethereum-only Envio deployment is required. Allocation validation runs inside the normal shared multichain instance while the existing whole-indexer monitoring confirms that every configured chain and legacy entity remains healthy.
 
 1. Deploy a candidate revision of the shared Envio project with fresh storage while the rollback revision remains available. Envio cannot resume an initialized database when its persisted event configuration changes.
-2. Configure the shared `ENVIO_RPC_URL_ETHEREUM` with archive-capable historical state. Allocation handlers remain Ethereum-only; the other chains continue through their existing paths.
+2. Configure the dedicated `ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM` endpoint. Allocation handlers remain Ethereum-only; the shared `ENVIO_RPC_URL_ETHEREUM` and other chains continue through their existing paths.
 3. Replay the shared instance from the configured historical start.
 4. Keep all draft coverage rows unsafe.
 5. Record Effect calls, retries, unresolved failures, elapsed time, database growth, cache growth, and process restarts.

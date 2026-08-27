@@ -62,7 +62,7 @@ export const archiveRpcUrl = (
 ): string => {
   if (chainId !== 1) throw new Error(`No allocation archive RPC configured for chain ${chainId}`);
   const url = resolveAllocationEnvironment(environment).ethereumRpcUrl;
-  if (!url) throw new Error("ENVIO_RPC_URL_ETHEREUM is required");
+  if (!url) throw new Error("ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM is required");
   return url;
 };
 

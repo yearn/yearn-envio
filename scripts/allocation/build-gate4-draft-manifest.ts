@@ -32,7 +32,7 @@ type RuntimeInventory = {
 
 const { ethereumRpcUrl: rpcUrl } = resolveAllocationEnvironment();
 if (!rpcUrl) {
-  console.log("Gate 4 draft manifest build: NOT RUN (ENVIO_RPC_URL_ETHEREUM is unset)");
+  console.log("Gate 4 draft manifest build: NOT RUN (ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM is unset)");
   process.exit(0);
 }
 

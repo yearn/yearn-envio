@@ -30,7 +30,7 @@ type CoverageRowsFile = {
 };
 
 const publish = process.argv.includes("--publish");
-const { graphqlUrl: endpoint, graphqlToken: token } = resolveAllocationEnvironment();
+const { graphqlUrl: endpoint } = resolveAllocationEnvironment();
 const input = JSON.parse(
   readFileSync(new URL("../../coverage/allocation/ethereum.entities.json", import.meta.url), "utf8"),
 ) as CoverageRowsFile;
@@ -56,7 +56,6 @@ const request = async <T>(query: string, variables: Record<string, unknown>): Pr
     method: "POST",
     headers: {
       "content-type": "application/json",
-      ...(token ? { authorization: `Bearer ${token}` } : {}),
     },
     body: JSON.stringify({ query, variables }),
   });

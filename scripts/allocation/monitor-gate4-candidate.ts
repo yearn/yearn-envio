@@ -5,7 +5,6 @@ import { resolveAllocationEnvironment } from "../../src/allocation/environment.j
 
 const {
   graphqlUrl: endpoint,
-  graphqlToken: token,
   ethereumRpcUrl: rpcUrl,
 } = resolveAllocationEnvironment();
 if (!endpoint || !rpcUrl) {
@@ -65,7 +64,6 @@ try {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      ...(token ? { authorization: `Bearer ${token}` } : {}),
     },
     body: JSON.stringify({
       query,

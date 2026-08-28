@@ -65,7 +65,6 @@ type EventRecord = Record<string, unknown>;
 
 const {
   graphqlUrl: endpoint,
-  graphqlToken: token,
   ethereumRpcUrl: archiveRpc,
 } = resolveAllocationEnvironment();
 if (!endpoint || !archiveRpc) {
@@ -210,7 +209,6 @@ const graphql = async <T>(query: string, variables: Record<string, unknown>): Pr
     method: "POST",
     headers: {
       "content-type": "application/json",
-      ...(token ? { authorization: `Bearer ${token}` } : {}),
     },
     body: JSON.stringify({ query, variables }),
   });

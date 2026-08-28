@@ -9,7 +9,7 @@ const input = {
 };
 
 describe("Gate 3 archive RPC Effect", () => {
-  it("uses shared GraphQL variables and a dedicated allocation archive RPC", () => {
+  it("uses the shared GraphQL URL without auth and a dedicated allocation archive RPC", () => {
     const environment = {
       ENVIO_GRAPHQL_URL: "https://graphql.example",
       ENVIO_PASSWORD: "token",
@@ -20,7 +20,6 @@ describe("Gate 3 archive RPC Effect", () => {
     };
     expect(resolveAllocationEnvironment(environment)).toEqual({
       graphqlUrl: "https://graphql.example",
-      graphqlToken: "token",
       ethereumRpcUrl: "https://archive.example",
     });
     expect(archiveRpcUrl(1, environment)).toBe("https://archive.example");

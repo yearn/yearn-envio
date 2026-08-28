@@ -8,7 +8,7 @@ This runbook adds Allocation History to the existing Yearn Envio deployment. It 
 - Install the root lockfile and pass root codegen, build, tests, and coverage drift.
 - Review the shared `config.yaml` change and use fresh candidate storage. Do not try to resume the initialized production database with the changed event configuration.
 - Configure `ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM` with a dedicated archive-capable endpoint. Keep it isolated from the shared head/watchdog RPC.
-- Supply candidate GraphQL access through the existing `ENVIO_GRAPHQL_URL` and optional `ENVIO_PASSWORD` bearer token.
+- Supply candidate GraphQL access through the existing `ENVIO_GRAPHQL_URL`. Envio does not require a password or bearer token for this endpoint.
 - Keep every draft coverage row at `safeForTimeline = false` during replay.
 - Keep the current production deployment revision available as the rollback target.
 
@@ -53,7 +53,7 @@ No separate Ethereum-only Envio deployment is required. Allocation validation ru
 4. Remove a known gap only when its named evidence passes for that vault and range.
 5. Set `safeForTimeline = true` only when every completeness flag is true and no gaps remain.
 6. Regenerate the entity JSON and Markdown matrix, run the drift check, publish, and rerun parity and monitoring.
-7. Give Kong only the certified revision and exact GraphQL/authentication contract.
+7. Give Kong only the certified revision and exact GraphQL access contract.
 
 ## Failure and recovery
 

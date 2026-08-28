@@ -9,8 +9,9 @@ import {
   accountingIdentityHolds,
   readCanonicalVaultAccounting,
 } from "../../src/allocation/checkpoints.js";
+import { resolveAllocationEnvironment } from "../../src/allocation/environment.js";
 
-const rpcUrl = process.env.ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM;
+const { ethereumRpcUrl: rpcUrl } = resolveAllocationEnvironment();
 if (!rpcUrl) {
   console.log("Gate 3 checkpoint RPC verification: NOT RUN (ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM is unset)");
   process.exit(0);

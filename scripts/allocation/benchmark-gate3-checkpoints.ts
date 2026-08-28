@@ -1,8 +1,9 @@
 import { readFileSync } from "node:fs";
 import { performance } from "node:perf_hooks";
 import { createArchiveReadDependencies, readVaultAccountingFromArchive } from "../../src/allocation/Effects.js";
+import { resolveAllocationEnvironment } from "../../src/allocation/environment.js";
 
-const rpcUrl = process.env.ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM;
+const { ethereumRpcUrl: rpcUrl } = resolveAllocationEnvironment();
 if (!rpcUrl) {
   console.log("Gate 3 checkpoint benchmark: NOT RUN (ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM is unset)");
   process.exit(0);

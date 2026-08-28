@@ -8,6 +8,7 @@ import {
 } from "viem";
 import { mainnet } from "viem/chains";
 import { readVaultAccountingFromArchive } from "../../src/allocation/Effects.js";
+import { resolveAllocationEnvironment } from "../../src/allocation/environment.js";
 import {
   NORMALIZATION_VERSION,
   allocationEventId,
@@ -16,7 +17,7 @@ import {
   type Serializer,
 } from "../../src/allocation/normalization.js";
 
-const rpcUrl = process.env.ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM;
+const { ethereumRpcUrl: rpcUrl } = resolveAllocationEnvironment();
 if (!rpcUrl) {
   console.log("Gate 4 fixture capture: NOT RUN (ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM is unset)");
   process.exit(0);

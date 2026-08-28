@@ -1,10 +1,12 @@
 import { readFileSync } from "node:fs";
 import { createPublicClient, http } from "viem";
 import { mainnet } from "viem/chains";
+import { resolveAllocationEnvironment } from "../../src/allocation/environment.js";
 
-const endpoint = process.env.ENVIO_ALLOCATION_GRAPHQL_URL;
-const token = process.env.ENVIO_ALLOCATION_GRAPHQL_TOKEN;
-const rpcUrl = process.env.ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM;
+const {
+  graphqlUrl: endpoint,
+  ethereumRpcUrl: rpcUrl,
+} = resolveAllocationEnvironment();
 if (!endpoint || !rpcUrl) {
   console.log("Gate 4 candidate monitor: NOT RUN (allocation GraphQL and archive RPC configuration are required)");
   process.exit(0);
@@ -62,7 +64,6 @@ try {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      ...(token ? { authorization: `Bearer ${token}` } : {}),
     },
     body: JSON.stringify({
       query,

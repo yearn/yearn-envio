@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { coverageEntityRows, validateCoverageManifest, type CoverageManifest } from "../../src/allocation/gate4.js";
+import { resolveAllocationEnvironment } from "../../src/allocation/environment.js";
 import { assertProducerCommitReachable } from "./coverage-provenance.js";
 
 type CoverageRow = {
@@ -29,8 +30,7 @@ type CoverageRowsFile = {
 };
 
 const publish = process.argv.includes("--publish");
-const endpoint = process.env.ENVIO_ALLOCATION_GRAPHQL_URL;
-const token = process.env.ENVIO_ALLOCATION_GRAPHQL_TOKEN;
+const { graphqlUrl: endpoint } = resolveAllocationEnvironment();
 const input = JSON.parse(
   readFileSync(new URL("../../coverage/allocation/ethereum.entities.json", import.meta.url), "utf8"),
 ) as CoverageRowsFile;
@@ -49,14 +49,13 @@ if (!publish) {
   console.log(`Gate 4 coverage publication: DRY RUN (${input.rows.length} rows, revision ${input.coverageRevision}, 0 writes)`);
   process.exit(0);
 }
-if (!endpoint) throw new Error("ENVIO_ALLOCATION_GRAPHQL_URL is required for --publish");
+if (!endpoint) throw new Error("ENVIO_GRAPHQL_URL is required for --publish");
 
 const request = async <T>(query: string, variables: Record<string, unknown>): Promise<T> => {
   const response = await fetch(endpoint, {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      ...(token ? { authorization: `Bearer ${token}` } : {}),
     },
     body: JSON.stringify({ query, variables }),
   });

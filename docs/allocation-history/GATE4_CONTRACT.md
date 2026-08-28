@@ -186,9 +186,9 @@ query LatestVaultAccountingCheckpoint(
 }
 ```
 
-## Endpoint, authentication, and errors
+## Endpoint and errors
 
-The candidate endpoint and its authentication mode belong to the Gate 4 deployment record; they are not known locally yet. Coverage publication reads `ENVIO_ALLOCATION_GRAPHQL_URL` and an optional bearer `ENVIO_ALLOCATION_GRAPHQL_TOKEN`. The command dry-runs unless `--publish` is explicit, verifies an already-published revision byte-for-byte, and refuses partial or conflicting immutable revisions. The parity harness must use dedicated environment variables and must never print their values.
+Coverage publication and parity reuse the shared `ENVIO_GRAPHQL_URL` endpoint without bearer authentication. Historical reads require the dedicated `ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM` endpoint; they never fall back to the shared head/watchdog RPC. Publication dry-runs unless `--publish` is explicit, verifies an already-published revision byte-for-byte, and refuses partial or conflicting immutable revisions. The validation harnesses never print the archive RPC URL.
 
 Hasura/transport errors abort the page. Malformed cursors, unsupported cursor versions, scope/revision mismatches, and page sizes outside 1–2,000 are caller errors. No error path returns an empty page as a successful restart.
 
@@ -233,10 +233,16 @@ The result must be empty for a safe range. Failure reasons are stable categories
 
 The fixture also embeds the exact expected source event, assignment, and unbound-deployment provenance for the committed yvUSDC-1 `UpdateDebtAllocator` change in `gate2.json`. `allocation:parity:gate4` compares the full normalized event envelope, checkpoint, assignment, provenance, and unresolved-failure rows with the candidate shared deployment; exercises the documented initial and continuation queries, including a same-transaction yvWETH page boundary; then independently repeats the accounting read through the archive RPC. It reports `NOT RUN` when either credential set is absent and never prints their values.
 
+## Combined shared-deployment validation
+
+Run Gate 4 in the normal shared multichain instance. A separate Ethereum-only Envio deployment is not required. The first live replay with an unusable Ethereum RPC already proved that sanitized allocation failures do not stop shared indexing, so retain that incident as failure-isolation evidence instead of deliberately breaking the RPC again.
+
+The corrected fresh replay must prove Ethereum checkpoint recovery and allocation parity while the existing whole-indexer monitor verifies every configured chain and legacy entity in the same observation window.
+
 ## Remaining acceptance work
 
 - Replace the complete draft Ethereum manifest with a certified immutable revision after parity; deterministic entity/matrix generation and guarded publication are implemented.
 - Run the implemented credentialed parity harness against a deployed candidate; local runs remain `NOT RUN` without candidate configuration.
 - Prove full replay equals incremental continuation at the same cutoff.
-- Record replay/database/cache/GraphQL metrics and monitoring.
+- Record replay/database/cache/GraphQL metrics plus allocation and whole-indexer monitoring from the same shared run.
 - Complete the shared-deployment candidate replay, cutover, and backout runbook.

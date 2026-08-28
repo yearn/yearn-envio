@@ -15,6 +15,7 @@ import {
   type CanonicalReadDependencies,
   type VaultAccountingTotals,
 } from "./checkpoints.js";
+import { resolveAllocationEnvironment } from "./environment.js";
 
 const accountingAbi = [
   {
@@ -55,9 +56,12 @@ const hashPinnedUnsupported = (error: unknown): boolean => {
   );
 };
 
-const archiveRpcUrl = (chainId: number): string => {
+export const archiveRpcUrl = (
+  chainId: number,
+  environment: NodeJS.ProcessEnv = process.env,
+): string => {
   if (chainId !== 1) throw new Error(`No allocation archive RPC configured for chain ${chainId}`);
-  const url = process.env.ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM;
+  const url = resolveAllocationEnvironment(environment).ethereumRpcUrl;
   if (!url) throw new Error("ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM is required");
   return url;
 };

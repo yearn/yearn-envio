@@ -7,8 +7,8 @@ This runbook adds Allocation History to the existing Yearn Envio deployment. It 
 - Pin the candidate commit.
 - Install the root lockfile and pass root codegen, build, tests, and coverage drift.
 - Review the shared `config.yaml` change and use fresh candidate storage. Do not try to resume the initialized production database with the changed event configuration.
-- Configure `ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM` with a dedicated archive-capable endpoint.
-- Supply candidate GraphQL access only through `ENVIO_ALLOCATION_GRAPHQL_URL` and `ENVIO_ALLOCATION_GRAPHQL_TOKEN`.
+- Configure `ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM` with a dedicated archive-capable endpoint. Keep it isolated from the shared head/watchdog RPC.
+- Supply candidate GraphQL access through the existing `ENVIO_GRAPHQL_URL`. Envio does not require a password or bearer token for this endpoint.
 - Keep every draft coverage row at `safeForTimeline = false` during replay.
 - Keep the current production deployment revision available as the rollback target.
 
@@ -29,16 +29,18 @@ corepack pnpm allocation:monitor:gate4
 
 Without candidate credentials, the final three allocation commands must report `DRY RUN`, `NOT RUN`, and `NOT RUN`. These statuses confirm safe local behavior; they do not accept Gate 4.
 
-## Candidate replay
+## Shared-instance replay
 
-1. Deploy a candidate revision of the existing Envio project with fresh candidate storage while the current production revision and database remain available. Envio cannot resume an initialized database when its persisted event configuration changes.
-2. Configure the dedicated Ethereum archive RPC. Do not enable allocation archive reads for other chains.
-3. Replay the candidate from the configured historical start.
+No separate Ethereum-only Envio deployment is required. Allocation validation runs inside the normal shared multichain instance while the existing whole-indexer monitoring confirms that every configured chain and legacy entity remains healthy.
+
+1. Deploy a candidate revision of the shared Envio project with fresh storage while the rollback revision remains available. Envio cannot resume an initialized database when its persisted event configuration changes.
+2. Configure the dedicated `ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM` endpoint. Allocation handlers remain Ethereum-only; the shared `ENVIO_RPC_URL_ETHEREUM` and other chains continue through their existing paths.
+3. Replay the shared instance from the configured historical start.
 4. Keep all draft coverage rows unsafe.
 5. Record Effect calls, retries, unresolved failures, elapsed time, database growth, cache growth, and process restarts.
-6. Confirm that forced archive failures write `VaultAccountingCheckpointFailure` rows and do not stop unrelated indexing.
-7. Run `allocation:monitor:gate4` repeatedly. It checks sync readiness, coverage rows, the semantic canary, and the absence of unresolved failures separately.
-8. Run `allocation:coverage:publish -- --publish` only after the candidate schema exists and the generated rows pass the drift check. The publisher refuses any safe range containing an unresolved failure.
+6. Preserve the first live replay as failure-isolation evidence: an unusable Ethereum RPC produced sanitized `VaultAccountingCheckpointFailure` rows while shared indexing continued. Do not deliberately break the RPC again. The corrected replay must prove recovery by producing checkpoints without unresolved gaps in any proposed safe range.
+7. Run `allocation:coverage:publish -- --publish` only after the candidate schema exists and the generated unsafe rows pass the drift check. The publisher refuses any safe range containing an unresolved failure.
+8. Run `allocation:monitor:gate4` repeatedly alongside the existing shared-indexer health/freshness monitor. Together they must prove allocation readiness and continued health for the other configured chains and legacy entities.
 9. Run `allocation:parity:gate4`. It must pass the exact yvWETH/yvUSDC blocks, assignment/provenance rows, cursor pages, direct archive reads, and checkpoint-failure checks.
 10. Replay a fresh candidate to the same cutoff and compare its ordered allocation entities with a fresh incremental continuation.
 11. Measure the documented initial and continuation GraphQL queries at page sizes 500 and 2,000, plus latest-checkpoint lookup latency.
@@ -51,7 +53,7 @@ Without candidate credentials, the final three allocation commands must report `
 4. Remove a known gap only when its named evidence passes for that vault and range.
 5. Set `safeForTimeline = true` only when every completeness flag is true and no gaps remain.
 6. Regenerate the entity JSON and Markdown matrix, run the drift check, publish, and rerun parity and monitoring.
-7. Give Kong only the certified revision and exact GraphQL/authentication contract.
+7. Give Kong only the certified revision and exact GraphQL access contract.
 
 ## Failure and recovery
 

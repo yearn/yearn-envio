@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
-import { executeVaultAccountingRead } from "../../src/allocation/Effects.js";
+import { archiveRpcUrl, executeVaultAccountingRead } from "../../src/allocation/Effects.js";
+import { resolveAllocationEnvironment } from "../../src/allocation/environment.js";
 
 const input = {
   vaultAddress: "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -8,6 +9,27 @@ const input = {
 };
 
 describe("Gate 3 archive RPC Effect", () => {
+  it("uses the shared GraphQL URL without auth and a dedicated allocation archive RPC", () => {
+    const environment = {
+      ENVIO_GRAPHQL_URL: "https://graphql.example",
+      ENVIO_PASSWORD: "token",
+      ENVIO_RPC_URL_ETHEREUM: "https://head-only.example",
+      ENVIO_ALLOCATION_GRAPHQL_URL: "https://legacy-graphql.example",
+      ENVIO_ALLOCATION_GRAPHQL_TOKEN: "legacy-token",
+      ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM: "https://archive.example",
+    };
+    expect(resolveAllocationEnvironment(environment)).toEqual({
+      graphqlUrl: "https://graphql.example",
+      ethereumRpcUrl: "https://archive.example",
+    });
+    expect(archiveRpcUrl(1, environment)).toBe("https://archive.example");
+    expect(() =>
+      archiveRpcUrl(1, {
+        ENVIO_RPC_URL_ETHEREUM: "https://head-only.example",
+      }),
+    ).toThrow("ENVIO_ALLOCATION_ARCHIVE_RPC_URL_ETHEREUM is required");
+  });
+
   it("keeps successful canonical reads cacheable", async () => {
     const context = { cache: true, chain: { id: 1 } };
     const read = vi.fn().mockResolvedValue({

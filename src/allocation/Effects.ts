@@ -175,6 +175,7 @@ export const vaultAccountingAtBlock = createEffect(
     },
     cache: true,
     crossChain: false,
+    rateLimit: false,
   },
   ({ input, context }) => executeVaultAccountingRead(context, input),
 );

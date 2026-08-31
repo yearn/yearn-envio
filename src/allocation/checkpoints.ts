@@ -98,7 +98,11 @@ export const isTransientRpcError = (error: unknown): boolean => {
     message.includes("timed out") ||
     message.includes("network") ||
     message.includes("connection reset") ||
-    message.includes("socket hang up")
+    message.includes("socket hang up") ||
+    message.includes("rate limit") ||
+    message.includes("rps limit") ||
+    message.includes("exceeds defined limit") ||
+    message.includes("too many requests")
   );
 };
 

@@ -70,7 +70,6 @@ const makeArchiveClient = (chainId: number) =>
   createPublicClient({
     chain: chainId === 1 ? mainnet : undefined,
     transport: http(archiveRpcUrl(chainId), {
-      batch: true,
       retryCount: 0,
       timeout: 20_000,
     }),

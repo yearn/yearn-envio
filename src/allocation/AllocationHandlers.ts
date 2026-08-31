@@ -166,6 +166,7 @@ export const writeAccountingCheckpoint = async (
       blockTimestamp: BigInt(event.block.timestamp),
       expectedBlockHash: lowerAddress(event.block.hash),
       reason: archiveRpcFailureReason(error),
+      message: error instanceof Error ? error.message : String(error),
       sourceEventIds,
       resolved: false,
       resolvedCheckpointId: undefined,

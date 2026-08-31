@@ -109,8 +109,13 @@ export const sanitizeArchiveRpcError = (error: unknown): Error => {
   }
   if (isUnsupportedHistoricalState(error)) return new UnsupportedHistoricalStateError();
   if (isTransientRpcError(error)) return new TransientArchiveRpcError();
-  return new Error("Archive RPC request failed");
+  return new Error(`Archive RPC request failed: ${redactedErrorDetail(error)}`);
 };
+
+export const redactedErrorDetail = (error: unknown): string =>
+  errorMessage(error)
+    .replace(/https?:\/\/\S+/g, "<rpc-url>")
+    .slice(0, 500);
 
 export type ArchiveRpcFailureReason =
   | "archiveRpcRequestFailed"

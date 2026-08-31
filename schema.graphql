@@ -1367,6 +1367,7 @@ type VaultAccountingCheckpointFailure
   blockTimestamp: BigInt!
   expectedBlockHash: String!
   reason: String!
+  message: String
   sourceEventIds: [String!]!
   resolved: Boolean! @index
   resolvedCheckpointId: String

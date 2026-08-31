@@ -26,7 +26,6 @@ lib/*
 .bsb.lock
 node_modules/
 build/
-*.tsbuildinfo
 benchmarks/
 artifacts
 cache

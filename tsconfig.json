@@ -24,6 +24,5 @@
     /* Code doesn't run in the DOM: */
     "lib": ["es2022"],
     "types": ["node", "envio"]
-  },
-  "exclude": ["scripts/allocation/**", "test/allocation/**"]
+  }
 }

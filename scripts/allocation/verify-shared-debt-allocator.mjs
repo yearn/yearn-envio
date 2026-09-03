@@ -56,27 +56,10 @@ const compareRows = (left, right) =>
   left.logIndex - right.logIndex ||
   left.id.localeCompare(right.id);
 
-const freshReplay = [...normalizedRows].sort(compareRows);
-const secondFreshReplay = [...normalizedRows].reverse().sort(compareRows);
-assert.deepEqual(secondFreshReplay, freshReplay, "fresh replay order is not deterministic");
-
-const midpoint = Math.ceil(normalizedRows.length / 2);
-const incrementalContinuation = [
-  ...normalizedRows.slice(0, midpoint),
-  ...normalizedRows.slice(midpoint),
-].sort(compareRows);
-assert.deepEqual(
-  incrementalContinuation,
-  freshReplay,
-  "incremental continuation differs from a fresh replay",
-);
-
-const paginated = [];
-for (let offset = 0; offset < freshReplay.length; offset += 1) {
-  paginated.push(...freshReplay.slice(offset, offset + 1));
-}
-assert.deepEqual(paginated, freshReplay, "deterministic pagination omitted or duplicated rows");
-assert.equal(new Set(freshReplay.map(({ id }) => id)).size, freshReplay.length);
+const orderedRows = [...normalizedRows].sort(compareRows);
+const reverseInputOrder = [...normalizedRows].reverse().sort(compareRows);
+assert.deepEqual(reverseInputOrder, orderedRows, "fixture ordering is not deterministic");
+assert.equal(new Set(orderedRows.map(({ id }) => id)).size, orderedRows.length);
 
 const requiredVaults = new Set([
   "0xbe53a109b494e5c9f97b9cd39fe969be68bf6204",
@@ -84,41 +67,23 @@ const requiredVaults = new Set([
   "0x696d02db93291651ed510704c9b286841d506987",
 ]);
 assert.deepEqual(
-  new Set(fixture.coverage.historicalLogCounts.map(({ vaultAddress }) => vaultAddress)),
+  new Set(fixture.historicalEvidence.historicalLogCounts.map(({ vaultAddress }) => vaultAddress)),
   requiredVaults,
 );
-for (const coverage of fixture.coverage.historicalLogCounts) {
-  assert.ok(coverage.count > 0);
-  assert.ok(coverage.firstBlock <= coverage.lastBlock);
-  assert.ok(coverage.lastBlock <= fixture.validatedThrough.blockNumber);
+for (const evidence of fixture.historicalEvidence.historicalLogCounts) {
+  assert.ok(evidence.count > 0);
+  assert.ok(evidence.firstBlock <= evidence.lastBlock);
+  assert.ok(evidence.lastBlock <= fixture.validatedThrough.blockNumber);
 }
-
-const certificationComplete =
-  fixture.coverage.fullHistoricalReplayCertified === true &&
-  fixture.coverage.freshReplayMatches === true &&
-  fixture.coverage.incrementalContinuationMatches === true &&
-  fixture.coverage.paginationValidated === true &&
-  fixture.coverage.unresolvedEventCount === 0;
-assert.equal(
-  fixture.coverage.safeForTimeline,
-  certificationComplete,
-  "safeForTimeline must exactly reflect all certification gates",
-);
-assert.equal(
-  fixture.coverage.safeForTimeline,
-  false,
-  "local evidence must remain fail-closed until a deployed replay is certified",
-);
 
 console.log(
   JSON.stringify({
     status: "ok",
     decodedRealLogs: normalizedRows.length,
-    historicalLogsObserved: fixture.coverage.historicalLogCounts.reduce(
+    historicalLogsObserved: fixture.historicalEvidence.historicalLogCounts.reduce(
       (total, { count }) => total + count,
       0,
     ),
     validatedThroughBlock: fixture.validatedThrough.blockNumber,
-    safeForTimeline: fixture.coverage.safeForTimeline,
   }),
 );

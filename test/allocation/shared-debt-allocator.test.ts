@@ -7,9 +7,11 @@ const VAULT_BOUND_FACTORY = "0xfCF8c7C43dedd567083B422d6770F23B78D15BDe" as cons
 const SHARED_ALLOCATOR = "0x1e9eb053228b1156831759401de0e115356b8671" as const;
 const VAULT_BOUND_ALLOCATOR = "0x3333333333333333333333333333333333333333" as const;
 const VAULT = "0xBe53A109B494E5c9f97b9Cd39Fe969BE68BF6204" as const;
+const SECOND_VAULT = "0x310B7Ea7475A0B449cfd73bE81522F1B88eFAFaa" as const;
 const STRATEGY = "0xf766c7293f4e0265ddfa8369f78a808df8ac70c1" as const;
 const GOVERNANCE = "0x16388463d60ffe0661cf7f1f31a7d658ac790ff7" as const;
 const SENDER = "0x1b5f15dcb82d25f91c65b53cee151e8b9fbdd271" as const;
+const ROLE_MANAGER = "0xb3bd6B2E61753C311EFbCF0111f75D29706D9a41" as const;
 
 const hash = (character: string): `0x${string}` => `0x${character.repeat(64)}`;
 
@@ -96,6 +98,7 @@ describe("shared debt allocator normalization", () => {
     expect(await testIndexer.AllocationSourceEvent.getAll()).toEqual([
       expect.objectContaining({
         vaultAddress: VAULT.toLowerCase(),
+        scope: "vault",
         sourceAddress: SHARED_ALLOCATOR,
         eventName: "UpdateStrategyDebtRatio",
         abiVariant: "shared-v1-vault-scoped-singular",
@@ -109,17 +112,9 @@ describe("shared debt allocator normalization", () => {
         newTotalDebtRatio: 2_870n,
       }),
     ]);
-    expect(await testIndexer.VaultAllocationEventCoverage.getAll()).toEqual([
-      expect.objectContaining({
-        vaultAddress: VAULT.toLowerCase(),
-        observedEventCount: 1,
-        historicalReplayComplete: false,
-        safeForTimeline: false,
-      }),
-    ]);
   });
 
-  it("keeps unscoped shared allocator events unresolved", async () => {
+  it("keeps shared control events allocator-scoped without vault fan-out", async () => {
     const testIndexer = createTestIndexer();
     await testIndexer.process({
       chains: {
@@ -135,28 +130,67 @@ describe("shared debt allocator normalization", () => {
               params: { allocator: SHARED_ALLOCATOR, governance: GOVERNANCE },
             },
             {
+              contract: "YearnV3RoleManager",
+              event: "AddedNewVault",
+              srcAddress: ROLE_MANAGER,
+              logIndex: 2,
+              block: block(20_986_033, "6"),
+              transaction: transaction(0, "7"),
+              params: { vault: VAULT, debtAllocator: SHARED_ALLOCATOR, category: 0n },
+            },
+            {
+              contract: "YearnV3RoleManager",
+              event: "AddedNewVault",
+              srcAddress: ROLE_MANAGER,
+              logIndex: 3,
+              block: block(20_986_034, "7"),
+              transaction: transaction(0, "8"),
+              params: { vault: SECOND_VAULT, debtAllocator: SHARED_ALLOCATOR, category: 0n },
+            },
+            {
               contract: "SharedDebtAllocator",
               event: "UpdateKeeper",
               srcAddress: SHARED_ALLOCATOR,
-              logIndex: 7,
+              logIndex: 4,
               block: block(20_987_763, "7"),
-              transaction: transaction(0, "8"),
+              transaction: transaction(0, "9"),
               params: { keeper: SENDER, allowed: true },
+            },
+            {
+              contract: "SharedDebtAllocator",
+              event: "GovernanceTransferred",
+              srcAddress: SHARED_ALLOCATOR,
+              logIndex: 5,
+              block: block(20_987_764, "8"),
+              transaction: transaction(0, "a"),
+              params: { previousGovernance: GOVERNANCE, newGovernance: SENDER },
             },
           ],
         },
       },
     });
 
-    expect(await testIndexer.AllocationSourceEvent.getAll()).toEqual([]);
-    expect(await testIndexer.UnresolvedAllocationSourceEvent.getAll()).toEqual([
-      expect.objectContaining({
-        sourceAddress: SHARED_ALLOCATOR,
-        eventName: "UpdateKeeper",
-        reason: "sharedAllocatorEventHasNoVault",
-        resolved: false,
-      }),
-    ]);
+    const sharedControlEvents = (await testIndexer.AllocationSourceEvent.getAll()).filter(
+      ({ sourceAddress }) => sourceAddress === SHARED_ALLOCATOR,
+    );
+    expect(sharedControlEvents).toHaveLength(2);
+    expect(sharedControlEvents).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          eventName: "UpdateKeeper",
+          scope: "allocator",
+          vaultAddress: undefined,
+          associationEvidence: "event-source-allocator",
+        }),
+        expect.objectContaining({
+          eventName: "GovernanceTransferred",
+          scope: "allocator",
+          vaultAddress: undefined,
+          associationEvidence: "event-source-allocator",
+        }),
+      ]),
+    );
+    expect(await testIndexer.UnresolvedAllocationSourceEvent.getAll()).toEqual([]);
   });
 
   it("preserves vault-bound singular behavior and late reconciliation", async () => {
@@ -199,6 +233,7 @@ describe("shared debt allocator normalization", () => {
     })).toEqual([
       expect.objectContaining({
         vaultAddress: VAULT.toLowerCase(),
+        scope: "vault",
         abiVariant: "generic-v1-vault-bound-singular",
         associationEvidence: "vault-bound-factory-event-late-reconciliation",
       }),
@@ -269,8 +304,12 @@ describe("shared debt allocator normalization", () => {
     ]);
     expect(events).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ abiVariant: "generic-v0-vault-bound-plural" }),
-        expect.objectContaining({ eventName: "UpdateKeeper", vaultAddress: VAULT.toLowerCase() }),
+        expect.objectContaining({ abiVariant: "generic-v0-vault-bound-plural", scope: "vault" }),
+        expect.objectContaining({
+          eventName: "UpdateKeeper",
+          scope: "vault",
+          vaultAddress: VAULT.toLowerCase(),
+        }),
         expect.objectContaining({
           eventName: "GovernanceTransferred",
           vaultAddress: VAULT.toLowerCase(),

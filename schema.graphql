@@ -1340,7 +1340,8 @@ type AllocationSourceEvent
   @index(fields: ["chainId", "vaultAddress", "blockNumber", "transactionIndex", "logIndex", "id"]) {
   id: ID!
   chainId: Int! @index
-  vaultAddress: String! @index
+  vaultAddress: String @index
+  scope: String! @index
   sourceAddress: String! @index
   sourceType: String! @index
   eventName: String! @index
@@ -1436,24 +1437,6 @@ type VaultDebtAllocatorAssignment
   transactionIndex: Int!
   logIndex: Int!
   sourceEventId: String!
-}
-
-type VaultAllocationEventCoverage {
-  id: ID!
-  chainId: Int! @index
-  vaultAddress: String! @index
-  eventFamily: String! @index
-  firstObservedBlock: Int!
-  lastObservedBlock: Int!
-  observedEventCount: Int!
-  historicalReplayComplete: Boolean!
-  freshReplayMatches: Boolean!
-  incrementalContinuationMatches: Boolean!
-  paginationValidated: Boolean!
-  unresolvedEventCount: Int!
-  safeForTimeline: Boolean! @index
-  knownGapsJson: String!
-  coverageRevision: String! @index
 }
 
 type V3RoleManagerUpdateDebtAllocator {

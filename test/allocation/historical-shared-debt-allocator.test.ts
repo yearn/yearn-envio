@@ -112,33 +112,25 @@ const snapshot = async (testIndexer: ReturnType<typeof createTestIndexer>) => ({
   normalized: stable(await testIndexer.AllocationSourceEvent.getAll()),
   raw: stable(await testIndexer.SharedUpdateStrategyDebtRatio.getAll()),
   deployments: stable(await testIndexer.SharedDebtAllocatorDeployment.getAll()),
-  coverage: stable(await testIndexer.VaultAllocationEventCoverage.getAll()),
   unresolved: stable(await testIndexer.UnresolvedAllocationSourceEvent.getAll()),
 });
 
 describe("shared allocator real-log replay fixture", () => {
-  it("produces identical fresh replays and a coherent staged prefix", async () => {
+  it("normalizes real fixtures deterministically with unique IDs", async () => {
     const full = createTestIndexer();
-    const repeatedFull = createTestIndexer();
-    const stagedPrefix = createTestIndexer();
+    const reverseInput = createTestIndexer();
 
     await processEvents(full, [factoryEvent, ...ratioEvents]);
-    await processEvents(repeatedFull, [factoryEvent, ...ratioEvents]);
-    await processEvents(stagedPrefix, [factoryEvent, ...ratioEvents.slice(0, 2)]);
+    await processEvents(reverseInput, [factoryEvent, ...[...ratioEvents].reverse()]);
 
-    expect(await snapshot(repeatedFull)).toEqual(await snapshot(full));
-    expect(await full.AllocationSourceEvent.getAll()).toHaveLength(3);
+    expect(await snapshot(reverseInput)).toEqual(await snapshot(full));
+    const normalized = await full.AllocationSourceEvent.getAll();
+    expect(normalized).toHaveLength(3);
+    expect(new Set(normalized.map(({ id }) => id)).size).toBe(3);
+    expect(normalized.every(({ scope }) => scope === "vault")).toBe(true);
+    expect(new Set(normalized.map(({ vaultAddress }) => vaultAddress))).toEqual(
+      new Set(fixture.logs.map(({ expected }) => expected.vault)),
+    );
     expect(await full.UnresolvedAllocationSourceEvent.getAll()).toEqual([]);
-
-    const prefixIds = new Set(
-      (await stagedPrefix.AllocationSourceEvent.getAll()).map(({ id }) => id),
-    );
-    expect(stable(await stagedPrefix.AllocationSourceEvent.getAll())).toEqual(
-      stable(
-        (await full.AllocationSourceEvent.getAll()).filter(({ id }) => prefixIds.has(id)),
-      ),
-    );
-    expect(await stagedPrefix.AllocationSourceEvent.getAll()).toHaveLength(2);
-    expect(await stagedPrefix.UnresolvedAllocationSourceEvent.getAll()).toEqual([]);
   });
 });

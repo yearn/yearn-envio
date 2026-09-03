@@ -77,5 +77,6 @@ Role Manager membership, and does not infer from strategy reuse.
 
 For vault-bound variants, the immutable factory `vault` remains the association evidence. If a
 vault-bound allocator event arrives before its deployment record, it is stored as unresolved and
-only normalized after the vault-bound factory event is indexed. Shared unscoped events remain
-unresolved because no later assignment can make their original log vault-specific.
+only normalized after the vault-bound factory event is indexed. Shared keeper and governance
+events are allocator-scoped because their source address is canonical even though no vault is
+present; they are stored once and never expanded across Role Manager assignments.

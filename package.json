@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "tsc --clean",
     "build": "tsc --build",
-    "allocation:coverage:check": "node scripts/allocation/verify-shared-debt-allocator.mjs",
+    "allocation:fixture:check": "node scripts/allocation/verify-shared-debt-allocator.mjs",
     "allocation:test": "vitest run test/allocation",
     "check:config": "node scripts/check_envio_config_compatibility.mjs",
     "watch": "tsc --watch",

@@ -12,13 +12,8 @@ const ALLOCATION_CHAIN_ID = 1;
 const SHARED_ALLOCATOR_IMPLEMENTATION = "0xa47eb754d44339b5dedcf4d804428708857e7899";
 const SHARED_ALLOCATOR_IMPLEMENTATION_CODE_HASH =
   "0x633feca48437476cbe24af9ab15fdfcc340d52c48889c21d0ddf2b4f000c13a7";
-const COVERAGE_REVISION = "shared-debt-allocator-v1-observed";
-const UNCERTIFIED_GAPS = JSON.stringify([
-  "historicalReplayNotCertified",
-  "freshReplayParityNotCertified",
-  "incrementalContinuationNotCertified",
-  "paginationNotCertified",
-]);
+
+type AllocationScope = "vault" | "allocator";
 
 type EventEnvelope = {
   chainId: number;
@@ -89,7 +84,8 @@ const ratioFields = (params: RatioFields) => ({
 const writeNormalized = <T>(
   event: EventEnvelope,
   context: NormalizationContext,
-  vaultAddress: string,
+  vaultAddress: string | null,
+  scope: AllocationScope,
   eventSerializer: Serializer<T>,
   params: T,
   associationEvidence: string,
@@ -97,7 +93,8 @@ const writeNormalized = <T>(
 ): void => {
   context.AllocationSourceEvent.set({
     ...envelope(event, eventSerializer, params),
-    vaultAddress: lowerAddress(vaultAddress),
+    vaultAddress: vaultAddress ? lowerAddress(vaultAddress) : undefined,
+    scope,
     associationEvidence,
     newTargetRatio: ratios?.newTargetRatio,
     newMaxRatio: ratios?.newMaxRatio,
@@ -142,6 +139,7 @@ const resolvePendingVaultBoundEvents = async (
       id: unresolved.id,
       chainId: unresolved.chainId,
       vaultAddress: lowerAddress(vaultAddress),
+      scope: "vault",
       sourceAddress: unresolved.sourceAddress,
       sourceType: unresolved.sourceType,
       eventName: unresolved.eventName,
@@ -208,42 +206,12 @@ const writeVaultBoundAllocatorEvent = async <T>(
     event,
     context,
     deployment.vaultAddress,
+    "vault",
     eventSerializer,
     params,
     "vault-bound-factory-event",
     ratios,
   );
-};
-
-const writeSharedCoverage = async (
-  event: EventEnvelope & { params: RatioFields & { vault: string } },
-  context: {
-    VaultAllocationEventCoverage: {
-      get: (id: string) => Promise<Entity<"VaultAllocationEventCoverage"> | undefined>;
-      set: (entity: Entity<"VaultAllocationEventCoverage">) => void;
-    };
-  },
-): Promise<void> => {
-  const vaultAddress = lowerAddress(event.params.vault);
-  const id = `${event.chainId}:${vaultAddress}:sharedUpdateStrategyDebtRatio`;
-  const existing = await context.VaultAllocationEventCoverage.get(id);
-  context.VaultAllocationEventCoverage.set({
-    id,
-    chainId: event.chainId,
-    vaultAddress,
-    eventFamily: "sharedUpdateStrategyDebtRatio",
-    firstObservedBlock: Math.min(existing?.firstObservedBlock ?? event.block.number, event.block.number),
-    lastObservedBlock: Math.max(existing?.lastObservedBlock ?? event.block.number, event.block.number),
-    observedEventCount: (existing?.observedEventCount ?? 0) + 1,
-    historicalReplayComplete: false,
-    freshReplayMatches: false,
-    incrementalContinuationMatches: false,
-    paginationValidated: false,
-    unresolvedEventCount: existing?.unresolvedEventCount ?? 0,
-    safeForTimeline: false,
-    knownGapsJson: UNCERTIFIED_GAPS,
-    coverageRevision: COVERAGE_REVISION,
-  });
 };
 
 const rawEventCore = (event: EventEnvelope) => ({
@@ -310,12 +278,12 @@ indexer.onEvent(
       event,
       context,
       event.params.vault,
+      "vault",
       serializers.debtAllocator.SharedUpdateStrategyDebtRatio,
       event.params,
       "event-indexed-vault",
       event.params,
     );
-    await writeSharedCoverage(event, context);
   },
 );
 
@@ -323,12 +291,14 @@ indexer.onEvent(
   { contract: "SharedDebtAllocator", event: "UpdateKeeper" },
   async ({ event, context }) => {
     if (event.chainId !== ALLOCATION_CHAIN_ID) return;
-    writeUnresolved(
+    writeNormalized(
       event,
       context,
+      null,
+      "allocator",
       serializers.debtAllocator.SharedUpdateKeeper,
       event.params,
-      "sharedAllocatorEventHasNoVault",
+      "event-source-allocator",
     );
   },
 );
@@ -337,12 +307,14 @@ indexer.onEvent(
   { contract: "SharedDebtAllocator", event: "GovernanceTransferred" },
   async ({ event, context }) => {
     if (event.chainId !== ALLOCATION_CHAIN_ID) return;
-    writeUnresolved(
+    writeNormalized(
       event,
       context,
+      null,
+      "allocator",
       serializers.debtAllocator.SharedGovernanceTransferred,
       event.params,
-      "sharedAllocatorEventHasNoVault",
+      "event-source-allocator",
     );
   },
 );
@@ -356,6 +328,7 @@ indexer.onEvent(
       event,
       context,
       event.params.vault,
+      "vault",
       serializers.roleManager.AddedNewVault,
       event.params,
       "event-indexed-vault",
@@ -393,6 +366,7 @@ indexer.onEvent(
       event,
       context,
       event.params.vault,
+      "vault",
       serializers.roleManager.UpdateDebtAllocator,
       event.params,
       "event-indexed-vault",
@@ -438,6 +412,7 @@ indexer.onEvent(
       event,
       context,
       vaultAddress,
+      "vault",
       serializers.debtAllocatorFactory.NewVaultBoundDebtAllocator,
       event.params,
       "factory-indexed-vault",

@@ -138,7 +138,7 @@ export const serializers = {
       "debtAllocator",
       "UpdateKeeper",
       "UpdateKeeper(address,bool)",
-      "shared-v1-unscoped",
+      "shared-v1-allocator-scoped",
       ({ keeper, allowed }) => JSON.stringify({ keeper: lowerHex(keeper), allowed }),
     ),
     GovernanceTransferred: serializer<{
@@ -162,7 +162,7 @@ export const serializers = {
       "debtAllocator",
       "GovernanceTransferred",
       "GovernanceTransferred(address,address)",
-      "shared-v1-unscoped",
+      "shared-v1-allocator-scoped",
       ({ previousGovernance, newGovernance }) =>
         JSON.stringify({
           previousGovernance: lowerHex(previousGovernance),

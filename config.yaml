@@ -205,6 +205,12 @@ contracts:
     handler: src/EventHandlers.ts
     events:
       - event: "PositionOpened(address indexed owner, address indexed position, address original, address collateral)"
+  - name: InverseEscrowDeposits
+    handler: src/EventHandlers.ts
+    events:
+      # Inverse Finance FiRM personal collateral escrow factory. Signature
+      # verified on-chain (topic0 0x1cfd6e6f…), e.g. tx 0xc01fc45cf8f04cbf71d7bf8a2d8f4555f26877e8aed540de1c77375b511d54b4.
+      - event: "CreateEscrow(address indexed owner, address escrow)"
   # TEMPORARY / RESEARCH ONLY — not used by any important infrastructure.
   # Safe multisig discovery: every Safe on mainnet is created by a SafeProxyFactory,
   # which always emits ProxyCreation. All logic lives isolated in
@@ -940,6 +946,10 @@ chains:
         address:
           - "0xDe12B620A8a714476A97EfD14E6F7180Ca653557" # Frankencoin V2 MintingHub
         start_block: 21280757
+      - name: InverseEscrowDeposits
+        address:
+          - "0x1fD4985cdd57bDb1eD646B10B7952fCD58946916" # Inverse Finance FiRM escrow factory
+        start_block: 16345937 # contract deployment block (first possible CreateEscrow)
       # TEMPORARY / RESEARCH ONLY — not used by any important infrastructure.
       # SafeProxyFactory deployments on Ethereum mainnet, split per generation
       # because their ProxyCreation event encodings differ (see contracts:

@@ -7,6 +7,7 @@ import type {
   FrankencoinYsyBoldAccount,
   FrankencoinYsyBoldTotal,
   GovernanceTransferred,
+  InverseEscrowCreated,
   NewDebtAllocator,
   ReferralDeposit,
   RoleSet,
@@ -2353,4 +2354,22 @@ indexer.onEvent({ contract: "YearnV3Vault", event: "Transfer" }, async ({ event,
   if (to !== ZERO_ADDRESS) {
     await applyYsyBoldDelta(event, context, to, value);
   }
+});
+
+indexer.onEvent({ contract: "InverseEscrowDeposits", event: "CreateEscrow" }, async ({ event, context }) => {
+  const entity: InverseEscrowCreated = {
+    id: eventId(event),
+    factoryAddress: getAddress(event.srcAddress),
+    chainId: event.chainId,
+    blockNumber: event.block.number,
+    blockTimestamp: event.block.timestamp,
+    blockHash: event.block.hash,
+    transactionHash: event.transaction.hash,
+    transactionIndex: event.transaction.transactionIndex,
+    transactionFrom: addr(event.transaction.from),
+    logIndex: event.logIndex,
+    owner: getAddress(event.params.owner),
+    escrow: getAddress(event.params.escrow),
+  };
+  context.InverseEscrowCreated.set(entity);
 });

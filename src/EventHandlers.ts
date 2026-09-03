@@ -85,6 +85,7 @@ import type {
   Withdraw,
 } from "envio";
 import { getAddress } from "viem";
+import "./allocation/AllocationHandlers.js";
 
 const addr = (a: string | undefined): string | undefined =>
   a ? getAddress(a) : undefined;

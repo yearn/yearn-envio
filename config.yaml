@@ -8,6 +8,8 @@ field_selection:
     - hash
     - from
     - transactionIndex
+    - to
+    - input
 contracts:
   - name: Erc4626Vault
     handler: src/EventHandlers.ts
@@ -40,6 +42,7 @@ contracts:
     events:
       - event: "AddedNewVault(address indexed vault, address indexed debtAllocator, uint256 category)"
       - event: "RemovedVault(address indexed vault)"
+      - event: "UpdateDebtAllocator(address indexed vault, address indexed debtAllocator)"
   - name: YearnV3Accountant
     handler: src/EventHandlers.ts
     events:
@@ -175,16 +178,27 @@ contracts:
     handler: src/EventHandlers.ts
     events:
       - event: "NewDebtAllocator(address indexed allocator, address indexed vault)"
+  - name: SharedDebtAllocatorFactory
+    handler: src/EventHandlers.ts
+    events:
+      - event: "NewDebtAllocator(address indexed allocator, address indexed governance)"
   - name: DebtAllocator
     handler: src/EventHandlers.ts
     events:
       - event: "UpdateStrategyDebtRatios(address indexed strategy, uint256 newTargetRatio, uint256 newMaxRatio, uint256 newTotalDebtRatio)"
+      - event: "UpdateStrategyDebtRatio(address indexed strategy, uint256 newTargetRatio, uint256 newMaxRatio, uint256 newTotalDebtRatio)"
       - event: "UpdateKeeper(address indexed keeper, bool allowed)"
       - event: "GovernanceTransferred(address indexed previousGovernance, address indexed newGovernance)"
       - event: "UpdateMaxAcceptableBaseFee(uint256 newMaxAcceptableBaseFee)"
       - event: "UpdateMaxDebtUpdateLoss(uint256 newMaxDebtUpdateLoss)"
       - event: "UpdateMinimumChange(uint256 newMinimumChange)"
       - event: "UpdateMinimumWait(uint256 newMinimumWait)"
+  - name: SharedDebtAllocator
+    handler: src/EventHandlers.ts
+    events:
+      - event: "UpdateStrategyDebtRatio(address indexed vault, address indexed strategy, uint256 newTargetRatio, uint256 newMaxRatio, uint256 newTotalDebtRatio)"
+      - event: "UpdateKeeper(address indexed keeper, bool allowed)"
+      - event: "GovernanceTransferred(address indexed previousGovernance, address indexed newGovernance)"
   - name: VotingEscrowFactory
     handler: src/EventHandlers.ts
     events:
@@ -922,9 +936,16 @@ chains:
       - name: DebtAllocatorFactory
         address:
           - "0xfCF8c7C43dedd567083B422d6770F23B78D15BDe"
+      - name: SharedDebtAllocatorFactory
+        address:
+          - "0x03D43dF6FF894C848fC6F1A0a7E8a539Ef9A4C18"
       - name: DebtAllocator
         # No static addresses: each DebtAllocator is registered dynamically
         # by DebtAllocatorFactory.NewDebtAllocator via contractRegister.
+        address: []
+      - name: SharedDebtAllocator
+        # Shared allocators are registered from the governance-bound factory.
+        # Their strategy ratio event carries the affected vault explicitly.
         address: []
       - name: YearnGauge
         address:

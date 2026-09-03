@@ -2,6 +2,11 @@
 
 This repository contains an Envio indexer for Yearn V3 vaults and a fee calculator script to analyze depositor positions. Timelock contracts have also been added to reduce dependency on Tenderly alert monitoring (and reduce Tenderly RPC consumption/costs).
 
+Ethereum shared debt allocator policy events are documented in the
+[allocation-history contract](docs/allocation-history/README.md). The normalized event feed is
+fail-closed: observed coverage is not certified for timeline use until a deployed replay and
+pagination validation complete.
+
 *Please refer to the [documentation website](https://docs.envio.dev) for a thorough guide on all [Envio](https://envio.dev) indexer features*
 
 ### Debugging

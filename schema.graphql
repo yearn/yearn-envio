@@ -1331,3 +1331,192 @@ type SafeProxy @index(fields: ["chainId", "proxy"]) {
 }
 
 # ===== END TEMPORARY / RESEARCH ONLY (SafeProxy) =====
+
+# =============================================================================
+# Ethereum allocation-policy event normalization
+# =============================================================================
+
+type AllocationSourceEvent
+  @index(fields: ["chainId", "vaultAddress", "blockNumber", "transactionIndex", "logIndex", "id"]) {
+  id: ID!
+  chainId: Int! @index
+  vaultAddress: String! @index
+  sourceAddress: String! @index
+  sourceType: String! @index
+  eventName: String! @index
+  signature: String!
+  normalizationVersion: Int!
+  abiVariant: String!
+  associationEvidence: String!
+  blockNumber: Int! @index
+  blockTimestamp: BigInt! @index
+  blockHash: String!
+  transactionHash: String! @index
+  transactionIndex: Int!
+  logIndex: Int!
+  topLevelTransactionFrom: String @index
+  topLevelTransactionTo: String @index
+  topLevelInputSelector: String
+  strategyAddress: String @index
+  newTargetRatio: BigInt
+  newMaxRatio: BigInt
+  newTotalDebtRatio: BigInt
+  argsJson: String!
+}
+
+type UnresolvedAllocationSourceEvent
+  @index(fields: ["chainId", "sourceAddress", "blockNumber", "transactionIndex", "logIndex", "id"]) {
+  id: ID!
+  chainId: Int! @index
+  sourceAddress: String! @index
+  sourceType: String! @index
+  eventName: String! @index
+  signature: String!
+  normalizationVersion: Int!
+  abiVariant: String!
+  reason: String! @index
+  blockNumber: Int! @index
+  blockTimestamp: BigInt!
+  blockHash: String!
+  transactionHash: String! @index
+  transactionIndex: Int!
+  logIndex: Int!
+  topLevelTransactionFrom: String @index
+  topLevelTransactionTo: String @index
+  topLevelInputSelector: String
+  strategyAddress: String @index
+  newTargetRatio: BigInt
+  newMaxRatio: BigInt
+  newTotalDebtRatio: BigInt
+  argsJson: String!
+  resolved: Boolean! @index
+  resolvedAllocationSourceEventId: String
+}
+
+type DebtAllocatorDeployment {
+  id: ID!
+  chainId: Int! @index
+  allocatorAddress: String! @index
+  vaultAddress: String! @index
+  factoryAddress: String! @index
+  abiVariant: String!
+  createdBlock: Int!
+  createdTimestamp: BigInt!
+  createdTransactionHash: String!
+  createdEventId: String!
+}
+
+type SharedDebtAllocatorDeployment {
+  id: ID!
+  chainId: Int! @index
+  allocatorAddress: String! @index
+  factoryAddress: String! @index
+  governanceAddress: String! @index
+  implementationAddress: String
+  implementationCodeHash: String
+  abiVariant: String!
+  createdBlock: Int!
+  createdTimestamp: BigInt!
+  createdTransactionHash: String!
+  createdEventId: String!
+}
+
+type VaultDebtAllocatorAssignment
+  @index(fields: ["chainId", "vaultAddress", "blockNumber", "transactionIndex", "logIndex"]) {
+  id: ID!
+  chainId: Int! @index
+  vaultAddress: String! @index
+  allocatorAddress: String! @index
+  roleManagerAddress: String! @index
+  assignmentType: String!
+  blockNumber: Int! @index
+  blockTimestamp: BigInt!
+  blockHash: String!
+  transactionHash: String!
+  transactionIndex: Int!
+  logIndex: Int!
+  sourceEventId: String!
+}
+
+type VaultAllocationEventCoverage {
+  id: ID!
+  chainId: Int! @index
+  vaultAddress: String! @index
+  eventFamily: String! @index
+  firstObservedBlock: Int!
+  lastObservedBlock: Int!
+  observedEventCount: Int!
+  historicalReplayComplete: Boolean!
+  freshReplayMatches: Boolean!
+  incrementalContinuationMatches: Boolean!
+  paginationValidated: Boolean!
+  unresolvedEventCount: Int!
+  safeForTimeline: Boolean! @index
+  knownGapsJson: String!
+  coverageRevision: String! @index
+}
+
+type V3RoleManagerUpdateDebtAllocator {
+  id: ID!
+  roleManagerAddress: String! @index
+  chainId: Int! @index
+  blockNumber: Int! @index
+  blockTimestamp: Int! @index
+  blockHash: String!
+  transactionHash: String! @index
+  transactionIndex: Int!
+  transactionFrom: String @index
+  logIndex: Int!
+  vault: String! @index
+  debtAllocator: String! @index
+}
+
+type SharedNewDebtAllocator {
+  id: ID!
+  factoryAddress: String! @index
+  chainId: Int! @index
+  blockNumber: Int! @index
+  blockTimestamp: Int! @index
+  blockHash: String!
+  transactionHash: String! @index
+  transactionIndex: Int!
+  transactionFrom: String @index
+  logIndex: Int!
+  allocator: String! @index
+  governance: String! @index
+}
+
+type UpdateStrategyDebtRatio {
+  id: ID!
+  allocatorAddress: String! @index
+  chainId: Int! @index
+  blockNumber: Int! @index
+  blockTimestamp: Int! @index
+  blockHash: String!
+  transactionHash: String! @index
+  transactionIndex: Int!
+  transactionFrom: String @index
+  logIndex: Int!
+  strategy: String! @index
+  newTargetRatio: BigInt!
+  newMaxRatio: BigInt!
+  newTotalDebtRatio: BigInt!
+}
+
+type SharedUpdateStrategyDebtRatio {
+  id: ID!
+  allocatorAddress: String! @index
+  chainId: Int! @index
+  blockNumber: Int! @index
+  blockTimestamp: Int! @index
+  blockHash: String!
+  transactionHash: String! @index
+  transactionIndex: Int!
+  transactionFrom: String @index
+  logIndex: Int!
+  vault: String! @index
+  strategy: String! @index
+  newTargetRatio: BigInt!
+  newMaxRatio: BigInt!
+  newTotalDebtRatio: BigInt!
+}

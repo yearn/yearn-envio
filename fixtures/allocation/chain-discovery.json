@@ -1,0 +1,69 @@
+{
+  "observedAt": "2026-09-08",
+  "note": "Current bytecode observation, not proof of historical replay. No RPC endpoints or credentials are stored.",
+  "factories": [
+    {
+      "chainId": 1,
+      "address": "0x03d43df6ff894c848fc6f1a0a7e8a539ef9a4c18",
+      "blockNumber": 25933575,
+      "codeBytes": 502,
+      "codeHash": "0x9ff9ccb36ff3fe0e00aabc87fddb2e07689673abd587fbf24922d24a9a5cc71e"
+    },
+    {
+      "chainId": 1,
+      "address": "0xfcf8c7c43dedd567083b422d6770f23b78d15bde",
+      "blockNumber": 25933575,
+      "codeBytes": 1671,
+      "codeHash": "0x0d7adae83933344712bfe34f9422c6edee405fbcf3167f5f6252bbdfffaa3476"
+    },
+    {
+      "chainId": 1,
+      "address": "0xca12459a931643bf28388c67639b3f352fe9e5ce",
+      "blockNumber": 25933575,
+      "codeBytes": 3761,
+      "codeHash": "0x672c7964ba4b80801c161473a70459e5b51e460e6fd7207934b49d5ffffa48ad"
+    },
+    {
+      "chainId": 8453,
+      "address": "0x03d43df6ff894c848fc6f1a0a7e8a539ef9a4c18",
+      "blockNumber": 51046190,
+      "codeBytes": 502,
+      "codeHash": "0x9ff9ccb36ff3fe0e00aabc87fddb2e07689673abd587fbf24922d24a9a5cc71e"
+    },
+    {
+      "chainId": 8453,
+      "address": "0xfcf8c7c43dedd567083b422d6770f23b78d15bde",
+      "blockNumber": 51046190,
+      "codeBytes": 1671,
+      "codeHash": "0x0d7adae83933344712bfe34f9422c6edee405fbcf3167f5f6252bbdfffaa3476"
+    },
+    {
+      "chainId": 8453,
+      "address": "0xca12459a931643bf28388c67639b3f352fe9e5ce",
+      "blockNumber": 51046190,
+      "codeBytes": 3761,
+      "codeHash": "0x672c7964ba4b80801c161473a70459e5b51e460e6fd7207934b49d5ffffa48ad"
+    },
+    {
+      "chainId": 747474,
+      "address": "0x03d43df6ff894c848fc6f1a0a7e8a539ef9a4c18",
+      "blockNumber": 42138917,
+      "codeBytes": 502,
+      "codeHash": "0x9ff9ccb36ff3fe0e00aabc87fddb2e07689673abd587fbf24922d24a9a5cc71e"
+    },
+    {
+      "chainId": 747474,
+      "address": "0xfcf8c7c43dedd567083b422d6770f23b78d15bde",
+      "blockNumber": 42138917,
+      "codeBytes": 0,
+      "codeHash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
+    },
+    {
+      "chainId": 747474,
+      "address": "0xca12459a931643bf28388c67639b3f352fe9e5ce",
+      "blockNumber": 42138917,
+      "codeBytes": 3761,
+      "codeHash": "0x672c7964ba4b80801c161473a70459e5b51e460e6fd7207934b49d5ffffa48ad"
+    }
+  ]
+}

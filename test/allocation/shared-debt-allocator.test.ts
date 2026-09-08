@@ -66,8 +66,8 @@ describe("shared debt allocator normalization", () => {
               params: { allocator: SHARED_ALLOCATOR, governance: GOVERNANCE },
             },
             {
-              contract: "SharedDebtAllocator",
-              event: "UpdateStrategyDebtRatio",
+              contract: "AssignedDebtAllocator",
+              event: "SharedUpdateStrategyDebtRatio",
               srcAddress: SHARED_ALLOCATOR,
               logIndex: 411,
               block: block(20_987_762, "3"),
@@ -148,7 +148,7 @@ describe("shared debt allocator normalization", () => {
               params: { vault: SECOND_VAULT, debtAllocator: SHARED_ALLOCATOR, category: 0n },
             },
             {
-              contract: "SharedDebtAllocator",
+              contract: "AssignedDebtAllocator",
               event: "UpdateKeeper",
               srcAddress: SHARED_ALLOCATOR,
               logIndex: 4,
@@ -157,7 +157,7 @@ describe("shared debt allocator normalization", () => {
               params: { keeper: SENDER, allowed: true },
             },
             {
-              contract: "SharedDebtAllocator",
+              contract: "AssignedDebtAllocator",
               event: "GovernanceTransferred",
               srcAddress: SHARED_ALLOCATOR,
               logIndex: 5,
@@ -206,7 +206,7 @@ describe("shared debt allocator normalization", () => {
         1: {
           simulate: [
             {
-              contract: "DebtAllocator",
+              contract: "AssignedDebtAllocator",
               event: "UpdateStrategyDebtRatio",
               srcAddress: VAULT_BOUND_ALLOCATOR,
               logIndex: 1,
@@ -259,7 +259,7 @@ describe("shared debt allocator normalization", () => {
               params: { allocator: VAULT_BOUND_ALLOCATOR, vault: VAULT },
             },
             {
-              contract: "DebtAllocator",
+              contract: "AssignedDebtAllocator",
               event: "UpdateStrategyDebtRatios",
               srcAddress: VAULT_BOUND_ALLOCATOR,
               logIndex: 2,
@@ -273,7 +273,7 @@ describe("shared debt allocator normalization", () => {
               },
             },
             {
-              contract: "DebtAllocator",
+              contract: "AssignedDebtAllocator",
               event: "UpdateKeeper",
               srcAddress: VAULT_BOUND_ALLOCATOR,
               logIndex: 3,
@@ -282,7 +282,7 @@ describe("shared debt allocator normalization", () => {
               params: { keeper: SENDER, allowed: true },
             },
             {
-              contract: "DebtAllocator",
+              contract: "AssignedDebtAllocator",
               event: "GovernanceTransferred",
               srcAddress: VAULT_BOUND_ALLOCATOR,
               logIndex: 4,

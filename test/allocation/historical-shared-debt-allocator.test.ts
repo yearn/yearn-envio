@@ -68,8 +68,8 @@ const factoryEvent = {
 };
 
 const ratioEvents = fixture.logs.map((log) => ({
-  contract: "SharedDebtAllocator" as const,
-  event: "UpdateStrategyDebtRatio" as const,
+  contract: "AssignedDebtAllocator" as const,
+  event: "SharedUpdateStrategyDebtRatio" as const,
   srcAddress: log.address,
   logIndex: log.logIndex,
   block: {

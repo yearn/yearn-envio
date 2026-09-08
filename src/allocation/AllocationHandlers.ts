@@ -8,7 +8,7 @@ import {
   type Serializer,
 } from "./normalization.js";
 
-const ALLOCATION_CHAIN_ID = 1;
+import { isAllocationChain, isNonzeroAddress } from "./chains.js";
 const SHARED_ALLOCATOR_IMPLEMENTATION = "0xa47eb754d44339b5dedcf4d804428708857e7899";
 const SHARED_ALLOCATOR_IMPLEMENTATION_CODE_HASH =
   "0x633feca48437476cbe24af9ab15fdfcc340d52c48889c21d0ddf2b4f000c13a7";
@@ -134,7 +134,7 @@ const resolvePendingVaultBoundEvents = async (
   });
 
   for (const unresolved of unresolvedEvents) {
-    if (!unresolved.abiVariant.startsWith("generic-")) continue;
+    if (!unresolved.abiVariant.startsWith("generic-") && !unresolved.abiVariant.startsWith("assigned-")) continue;
     context.AllocationSourceEvent.set({
       id: unresolved.id,
       chainId: unresolved.chainId,
@@ -186,10 +186,10 @@ const writeVaultBoundAllocatorEvent = async <T>(
 ): Promise<void> => {
   const deploymentId = `${event.chainId}:${lowerAddress(event.srcAddress)}`;
   const sharedDeployment = await context.SharedDebtAllocatorDeployment.get(deploymentId);
-  // RoleManager discovery also registers allocator addresses against the legacy
-  // vault-bound ABI. Shared/global events have identical topics, so leave them
-  // exclusively to the shared handler instead of producing a competing row.
-  if (sharedDeployment) return;
+  if (sharedDeployment) {
+    writeUnresolved(event, context, eventSerializer, params, "eventShapeConflictsWithFactory", ratios);
+    return;
+  }
   const deployment = await context.DebtAllocatorDeployment.get(deploymentId);
   if (!deployment) {
     writeUnresolved(
@@ -214,6 +214,47 @@ const writeVaultBoundAllocatorEvent = async <T>(
   );
 };
 
+const writeAssignedControl = async <T>(
+  event: EventEnvelope,
+  context: Parameters<typeof writeVaultBoundAllocatorEvent<T>>[1],
+  vaultBoundSerializer: Serializer<T>,
+  sharedSerializer: Serializer<T>,
+  params: T,
+): Promise<void> => {
+  const id = `${event.chainId}:${lowerAddress(event.srcAddress)}`;
+  if (await context.SharedDebtAllocatorDeployment.get(id)) {
+    writeNormalized(event, context, null, "allocator", sharedSerializer, params, "event-source-allocator");
+  } else if (await context.DebtAllocatorDeployment.get(id)) {
+    await writeVaultBoundAllocatorEvent(event, context, vaultBoundSerializer, params);
+  } else {
+    writeUnresolved(event, context, { ...vaultBoundSerializer, abiVariant: "assigned-v1-unknown-family" }, params, "unknownAllocatorFamily");
+  }
+};
+
+const resolvePendingSharedControls = async (
+  event: EventEnvelope,
+  context: NormalizationContext,
+  allocatorAddress: string,
+): Promise<void> => {
+  const pending = await context.UnresolvedAllocationSourceEvent.getWhere({
+    chainId: { _eq: event.chainId },
+    sourceAddress: { _eq: allocatorAddress },
+    resolved: { _eq: false },
+  });
+  for (const row of pending) {
+    if (row.eventName !== "UpdateKeeper" && row.eventName !== "GovernanceTransferred") continue;
+    const { reason: _reason, resolved: _resolved, resolvedAllocationSourceEventId: _resolvedId, ...source } = row;
+    context.AllocationSourceEvent.set({
+      ...source,
+      vaultAddress: undefined,
+      scope: "allocator",
+      abiVariant: "shared-v1-allocator-scoped",
+      associationEvidence: "shared-factory-event-late-reconciliation",
+    });
+    context.UnresolvedAllocationSourceEvent.set({ ...row, resolved: true, resolvedAllocationSourceEventId: row.id });
+  }
+};
+
 const rawEventCore = (event: EventEnvelope) => ({
   id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
   chainId: event.chainId,
@@ -229,15 +270,15 @@ const rawEventCore = (event: EventEnvelope) => ({
 indexer.contractRegister(
   { contract: "SharedDebtAllocatorFactory", event: "NewDebtAllocator" },
   async ({ event, context }) => {
-    if (event.chainId !== ALLOCATION_CHAIN_ID) return;
-    context.chain.SharedDebtAllocator.add(lowerAddress(event.params.allocator));
+    if (!isAllocationChain(event.chainId)) return;
+    if (isNonzeroAddress(event.params.allocator)) context.chain.AssignedDebtAllocator.add(lowerAddress(event.params.allocator));
   },
 );
 
 indexer.onEvent(
   { contract: "SharedDebtAllocatorFactory", event: "NewDebtAllocator" },
   async ({ event, context }) => {
-    if (event.chainId !== ALLOCATION_CHAIN_ID) return;
+    if (!isAllocationChain(event.chainId)) return;
     const id = normalizedId(event);
     const allocatorAddress = lowerAddress(event.params.allocator);
     context.SharedNewDebtAllocator.set({
@@ -252,21 +293,22 @@ indexer.onEvent(
       allocatorAddress,
       factoryAddress: lowerAddress(event.srcAddress),
       governanceAddress: lowerAddress(event.params.governance),
-      implementationAddress: SHARED_ALLOCATOR_IMPLEMENTATION,
-      implementationCodeHash: SHARED_ALLOCATOR_IMPLEMENTATION_CODE_HASH,
+      implementationAddress: event.chainId === 1 ? SHARED_ALLOCATOR_IMPLEMENTATION : undefined,
+      implementationCodeHash: event.chainId === 1 ? SHARED_ALLOCATOR_IMPLEMENTATION_CODE_HASH : undefined,
       abiVariant: serializers.debtAllocatorFactory.NewSharedDebtAllocator.abiVariant,
       createdBlock: event.block.number,
       createdTimestamp: BigInt(event.block.timestamp),
       createdTransactionHash: lowerAddress(event.transaction.hash),
       createdEventId: id,
     });
+    await resolvePendingSharedControls(event, context, allocatorAddress);
   },
 );
 
 indexer.onEvent(
-  { contract: "SharedDebtAllocator", event: "UpdateStrategyDebtRatio" },
+  { contract: "AssignedDebtAllocator", event: "SharedUpdateStrategyDebtRatio" },
   async ({ event, context }) => {
-    if (event.chainId !== ALLOCATION_CHAIN_ID) return;
+    if (!isAllocationChain(event.chainId)) return;
     context.SharedUpdateStrategyDebtRatio.set({
       ...rawEventCore(event),
       allocatorAddress: lowerAddress(event.srcAddress),
@@ -287,42 +329,42 @@ indexer.onEvent(
   },
 );
 
-indexer.onEvent(
-  { contract: "SharedDebtAllocator", event: "UpdateKeeper" },
+indexer.contractRegister(
+  { contract: "YearnV3RoleManager", event: "UpdateDebtAllocator" },
   async ({ event, context }) => {
-    if (event.chainId !== ALLOCATION_CHAIN_ID) return;
-    writeNormalized(
-      event,
-      context,
-      null,
-      "allocator",
-      serializers.debtAllocator.SharedUpdateKeeper,
-      event.params,
-      "event-source-allocator",
-    );
+    if (!isAllocationChain(event.chainId) || !isNonzeroAddress(event.params.debtAllocator)) return;
+    context.chain.AssignedDebtAllocator.add(lowerAddress(event.params.debtAllocator));
+  },
+);
+
+indexer.contractRegister(
+  { contract: "YearnV3Vault", event: "UpdateRoleManager" },
+  async ({ event, context }) => {
+    if (!isAllocationChain(event.chainId) || !isNonzeroAddress(event.params.role_manager)) return;
+    context.chain.YearnV3RoleManager.add(lowerAddress(event.params.role_manager));
   },
 );
 
 indexer.onEvent(
-  { contract: "SharedDebtAllocator", event: "GovernanceTransferred" },
+  { contract: "YearnV3Vault", event: "UpdateRoleManager" },
   async ({ event, context }) => {
-    if (event.chainId !== ALLOCATION_CHAIN_ID) return;
-    writeNormalized(
-      event,
-      context,
-      null,
-      "allocator",
-      serializers.debtAllocator.SharedGovernanceTransferred,
-      event.params,
-      "event-source-allocator",
-    );
+    if (!isAllocationChain(event.chainId)) return;
+    writeNormalized(event, context, event.srcAddress, "vault", serializers.vault.UpdateRoleManager, event.params, "event-source-vault");
+  },
+);
+
+indexer.onEvent(
+  { contract: "YearnV3RoleManager", event: "RemovedVault" },
+  async ({ event, context }) => {
+    if (!isAllocationChain(event.chainId)) return;
+    writeNormalized(event, context, event.params.vault, "vault", serializers.roleManager.RemovedVault, event.params, "event-indexed-vault");
   },
 );
 
 indexer.onEvent(
   { contract: "YearnV3RoleManager", event: "AddedNewVault" },
   async ({ event, context }) => {
-    if (event.chainId !== ALLOCATION_CHAIN_ID) return;
+    if (!isAllocationChain(event.chainId)) return;
     const id = normalizedId(event);
     writeNormalized(
       event,
@@ -354,7 +396,7 @@ indexer.onEvent(
 indexer.onEvent(
   { contract: "YearnV3RoleManager", event: "UpdateDebtAllocator" },
   async ({ event, context }) => {
-    if (event.chainId !== ALLOCATION_CHAIN_ID) return;
+    if (!isAllocationChain(event.chainId)) return;
     const id = normalizedId(event);
     context.V3RoleManagerUpdateDebtAllocator.set({
       ...rawEventCore(event),
@@ -392,7 +434,7 @@ indexer.onEvent(
 indexer.onEvent(
   { contract: "DebtAllocatorFactory", event: "NewDebtAllocator" },
   async ({ event, context }) => {
-    if (event.chainId !== ALLOCATION_CHAIN_ID) return;
+    if (!isAllocationChain(event.chainId)) return;
     const allocatorAddress = lowerAddress(event.params.allocator);
     const vaultAddress = lowerAddress(event.params.vault);
     const id = normalizedId(event);
@@ -422,9 +464,9 @@ indexer.onEvent(
 );
 
 indexer.onEvent(
-  { contract: "DebtAllocator", event: "UpdateStrategyDebtRatios" },
+  { contract: "AssignedDebtAllocator", event: "UpdateStrategyDebtRatios" },
   async ({ event, context }) => {
-    if (event.chainId !== ALLOCATION_CHAIN_ID) return;
+    if (!isAllocationChain(event.chainId)) return;
     await writeVaultBoundAllocatorEvent(
       event,
       context,
@@ -436,9 +478,9 @@ indexer.onEvent(
 );
 
 indexer.onEvent(
-  { contract: "DebtAllocator", event: "UpdateStrategyDebtRatio" },
+  { contract: "AssignedDebtAllocator", event: "UpdateStrategyDebtRatio" },
   async ({ event, context }) => {
-    if (event.chainId !== ALLOCATION_CHAIN_ID) return;
+    if (!isAllocationChain(event.chainId)) return;
     context.UpdateStrategyDebtRatio.set({
       ...rawEventCore(event),
       allocatorAddress: lowerAddress(event.srcAddress),
@@ -456,26 +498,28 @@ indexer.onEvent(
 );
 
 indexer.onEvent(
-  { contract: "DebtAllocator", event: "UpdateKeeper" },
+  { contract: "AssignedDebtAllocator", event: "UpdateKeeper" },
   async ({ event, context }) => {
-    if (event.chainId !== ALLOCATION_CHAIN_ID) return;
-    await writeVaultBoundAllocatorEvent(
+    if (!isAllocationChain(event.chainId)) return;
+    await writeAssignedControl(
       event,
       context,
       serializers.debtAllocator.UpdateKeeper,
+      serializers.debtAllocator.SharedUpdateKeeper,
       event.params,
     );
   },
 );
 
 indexer.onEvent(
-  { contract: "DebtAllocator", event: "GovernanceTransferred" },
+  { contract: "AssignedDebtAllocator", event: "GovernanceTransferred" },
   async ({ event, context }) => {
-    if (event.chainId !== ALLOCATION_CHAIN_ID) return;
-    await writeVaultBoundAllocatorEvent(
+    if (!isAllocationChain(event.chainId)) return;
+    await writeAssignedControl(
       event,
       context,
       serializers.debtAllocator.GovernanceTransferred,
+      serializers.debtAllocator.SharedGovernanceTransferred,
       event.params,
     );
   },

@@ -1,6 +1,6 @@
 # Allocation event evidence
 
-This module decodes and normalizes Ethereum allocator events for downstream consumers. Envio
+This module decodes and normalizes Ethereum, Base, and Katana allocator events for downstream consumers. Envio
 provides indexed event evidence only. It does not reconstruct allocation state, certify a
 complete timeline, or restore the checkpoint and Gate 4 system reverted from `main` in
 `6e89373`.
@@ -21,6 +21,42 @@ once as allocator-scoped `AllocationSourceEvent` rows with `vaultAddress: null`;
 copied to every vault assigned to the allocator.
 
 See [ABI_AUDIT.md](ABI_AUDIT.md) for source, bytecode, and real-log evidence.
+
+## Arbitrary assigned addresses
+
+The vaults team confirmed that an initial or replacement allocator can be any address. Both
+`AddedNewVault` and `UpdateDebtAllocator` register nonzero addresses using the synthetic
+`AssignedDebtAllocator` discovery ABI. Factory discovery uses that same broad registration on
+the three supported chains. The shared ratio overload has the alias `SharedUpdateStrategyDebtRatio`.
+Registration does not establish a contract family, code existence, or interface support.
+
+Zero-address assignments are stored but are not registered for logs. Unknown custom allocators
+retain their assignment even if no understood event is emitted. Shared ratio logs carry their
+own vault; unknown vault-bound ratios and ambiguous control events remain unresolved. Later
+factory evidence can resolve controls without changing their source IDs or narrowing capture.
+Kong must distinguish event-shape evidence from support for an allocator's RPC interface.
+
+`RemovedVault` and vault `UpdateRoleManager` events are normalized for historical authority
+resolution. This evidence does not make Envio responsible for selecting the active assignment.
+
+## Chain discovery
+
+| Chain | ID | Vault-bound factory | Shared factory | Discovery start |
+| --- | ---: | --- | --- | ---: |
+| Ethereum | 1 | `0xfCF8c7C43dedd567083B422d6770F23B78D15BDe` | `0x03D43dF6FF894C848fC6F1A0a7E8a539Ef9A4C18` | 0 |
+| Base | 8453 | `0xfCF8c7C43dedd567083B422d6770F23B78D15BDe` | `0x03D43dF6FF894C848fC6F1A0a7E8a539Ef9A4C18` | 0 |
+| Katana | 747474 | None configured | `0x03D43dF6FF894C848fC6F1A0a7E8a539Ef9A4C18` | 0 |
+
+Existing per-chain Role Managers and the Role Manager factory also discover assignments. The
+current factory bytecode observations are saved in `fixtures/allocation/chain-discovery.json`.
+The shared factory runtime matches across all three chains. Katana has no code at the known
+vault-bound factory address, so that source is not configured there. Ethereum implementation
+metadata is not copied into other chains' deployment rows.
+
+These are configured sources and point-in-time observations, not completed replay or coverage
+certification. Full persisted replay, process restart, and GraphQL cursor traversal remain
+operational activation checks on each chain. The continuation tests exercise the in-memory
+test indexer across processing calls; they do not claim a database restart was tested.
 
 ## GraphQL contract for Kong
 

@@ -970,6 +970,20 @@ type V3RoleManagerAddedNewVault {
   category: BigInt! @index
 }
 
+type V3RoleManagerRemovedVault {
+  id: ID!
+  roleManagerAddress: String! @index
+  chainId: Int! @index
+  blockNumber: Int! @index
+  blockTimestamp: Int! @index
+  blockHash: String!
+  transactionHash: String! @index
+  transactionIndex: Int!
+  transactionFrom: String @index
+  logIndex: Int!
+  vault: String! @index
+}
+
 type V3AccountantVaultChanged {
   id: ID!
   accountantAddress: String! @index
@@ -1299,6 +1313,25 @@ type FrankencoinYsyBoldTotal {
   lastUpdateBlock: Int!
   lastUpdateTransactionHash: String!
 }
+
+# ─── Inverse Finance FiRM escrow creation ────────────────────────────────────
+# One row per InverseEscrowDeposits.CreateEscrow(owner, escrow) — the FiRM
+# personal collateral escrow factory on Ethereum mainnet.
+type InverseEscrowCreated {
+  id: ID!
+  factoryAddress: String! @index
+  chainId: Int! @index
+  blockNumber: Int! @index
+  blockTimestamp: Int! @index
+  blockHash: String!
+  transactionHash: String! @index
+  transactionIndex: Int!
+  transactionFrom: String @index
+  logIndex: Int!
+  owner: String! @index
+  escrow: String! @index
+}
+
 # =============================================================================
 # TEMPORARY / RESEARCH ONLY — not used by any important infrastructure.
 # Safe multisig discovery for a research project; populated solely by

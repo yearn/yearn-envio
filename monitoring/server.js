@@ -36,6 +36,22 @@ const PORT = Number(process.env.PORT || 4100);
 // Default = Envio cloud HyperIndex instance for this project.
 export const DEFAULT_GRAPHQL_URL = "https://indexer.hyperindex.xyz/5a089e4/v1/graphql";
 
+// Cloud-first GraphQL config: ENVIO_GRAPHQL_URL + ENVIO_PASSWORD (Bearer),
+// then legacy self-hosted / Render names, then the cloud default.
+export function resolveGraphQLConfig(env = process.env) {
+  const url =
+    env.ENVIO_GRAPHQL_URL ||
+    env.GRAPHQL_URL ||
+    (env.GRAPHQL_HOST ? `http://${env.GRAPHQL_HOST}:8080/v1/graphql` : null) ||
+    DEFAULT_GRAPHQL_URL;
+  const bearerToken =
+    env.ENVIO_PASSWORD ||
+    env.GRAPHQL_BEARER_TOKEN ||
+    env.HASURA_GRAPHQL_JWT ||
+    null;
+  return { url, bearerToken };
+}
+
 export function resolveIndexerProjectPath(
   env = process.env,
   baseDir = __dirname,
@@ -43,7 +59,8 @@ export function resolveIndexerProjectPath(
   return resolve(baseDir, env.INDEXER_PROJECT_PATH || "..");
 }
 
-const GRAPHQL_URL = DEFAULT_GRAPHQL_URL;
+const { url: GRAPHQL_URL, bearerToken: GRAPHQL_BEARER_TOKEN } =
+  resolveGraphQLConfig();
 const INDEXER_PROJECT_PATH = resolveIndexerProjectPath();
 // A chain can be a handful of blocks behind its current target without being
 // operationally behind (for example, while its final fetch is in flight). Keep
@@ -249,6 +266,9 @@ async function queryGraphQL(query) {
     );
   }
   const headers = { "Content-Type": "application/json" };
+  if (GRAPHQL_BEARER_TOKEN) {
+    headers.Authorization = `Bearer ${GRAPHQL_BEARER_TOKEN}`;
+  }
   const res = await fetch(GRAPHQL_URL, {
     method: "POST",
     headers,

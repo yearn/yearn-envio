@@ -40,6 +40,7 @@ contracts:
     handler: src/EventHandlers.ts
     events:
       - event: "AddedNewVault(address indexed vault, address indexed debtAllocator, uint256 category)"
+      - event: "RemovedVault(address indexed vault)"
   - name: YearnV3Accountant
     handler: src/EventHandlers.ts
     events:
@@ -206,6 +207,12 @@ contracts:
     handler: src/EventHandlers.ts
     events:
       - event: "PositionOpened(address indexed owner, address indexed position, address original, address collateral)"
+  - name: InverseEscrowDeposits
+    handler: src/EventHandlers.ts
+    events:
+      # Inverse Finance FiRM personal collateral escrow factory. Signature
+      # verified on-chain (topic0 0x1cfd6e6f…), e.g. tx 0xc01fc45cf8f04cbf71d7bf8a2d8f4555f26877e8aed540de1c77375b511d54b4.
+      - event: "CreateEscrow(address indexed owner, address escrow)"
   # TEMPORARY / RESEARCH ONLY — not used by any important infrastructure.
   # Safe multisig discovery: every Safe on mainnet is created by a SafeProxyFactory,
   # which always emits ProxyCreation. All logic lives isolated in
@@ -266,8 +273,10 @@ chains:
         address:
           - "0xca12459a931643BF28388c67639b3F352fe9e5Ce"
       - name: YearnV3RoleManager
-        # No static addresses: discovered from YearnV3RoleManagerFactory.NewProject.
-        address: []
+        # The original Yearn role manager predates the indexed factory.
+        # Newer role managers are discovered from YearnV3RoleManagerFactory.NewProject.
+        address:
+          - "0xb3bd6B2E61753C311EFbCF0111f75D29706D9a41"
       - name: YearnV3Accountant
         address: []
       - name: YearnV3Strategy
@@ -939,6 +948,10 @@ chains:
         address:
           - "0xDe12B620A8a714476A97EfD14E6F7180Ca653557" # Frankencoin V2 MintingHub
         start_block: 21280757
+      - name: InverseEscrowDeposits
+        address:
+          - "0x1fD4985cdd57bDb1eD646B10B7952fCD58946916" # Inverse Finance FiRM escrow factory
+        start_block: 16345937 # contract deployment block (first possible CreateEscrow)
       # TEMPORARY / RESEARCH ONLY — not used by any important infrastructure.
       # SafeProxyFactory deployments on Ethereum mainnet, split per generation
       # because their ProxyCreation event encodings differ (see contracts:
@@ -1249,7 +1262,9 @@ chains:
         address:
           - "0xca12459a931643BF28388c67639b3F352fe9e5Ce"
       - name: YearnV3RoleManager
-        address: []
+        # Yearn's configured role manager predates the indexed factory.
+        address:
+          - "0xea3481244024E2321cc13AcAa80df1050f1fD456"
       - name: YearnV3Accountant
         address: []
       - name: YearnV3Strategy
@@ -1382,7 +1397,9 @@ chains:
       - name: YearnV3RoleManagerFactory
         address: []
       - name: YearnV3RoleManager
-        address: []
+        # Yearn's configured role manager predates the indexed factory.
+        address:
+          - "0x3BF72024420bdc4D7cA6a8b6211829476D6685b1"
       - name: YearnV3YieldSplitterFactory
         address: []
       - name: YearnStakingRegistry
@@ -1539,7 +1556,9 @@ chains:
         address:
           - "0xca12459a931643BF28388c67639b3F352fe9e5Ce"
       - name: YearnV3RoleManager
-        address: []
+        # Yearn's configured role manager predates the indexed factory.
+        address:
+          - "0x2C4b68B2e3f03B3BD8804EB02fA22CD387E78B83"
       - name: YearnV3Accountant
         address: []
       - name: YearnV3Strategy
@@ -1706,7 +1725,9 @@ chains:
         address:
           - "0xca12459a931643BF28388c67639b3F352fe9e5Ce"
       - name: YearnV3RoleManager
-        address: []
+        # Yearn's configured role manager predates the indexed factory.
+        address:
+          - "0x2297d2486070655c3a162b02c64248A2f9dBC9a4"
       - name: YearnV3Accountant
         address: []
       - name: YearnV3Strategy

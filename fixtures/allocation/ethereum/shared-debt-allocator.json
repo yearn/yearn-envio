@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-09-03T17:59:23Z",
+  "chainId": 1,
+  "validatedThrough": {
+    "blockNumber": 25898430,
+    "blockHash": "0x6d89f8ca85508146b044ce00ee2f9ed2308eeb57eb468da400b477160a87d123",
+    "blockTimestamp": 1788458363
+  },
+  "sources": {
+    "contractSource": "https://github.com/yearn/vault-periphery/blob/358d074/src/debtAllocators/DebtAllocator.sol",
+    "factorySource": "https://github.com/yearn/vault-periphery/blob/358d074/src/debtAllocators/DebtAllocatorFactory.sol",
+    "verifiedImplementation": "https://eth.blockscout.com/api/v2/smart-contracts/0xa47eb754d44339b5dedcf4d804428708857e7899",
+    "logApi": "https://eth.blockscout.com/api?module=logs&action=getLogs"
+  },
+  "factory": {
+    "address": "0x03d43df6ff894c848fc6f1a0a7e8a539ef9a4c18",
+    "runtimeCodeHash": "0x9ff9ccb36ff3fe0e00aabc87fddb2e07689673abd587fbf24922d24a9a5cc71e",
+    "implementationAddress": "0xa47eb754d44339b5dedcf4d804428708857e7899",
+    "implementationRuntimeCodeHash": "0x633feca48437476cbe24af9ab15fdfcc340d52c48889c21d0ddf2b4f000c13a7",
+    "firstDeployment": {
+      "allocator": "0x1e9eb053228b1156831759401de0e115356b8671",
+      "governance": "0x16388463d60ffe0661cf7f1f31a7d658ac790ff7",
+      "blockNumber": 20986032,
+      "blockTimestamp": 1729177115,
+      "transactionHash": "0x0224754db7f407f031b1df3ca312e14da5a967e565da4c63ba1daa0ba6ebb85e",
+      "transactionIndex": 164,
+      "logIndex": 345
+    }
+  },
+  "event": {
+    "name": "UpdateStrategyDebtRatio",
+    "canonicalSignature": "UpdateStrategyDebtRatio(address,address,uint256,uint256,uint256)",
+    "topic0": "0x2a89fa60115b9af6e21a6c6aa32d141e9cfbf77472d27fbf2e7a5a8c2efaf995",
+    "abiVariant": "shared-v1-vault-scoped-singular",
+    "indexedParameters": ["vault", "strategy"],
+    "dataParameters": ["newTargetRatio", "newMaxRatio", "newTotalDebtRatio"]
+  },
+  "historicalEvidence": {
+    "historicalLogCounts": [
+      {
+        "name": "yvUSDC-1",
+        "vaultAddress": "0xbe53a109b494e5c9f97b9cd39fe969be68bf6204",
+        "count": 1759,
+        "firstBlock": 20987762,
+        "lastBlock": 25893119
+      },
+      {
+        "name": "yvUSDT-1",
+        "vaultAddress": "0x310b7ea7475a0b449cfd73be81522f1b88efafaa",
+        "count": 2122,
+        "firstBlock": 20987762,
+        "lastBlock": 25896407
+      },
+      {
+        "name": "yvUSD",
+        "vaultAddress": "0x696d02db93291651ed510704c9b286841d506987",
+        "count": 139,
+        "firstBlock": 24327154,
+        "lastBlock": 25676939
+      }
+    ]
+  },
+  "logs": [
+    {
+      "label": "yvUSDC-1 first shared allocator configuration",
+      "address": "0x1e9eb053228b1156831759401de0e115356b8671",
+      "blockNumber": 20987762,
+      "blockTimestamp": 1729197971,
+      "blockHash": "0xfd1d7c1bb8ebb7e6c370831640155cb98471814fd84100c4ee8eeecf11268ae3",
+      "transactionHash": "0x3aa99e65b765359bb210eddaf0e9262ac3829e0a730c6f173d5073021d230b2d",
+      "transactionIndex": 163,
+      "transactionFrom": "0x1b5f15dcb82d25f91c65b53cee151e8b9fbdd271",
+      "transactionTo": "0x16388463d60ffe0661cf7f1f31a7d658ac790ff7",
+      "inputSelector": "0x6a761202",
+      "logIndex": 411,
+      "topics": [
+        "0x2a89fa60115b9af6e21a6c6aa32d141e9cfbf77472d27fbf2e7a5a8c2efaf995",
+        "0x000000000000000000000000be53a109b494e5c9f97b9cd39fe969be68bf6204",
+        "0x000000000000000000000000f766c7293f4e0265ddfa8369f78a808df8ac70c1"
+      ],
+      "data": "0x0000000000000000000000000000000000000000000000000000000000000b360000000000000000000000000000000000000000000000000000000000000d740000000000000000000000000000000000000000000000000000000000000b36",
+      "expected": {
+        "vault": "0xbe53a109b494e5c9f97b9cd39fe969be68bf6204",
+        "strategy": "0xf766c7293f4e0265ddfa8369f78a808df8ac70c1",
+        "newTargetRatio": "2870",
+        "newMaxRatio": "3444",
+        "newTotalDebtRatio": "2870"
+      }
+    },
+    {
+      "label": "yvUSDT-1 first shared allocator configuration",
+      "address": "0x1e9eb053228b1156831759401de0e115356b8671",
+      "blockNumber": 20987762,
+      "blockTimestamp": 1729197971,
+      "blockHash": "0xfd1d7c1bb8ebb7e6c370831640155cb98471814fd84100c4ee8eeecf11268ae3",
+      "transactionHash": "0x3aa99e65b765359bb210eddaf0e9262ac3829e0a730c6f173d5073021d230b2d",
+      "transactionIndex": 163,
+      "transactionFrom": "0x1b5f15dcb82d25f91c65b53cee151e8b9fbdd271",
+      "transactionTo": "0x16388463d60ffe0661cf7f1f31a7d658ac790ff7",
+      "inputSelector": "0x6a761202",
+      "logIndex": 485,
+      "topics": [
+        "0x2a89fa60115b9af6e21a6c6aa32d141e9cfbf77472d27fbf2e7a5a8c2efaf995",
+        "0x000000000000000000000000310b7ea7475a0b449cfd73be81522f1b88efafaa",
+        "0x000000000000000000000000e5baf8b6be442811211e9339d9fbc1b8fb7d66df"
+      ],
+      "data": "0x0000000000000000000000000000000000000000000000000000000000001daf000000000000000000000000000000000000000000000000000000000000239e0000000000000000000000000000000000000000000000000000000000001daf",
+      "expected": {
+        "vault": "0x310b7ea7475a0b449cfd73be81522f1b88efafaa",
+        "strategy": "0xe5baf8b6be442811211e9339d9fbc1b8fb7d66df",
+        "newTargetRatio": "7599",
+        "newMaxRatio": "9118",
+        "newTotalDebtRatio": "7599"
+      }
+    },
+    {
+      "label": "yvUSD first shared allocator configuration",
+      "address": "0x1e9eb053228b1156831759401de0e115356b8671",
+      "blockNumber": 24327154,
+      "blockTimestamp": 1769528759,
+      "blockHash": "0x7c604fa4c1ce93a48205aba9b3921c6e5cbbefe7716b96a3be9750ff0ecf88dc",
+      "transactionHash": "0x7b7ea85e2673a420dcad88b1eed991c49e1867cbceaa67ba0c88820ec9423450",
+      "transactionIndex": 123,
+      "transactionFrom": "0x1b5f15dcb82d25f91c65b53cee151e8b9fbdd271",
+      "transactionTo": "0x16388463d60ffe0661cf7f1f31a7d658ac790ff7",
+      "inputSelector": "0x6a761202",
+      "logIndex": 522,
+      "topics": [
+        "0x2a89fa60115b9af6e21a6c6aa32d141e9cfbf77472d27fbf2e7a5a8c2efaf995",
+        "0x000000000000000000000000696d02db93291651ed510704c9b286841d506987",
+        "0x000000000000000000000000bc65ad17c5c0a2a4d159fa5a503f4992c7b545fe"
+      ],
+      "data": "0x00000000000000000000000000000000000000000000000000000000000001f400000000000000000000000000000000000000000000000000000000000002bc00000000000000000000000000000000000000000000000000000000000001f4",
+      "expected": {
+        "vault": "0x696d02db93291651ed510704c9b286841d506987",
+        "strategy": "0xbc65ad17c5c0a2a4d159fa5a503f4992c7b545fe",
+        "newTargetRatio": "500",
+        "newMaxRatio": "700",
+        "newTotalDebtRatio": "500"
+      }
+    }
+  ]
+}

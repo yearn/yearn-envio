@@ -1,4 +1,5 @@
 import { indexer } from "envio";
+import { isAllocationChain, isNonzeroAddress } from "./allocation/chains.js";
 import type {
   DebtPurchased,
   DebtUpdated,
@@ -85,6 +86,7 @@ import type {
   Withdraw,
 } from "envio";
 import { getAddress } from "viem";
+import "./allocation/AllocationHandlers.js";
 
 const addr = (a: string | undefined): string | undefined =>
   a ? getAddress(a) : undefined;
@@ -1869,7 +1871,10 @@ indexer.onEvent({ contract: "YearnV3RoleManagerFactory", event: "NewProject" }, 
 
 indexer.contractRegister({ contract: "YearnV3RoleManager", event: "AddedNewVault" }, async ({ event, context }) => {
   context.chain.YearnV3Vault.add(getAddress(event.params.vault));
-  context.chain.DebtAllocator.add(getAddress(event.params.debtAllocator));
+  if (isNonzeroAddress(event.params.debtAllocator)) {
+    if (isAllocationChain(event.chainId)) context.chain.AssignedDebtAllocator.add(getAddress(event.params.debtAllocator));
+    else context.chain.DebtAllocator.add(getAddress(event.params.debtAllocator));
+  }
 });
 
 indexer.onEvent({ contract: "YearnV3RoleManager", event: "AddedNewVault" }, async ({ event, context }) => {
@@ -1999,7 +2004,10 @@ indexer.onEvent({ contract: "YearnV3YieldSplitterFactory", event: "NewYieldSplit
 // dynamic indexing.
 
 indexer.contractRegister({ contract: "DebtAllocatorFactory", event: "NewDebtAllocator" }, async ({ event, context }) => {
-  context.chain.DebtAllocator.add(getAddress(event.params.allocator));
+  if (isNonzeroAddress(event.params.allocator)) {
+    if (isAllocationChain(event.chainId)) context.chain.AssignedDebtAllocator.add(getAddress(event.params.allocator));
+    else context.chain.DebtAllocator.add(getAddress(event.params.allocator));
+  }
 });
 
 indexer.onEvent({ contract: "DebtAllocatorFactory", event: "NewDebtAllocator" }, async ({ event, context }) => {
@@ -2022,7 +2030,8 @@ indexer.onEvent({ contract: "DebtAllocatorFactory", event: "NewDebtAllocator" },
 
 // ─── DebtAllocator Handlers ─────────────────────────────────────────────────
 
-indexer.onEvent({ contract: "DebtAllocator", event: "UpdateStrategyDebtRatios" }, async ({ event, context }) => {
+for (const contract of ["DebtAllocator", "AssignedDebtAllocator"] as const) {
+indexer.onEvent({ contract, event: "UpdateStrategyDebtRatios" }, async ({ event, context }) => {
   const entity: UpdateStrategyDebtRatios = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     allocatorAddress: getAddress(event.srcAddress),
@@ -2042,7 +2051,7 @@ indexer.onEvent({ contract: "DebtAllocator", event: "UpdateStrategyDebtRatios" }
   context.UpdateStrategyDebtRatios.set(entity);
 });
 
-indexer.onEvent({ contract: "DebtAllocator", event: "UpdateKeeper" }, async ({ event, context }) => {
+indexer.onEvent({ contract, event: "UpdateKeeper" }, async ({ event, context }) => {
   const entity: UpdateKeeper = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     allocatorAddress: getAddress(event.srcAddress),
@@ -2060,7 +2069,7 @@ indexer.onEvent({ contract: "DebtAllocator", event: "UpdateKeeper" }, async ({ e
   context.UpdateKeeper.set(entity);
 });
 
-indexer.onEvent({ contract: "DebtAllocator", event: "GovernanceTransferred" }, async ({ event, context }) => {
+indexer.onEvent({ contract, event: "GovernanceTransferred" }, async ({ event, context }) => {
   const entity: GovernanceTransferred = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     allocatorAddress: getAddress(event.srcAddress),
@@ -2078,7 +2087,7 @@ indexer.onEvent({ contract: "DebtAllocator", event: "GovernanceTransferred" }, a
   context.GovernanceTransferred.set(entity);
 });
 
-indexer.onEvent({ contract: "DebtAllocator", event: "UpdateMaxAcceptableBaseFee" }, async ({ event, context }) => {
+indexer.onEvent({ contract, event: "UpdateMaxAcceptableBaseFee" }, async ({ event, context }) => {
   const entity: UpdateMaxAcceptableBaseFee = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     allocatorAddress: getAddress(event.srcAddress),
@@ -2095,7 +2104,7 @@ indexer.onEvent({ contract: "DebtAllocator", event: "UpdateMaxAcceptableBaseFee"
   context.UpdateMaxAcceptableBaseFee.set(entity);
 });
 
-indexer.onEvent({ contract: "DebtAllocator", event: "UpdateMaxDebtUpdateLoss" }, async ({ event, context }) => {
+indexer.onEvent({ contract, event: "UpdateMaxDebtUpdateLoss" }, async ({ event, context }) => {
   const entity: UpdateMaxDebtUpdateLoss = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     allocatorAddress: getAddress(event.srcAddress),
@@ -2112,7 +2121,7 @@ indexer.onEvent({ contract: "DebtAllocator", event: "UpdateMaxDebtUpdateLoss" },
   context.UpdateMaxDebtUpdateLoss.set(entity);
 });
 
-indexer.onEvent({ contract: "DebtAllocator", event: "UpdateMinimumChange" }, async ({ event, context }) => {
+indexer.onEvent({ contract, event: "UpdateMinimumChange" }, async ({ event, context }) => {
   const entity: UpdateMinimumChange = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     allocatorAddress: getAddress(event.srcAddress),
@@ -2129,7 +2138,7 @@ indexer.onEvent({ contract: "DebtAllocator", event: "UpdateMinimumChange" }, asy
   context.UpdateMinimumChange.set(entity);
 });
 
-indexer.onEvent({ contract: "DebtAllocator", event: "UpdateMinimumWait" }, async ({ event, context }) => {
+indexer.onEvent({ contract, event: "UpdateMinimumWait" }, async ({ event, context }) => {
   const entity: UpdateMinimumWait = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     allocatorAddress: getAddress(event.srcAddress),
@@ -2145,6 +2154,8 @@ indexer.onEvent({ contract: "DebtAllocator", event: "UpdateMinimumWait" }, async
   };
   context.UpdateMinimumWait.set(entity);
 });
+
+}
 
 indexer.onEvent({ contract: "MapleTimelock", event: "ProposalScheduled" }, async ({ event, context }) => {
   const entity: TimelockEvent = {

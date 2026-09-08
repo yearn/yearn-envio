@@ -2,6 +2,11 @@
 
 This repository contains an Envio indexer for Yearn V3 vaults and a fee calculator script to analyze depositor positions. Timelock contracts have also been added to reduce dependency on Tenderly alert monitoring (and reduce Tenderly RPC consumption/costs).
 
+Ethereum shared debt allocator policy events are documented in the
+[allocation event contract](docs/allocation-history/README.md). Envio provides normalized event
+evidence; Kong owns archive-RPC enrichment, allocation processing, and materialized-run
+certification.
+
 *Please refer to the [documentation website](https://docs.envio.dev) for a thorough guide on all [Envio](https://envio.dev) indexer features*
 
 ### Debugging

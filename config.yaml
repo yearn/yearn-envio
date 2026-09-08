@@ -182,6 +182,19 @@ contracts:
     handler: src/EventHandlers.ts
     events:
       - event: "NewDebtAllocator(address indexed allocator, address indexed governance)"
+  - name: AssignedDebtAllocator
+    handler: src/EventHandlers.ts
+    events:
+      - event: "UpdateStrategyDebtRatio(address indexed vault, address indexed strategy, uint256 newTargetRatio, uint256 newMaxRatio, uint256 newTotalDebtRatio)"
+        name: SharedUpdateStrategyDebtRatio
+      - event: "UpdateStrategyDebtRatios(address indexed strategy, uint256 newTargetRatio, uint256 newMaxRatio, uint256 newTotalDebtRatio)"
+      - event: "UpdateStrategyDebtRatio(address indexed strategy, uint256 newTargetRatio, uint256 newMaxRatio, uint256 newTotalDebtRatio)"
+      - event: "UpdateKeeper(address indexed keeper, bool allowed)"
+      - event: "GovernanceTransferred(address indexed previousGovernance, address indexed newGovernance)"
+      - event: "UpdateMaxAcceptableBaseFee(uint256 newMaxAcceptableBaseFee)"
+      - event: "UpdateMaxDebtUpdateLoss(uint256 newMaxDebtUpdateLoss)"
+      - event: "UpdateMinimumChange(uint256 newMinimumChange)"
+      - event: "UpdateMinimumWait(uint256 newMinimumWait)"
   - name: DebtAllocator
     handler: src/EventHandlers.ts
     events:
@@ -254,6 +267,8 @@ chains:
   - id: 1
     start_block: 0
     contracts:
+      - name: AssignedDebtAllocator
+        address: []
       - name: Erc4626Vault
         address: []
       - name: YearnStakingRegistryIndexed
@@ -1237,6 +1252,11 @@ chains:
   - id: 8453  # Base
     start_block: 0
     contracts:
+      - name: SharedDebtAllocatorFactory
+        address:
+          - "0x03D43dF6FF894C848fC6F1A0a7E8a539Ef9A4C18"
+      - name: AssignedDebtAllocator
+        address: []
       - name: AaveTimelock
         address: []
       - name: CompoundTimelock
@@ -1699,6 +1719,11 @@ chains:
     hypersync_config:
       url: https://katana.hypersync.xyz
     contracts:
+      - name: SharedDebtAllocatorFactory
+        address:
+          - "0x03D43dF6FF894C848fC6F1A0a7E8a539Ef9A4C18"
+      - name: AssignedDebtAllocator
+        address: []
       - name: AaveTimelock
         address: []
       - name: CompoundTimelock

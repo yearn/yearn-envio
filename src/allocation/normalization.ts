@@ -1,8 +1,8 @@
 import { toEventSelector } from "viem";
 
-export const NORMALIZATION_VERSION = 2;
+export const NORMALIZATION_VERSION = 3;
 
-export type SourceType = "roleManager" | "debtAllocatorFactory" | "debtAllocator";
+export type SourceType = "vault" | "roleManager" | "debtAllocatorFactory" | "debtAllocator";
 
 export type Serializer<T> = {
   readonly sourceType: SourceType;
@@ -57,7 +57,17 @@ const serializeStrategyRatio = ({
   });
 
 export const serializers = {
+  vault: {
+    UpdateRoleManager: serializer<{ role_manager: string }>(
+      "vault", "UpdateRoleManager", "UpdateRoleManager(address)", "vault-v3-role-manager",
+      ({ role_manager }) => JSON.stringify({ roleManager: lowerHex(role_manager) }),
+    ),
+  },
   roleManager: {
+    RemovedVault: serializer<{ vault: string }>(
+      "roleManager", "RemovedVault", "RemovedVault(address)", "role-manager-v1-removal",
+      ({ vault }) => JSON.stringify({ vault: lowerHex(vault) }),
+    ),
     AddedNewVault: serializer<{
       vault: string;
       debtAllocator: string;

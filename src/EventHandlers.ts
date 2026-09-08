@@ -1970,19 +1970,31 @@ indexer.onEvent({ contract: "YearnV3Strategy", event: "StrategyShutdown" }, asyn
   context.V3StrategyShutdown.set(entity);
 });
 
+// Keep control events routable in the generated test indexer. Production
+// persistence is supplied by Envio's raw_events recorder.
+indexer.onEvent({ contract: "YearnV3Strategy", event: "UpdatePendingManagement" }, async () => {});
+indexer.onEvent({ contract: "YearnV3Strategy", event: "UpdateManagement" }, async () => {});
+indexer.onEvent({ contract: "YearnV3Strategy", event: "UpdateEmergencyAdmin" }, async () => {});
+
+// Initialization is emitted by the strategy itself, before its address is known.
 indexer.contractRegister(
-  { contract: "YearnV3VaultFactory", event: "NewTokenizedStrategy" },
+  { contract: "YearnV3Strategy", event: "NewTokenizedStrategy", wildcard: true },
   async ({ event, context }) => {
-    context.chain.YearnV3Strategy.add(getAddress(event.params.strategy));
+    const strategyAddress = getAddress(event.srcAddress);
+    if (strategyAddress !== getAddress(event.params.strategy)) return;
+    context.chain.YearnV3Strategy.add(strategyAddress);
   },
 );
 
 indexer.onEvent(
-  { contract: "YearnV3VaultFactory", event: "NewTokenizedStrategy" },
+  { contract: "YearnV3Strategy", event: "NewTokenizedStrategy", wildcard: true },
   async ({ event, context }) => {
+    const strategyAddress = getAddress(event.srcAddress);
+    if (strategyAddress !== getAddress(event.params.strategy)) return;
     const entity: V3TokenizedStrategyDeployed = {
       ...eventCore(event),
-      factoryAddress: getAddress(event.srcAddress),
+      transactionTo: addr(event.transaction.to),
+      strategyAddress,
       strategy: getAddress(event.params.strategy),
       asset: getAddress(event.params.asset),
       apiVersion: event.params.apiVersion,

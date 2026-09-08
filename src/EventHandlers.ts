@@ -1956,19 +1956,24 @@ indexer.onEvent({ contract: "YearnV3Strategy", event: "StrategyShutdown" }, asyn
   context.V3StrategyShutdown.set(entity);
 });
 
+// Initialization is emitted by the strategy itself, before its address is known.
 indexer.contractRegister(
-  { contract: "YearnV3VaultFactory", event: "NewTokenizedStrategy" },
+  { contract: "YearnV3Strategy", event: "NewTokenizedStrategy", wildcard: true },
   async ({ event, context }) => {
-    context.chain.YearnV3Strategy.add(getAddress(event.params.strategy));
+    const strategyAddress = getAddress(event.srcAddress);
+    if (strategyAddress !== getAddress(event.params.strategy)) return;
+    context.chain.YearnV3Strategy.add(strategyAddress);
   },
 );
 
 indexer.onEvent(
-  { contract: "YearnV3VaultFactory", event: "NewTokenizedStrategy" },
+  { contract: "YearnV3Strategy", event: "NewTokenizedStrategy", wildcard: true },
   async ({ event, context }) => {
+    const strategyAddress = getAddress(event.srcAddress);
+    if (strategyAddress !== getAddress(event.params.strategy)) return;
     const entity: V3TokenizedStrategyDeployed = {
       ...eventCore(event),
-      factoryAddress: getAddress(event.srcAddress),
+      strategyAddress,
       strategy: getAddress(event.params.strategy),
       asset: getAddress(event.params.asset),
       apiVersion: event.params.apiVersion,

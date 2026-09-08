@@ -1018,7 +1018,7 @@ type V3StrategyReported {
 
 type V3TokenizedStrategyDeployed {
   id: ID!
-  factoryAddress: String! @index
+  strategyAddress: String! @index
   chainId: Int! @index
   blockNumber: Int! @index
   blockTimestamp: Int! @index

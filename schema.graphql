@@ -452,6 +452,38 @@ type V2Registry2NewVault {
 
 # ─── Yearn V2 Vault Events ────────────────────────────────────────────────────
 
+type V2Deposit @index(fields: ["chainId", "transactionHash"]) {
+  id: ID!
+  vaultAddress: String! @index
+  chainId: Int! @index
+  blockNumber: Int! @index
+  blockTimestamp: Int! @index
+  blockHash: String!
+  transactionHash: String! @index
+  transactionIndex: Int!
+  transactionFrom: String @index
+  logIndex: Int!
+  recipient: String! @index
+  shares: BigInt!
+  amount: BigInt!
+}
+
+type V2Withdraw @index(fields: ["chainId", "transactionHash"]) {
+  id: ID!
+  vaultAddress: String! @index
+  chainId: Int! @index
+  blockNumber: Int! @index
+  blockTimestamp: Int! @index
+  blockHash: String!
+  transactionHash: String! @index
+  transactionIndex: Int!
+  transactionFrom: String @index
+  logIndex: Int!
+  recipient: String! @index
+  shares: BigInt!
+  amount: BigInt!
+}
+
 type V2Sweep {
   id: ID!
   vaultAddress: String! @index

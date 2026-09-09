@@ -39,6 +39,7 @@ import type {
   UpdateUseDefaultQueue,
   UpdateWithdrawLimitModule,
   UpdatedMaxDebtForStrategy,
+  V2Deposit,
   V2EmergencyShutdown,
   V2FeeReport,
   V2LockedProfitDegradationUpdated,
@@ -69,6 +70,7 @@ import type {
   V2UpdatePerformanceFee,
   V2UpdateRewards,
   V2UpdateWithdrawalQueue,
+  V2Withdraw,
   V2WithdrawFromStrategy,
   V3AccountantVaultChanged,
   V3RegistryNewEndorsedVault,
@@ -983,6 +985,63 @@ indexer.onEvent({ contract: "MorphoCredit", event: "AccountSettled" }, async ({ 
 });
 
 // ─── YearnV2Vault Handlers ──────────────────────────────────────────────────
+
+indexer.onEvent({ contract: "YearnV2Vault", event: "Transfer" }, async ({ event, context }) => {
+  const entity: Transfer = {
+    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
+    vaultAddress: getAddress(event.srcAddress),
+    chainId: event.chainId,
+    blockNumber: event.block.number,
+    blockTimestamp: event.block.timestamp,
+    blockHash: event.block.hash,
+    transactionHash: event.transaction.hash,
+    transactionIndex: event.transaction.transactionIndex,
+    transactionFrom: getAddress(event.transaction.from ?? event.params.sender),
+    logIndex: event.logIndex,
+    sender: getAddress(event.params.sender),
+    receiver: getAddress(event.params.receiver),
+    value: event.params.value,
+  };
+  context.Transfer.set(entity);
+});
+
+indexer.onEvent({ contract: "YearnV2Vault", event: "Deposit" }, async ({ event, context }) => {
+  const entity: V2Deposit = {
+    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
+    vaultAddress: getAddress(event.srcAddress),
+    chainId: event.chainId,
+    blockNumber: event.block.number,
+    blockTimestamp: event.block.timestamp,
+    blockHash: event.block.hash,
+    transactionHash: event.transaction.hash,
+    transactionIndex: event.transaction.transactionIndex,
+    transactionFrom: addr(event.transaction.from),
+    logIndex: event.logIndex,
+    recipient: getAddress(event.params.recipient),
+    shares: event.params.shares,
+    amount: event.params.amount,
+  };
+  context.V2Deposit.set(entity);
+});
+
+indexer.onEvent({ contract: "YearnV2Vault", event: "Withdraw" }, async ({ event, context }) => {
+  const entity: V2Withdraw = {
+    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
+    vaultAddress: getAddress(event.srcAddress),
+    chainId: event.chainId,
+    blockNumber: event.block.number,
+    blockTimestamp: event.block.timestamp,
+    blockHash: event.block.hash,
+    transactionHash: event.transaction.hash,
+    transactionIndex: event.transaction.transactionIndex,
+    transactionFrom: addr(event.transaction.from),
+    logIndex: event.logIndex,
+    recipient: getAddress(event.params.recipient),
+    shares: event.params.shares,
+    amount: event.params.amount,
+  };
+  context.V2Withdraw.set(entity);
+});
 
 indexer.onEvent({ contract: "YearnV2Vault", event: "Sweep" }, async ({ event, context }) => {
   const entity: V2Sweep = {

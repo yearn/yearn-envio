@@ -1304,35 +1304,6 @@ type InverseEscrowCreated {
 }
 
 # =============================================================================
-# TEMPORARY / RESEARCH ONLY — not used by any important infrastructure.
-# Safe multisig discovery for a research project; populated solely by
-# src/SafeDiscovery.ts (SafeProxyFactory.ProxyCreation). Delete this entity and
-# the SafeProxyFactory config entries to remove the research additions.
-# =============================================================================
-# Safe multisig discovered via SafeProxyFactory.ProxyCreation (Ethereum mainnet).
-# One row per Safe proxy; id = "<chainId>_<proxy>". `singletonVersion` is resolved
-# from the known Safe singleton set — null means the proxy points at an
-# unrecognized singleton (the factory is permissionless, so arbitrary contracts
-# can be used; could also be a Safe version newer than the map).
-type SafeProxy @index(fields: ["chainId", "proxy"]) {
-  id: ID!
-  chainId: Int! @index
-  proxy: String! @index
-  singleton: String               # null for v1.1.1-era events (no singleton in ProxyCreation(address))
-  singletonVersion: String
-  factoryAddress: String! @index
-  blockNumber: Int! @index
-  blockTimestamp: Int! @index
-  blockHash: String!
-  transactionHash: String! @index
-  transactionIndex: Int!
-  transactionFrom: String @index
-  logIndex: Int!
-}
-
-# ===== END TEMPORARY / RESEARCH ONLY (SafeProxy) =====
-
-# =============================================================================
 # Ethereum allocation-policy event normalization
 # =============================================================================
 

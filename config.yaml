@@ -50,7 +50,9 @@ contracts:
   - name: YearnV3Strategy
     handler: src/EventHandlers.ts
     events:
+      - event: "NewTokenizedStrategy(address indexed strategy, address indexed asset, string apiVersion)"
       - event: "Reported(uint256 profit, uint256 loss, uint256 protocolFees, uint256 performanceFees)"
+      - event: "StrategyShutdown()"
   - name: YearnV3SplitterFactory
     handler: src/EventHandlers.ts
     events:
@@ -282,7 +284,7 @@ chains:
       - name: YearnV3Accountant
         address: []
       - name: YearnV3Strategy
-        # No static addresses: strategies are discovered from vault/role-manager events.
+        # Discovered from strategy initialization and existing vault/splitter events.
         address: []
       - name: YearnV3SplitterFactory
         address:

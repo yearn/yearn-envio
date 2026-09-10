@@ -1016,6 +1016,35 @@ type V3StrategyReported {
   performanceFees: BigInt!
 }
 
+type V3TokenizedStrategyDeployed {
+  id: ID!
+  strategyAddress: String! @index
+  chainId: Int! @index
+  blockNumber: Int! @index
+  blockTimestamp: Int! @index
+  blockHash: String!
+  transactionHash: String! @index
+  transactionIndex: Int!
+  transactionFrom: String @index
+  logIndex: Int!
+  strategy: String! @index
+  asset: String! @index
+  apiVersion: String!
+}
+
+type V3StrategyShutdown {
+  id: ID!
+  strategyAddress: String! @index
+  chainId: Int! @index
+  blockNumber: Int! @index
+  blockTimestamp: Int! @index
+  blockHash: String!
+  transactionHash: String! @index
+  transactionIndex: Int!
+  transactionFrom: String @index
+  logIndex: Int!
+}
+
 type V3SplitterNewSplitter {
   id: ID!
   factoryAddress: String! @index

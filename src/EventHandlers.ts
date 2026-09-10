@@ -79,6 +79,8 @@ import type {
   V3RoleManagerRemovedVault,
   V3SplitterNewSplitter,
   V3StrategyReported,
+  V3StrategyShutdown,
+  V3TokenizedStrategyDeployed,
   V3VaultFactoryNewVault,
   V3YieldSplitterNewYieldSplitter,
   VeyfiGaugeRegistered,
@@ -1959,6 +1961,40 @@ indexer.onEvent({ contract: "YearnV3Strategy", event: "Reported" }, async ({ eve
   };
   context.V3StrategyReported.set(entity);
 });
+
+indexer.onEvent({ contract: "YearnV3Strategy", event: "StrategyShutdown" }, async ({ event, context }) => {
+  const entity: V3StrategyShutdown = {
+    ...eventCore(event),
+    strategyAddress: getAddress(event.srcAddress),
+  };
+  context.V3StrategyShutdown.set(entity);
+});
+
+// Initialization is emitted by the strategy itself, before its address is known.
+indexer.contractRegister(
+  { contract: "YearnV3Strategy", event: "NewTokenizedStrategy", wildcard: true },
+  async ({ event, context }) => {
+    const strategyAddress = getAddress(event.srcAddress);
+    if (strategyAddress !== getAddress(event.params.strategy)) return;
+    context.chain.YearnV3Strategy.add(strategyAddress);
+  },
+);
+
+indexer.onEvent(
+  { contract: "YearnV3Strategy", event: "NewTokenizedStrategy", wildcard: true },
+  async ({ event, context }) => {
+    const strategyAddress = getAddress(event.srcAddress);
+    if (strategyAddress !== getAddress(event.params.strategy)) return;
+    const entity: V3TokenizedStrategyDeployed = {
+      ...eventCore(event),
+      strategyAddress,
+      strategy: getAddress(event.params.strategy),
+      asset: getAddress(event.params.asset),
+      apiVersion: event.params.apiVersion,
+    };
+    context.V3TokenizedStrategyDeployed.set(entity);
+  },
+);
 
 indexer.onEvent({ contract: "YearnV3SplitterFactory", event: "NewSplitter" }, async ({ event, context }) => {
   const entity: V3SplitterNewSplitter = {

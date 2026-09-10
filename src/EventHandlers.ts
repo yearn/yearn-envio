@@ -312,6 +312,15 @@ indexer.onEvent({ contract: "YearnV3Vault", event: "Transfer" }, async ({ event,
     value: event.params.value,
   };
   context.Transfer.set(entity);
+  if (!isYsyBoldCollateral(event.srcAddress)) return;
+  const from = entity.sender;
+  const to = entity.receiver;
+  if (from !== ZERO_ADDRESS) {
+    await applyYsyBoldDelta(event, context, from, -entity.value);
+  }
+  if (to !== ZERO_ADDRESS) {
+    await applyYsyBoldDelta(event, context, to, entity.value);
+  }
 });
 
 indexer.onEvent({ contract: "YearnV3Vault", event: "StrategyReported" }, async ({ event, context }) => {
@@ -2349,21 +2358,6 @@ indexer.onEvent({ contract: "FrankencoinMintingHubV2", event: "PositionOpened" }
   context.FrankencoinV2PositionOpened.set(entity);
   if (isYsyBoldCollateral(event.params.collateral)) {
     await markYsyBoldPosition(event, context, event.params.owner, event.params.position);
-  }
-});
-
-indexer.onEvent({ contract: "YearnV3Vault", event: "Transfer" }, async ({ event, context }) => {
-  // ysyBOLD (Staked yBOLD) shares its address with the YearnV3Vault binding; only
-  // its Transfers drive the Frankencoin collateral ledger, so skip all other vaults.
-  if (!isYsyBoldCollateral(event.srcAddress)) return;
-  const value = event.params.value;
-  const from = getAddress(event.params.sender);
-  const to = getAddress(event.params.receiver);
-  if (from !== ZERO_ADDRESS) {
-    await applyYsyBoldDelta(event, context, from, -value);
-  }
-  if (to !== ZERO_ADDRESS) {
-    await applyYsyBoldDelta(event, context, to, value);
   }
 });
 

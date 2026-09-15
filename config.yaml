@@ -21,22 +21,44 @@ contracts:
     events:
       - event: "NewVault(address indexed token, uint256 indexed deployment_id, address vault, string api_version)"
       - event: "NewExperimentalVault(address indexed token, address indexed deployer, address vault, string api_version)"
+      - event: "NewRelease(uint256 indexed release_id, address template, string api_version)"
+      - event: "NewGovernance(address governance)"
+      - event: "VaultTagged(address vault, string tag)"
   - name: YearnV2Registry2
     handler: src/EventHandlers.ts
     events:
       - event: "NewVault(address indexed token, uint256 indexed vaultId, uint256 vaultType, address vault, string apiVersion)"
+      - event: "ApprovedVaultEndorser(address account, bool canEndorse)"
+      - event: "ApprovedVaultOwnerUpdated(address governance, bool approved)"
+      - event: "OwnershipTransferred(address indexed previousOwner, address indexed newOwner)"
+      - event: "ReleaseRegistryUpdated(address newRegistry)"
   - name: YearnV3Registry
     handler: src/EventHandlers.ts
     events:
       - event: "NewEndorsedVault(address indexed vault, address indexed asset, uint256 releaseVersion, uint256 vaultType)"
+      - event: "GovernanceTransferred(address indexed previousGovernance, address indexed newGovernance)"
+      - event: "RemovedVault(address indexed vault, address indexed asset, uint256 releaseVersion, uint256 vaultType)"
+      - event: "NewRelease(uint256 indexed releaseId, address indexed factory, address indexed tokenizedStrategy, string apiVersion)"
+      - event: "UpdatePendingGovernance(address indexed newPendingGovernance)"
+      - event: "UpdateEndorser(address indexed account, bool status)"
+      - event: "UpdateTagger(address indexed account, bool status)"
+      - event: "VaultTagged(address indexed vault)"
   - name: YearnV3VaultFactory
     handler: src/EventHandlers.ts
     events:
       - event: "NewVault(address indexed vault_address, address indexed asset)"
+      - event: "UpdateProtocolFeeBps(uint16 old_fee_bps, uint16 new_fee_bps)"
+      - event: "UpdateProtocolFeeRecipient(address indexed old_fee_recipient, address indexed new_fee_recipient)"
+      - event: "UpdateCustomProtocolFee(address indexed vault, uint16 new_custom_protocol_fee)"
+      - event: "RemovedCustomProtocolFee(address indexed vault)"
+      - event: "FactoryShutdown()"
+      - event: "UpdateGovernance(address indexed governance)"
+      - event: "NewPendingGovernance(address indexed pending_governance)"
   - name: YearnV3RoleManagerFactory
     handler: src/EventHandlers.ts
     events:
       - event: "NewProject(bytes32 indexed projectId, address indexed roleManager)"
+      - event: "NewRoleManager(address indexed roleManager)"
   - name: YearnV3RoleManager
     handler: src/EventHandlers.ts
     events:
@@ -64,14 +86,40 @@ contracts:
             - transactionIndex
             - to
             - input
+      - event: "GovernanceTransferred(address indexed previousGovernance, address indexed newGovernance)"
+      - event: "UpdateDefaultProfitMaxUnlock(uint256 newDefaultProfitMaxUnlock)"
+      - event: "UpdatePendingGovernance(address indexed newPendingGovernance)"
+      - event: "UpdatePositionHolder(bytes32 indexed position, address indexed newAddress)"
+      - event: "UpdatePositionRoles(bytes32 indexed position, uint256 newRoles)"
   - name: YearnV3Accountant
     handler: src/EventHandlers.ts
     events:
       - event: "VaultChanged(address indexed vault, uint8 change)"
+      - event: "DistributeRewards(address indexed token, uint256 rewards)"
+      - event: "NewFeeManager(address indexed feeManager)"
+      - event: "RemovedCustomFeeConfig(address indexed vault, address indexed strategy)"
+      - event: "SetFutureFeeManager(address indexed futureFeeManager)"
+      - event: "UpdateCustomFeeConfig(address indexed vault, address indexed strategy, (uint16 managementFee, uint16 performanceFee, uint16 refundRatio, uint16 maxFee, uint16 maxGain, uint16 maxLoss) custom_config)"
+      - event: "UpdateDefaultFeeConfig((uint16 managementFee, uint16 performanceFee, uint16 refundRatio, uint16 maxFee, uint16 maxGain, uint16 maxLoss) defaultFeeConfig)"
+      - event: "UpdateFeeRecipient(address indexed oldFeeRecipient, address indexed newFeeRecipient)"
+      - event: "UpdateMaxLoss(uint256 maxLoss)"
+      - event: "UpdateRefund(address indexed vault, address indexed strategy, bool refund, uint256 amount)"
+      - event: "UpdateVaultManager(address indexed newVaultManager)"
   - name: YearnV3Strategy
     handler: src/EventHandlers.ts
     events:
       - event: "Reported(uint256 profit, uint256 loss, uint256 protocolFees, uint256 performanceFees)"
+      - event: "Deposit(address indexed caller, address indexed owner, uint256 assets, uint256 shares)"
+      - event: "NewTokenizedStrategy(address indexed strategy, address indexed asset, string apiVersion)"
+      - event: "StrategyShutdown()"
+      - event: "Transfer(address indexed from, address indexed to, uint256 value)"
+      - event: "UpdateKeeper(address indexed newKeeper)"
+      - event: "UpdateManagement(address indexed newManagement)"
+      - event: "UpdatePendingManagement(address indexed newPendingManagement)"
+      - event: "UpdatePerformanceFee(uint16 newPerformanceFee)"
+      - event: "UpdatePerformanceFeeRecipient(address indexed newPerformanceFeeRecipient)"
+      - event: "UpdateProfitMaxUnlockTime(uint256 newProfitMaxUnlockTime)"
+      - event: "Withdraw(address indexed caller, address indexed receiver, address indexed owner, uint256 assets, uint256 shares)"
   - name: YearnV3SplitterFactory
     handler: src/EventHandlers.ts
     events:
@@ -180,10 +228,23 @@ contracts:
       - event: "StrategyAddedToQueue(address indexed strategy)"
       - event: "NewPendingGovernance(address indexed pendingGovernance)"
       - event: "EmergencyShutdown(bool active)"
+      - event: "StrategyAdded(address indexed strategy, uint256 debtRatio, uint256 rateLimit, uint256 performanceFee)"
+        name: StrategyAddedLegacy
   - name: YearnV2Strategy
     handler: src/EventHandlers.ts
     events:
       - event: "Harvested(uint256 profit, uint256 loss, uint256 debtPayment, uint256 debtOutstanding)"
+      - event: "Cloned(address indexed clone)"
+      - event: "EmergencyExitEnabled()"
+      - event: "ForcedHarvestTrigger(bool triggerState)"
+      - event: "UpdatedBaseFeeOracle(address baseFeeOracle)"
+      - event: "UpdatedCreditThreshold(uint256 creditThreshold)"
+      - event: "UpdatedKeeper(address newKeeper)"
+      - event: "UpdatedMaxReportDelay(uint256 delay)"
+      - event: "UpdatedMetadataURI(string metadataURI)"
+      - event: "UpdatedMinReportDelay(uint256 delay)"
+      - event: "UpdatedRewards(address rewards)"
+      - event: "UpdatedStrategist(address newStrategist)"
   - name: YearnV2TradeHandler
     handler: src/EventHandlers.ts
     events:

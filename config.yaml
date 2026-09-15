@@ -10,7 +10,6 @@ field_selection:
     - from
     - transactionIndex
     - to
-    - input
 contracts:
   - name: Erc4626Vault
     handler: src/EventHandlers.ts
@@ -42,8 +41,29 @@ contracts:
     handler: src/EventHandlers.ts
     events:
       - event: "AddedNewVault(address indexed vault, address indexed debtAllocator, uint256 category)"
+        field_selection:
+          transaction_fields:
+            - hash
+            - from
+            - transactionIndex
+            - to
+            - input
       - event: "RemovedVault(address indexed vault)"
+        field_selection:
+          transaction_fields:
+            - hash
+            - from
+            - transactionIndex
+            - to
+            - input
       - event: "UpdateDebtAllocator(address indexed vault, address indexed debtAllocator)"
+        field_selection:
+          transaction_fields:
+            - hash
+            - from
+            - transactionIndex
+            - to
+            - input
   - name: YearnV3Accountant
     handler: src/EventHandlers.ts
     events:
@@ -75,6 +95,13 @@ contracts:
       - event: "RoleStatusChanged(uint256 indexed role, uint256 indexed status)"
       - event: "UpdateFutureRoleManager(address indexed future_role_manager)"
       - event: "UpdateRoleManager(address indexed role_manager)"
+        field_selection:
+          transaction_fields:
+            - hash
+            - from
+            - transactionIndex
+            - to
+            - input
       - event: "UpdateAccountant(address indexed accountant)"
       - event: "UpdateDefaultQueue(address[] new_default_queue)"
       - event: "UpdateUseDefaultQueue(bool use_default_queue)"
@@ -179,6 +206,13 @@ contracts:
     handler: src/EventHandlers.ts
     events:
       - event: "NewDebtAllocator(address indexed allocator, address indexed vault)"
+        field_selection:
+          transaction_fields:
+            - hash
+            - from
+            - transactionIndex
+            - to
+            - input
   - name: SharedDebtAllocatorFactory
     handler: src/EventHandlers.ts
     events:
@@ -188,10 +222,45 @@ contracts:
     events:
       - event: "UpdateStrategyDebtRatio(address indexed vault, address indexed strategy, uint256 newTargetRatio, uint256 newMaxRatio, uint256 newTotalDebtRatio)"
         name: SharedUpdateStrategyDebtRatio
+        field_selection:
+          transaction_fields:
+            - hash
+            - from
+            - transactionIndex
+            - to
+            - input
       - event: "UpdateStrategyDebtRatios(address indexed strategy, uint256 newTargetRatio, uint256 newMaxRatio, uint256 newTotalDebtRatio)"
+        field_selection:
+          transaction_fields:
+            - hash
+            - from
+            - transactionIndex
+            - to
+            - input
       - event: "UpdateStrategyDebtRatio(address indexed strategy, uint256 newTargetRatio, uint256 newMaxRatio, uint256 newTotalDebtRatio)"
+        field_selection:
+          transaction_fields:
+            - hash
+            - from
+            - transactionIndex
+            - to
+            - input
       - event: "UpdateKeeper(address indexed keeper, bool allowed)"
+        field_selection:
+          transaction_fields:
+            - hash
+            - from
+            - transactionIndex
+            - to
+            - input
       - event: "GovernanceTransferred(address indexed previousGovernance, address indexed newGovernance)"
+        field_selection:
+          transaction_fields:
+            - hash
+            - from
+            - transactionIndex
+            - to
+            - input
       - event: "UpdateMaxAcceptableBaseFee(uint256 newMaxAcceptableBaseFee)"
       - event: "UpdateMaxDebtUpdateLoss(uint256 newMaxDebtUpdateLoss)"
       - event: "UpdateMinimumChange(uint256 newMinimumChange)"

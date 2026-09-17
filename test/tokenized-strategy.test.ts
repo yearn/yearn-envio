@@ -9,7 +9,6 @@ const asset = getAddress(rawAsset);
 const sender = getAddress("0x1111111111111111111111111111111111111111");
 const factory = getAddress("0xE9E8C89c8Fc7E8b8F23425688eb68987231178e5");
 const vault = "0x2222222222222222222222222222222222222222";
-const brain = getAddress("0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52");
 const block = {
   number: 30_000_000,
   timestamp: 1_788_000_000,
@@ -55,33 +54,6 @@ const shutdown = {
   transaction,
   logIndex: 2,
 } as const;
-const pendingManagement = {
-  contract: "YearnV3Strategy",
-  event: "UpdatePendingManagement",
-  srcAddress: strategy,
-  params: { newPendingManagement: brain },
-  block,
-  transaction,
-  logIndex: 3,
-} as const;
-const management = {
-  contract: "YearnV3Strategy",
-  event: "UpdateManagement",
-  srcAddress: strategy,
-  params: { newManagement: brain },
-  block,
-  transaction,
-  logIndex: 4,
-} as const;
-const emergencyAdmin = {
-  contract: "YearnV3Strategy",
-  event: "UpdateEmergencyAdmin",
-  srcAddress: strategy,
-  params: { newEmergencyAdmin: brain },
-  block,
-  transaction,
-  logIndex: 5,
-} as const;
 
 describe("tokenized strategy lifecycle routing", () => {
   it.each(createTestIndexer().chainIds)(
@@ -121,19 +93,6 @@ describe("tokenized strategy lifecycle routing", () => {
       }]);
     },
   );
-
-  it("routes control changes after wildcard strategy discovery", async () => {
-    const indexer = createTestIndexer();
-    await expect(indexer.process({
-      chains: {
-        1: {
-          simulate: [deployment, pendingManagement, management, emergencyAdmin],
-        },
-      },
-    })).resolves.toBeDefined();
-
-    expect(await indexer.V3TokenizedStrategyDeployed.getAll()).toHaveLength(1);
-  });
 
   it("preserves factory-to-vault strategy discovery, reporting, and shutdowns", async () => {
     const indexer = createTestIndexer();
@@ -188,7 +147,7 @@ describe("tokenized strategy lifecycle routing", () => {
     expect(await indexer.V3StrategyShutdown.getAll()).toEqual([]);
   });
 
-  it.each([report, shutdown, pendingManagement, management, emergencyAdmin])(
+  it.each([report, shutdown])(
     "keeps $event restricted to discovered strategies",
     async (event) => {
       const indexer = createTestIndexer();

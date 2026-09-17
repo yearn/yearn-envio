@@ -63,10 +63,9 @@ and direct contract creation has no transaction destination.
 
 The initialization event also supplies no management address. Consumers that need
 initial-management attribution must read `management()` from archive state at the
-deployment block. Subsequent `UpdatePendingManagement`, `UpdateManagement`, and
-`UpdateEmergencyAdmin` events are retained in `raw_events` as observed control
-changes. `V3StrategyShutdown` records the strategy emitter and the same standard
-provenance fields. None of these events is an endorsement or verification of a
+deployment block. Later management and emergency-admin changes are not indexed;
+read them from archive state too. `V3StrategyShutdown` records the strategy
+emitter and the same standard provenance fields. None of these events is an endorsement or verification of a
 strategy's implementation.
 
 Run the lifecycle routing regression tests with

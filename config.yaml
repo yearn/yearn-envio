@@ -1,7 +1,6 @@
 # yaml-language-server: $schema=./node_modules/envio/evm.schema.json
 name: yearn-v3-vault
 description: Yearn V3 Vault Indexer
-raw_events: true
 storage:
   postgres: true
 field_selection:
@@ -113,10 +112,7 @@ contracts:
       - event: "NewTokenizedStrategy(address indexed strategy, address indexed asset, string apiVersion)"
       - event: "StrategyShutdown()"
       - event: "Transfer(address indexed from, address indexed to, uint256 value)"
-      - event: "UpdateEmergencyAdmin(address indexed newEmergencyAdmin)"
       - event: "UpdateKeeper(address indexed newKeeper)"
-      - event: "UpdateManagement(address indexed newManagement)"
-      - event: "UpdatePendingManagement(address indexed newPendingManagement)"
       - event: "UpdatePerformanceFee(uint16 newPerformanceFee)"
       - event: "UpdatePerformanceFeeRecipient(address indexed newPerformanceFeeRecipient)"
       - event: "UpdateProfitMaxUnlockTime(uint256 newProfitMaxUnlockTime)"

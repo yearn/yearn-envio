@@ -69,6 +69,8 @@ changes. `V3StrategyShutdown` records the strategy emitter and the same standard
 provenance fields. None of these events is an endorsement or verification of a
 strategy's implementation.
 
+Run the lifecycle routing regression tests with
+`corepack pnpm exec vitest run test/tokenized-strategy.test.ts`.
 Deploying this schema/config change requires the normal database reset and
 backfill; verify deployment, report, management, and shutdown coverage at a fixed
 block.

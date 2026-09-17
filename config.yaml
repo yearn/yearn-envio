@@ -113,6 +113,7 @@ contracts:
       - event: "NewTokenizedStrategy(address indexed strategy, address indexed asset, string apiVersion)"
       - event: "StrategyShutdown()"
       - event: "Transfer(address indexed from, address indexed to, uint256 value)"
+      - event: "UpdateEmergencyAdmin(address indexed newEmergencyAdmin)"
       - event: "UpdateKeeper(address indexed newKeeper)"
       - event: "UpdateManagement(address indexed newManagement)"
       - event: "UpdatePendingManagement(address indexed newPendingManagement)"
@@ -278,6 +279,13 @@ contracts:
     handler: src/EventHandlers.ts
     events:
       - event: "NewDebtAllocator(address indexed allocator, address indexed governance)"
+        field_selection:
+          transaction_fields:
+            - hash
+            - from
+            - transactionIndex
+            - to
+            - input
   - name: AssignedDebtAllocator
     handler: src/EventHandlers.ts
     events:
@@ -413,7 +421,7 @@ chains:
       - name: YearnV3Accountant
         address: []
       - name: YearnV3Strategy
-        # No static addresses: strategies are discovered from vault/role-manager events.
+        # Discovered from strategy initialization and existing vault/splitter events.
         address: []
       - name: YearnV3SplitterFactory
         address:

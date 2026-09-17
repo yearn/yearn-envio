@@ -41,6 +41,40 @@ pnpm dev
 
 Visit http://localhost:8080 to see the GraphQL Playground, local password is `testing`.
 
+### Tokenized strategy lifecycle
+
+`YearnV3Strategy.NewTokenizedStrategy(address,address,string)` is indexed with a
+wildcard subscription on each configured chain. Initialization runs through
+delegatecall and emits from the new strategy address, so discovery must work
+before that address appears in a vault's `StrategyChanged` event.
+
+The emitter must match the event's `strategy` parameter. Matching events register
+the strategy address for every configured `YearnV3Strategy` event, including
+reports, shutdowns, and management or emergency-admin changes. Those events remain
+restricted to discovered addresses. Existing vault and splitter discovery paths
+still apply.
+
+`V3TokenizedStrategyDeployed` records the emitter as `strategyAddress`, the event's
+`strategy`, `asset`, and `apiVersion`, and full block/transaction/log provenance.
+Its nullable `transactionTo` is the top-level deployment transaction destination;
+it is useful factory provenance but is not itself proof that the destination is a
+canonical Yearn factory. The initialization event supplies no factory parameter,
+and direct contract creation has no transaction destination.
+
+The initialization event also supplies no management address. Consumers that need
+initial-management attribution must read `management()` from archive state at the
+deployment block. Subsequent `UpdatePendingManagement`, `UpdateManagement`, and
+`UpdateEmergencyAdmin` events are retained in `raw_events` as observed control
+changes. `V3StrategyShutdown` records the strategy emitter and the same standard
+provenance fields. None of these events is an endorsement or verification of a
+strategy's implementation.
+
+Run the lifecycle routing regression tests with
+`corepack pnpm exec vitest run test/tokenized-strategy.test.ts`.
+Deploying this schema/config change requires the normal database reset and
+backfill; verify deployment, report, management, and shutdown coverage at a fixed
+block.
+
 ### Environment Variables
 
 Copy `.env.example` to `.env` and fill in values as needed:

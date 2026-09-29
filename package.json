@@ -8,6 +8,7 @@
     "allocation:fixture:check": "node scripts/allocation/verify-shared-debt-allocator.mjs",
     "allocation:test": "vitest run test/allocation",
     "check:config": "node scripts/check_envio_config_compatibility.mjs",
+    "check:vault-coverage": "node scripts/check_vault_coverage.mjs",
     "watch": "tsc --watch",
     "mocha": "vitest run",
     "codegen": "envio codegen",

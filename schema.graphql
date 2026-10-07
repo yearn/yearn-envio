@@ -1316,8 +1316,9 @@ type FrankencoinYsyBoldTotal {
 }
 
 # ─── Inverse Finance FiRM escrow creation ────────────────────────────────────
-# One row per InverseEscrowDeposits.CreateEscrow(owner, escrow) — the FiRM
-# personal collateral escrow factory on Ethereum mainnet.
+# One row per CreateEscrow(owner, escrow) from any registered FiRM market
+# contract (InverseEscrowDeposits* entries), each a per-user escrow factory on
+# Ethereum mainnet; factoryAddress identifies the emitting market.
 type InverseEscrowCreated {
   id: ID!
   factoryAddress: String! @index

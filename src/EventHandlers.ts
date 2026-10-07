@@ -2400,16 +2400,22 @@ indexer.onEvent({ contract: "FrankencoinMintingHubV2", event: "PositionOpened" }
 
 indexer.onEvent({ contract: "InverseEscrowDeposits", event: "CreateEscrow" }, async ({ event, context }) => {
   const entity: InverseEscrowCreated = {
-    id: eventId(event),
+    ...eventCore(event),
     factoryAddress: getAddress(event.srcAddress),
-    chainId: event.chainId,
-    blockNumber: event.block.number,
-    blockTimestamp: event.block.timestamp,
-    blockHash: event.block.hash,
-    transactionHash: event.transaction.hash,
-    transactionIndex: event.transaction.transactionIndex,
-    transactionFrom: addr(event.transaction.from),
-    logIndex: event.logIndex,
+    owner: getAddress(event.params.owner),
+    escrow: getAddress(event.params.escrow),
+  };
+  context.InverseEscrowCreated.set(entity);
+});
+
+// FiRM "Yearn ysyBOLD Market" (0xa956…F02d): same CreateEscrow ABI as
+// InverseEscrowDeposits, emitted by its own market contract. Registered under a
+// separate config entry (InverseEscrowDepositsYsyBold) so its start_block can
+// be its own deployment block.
+indexer.onEvent({ contract: "InverseEscrowDepositsYsyBold", event: "CreateEscrow" }, async ({ event, context }) => {
+  const entity: InverseEscrowCreated = {
+    ...eventCore(event),
+    factoryAddress: getAddress(event.srcAddress),
     owner: getAddress(event.params.owner),
     escrow: getAddress(event.params.escrow),
   };

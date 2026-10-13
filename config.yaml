@@ -373,6 +373,13 @@ contracts:
       # Inverse Finance FiRM personal collateral escrow factory. Signature
       # verified on-chain (topic0 0x1cfd6e6f…), e.g. tx 0xc01fc45cf8f04cbf71d7bf8a2d8f4555f26877e8aed540de1c77375b511d54b4.
       - event: "CreateEscrow(address indexed owner, address escrow)"
+  - name: InverseEscrowDepositsYsyBold
+    handler: src/EventHandlers.ts
+    events:
+      # Same FiRM CreateEscrow ABI as InverseEscrowDeposits, but registered for
+      # the "Yearn ysyBOLD Market" under its own name: config start_block is per
+      # contract entry, and this market deployed ~9.8M blocks after the first.
+      - event: "CreateEscrow(address indexed owner, address escrow)"
 chains:
   - id: 1
     start_block: 0
@@ -1101,6 +1108,10 @@ chains:
         address:
           - "0x1fD4985cdd57bDb1eD646B10B7952fCD58946916" # Inverse Finance FiRM escrow factory
         start_block: 16345937 # contract deployment block (first possible CreateEscrow)
+      - name: InverseEscrowDepositsYsyBold
+        address:
+          - "0xa95605313EB4544f784e699dE93e9232DbFcf02d" # Inverse Finance FiRM "Yearn ysyBOLD Market"
+        start_block: 26140631 # contract deployment block (first possible CreateEscrow)
   - id: 8453  # Base
     start_block: 0
     contracts:

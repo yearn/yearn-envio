@@ -1,4 +1,4 @@
-FROM node:24.3.0-slim
+FROM node:24.22.1-slim
 
 # --no-install-recommends keeps the image smaller by avoiding extra dependencies.
 # rm -rf /var/lib/apt/lists/* cleans up cached package lists to reduce image size.

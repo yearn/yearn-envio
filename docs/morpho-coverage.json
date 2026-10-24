@@ -1,0 +1,200 @@
+[
+  {
+    "chainId": 1,
+    "vaultAddress": "0x0963232eb842baf53e8e517691f81745c1f228a0",
+    "vaultVersion": 1,
+    "name": "Yearn USDT",
+    "deploymentBlock": 24995500
+  },
+  {
+    "chainId": 1,
+    "vaultAddress": "0x2bb005127069a0f0325fb7370967e8a2b64fb77e",
+    "vaultVersion": 1,
+    "name": "Yearn WBTC",
+    "deploymentBlock": 24995316
+  },
+  {
+    "chainId": 1,
+    "vaultAddress": "0x31a5684983eee865d943a696aac155363ba024f9",
+    "vaultVersion": 1,
+    "name": "Vault Bridge WETH",
+    "deploymentBlock": 22490587
+  },
+  {
+    "chainId": 1,
+    "vaultAddress": "0x5b8b9fa8e4145ee06025f642cadb1b47e5f39f04",
+    "vaultVersion": 1,
+    "name": "OUSD",
+    "deploymentBlock": 23998013
+  },
+  {
+    "chainId": 1,
+    "vaultAddress": "0x68aea7b82df6ccdf76235d46445ed83f85f845a3",
+    "vaultVersion": 1,
+    "name": "Yearn USDC",
+    "deploymentBlock": 22630659
+  },
+  {
+    "chainId": 1,
+    "vaultAddress": "0x812b2c6ab3f4471c0e43d4bb61098a9211017427",
+    "vaultVersion": 1,
+    "name": "Vault Bridge WBTC",
+    "deploymentBlock": 22490868
+  },
+  {
+    "chainId": 1,
+    "vaultAddress": "0xaa8d9e2aba210639ce6c7ce21385e7c673aca6f3",
+    "vaultVersion": 2,
+    "name": "Yearn USDC",
+    "deploymentBlock": 24249867,
+    "excluded": "deposits too low to monitor"
+  },
+  {
+    "chainId": 1,
+    "vaultAddress": "0xb885f6d448da7e2c642ec31190b629e40e87b069",
+    "vaultVersion": 2,
+    "name": "Yearn OG USDC",
+    "deploymentBlock": 23885389
+  },
+  {
+    "chainId": 1,
+    "vaultAddress": "0xbe518068eb6135117207256f8c9aff81b4382db1",
+    "vaultVersion": 2,
+    "name": "Yearn OG WETH V2",
+    "deploymentBlock": 23999043,
+    "excluded": "deposits too low to monitor"
+  },
+  {
+    "chainId": 1,
+    "vaultAddress": "0xbeefb9f61cc44895d8aec381373555a64191a9c4",
+    "vaultVersion": 1,
+    "name": "Vault Bridge USDC",
+    "deploymentBlock": 22488129
+  },
+  {
+    "chainId": 1,
+    "vaultAddress": "0xc54b4e08c1dcc199fdd35c6b5ab589ffd3428a8d",
+    "vaultVersion": 1,
+    "name": "Vault Bridge USDT",
+    "deploymentBlock": 22490820
+  },
+  {
+    "chainId": 1,
+    "vaultAddress": "0xe89371eaaac6d46d4c3ed23453241987916224fc",
+    "vaultVersion": 1,
+    "name": "Yearn OG WETH",
+    "deploymentBlock": 22337946
+  },
+  {
+    "chainId": 1,
+    "vaultAddress": "0xf9bddd4a9b3a45f980e11fdde96e16364ddbec49",
+    "vaultVersion": 1,
+    "name": "Yearn OG USDC",
+    "deploymentBlock": 22659677
+  },
+  {
+    "chainId": 999,
+    "vaultAddress": "0x0fb7e41a0a85eb0bca55172b73942cc6685e2b2e",
+    "vaultVersion": 1,
+    "name": "OUSD",
+    "deploymentBlock": 29644703
+  },
+  {
+    "chainId": 999,
+    "vaultAddress": "0xe90959cbe7e56b5ebff9ad12de611a4976f2d2b1",
+    "vaultVersion": 2,
+    "name": "OUSD V2",
+    "deploymentBlock": 29650315
+  },
+  {
+    "chainId": 4663,
+    "vaultAddress": "0x8c258f25fc6fbe3f01ccc828e2c3840a46a4a9a2",
+    "vaultVersion": 2,
+    "name": "Yearn Stonk USDG",
+    "deploymentBlock": 72392181
+  },
+  {
+    "chainId": 8453,
+    "vaultAddress": "0x1d795e29044a62da42d927c4b179269139a28a6b",
+    "vaultVersion": 1,
+    "name": "Yearn OG WETH",
+    "deploymentBlock": 28493006
+  },
+  {
+    "chainId": 8453,
+    "vaultAddress": "0x2efd54529329ad364b8df988ce3bab5ff256ab3e",
+    "vaultVersion": 2,
+    "name": "Yearn OG WETH V2",
+    "deploymentBlock": 41373825
+  },
+  {
+    "chainId": 8453,
+    "vaultAddress": "0x581cc9a73ec7431723a4a80699b8f801205841f1",
+    "vaultVersion": 1,
+    "name": "OUSD",
+    "deploymentBlock": 41337044
+  },
+  {
+    "chainId": 8453,
+    "vaultAddress": "0xe7d0dbe3493830e2ab62619211a2bff0fc60db42",
+    "vaultVersion": 2,
+    "name": "Yearn OG USDC V2",
+    "deploymentBlock": 41373353
+  },
+  {
+    "chainId": 8453,
+    "vaultAddress": "0xef417a2512c5a41f69ae4e021648b69a7cde5d03",
+    "vaultVersion": 1,
+    "name": "Yearn OG USDC",
+    "deploymentBlock": 26515523
+  },
+  {
+    "chainId": 747474,
+    "vaultAddress": "0x4284d4f9f4d61ea57b8f0943547c7c19c5b9b249",
+    "vaultVersion": 2,
+    "name": "Yearn OG USDT",
+    "deploymentBlock": 30275766
+  },
+  {
+    "chainId": 747474,
+    "vaultAddress": "0x5920a6fc553af799542eda628adfcc9ea52e141c",
+    "vaultVersion": 2,
+    "name": "Yearn OG ETH",
+    "deploymentBlock": 30212642
+  },
+  {
+    "chainId": 747474,
+    "vaultAddress": "0x9b1ae9548e4b46ceb6650f6cec702baf5cf2b8cc",
+    "vaultVersion": 2,
+    "name": "Yearn KAT",
+    "deploymentBlock": 27205286
+  },
+  {
+    "chainId": 747474,
+    "vaultAddress": "0xa2d38c8a3d810ebcf4c2075821c5ec8f976bb692",
+    "vaultVersion": 2,
+    "name": "Yearn Degen USDC",
+    "deploymentBlock": 32966522
+  },
+  {
+    "chainId": 747474,
+    "vaultAddress": "0xbeef042bad4472c3f7eb9a73070703788b5362d7",
+    "vaultVersion": 2,
+    "name": "Steakhouse Prime USDC",
+    "deploymentBlock": 33046983
+  },
+  {
+    "chainId": 747474,
+    "vaultAddress": "0xbeeff2d5d126d4809195eea02b605423917bb6c6",
+    "vaultVersion": 2,
+    "name": "Steakhouse High Yield USDC",
+    "deploymentBlock": 33046804
+  },
+  {
+    "chainId": 747474,
+    "vaultAddress": "0xca44cbe1fb03691d43d2d93aa460e2fcb03878fe",
+    "vaultVersion": 2,
+    "name": "Yearn OG USDC",
+    "deploymentBlock": 30272831
+  }
+]

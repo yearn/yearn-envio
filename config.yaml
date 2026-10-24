@@ -10,6 +10,34 @@ field_selection:
     - transactionIndex
     - to
 contracts:
+  - name: MorphoVaultV1
+    handler: src/morpho/GovernanceHandlers.ts
+    events:
+      - event: "RevokePendingCap(address indexed caller, bytes32 indexed id)"
+      - event: "RevokePendingGuardian(address indexed caller)"
+      - event: "RevokePendingMarketRemoval(address indexed caller, bytes32 indexed id)"
+      - event: "RevokePendingTimelock(address indexed caller)"
+      - event: "SetCap(address indexed caller, bytes32 indexed id, uint256 cap)"
+      - event: "SetGuardian(address indexed caller, address indexed guardian)"
+      - event: "SetTimelock(address indexed caller, uint256 newTimelock)"
+      - event: "SetWithdrawQueue(address indexed caller, bytes32[] newWithdrawQueue)"
+      - event: "SubmitCap(address indexed caller, bytes32 indexed id, uint256 cap)"
+      - event: "SubmitGuardian(address indexed newGuardian)"
+      - event: "SubmitMarketRemoval(address indexed caller, bytes32 indexed id)"
+      - event: "SubmitTimelock(uint256 newTimelock)"
+  - name: MorphoVaultV2
+    handler: src/morpho/GovernanceHandlers.ts
+    events:
+      - event: "Constructor(address indexed owner, address indexed asset)"
+      - event: "Submit(bytes4 indexed selector, bytes data, uint256 executableAt)"
+      - event: "Accept(bytes4 indexed selector, bytes data)"
+      - event: "Revoke(address indexed sender, bytes4 indexed selector, bytes data)"
+      - event: "SetOwner(address indexed newOwner)"
+      - event: "SetCurator(address indexed newCurator)"
+      - event: "SetIsSentinel(address indexed account, bool newIsSentinel)"
+      - event: "SetIsAllocator(address indexed account, bool newIsAllocator)"
+      - event: "AddAdapter(address indexed account)"
+      - event: "RemoveAdapter(address indexed account)"
   - name: Erc4626Vault
     handler: src/EventHandlers.ts
     events:
@@ -1112,6 +1140,25 @@ chains:
         address:
           - "0xa95605313EB4544f784e699dE93e9232DbFcf02d" # Inverse Finance FiRM "Yearn ysyBOLD Market"
         start_block: 26140631 # contract deployment block (first possible CreateEscrow)
+      - name: MorphoVaultV1
+        start_block: 22337946
+        address:
+          - "0x0963232eb842baf53e8e517691f81745c1f228a0" # Yearn USDT
+          - "0x2bb005127069a0f0325fb7370967e8a2b64fb77e" # Yearn WBTC
+          - "0x31a5684983eee865d943a696aac155363ba024f9" # Vault Bridge WETH
+          - "0x5b8b9fa8e4145ee06025f642cadb1b47e5f39f04" # OUSD
+          - "0x68aea7b82df6ccdf76235d46445ed83f85f845a3" # Yearn USDC
+          - "0x812b2c6ab3f4471c0e43d4bb61098a9211017427" # Vault Bridge WBTC
+          - "0xbeefb9f61cc44895d8aec381373555a64191a9c4" # Vault Bridge USDC
+          - "0xc54b4e08c1dcc199fdd35c6b5ab589ffd3428a8d" # Vault Bridge USDT
+          - "0xe89371eaaac6d46d4c3ed23453241987916224fc" # Yearn OG WETH
+          - "0xf9bddd4a9b3a45f980e11fdde96e16364ddbec49" # Yearn OG USDC
+      - name: MorphoVaultV2
+        start_block: 23885389
+        address:
+          - "0xaa8d9e2aba210639ce6c7ce21385e7c673aca6f3" # Yearn USDC
+          - "0xb885f6d448da7e2c642ec31190b629e40e87b069" # Yearn OG USDC
+          - "0xbe518068eb6135117207256f8c9aff81b4382db1" # Yearn OG WETH V2
   - id: 8453  # Base
     start_block: 0
     contracts:
@@ -1267,6 +1314,17 @@ chains:
       - name: YearnReferralWrapper
         address:
           - "0x3744Df2673097d738aCaa3E463E6D638867757f2"
+      - name: MorphoVaultV1
+        start_block: 26515523
+        address:
+          - "0x1d795e29044a62da42d927c4b179269139a28a6b" # Yearn OG WETH
+          - "0x581cc9a73ec7431723a4a80699b8f801205841f1" # OUSD
+          - "0xef417a2512c5a41f69ae4e021648b69a7cde5d03" # Yearn OG USDC
+      - name: MorphoVaultV2
+        start_block: 41373353
+        address:
+          - "0x2efd54529329ad364b8df988ce3bab5ff256ab3e" # Yearn OG WETH V2
+          - "0xe7d0dbe3493830e2ab62619211a2bff0fc60db42" # Yearn OG USDC V2
   - id: 42161  # Arbitrum
     start_block: 0
     contracts:
@@ -1621,3 +1679,39 @@ chains:
       - name: YearnReferralWrapper
         address:
           - "0x3744Df2673097d738aCaa3E463E6D638867757f2"
+
+      - name: MorphoVaultV2
+        start_block: 27205286
+        address:
+          - "0x4284d4f9f4d61ea57b8f0943547c7c19c5b9b249" # Yearn OG USDT
+          - "0x5920a6fc553af799542eda628adfcc9ea52e141c" # Yearn OG ETH
+          - "0x9b1ae9548e4b46ceb6650f6cec702baf5cf2b8cc" # Yearn KAT
+          - "0xa2d38c8a3d810ebcf4c2075821c5ec8f976bb692" # Yearn Degen USDC
+          - "0xbeef042bad4472c3f7eb9a73070703788b5362d7" # Steakhouse Prime USDC
+          - "0xbeeff2d5d126d4809195eea02b605423917bb6c6" # Steakhouse High Yield USDC
+          - "0xca44cbe1fb03691d43d2d93aa460e2fcb03878fe" # Yearn OG USDC
+  - id: 999
+    start_block: 29644703
+    rpc:
+      url: "${MORPHO_RPC_HYPEREVM}"
+      for: sync
+    contracts:
+      - name: MorphoVaultV1
+        start_block: 29644703
+        address:
+          - "0x0fb7e41a0a85eb0bca55172b73942cc6685e2b2e" # OUSD
+      - name: MorphoVaultV2
+        start_block: 29650315
+        address:
+          - "0xe90959cbe7e56b5ebff9ad12de611a4976f2d2b1" # OUSD V2
+
+  - id: 4663
+    start_block: 72392181
+    rpc:
+      url: "${MORPHO_RPC_ROBINHOOD}"
+      for: sync
+    contracts:
+      - name: MorphoVaultV2
+        start_block: 72392181
+        address:
+          - "0x8c258f25fc6fbe3f01ccc828e2c3840a46a4a9a2" # Yearn Stonk USDG

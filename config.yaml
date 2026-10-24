@@ -13,29 +13,16 @@ contracts:
   - name: MorphoVaultV1
     handler: src/morpho/GovernanceHandlers.ts
     events:
-      - event: "RevokePendingCap(address indexed caller, bytes32 indexed id)"
-      - event: "RevokePendingGuardian(address indexed caller)"
-      - event: "RevokePendingMarketRemoval(address indexed caller, bytes32 indexed id)"
-      - event: "RevokePendingTimelock(address indexed caller)"
-      - event: "SetCap(address indexed caller, bytes32 indexed id, uint256 cap)"
-      - event: "SetGuardian(address indexed caller, address indexed guardian)"
-      - event: "SetTimelock(address indexed caller, uint256 newTimelock)"
-      - event: "SetWithdrawQueue(address indexed caller, bytes32[] newWithdrawQueue)"
       - event: "SubmitCap(address indexed caller, bytes32 indexed id, uint256 cap)"
-      - event: "SubmitGuardian(address indexed newGuardian)"
       - event: "SubmitMarketRemoval(address indexed caller, bytes32 indexed id)"
       - event: "SubmitTimelock(uint256 newTimelock)"
   - name: MorphoVaultV2
     handler: src/morpho/GovernanceHandlers.ts
     events:
-      - event: "Constructor(address indexed owner, address indexed asset)"
       - event: "Submit(bytes4 indexed selector, bytes data, uint256 executableAt)"
       - event: "Accept(bytes4 indexed selector, bytes data)"
-      - event: "Revoke(address indexed sender, bytes4 indexed selector, bytes data)"
       - event: "SetOwner(address indexed newOwner)"
       - event: "SetCurator(address indexed newCurator)"
-      - event: "SetIsSentinel(address indexed account, bool newIsSentinel)"
-      - event: "SetIsAllocator(address indexed account, bool newIsAllocator)"
       - event: "AddAdapter(address indexed account)"
       - event: "RemoveAdapter(address indexed account)"
   - name: Erc4626Vault
@@ -1156,9 +1143,10 @@ chains:
       - name: MorphoVaultV2
         start_block: 23885389
         address:
-          - "0xaa8d9e2aba210639ce6c7ce21385e7c673aca6f3" # Yearn USDC
+          # Not monitored: deposits too low to monitor.
+          # - "0xaa8d9e2aba210639ce6c7ce21385e7c673aca6f3" # Yearn USDC
+          # - "0xbe518068eb6135117207256f8c9aff81b4382db1" # Yearn OG WETH V2
           - "0xb885f6d448da7e2c642ec31190b629e40e87b069" # Yearn OG USDC
-          - "0xbe518068eb6135117207256f8c9aff81b4382db1" # Yearn OG WETH V2
   - id: 8453  # Base
     start_block: 0
     contracts:
@@ -1693,7 +1681,7 @@ chains:
   - id: 999
     start_block: 29644703
     rpc:
-      url: "${MORPHO_RPC_HYPEREVM}"
+      url: "${ENVIO_RPC_URL_HYPEREVM}"
       for: sync
     contracts:
       - name: MorphoVaultV1
@@ -1708,7 +1696,7 @@ chains:
   - id: 4663
     start_block: 72392181
     rpc:
-      url: "${MORPHO_RPC_ROBINHOOD}"
+      url: "${ENVIO_RPC_URL_ROBINHOOD}"
       for: sync
     contracts:
       - name: MorphoVaultV2

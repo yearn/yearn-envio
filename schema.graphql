@@ -1518,5 +1518,7 @@ type MorphoGovernanceEvent {
   blockTimestamp: Int! @index
   logIndex: Int!
   transactionHash: String!
+  transactionIndex: Int!
+  transactionFrom: String @index
   argsJson: String!
 }

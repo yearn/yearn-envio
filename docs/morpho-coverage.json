@@ -46,7 +46,8 @@
     "vaultAddress": "0xaa8d9e2aba210639ce6c7ce21385e7c673aca6f3",
     "vaultVersion": 2,
     "name": "Yearn USDC",
-    "deploymentBlock": 24249867
+    "deploymentBlock": 24249867,
+    "excluded": "deposits too low to monitor"
   },
   {
     "chainId": 1,
@@ -60,7 +61,8 @@
     "vaultAddress": "0xbe518068eb6135117207256f8c9aff81b4382db1",
     "vaultVersion": 2,
     "name": "Yearn OG WETH V2",
-    "deploymentBlock": 23999043
+    "deploymentBlock": 23999043,
+    "excluded": "deposits too low to monitor"
   },
   {
     "chainId": 1,

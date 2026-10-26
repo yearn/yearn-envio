@@ -6,8 +6,11 @@ export function normalizeMorphoEvent(event: any, vaultVersion: number, eventName
   return {
     ...eventCore(event),
     vaultAddress: getAddress(event.srcAddress),
+    adapterAddress: undefined,
     vaultVersion,
     eventName,
-    argsJson: JSON.stringify(event.params, (_, value) => typeof value === "bigint" ? value.toString() : value),
+    argsJson: JSON.stringify(event.params, (_, value) =>
+      typeof value === "bigint" ? value.toString() : value,
+    ),
   };
 }

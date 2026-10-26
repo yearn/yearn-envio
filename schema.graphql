@@ -1510,6 +1510,7 @@ type SharedUpdateStrategyDebtRatio {
 type MorphoGovernanceEvent {
   id: ID!
   vaultAddress: String! @index
+  adapterAddress: String @index
   vaultVersion: Int!
   eventName: String!
   chainId: Int! @index
@@ -1521,4 +1522,11 @@ type MorphoGovernanceEvent {
   transactionIndex: Int!
   transactionFrom: String @index
   argsJson: String!
+}
+
+type MorphoVaultV2Adapter {
+  id: ID!
+  chainId: Int! @index
+  adapterAddress: String! @index
+  vaultAddress: String! @index
 }

@@ -25,6 +25,10 @@ contracts:
       - event: "SetCurator(address indexed newCurator)"
       - event: "AddAdapter(address indexed account)"
       - event: "RemoveAdapter(address indexed account)"
+  - name: MorphoMarketV1AdapterV2
+    handler: src/morpho/GovernanceHandlers.ts
+    events:
+      - event: "BurnShares(bytes32 indexed marketId, uint256 supplyShares)"
   - name: Erc4626Vault
     handler: src/EventHandlers.ts
     events:
@@ -1140,6 +1144,8 @@ chains:
           - "0xc54b4e08c1dcc199fdd35c6b5ab589ffd3428a8d" # Vault Bridge USDT
           - "0xe89371eaaac6d46d4c3ed23453241987916224fc" # Yearn OG WETH
           - "0xf9bddd4a9b3a45f980e11fdde96e16364ddbec49" # Yearn OG USDC
+      - name: MorphoMarketV1AdapterV2
+        address: []
       - name: MorphoVaultV2
         start_block: 23885389
         address:
@@ -1308,6 +1314,8 @@ chains:
           - "0x1d795e29044a62da42d927c4b179269139a28a6b" # Yearn OG WETH
           - "0x581cc9a73ec7431723a4a80699b8f801205841f1" # OUSD
           - "0xef417a2512c5a41f69ae4e021648b69a7cde5d03" # Yearn OG USDC
+      - name: MorphoMarketV1AdapterV2
+        address: []
       - name: MorphoVaultV2
         start_block: 41373353
         address:
@@ -1668,6 +1676,8 @@ chains:
         address:
           - "0x3744Df2673097d738aCaa3E463E6D638867757f2"
 
+      - name: MorphoMarketV1AdapterV2
+        address: []
       - name: MorphoVaultV2
         start_block: 27205286
         address:
@@ -1688,6 +1698,8 @@ chains:
         start_block: 29644703
         address:
           - "0x0fb7e41a0a85eb0bca55172b73942cc6685e2b2e" # OUSD
+      - name: MorphoMarketV1AdapterV2
+        address: []
       - name: MorphoVaultV2
         start_block: 29650315
         address:
@@ -1699,6 +1711,8 @@ chains:
       url: "${ENVIO_RPC_URL_ROBINHOOD}"
       for: sync
     contracts:
+      - name: MorphoMarketV1AdapterV2
+        address: []
       - name: MorphoVaultV2
         start_block: 72392181
         address:

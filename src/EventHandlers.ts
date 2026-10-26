@@ -89,27 +89,7 @@ import type {
 } from "envio";
 import { getAddress } from "viem";
 import "./allocation/AllocationHandlers.js";
-
-const addr = (a: string | undefined): string | undefined =>
-  a ? getAddress(a) : undefined;
-
-const eventId = (event: {
-  chainId: number;
-  block: { number: number };
-  logIndex: number;
-}): string => `${event.chainId}_${event.block.number}_${event.logIndex}`;
-
-const eventCore = (event: any) => ({
-  id: eventId(event),
-  chainId: event.chainId,
-  blockNumber: event.block.number,
-  blockTimestamp: event.block.timestamp,
-  blockHash: event.block.hash,
-  transactionHash: event.transaction.hash,
-  transactionIndex: event.transaction.transactionIndex,
-  transactionFrom: addr(event.transaction.from),
-  logIndex: event.logIndex,
-});
+import { addr, eventCore, eventId } from "./eventCore.js";
 
 const SECONDS_PER_DAY = 86_400;
 const readPositiveIntEnv = (name: string, fallback: number): number => {

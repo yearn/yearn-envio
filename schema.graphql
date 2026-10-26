@@ -1505,3 +1505,20 @@ type SharedUpdateStrategyDebtRatio {
   newMaxRatio: BigInt!
   newTotalDebtRatio: BigInt!
 }
+
+# Morpho Vault V1/V2 governance occurrences; no alert policy or Telegram state.
+type MorphoGovernanceEvent {
+  id: ID!
+  vaultAddress: String! @index
+  vaultVersion: Int!
+  eventName: String!
+  chainId: Int! @index
+  blockNumber: Int! @index
+  blockHash: String!
+  blockTimestamp: Int! @index
+  logIndex: Int!
+  transactionHash: String!
+  transactionIndex: Int!
+  transactionFrom: String @index
+  argsJson: String!
+}

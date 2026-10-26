@@ -55,8 +55,11 @@ const shutdown = {
   logIndex: 2,
 } as const;
 
+// HyperEVM (999) and Robinhood (4663) are indexed only for Morpho governance.
+const MORPHO_ONLY_CHAINS: number[] = [999, 4663];
+
 describe("tokenized strategy lifecycle routing", () => {
-  it.each(createTestIndexer().chainIds)(
+  it.each(createTestIndexer().chainIds.filter((id) => !MORPHO_ONLY_CHAINS.includes(id)))(
     "discovers a standalone strategy and tracks its lifecycle on chain %i",
     async (chainId) => {
       const indexer = createTestIndexer();

@@ -34,6 +34,6 @@ COPY apps/indexer ./apps/indexer
 
 WORKDIR /repo/apps/indexer
 
-RUN ENVIO_RPC_URL_HYPEREVM=http://codegen.invalid ENVIO_RPC_URL_ROBINHOOD=http://codegen.invalid pnpm envio codegen
+RUN pnpm envio codegen
 
 CMD ["pnpm", "start"]

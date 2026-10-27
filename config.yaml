@@ -1680,9 +1680,6 @@ chains:
           - "0xca44cbe1fb03691d43d2d93aa460e2fcb03878fe" # Yearn OG USDC
   - id: 999
     start_block: 29644703
-    rpc:
-      url: "${ENVIO_RPC_URL_HYPEREVM}"
-      for: sync
     contracts:
       - name: MorphoVaultV1
         start_block: 29644703
@@ -1695,9 +1692,6 @@ chains:
 
   - id: 4663
     start_block: 72392181
-    rpc:
-      url: "${ENVIO_RPC_URL_ROBINHOOD}"
-      for: sync
     contracts:
       - name: MorphoVaultV2
         start_block: 72392181

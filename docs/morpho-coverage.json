@@ -22,9 +22,23 @@
   },
   {
     "chainId": 1,
+    "vaultAddress": "0x3dc15a363f5dcf3b9db90a5c0e2a5cdf8f1cd77e",
+    "vaultVersion": 1,
+    "name": "Yearn OG DAI",
+    "deploymentBlock": 22374085
+  },
+  {
+    "chainId": 1,
+    "vaultAddress": "0x3dfe70b05657949a5db340754ad664810ac63b21",
+    "vaultVersion": 1,
+    "name": "WETH ARM Vault",
+    "deploymentBlock": 24271272
+  },
+  {
+    "chainId": 1,
     "vaultAddress": "0x5b8b9fa8e4145ee06025f642cadb1b47e5f39f04",
     "vaultVersion": 1,
-    "name": "OUSD",
+    "name": "OUSD Vault V1",
     "deploymentBlock": 23998013
   },
   {
@@ -43,29 +57,6 @@
   },
   {
     "chainId": 1,
-    "vaultAddress": "0xaa8d9e2aba210639ce6c7ce21385e7c673aca6f3",
-    "vaultVersion": 2,
-    "name": "Yearn USDC",
-    "deploymentBlock": 24249867,
-    "excluded": "deposits too low to monitor"
-  },
-  {
-    "chainId": 1,
-    "vaultAddress": "0xb885f6d448da7e2c642ec31190b629e40e87b069",
-    "vaultVersion": 2,
-    "name": "Yearn OG USDC",
-    "deploymentBlock": 23885389
-  },
-  {
-    "chainId": 1,
-    "vaultAddress": "0xbe518068eb6135117207256f8c9aff81b4382db1",
-    "vaultVersion": 2,
-    "name": "Yearn OG WETH V2",
-    "deploymentBlock": 23999043,
-    "excluded": "deposits too low to monitor"
-  },
-  {
-    "chainId": 1,
     "vaultAddress": "0xbeefb9f61cc44895d8aec381373555a64191a9c4",
     "vaultVersion": 1,
     "name": "Vault Bridge USDC",
@@ -77,6 +68,13 @@
     "vaultVersion": 1,
     "name": "Vault Bridge USDT",
     "deploymentBlock": 22490820
+  },
+  {
+    "chainId": 1,
+    "vaultAddress": "0xdc2dd5189f70fe2832d9caf7b17d27aa3d79dbe1",
+    "vaultVersion": 1,
+    "name": "Yearn Degen USDC",
+    "deploymentBlock": 22880731
   },
   {
     "chainId": 1,
@@ -93,17 +91,80 @@
     "deploymentBlock": 22659677
   },
   {
+    "chainId": 1,
+    "vaultAddress": "0x3e625e12a1d0f21bbfc771546c7e63e8c7a07b7e",
+    "vaultVersion": 2,
+    "name": "Yearn WBTC",
+    "deploymentBlock": 24994180
+  },
+  {
+    "chainId": 1,
+    "vaultAddress": "0x594d91044aa50d642c90f23f02418911d3503a30",
+    "vaultVersion": 2,
+    "name": "Yearn USDT",
+    "deploymentBlock": 24991919
+  },
+  {
+    "chainId": 1,
+    "vaultAddress": "0xaa8d9e2aba210639ce6c7ce21385e7c673aca6f3",
+    "vaultVersion": 2,
+    "name": "Yearn USDC",
+    "deploymentBlock": 24249867
+  },
+  {
+    "chainId": 1,
+    "vaultAddress": "0xb885f6d448da7e2c642ec31190b629e40e87b069",
+    "vaultVersion": 2,
+    "name": "Yearn OG USDC",
+    "deploymentBlock": 23885389
+  },
+  {
+    "chainId": 1,
+    "vaultAddress": "0xbe518068eb6135117207256f8c9aff81b4382db1",
+    "vaultVersion": 2,
+    "name": "Yearn OG WETH V2",
+    "deploymentBlock": 23999043
+  },
+  {
+    "chainId": 1,
+    "vaultAddress": "0xfb154c729a16802c4ad1e8f7ff539a8b9f49c960",
+    "vaultVersion": 2,
+    "name": "OUSD Vault V2",
+    "deploymentBlock": 24027547
+  },
+  {
+    "chainId": 1,
+    "vaultAddress": "0xfb44f0ace2d757c4368001ef6755f5c3d58f94b0",
+    "vaultVersion": 2,
+    "name": "OUSD Vault V2",
+    "deploymentBlock": 24021545
+  },
+  {
+    "chainId": 10,
+    "vaultAddress": "0xfd370cb6f9246d5e994b04b6c59580d315fbf537",
+    "vaultVersion": 1,
+    "name": "OUSD Vault V1",
+    "deploymentBlock": 148909208
+  },
+  {
     "chainId": 999,
     "vaultAddress": "0x0fb7e41a0a85eb0bca55172b73942cc6685e2b2e",
     "vaultVersion": 1,
-    "name": "OUSD",
+    "name": "OUSD Vault V1",
     "deploymentBlock": 29644703
+  },
+  {
+    "chainId": 999,
+    "vaultAddress": "0x7bdb0f32cee4847407bfd391594e19b23f5519d0",
+    "vaultVersion": 1,
+    "name": "Yearn Degen USDT0",
+    "deploymentBlock": 16460688
   },
   {
     "chainId": 999,
     "vaultAddress": "0xe90959cbe7e56b5ebff9ad12de611a4976f2d2b1",
     "vaultVersion": 2,
-    "name": "OUSD V2",
+    "name": "OUSD Vault V2",
     "deploymentBlock": 29650315
   },
   {
@@ -122,6 +183,34 @@
   },
   {
     "chainId": 8453,
+    "vaultAddress": "0x581cc9a73ec7431723a4a80699b8f801205841f1",
+    "vaultVersion": 1,
+    "name": "OUSD Vault V1",
+    "deploymentBlock": 41337044
+  },
+  {
+    "chainId": 8453,
+    "vaultAddress": "0xef417a2512c5a41f69ae4e021648b69a7cde5d03",
+    "vaultVersion": 1,
+    "name": "Yearn OG USDC",
+    "deploymentBlock": 26515523
+  },
+  {
+    "chainId": 8453,
+    "vaultAddress": "0x1f113af19bb2407822c4f28663b62cc0deeab976",
+    "vaultVersion": 2,
+    "name": "Yearn OG USDC V2",
+    "deploymentBlock": 39441498
+  },
+  {
+    "chainId": 8453,
+    "vaultAddress": "0x2ba14b2e1e7d2189d3550b708dfca01f899f33c1",
+    "vaultVersion": 2,
+    "name": "OUSD Vault V2",
+    "deploymentBlock": 41340316
+  },
+  {
+    "chainId": 8453,
     "vaultAddress": "0x2efd54529329ad364b8df988ce3bab5ff256ab3e",
     "vaultVersion": 2,
     "name": "Yearn OG WETH V2",
@@ -129,10 +218,31 @@
   },
   {
     "chainId": 8453,
-    "vaultAddress": "0x581cc9a73ec7431723a4a80699b8f801205841f1",
-    "vaultVersion": 1,
-    "name": "OUSD",
-    "deploymentBlock": 41337044
+    "vaultAddress": "0x3fbd8c8e123ce473482933be4b3a292bbcdb2360",
+    "vaultVersion": 2,
+    "name": "Yearn OG USDC V2",
+    "deploymentBlock": 39439948
+  },
+  {
+    "chainId": 8453,
+    "vaultAddress": "0xb2d2bfdf380ab653b99e46d345a8086eec4ab37f",
+    "vaultVersion": 2,
+    "name": "Yearn OG WETH V2",
+    "deploymentBlock": 39439510
+  },
+  {
+    "chainId": 8453,
+    "vaultAddress": "0xdbc890056d898c8bc01c35a6102bea674694676e",
+    "vaultVersion": 2,
+    "name": "OUSD Vault V2",
+    "deploymentBlock": 41340054
+  },
+  {
+    "chainId": 8453,
+    "vaultAddress": "0xdfe856774201c7a5f4ecdf5e2918a7505dd81c7c",
+    "vaultVersion": 2,
+    "name": "(unnamed)",
+    "deploymentBlock": 38121864
   },
   {
     "chainId": 8453,
@@ -143,10 +253,101 @@
   },
   {
     "chainId": 8453,
-    "vaultAddress": "0xef417a2512c5a41f69ae4e021648b69a7cde5d03",
+    "vaultAddress": "0xeaa2657db82229e241e0c972306c0e75324b2947",
+    "vaultVersion": 2,
+    "name": "Yearn OG WETH V2",
+    "deploymentBlock": 39439594
+  },
+  {
+    "chainId": 8453,
+    "vaultAddress": "0xef349bda1c96712a1dcd0c6f78b6ce8d76e9af0c",
+    "vaultVersion": 2,
+    "name": "(unnamed)",
+    "deploymentBlock": 39439714
+  },
+  {
+    "chainId": 42161,
+    "vaultAddress": "0x3574b6b307f86c0ca6bd263dca12d8f3031e57b9",
+    "vaultVersion": 1,
+    "name": "Yearn OG WETH",
+    "deploymentBlock": 360363523
+  },
+  {
+    "chainId": 42161,
+    "vaultAddress": "0x36b69949d60d06eccc14de0ae63f4e00cc2cd8b9",
+    "vaultVersion": 1,
+    "name": "Yearn Degen USDC",
+    "deploymentBlock": 377976262
+  },
+  {
+    "chainId": 42161,
+    "vaultAddress": "0x87deae530841a9671326c9d5b9f91bdb11f3162c",
     "vaultVersion": 1,
     "name": "Yearn OG USDC",
-    "deploymentBlock": 26515523
+    "deploymentBlock": 360355659
+  },
+  {
+    "chainId": 747474,
+    "vaultAddress": "0x2672c0faea0fdf14fcc97a00108e4a13f0e5b4fe",
+    "vaultVersion": 1,
+    "name": "Yearn OG AUSD",
+    "deploymentBlock": 12157711
+  },
+  {
+    "chainId": 747474,
+    "vaultAddress": "0x4fd2fddc8973077b95d614980fd298b120f3148b",
+    "vaultVersion": 1,
+    "name": "d3nity dUSD",
+    "deploymentBlock": 14590550
+  },
+  {
+    "chainId": 747474,
+    "vaultAddress": "0x8ed68f91afbe5871dce31ae007a936ebe8511d47",
+    "vaultVersion": 1,
+    "name": "Yearn OG USDT",
+    "deploymentBlock": 4548441
+  },
+  {
+    "chainId": 747474,
+    "vaultAddress": "0xaa0c0f9cdf571e2767aa897f1dba10f1e681c990",
+    "vaultVersion": 1,
+    "name": "Yearn KAT",
+    "deploymentBlock": 25722867
+  },
+  {
+    "chainId": 747474,
+    "vaultAddress": "0xce2b8e464fc7b5e58710c24b7e5ebfb6027f29d7",
+    "vaultVersion": 1,
+    "name": "Yearn OG USDC",
+    "deploymentBlock": 4544531
+  },
+  {
+    "chainId": 747474,
+    "vaultAddress": "0xe107ccdeb8e20e499545c813f98cc90619b29859",
+    "vaultVersion": 1,
+    "name": "Yearn OG WBTC",
+    "deploymentBlock": 4705733
+  },
+  {
+    "chainId": 747474,
+    "vaultAddress": "0xfade0c546f44e33c134c4036207b314ac643dc2e",
+    "vaultVersion": 1,
+    "name": "Yearn OG ETH",
+    "deploymentBlock": 4535962
+  },
+  {
+    "chainId": 747474,
+    "vaultAddress": "0x22c01834e1a261f8bebca7d7b459db2f389785ff",
+    "vaultVersion": 2,
+    "name": "Yearn OG WBTC",
+    "deploymentBlock": 30274797
+  },
+  {
+    "chainId": 747474,
+    "vaultAddress": "0x39d91a9ae178beaa323c78efe53aecfe135335af",
+    "vaultVersion": 2,
+    "name": "(unnamed)",
+    "deploymentBlock": 17428500
   },
   {
     "chainId": 747474,
@@ -192,9 +393,23 @@
   },
   {
     "chainId": 747474,
+    "vaultAddress": "0xbfd40b250f1529f3d0f3913b1f2e53621f5419dd",
+    "vaultVersion": 2,
+    "name": "(unnamed)",
+    "deploymentBlock": 17428098
+  },
+  {
+    "chainId": 747474,
     "vaultAddress": "0xca44cbe1fb03691d43d2d93aa460e2fcb03878fe",
     "vaultVersion": 2,
     "name": "Yearn OG USDC",
     "deploymentBlock": 30272831
+  },
+  {
+    "chainId": 747474,
+    "vaultAddress": "0xf71da79a6ed40f894e883874dce3f54b1493d930",
+    "vaultVersion": 2,
+    "name": "d3nity dUSD V2",
+    "deploymentBlock": 17440628
   }
 ]

@@ -184,3 +184,42 @@ The script now validates that the performance fee stays constant across the depo
 ```bash
 pnpm codegen
 ```
+
+### Curation discovery coverage
+
+Morpho V1/V2 factory creation events are indexed as `CurationFactoryEvent`.
+Factory-created vaults are dynamically registered even when their initial owner
+is outside Yearn: later owner/curator changes must remain discoverable. Policy
+and TVL attribution stay in the metrics consumer. Existing governance monitoring
+remains in `MorphoGovernanceEvent`; V1 also records `SetCurator` and
+`OwnershipTransferred`. V2 already records adapter additions/removals and role
+changes. Discovery does not exclude small or unnamed known vaults.
+
+`src/morpho/curation-scope.json` defines the static bootstrap, factory ranges and
+scope hash. Its identical consumer copy lives in yearn-metrics at
+`src/yearn_data/inventories/envio-curation-scope.json`. `docs/morpho-coverage.json`
+remains the maintained governance inventory. Keep all three consistent when
+changing the bootstrap. The scope hash is SHA-256 of compact JSON excluding
+`scopeHash`, preserving key order. Review the scope entries against config when changing either file.
+
+`CurationIndexingState` advances every 1,000 blocks, starting at the configured
+curation floor and accepting only contiguous checkpoints. Installing code at a
+later height cannot attest earlier history. Metrics requires the matching scope,
+processed range and a canonical indexed anchor before trusting even an empty
+result; otherwise it falls back to RPC.
+
+Full factory discovery starts at HyperEVM block 1,988,677 and Robinhood block
+288. Existing unrelated contracts retain their earlier configured start floors.
+Deploy with a reviewed historical backfill, preferably a separate indexer so the
+current endpoint remains available. Do not reset a serving database implicitly.
+Verify `CurationIndexingState` and positive creation/adapter events on every
+curation chain before switching the consumer endpoint. A successful codegen or
+schema migration alone does not prove backfill coverage.
+
+Validation:
+
+```sh
+corepack pnpm codegen
+corepack pnpm exec tsc --noEmit
+corepack pnpm exec vitest run
+```

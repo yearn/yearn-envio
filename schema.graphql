@@ -1522,3 +1522,37 @@ type MorphoGovernanceEvent {
   transactionFrom: String @index
   argsJson: String!
 }
+
+# Chain coverage is valid only for the exact indexed contract/event scope.
+type CurationIndexingState {
+  id: ID!
+  chainId: Int! @index
+  scopeHash: String!
+  fromBlock: Int!
+  throughBlock: Int!
+}
+
+type CurationFactoryEvent {
+  id: ID!
+  chainId: Int! @index
+  factoryAddress: String! @index
+  vaultAddress: String! @index
+  vaultVersion: Int!
+  blockNumber: Int! @index
+  blockTimestamp: Int!
+  blockHash: String!
+  transactionHash: String!
+  transactionIndex: Int!
+  transactionFrom: String
+  logIndex: Int!
+  argsJson: String!
+}
+
+# Also proves when a dynamically registered vault entered the indexed scope.
+type CurationVault {
+  id: ID!
+  chainId: Int! @index
+  address: String! @index
+  vaultVersion: Int!
+  createdBlock: Int!
+}

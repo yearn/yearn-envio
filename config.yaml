@@ -1143,7 +1143,7 @@ chains:
           - "0xa9c3d3a366466fa809d1ae982fb2c46e5fc41101"
           - "0x1897a8997241c1cd4bd0698647e4eb7213535c24"
       - name: MorphoVaultV1
-        start_block: 22337946
+        start_block: 18925584
         address:
           - "0x0963232eb842baf53e8e517691f81745c1f228a0" # Yearn USDT
           - "0x2bb005127069a0f0325fb7370967e8a2b64fb77e" # Yearn WBTC
@@ -1163,7 +1163,7 @@ chains:
         address:
           - "0xA1D94F746dEfa1928926b84fB2596c06926C0405"
       - name: MorphoVaultV2
-        start_block: 23885389
+        start_block: 23375073
         address:
           - "0x3e625e12a1d0f21bbfc771546c7e63e8c7a07b7e" # Yearn WBTC
           - "0x594d91044aa50d642c90f23f02418911d3503a30" # Yearn USDT
@@ -1357,7 +1357,7 @@ chains:
         address:
           - "0x3Bb6A6A0Bc85b367EFE0A5bAc81c5E52C892839a"
       - name: MorphoVaultV1
-        start_block: 148909208
+        start_block: 130770189
         address:
           - "0xfd370cb6f9246d5e994b04b6c59580d315fbf537" # OUSD Vault V1
   - id: 8453  # Base
@@ -1521,7 +1521,7 @@ chains:
           - "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101"
           - "0xFf62A7c278C62eD665133147129245053Bbf5918"
       - name: MorphoVaultV1
-        start_block: 26515523
+        start_block: 13978134
         address:
           - "0x1d795e29044a62da42d927c4b179269139a28a6b" # Yearn OG WETH
           - "0x581cc9a73ec7431723a4a80699b8f801205841f1" # OUSD Vault V1
@@ -1531,7 +1531,7 @@ chains:
         address:
           - "0x4501125508079A99ebBebCE205DeC9593C2b5857"
       - name: MorphoVaultV2
-        start_block: 38121864
+        start_block: 35615206
         address:
           - "0x1f113af19bb2407822c4f28663b62cc0deeab976" # Yearn OG USDC V2
           - "0x2ba14b2e1e7d2189d3550b708dfca01f899f33c1" # OUSD Vault V2
@@ -1679,7 +1679,7 @@ chains:
         address:
           - "0x878988f5f561081deEa117717052164ea1Ef0c82"
       - name: MorphoVaultV1
-        start_block: 360355659
+        start_block: 296447195
         address:
           - "0x3574b6b307f86c0ca6bd263dca12d8f3031e57b9" # Yearn OG WETH
           - "0x36b69949d60d06eccc14de0ae63f4e00cc2cd8b9" # Yearn Degen USDC
@@ -1688,6 +1688,9 @@ chains:
         start_block: 387016724
         address:
           - "0x6b46fa3cc9EBF8aB230aBAc664E37F2966Bf7971"
+      - name: MorphoVaultV2
+        start_block: 387016724
+        address: []
   - id: 137  # Polygon
     start_block: 0
     contracts:
@@ -1916,7 +1919,7 @@ chains:
         address:
           - "0x1c8De6889acee12257899BFeAa2b7e534de32E16"
       - name: MorphoVaultV1
-        start_block: 4535962
+        start_block: 2741420
         address:
           - "0x2672c0faea0fdf14fcc97a00108e4a13f0e5b4fe" # Yearn OG AUSD
           - "0x4fd2fddc8973077b95d614980fd298b120f3148b" # d3nity dUSD
@@ -1930,7 +1933,7 @@ chains:
         address:
           - "0xFcb8b57E56787bB29e130Fca67f3c5a1232975D1"
       - name: MorphoVaultV2
-        start_block: 17428098
+        start_block: 13096629
         address:
           - "0x22c01834e1a261f8bebca7d7b459db2f389785ff" # Yearn OG WBTC
           - "0x39d91a9ae178beaa323c78efe53aecfe135335af" # (unnamed)
@@ -1951,7 +1954,7 @@ chains:
         address:
           - "0xec051b19d654C48c357dC974376DeB6272f24e53"
       - name: MorphoVaultV1
-        start_block: 16460688
+        start_block: 1988677
         address:
           - "0x0fb7e41a0a85eb0bca55172b73942cc6685e2b2e" # OUSD Vault V1
           - "0x7bdb0f32cee4847407bfd391594e19b23f5519d0" # Yearn Degen USDT0
@@ -1960,7 +1963,7 @@ chains:
         address:
           - "0xD7217E5687FF1071356C780b5fe4803D9D967da7"
       - name: MorphoVaultV2
-        start_block: 29650315
+        start_block: 14188393
         address:
           - "0xe90959cbe7e56b5ebff9ad12de611a4976f2d2b1" # OUSD Vault V2
   - id: 4663
@@ -1971,6 +1974,6 @@ chains:
         address:
           - "0x0FBad98595b0186dA120E41f77C102beb49f803c"
       - name: MorphoVaultV2
-        start_block: 72392181
+        start_block: 288
         address:
           - "0x8c258f25fc6fbe3f01ccc828e2c3840a46a4a9a2" # Yearn Stonk USDG

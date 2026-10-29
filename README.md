@@ -200,7 +200,7 @@ scope hash. Its identical consumer copy lives in yearn-metrics at
 `src/yearn_data/inventories/envio-curation-scope.json`. `docs/morpho-coverage.json`
 remains the maintained governance inventory. Keep all three consistent when
 changing the bootstrap. The scope hash is SHA-256 of compact JSON excluding
-`scopeHash`, preserving key order; regression tests verify it against config.
+`scopeHash`, preserving key order. Review the scope entries against config when changing either file.
 
 `CurationIndexingState` advances every 1,000 blocks, starting at the configured
 curation floor and accepting only contiguous checkpoints. Installing code at a

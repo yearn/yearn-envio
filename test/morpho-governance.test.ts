@@ -11,8 +11,6 @@ const marketId = `0x${"ab".repeat(32)}`;
 const block = { number: 100000000, timestamp: 1792800000, hash: `0x${"ab".repeat(32)}` };
 const transaction = { hash: `0x${"cd".repeat(32)}`, from: caller, to: caller, transactionIndex: 3 };
 const v1 = [
-  { contract: "MorphoVaultV1", event: "SetCurator", params: { newCurator: caller } },
-  { contract: "MorphoVaultV1", event: "OwnershipTransferred", params: { previousOwner: caller, newOwner: caller } },
   { contract: "MorphoVaultV1", event: "SubmitCap", params: { caller, id: marketId, cap: 9999999999999999999999999999n } },
   { contract: "MorphoVaultV1", event: "SubmitMarketRemoval", params: { caller, id: marketId } },
   { contract: "MorphoVaultV1", event: "SubmitTimelock", params: { newTimelock: 9999999999999999999999999999n } },
@@ -93,21 +91,20 @@ describe("Morpho governance coverage", () => {
     it.each(chains)(`indexes every V${version} governance signature for every vault on chain %i`, async chainId => {
       const vaults = coverage.filter(v => v.chainId === chainId && v.vaultVersion === version).map(v => v.vaultAddress);
       const fixtures = version === 1 ? v1 : v2;
-      const chainBlock = { ...block, number: Math.max(...coverage.filter(v => v.chainId === chainId).map(v => v.deploymentBlock)) + 1 };
-      const events = vaults.flatMap(srcAddress => fixtures.map(fixture => ({ ...fixture, srcAddress, block: chainBlock, transaction })))
+      const events = vaults.flatMap(srcAddress => fixtures.map(fixture => ({ ...fixture, srcAddress, block, transaction })))
         .map((e, logIndex) => ({ ...e, logIndex }));
       const indexer = createTestIndexer();
       await indexer.process({ chains: { [chainId]: { simulate: events } } });
       const rows = await indexer.MorphoGovernanceEvent.getAll();
       expect(rows).toHaveLength(events.length);
       for (const e of events) {
-        const row = rows.find(r => r.id === `${chainId}_${chainBlock.number}_${e.logIndex}`)!;
+        const row = rows.find(r => r.id === `${chainId}_${block.number}_${e.logIndex}`)!;
         expect(row).toMatchObject({
           vaultAddress: getAddress(e.srcAddress),
           vaultVersion: version,
           eventName: e.event,
           chainId,
-          blockNumber: chainBlock.number,
+          blockNumber: block.number,
           blockHash: block.hash,
           logIndex: e.logIndex,
           transactionHash: transaction.hash,

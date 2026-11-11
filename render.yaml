@@ -2,6 +2,9 @@ services:
   - type: web
     name: envio-monitoring
     runtime: node
+    envVars:
+      - key: NODE_VERSION
+        value: "22.23.5"
     rootDir: ./monitoring
     buildCommand: "true"
     startCommand: node server.js
@@ -20,7 +23,7 @@ services:
       - envio-explorer.yearn.dev
     envVars:
       - key: NODE_VERSION
-        value: "20"
+        value: "22.23.5"
       - key: PORT
         value: "4000"
       - key: HASURA_ENDPOINT

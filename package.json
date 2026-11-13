@@ -5,21 +5,11 @@
   "scripts": {
     "clean": "tsc --clean",
     "build": "tsc --build",
-    "allocation:fixture:check": "node scripts/allocation/verify-shared-debt-allocator.mjs",
-    "allocation:test": "vitest run test/allocation",
     "check:config": "node scripts/check_envio_config_compatibility.mjs",
-    "check:vault-coverage": "node scripts/check_vault_coverage.mjs",
-    "watch": "tsc --watch",
-    "mocha": "vitest run",
     "codegen": "envio codegen",
-    "dev": "envio dev",
     "migrate": "envio local db-migrate up",
     "start": "envio start",
-    "start:envio": "envio start",
-    "sync:vaults": "node scripts/update_kong_vaults.js",
-    "test": "vitest run && node --test monitoring/test/monitoring.test.js",
-    "calc-fees": "tsc -p tsconfig.calc.json && node build/calc/calculate-depositor-fees.js",
-    "jwt:generate": "node scripts/generate_hasura_jwt.js"
+    "start:envio": "envio start"
   },
   "devDependencies": {
     "@types/node": "20.17.0",
@@ -29,7 +19,7 @@
     "vitest": "3.2.6"
   },
   "dependencies": {
-    "envio": "3.6.1",
+    "envio": "3.16.0",
     "viem": "2.47.11"
   },
   "engines": {
